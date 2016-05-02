@@ -52,8 +52,7 @@
 <li class="toctree-l2"><a class="reference internal" href="groundstation.html#setup-with-plane">Setup with plane</a></li>
 <li class="toctree-l2"><a class="reference internal" href="groundstation.html#setup-with-sitl">Setup with SITL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="groundstation.html#using-the-front-end">Using the front end</a></li>
-<li class="toctree-l2"><a class="reference internal" href="groundstation.html#interoperability-setup">Interoperability Setup</a></li>
-<li class="toctree-l2"><a class="reference internal" href="groundstation.html#interoperability-use">Interoperability Use</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groundstation.html#interoperability">Interoperability</a></li>
 </ul>
 </li>
 </ul>
@@ -65,10 +64,11 @@
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone https://github.com/CUAir/Autopilot
+$ cd Autopilot
 $ virtualenv venv
 $ source venv/bin/activate
+$ pip install -r requirements.txt
 $ cd docs
-$ pip install requirements.txt
 $ make html
 </pre></div>
 </div>
