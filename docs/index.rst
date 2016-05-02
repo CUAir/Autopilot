@@ -20,8 +20,11 @@ Welcome
 Yay, documentation!
 
 
-Installation
---------------
+How to edit this page
+---------------------
+
+**Installation**
+
 ::
 
    $ git clone https://github.com/CUAir/Autopilot
@@ -32,9 +35,7 @@ Installation
    $ cd docs
    $ make html
 
-
-Use 
-----
+**Use** 
 
 * To create a page, make a new file called foobar.rst. 
 * Add your page to the table of contents in the file index.rst under the api and groundstation pages. 
