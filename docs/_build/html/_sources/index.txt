@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to CUAir Autopilot Documentation's documentation!
+Autopilot documentation
 =========================================================
 
 Contents:
@@ -11,6 +11,35 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   intro
+
+Welcome
+=========
+
+Yay, documentation!
+
+
+How to use this stuff
+---------------------
+``$ git clone https://github.com/CUAir/Autopilot
+  $ virtualenv venv
+  $ source venv/bin/activate
+  $ pip install requirements.txt
+  $ cd docs``
+
+
+- Be awesome
+- Make things faster
+
+
+Support
+-------
+
+If you are having issues, please slack Troy know.
+
+License
+-------
+The project is licensed under 
 
 
 Indices and tables

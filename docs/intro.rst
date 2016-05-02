@@ -3,7 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Autopilot documentation
+Welcome to CUAir Autopilot's documentation!
 =========================================================
 
 Contents:
@@ -11,35 +11,30 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   intro
+Intro
+========
 
-Welcome
-=========
+$project will solve your problem of where to start with documentation,
+by providing a basic explanation of how to do it easily.
 
-Yay, documentation!
+Look how easy it is to use:
 
+    import project
+    # Get your stuff done
+    project.do_stuff()
 
-How to use this stuff
----------------------
-``$ git clone https://github.com/CUAir/Autopilot
-  $ virtualenv venv
-  $ source venv/bin/activate
-  $ pip install requirements.txt
-  $ cd docs``
-
+Subhead
+--------
 
 - Be awesome
 - Make things faster
 
+Subhead
+------------
 
-Support
--------
+Install $project by running:
 
-If you are having issues, please slack Troy know.
-
-License
--------
-The project is licensed under 
+    install project
 
 
 Indices and tables
