@@ -28,11 +28,7 @@ Installation
    $ cd Autopilot
    $ virtualenv venv 
    $ source venv/bin/activate
-<<<<<<< HEAD
    $ pip install -r requirements.txt
-=======
-   $ pip install requirements.txt
->>>>>>> c25dde23a4f9ddcb721991222cd74831b897c3be
    $ cd docs
    $ make html
 

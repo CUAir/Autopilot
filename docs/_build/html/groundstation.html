@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     
-    <title>Status [/status] &mdash; CUAir Autopilot Documentation v1.0</title>
+    <title>Ground Station &mdash; CUAir Autopilot Documentation v1.0</title>
     
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
@@ -38,347 +38,31 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD
-Autopilot API endpoints
-============================</p>
-<p>The API for communicating between the autopilot and the ground station.</p>
-<div class="section" id="status-status">
-<h1>Status [/status]<a class="headerlink" href="#status-status" title="Permalink to this headline">¶</a></h1>
-<p>Get the status of the plane: A large json containing each piece of data as a name/value pair. A call can also be made to /status/... to receive an
-individual bit of data (below):</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
-      <span class="p">{</span>
-          <span class="s2">&quot;attitude&quot;</span> <span class="p">:</span> <span class="p">{</span>
-              <span class="s2">&quot;pitch&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-              <span class="s2">&quot;yaw&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-              <span class="s2">&quot;roll&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-              <span class="s2">&quot;pitchspeed&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-              <span class="s2">&quot;yawspeed&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-              <span class="s2">&quot;rollspeed&quot;</span> <span class="p">:</span> <span class="mf">0.0</span>
-              <span class="p">},</span>
-          <span class="s2">&quot;battery&quot;</span> <span class="p">:</span> <span class="p">{</span>
-              <span class="s2">&quot;pct&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-              <span class="s2">&quot;voltage&quot;</span> <span class="p">:</span> <span class="mf">0.0</span>
-              <span class="p">},</span>
-
-          <span class="s2">&quot;link&quot;</span> <span class="p">:</span> <span class="p">{</span>
-              <span class="s2">&quot;gps_link&quot;</span> <span class="p">:</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span>
-              <span class="s2">&quot;plane_link&quot;</span> <span class="p">:</span> <span class="s2">&quot;True&quot;</span>
-              <span class="p">},</span>
-
-          <span class="s2">&quot;time&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-
-          <span class="s2">&quot;gps&quot;</span> <span class="p">:</span> <span class="p">{</span>
-              <span class="s2">&quot;rel_alt&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-              <span class="s2">&quot;asl_alt&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-              <span class="s2">&quot;lat&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-              <span class="s2">&quot;lon&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-              <span class="s2">&quot;heading&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-              <span class="s2">&quot;vx&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-              <span class="s2">&quot;vy&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-              <span class="s2">&quot;vz&quot;</span> <span class="p">:</span> <span class="mf">0.0</span>
-          <span class="p">},</span>
-          <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;AUTO&quot;</span><span class="p">,</span>
-          <span class="s2">&quot;airspeed&quot;</span> <span class="p">:</span> <span class="p">{</span>
-              <span class="s2">&quot;vx&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-              <span class="s2">&quot;vy&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-              <span class="s2">&quot;vz&quot;</span> <span class="p">:</span> <span class="mf">0.0</span>
-          <span class="p">},</span>
-
-          <span class="s2">&quot;wind&quot;</span> <span class="p">:</span> <span class="p">{</span>
-              <span class="s2">&quot;vx&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-              <span class="s2">&quot;vy&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-              <span class="s2">&quot;vz&quot;</span> <span class="p">:</span> <span class="mf">0.0</span>
-          <span class="p">},</span>
-
-          <span class="s2">&quot;throttle&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-
-          <span class="s2">&quot;waypoints&quot;</span> <span class="p">:</span> <span class="p">[{</span>
-              <span class="s2">&quot;alt&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-              <span class="s2">&quot;lon&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-              <span class="s2">&quot;lat&quot;</span> <span class="p">:</span> <span class="mf">0.0</span>
-          <span class="p">}],</span>
-
-          <span class="s2">&quot;wp_count&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-          <span class="s2">&quot;current_wp&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-          <span class="s2">&quot;geofences&quot;</span> <span class="p">:</span>  <span class="p">[{</span>
-              <span class="s2">&quot;lat&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-              <span class="s2">&quot;lon&quot;</span> <span class="p">:</span> <span class="mf">0.0</span>
-          <span class="p">}],</span>
-          <span class="s2">&quot;hud&quot;</span> <span class="p">:</span> <span class="p">{</span>
-          <span class="s2">&quot;airspeed&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-          <span class="s2">&quot;groudspeed&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-          <span class="s2">&quot;heading&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-          <span class="s2">&quot;throttle&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-          <span class="s2">&quot;alt&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-          <span class="s2">&quot;climb&quot;</span><span class="p">:</span> <span class="mf">0.0</span>
-          <span class="p">}</span>
-      <span class="p">}</span>
-</pre></div>
-</div>
-<div class="section" id="attitude-status-attitude">
-<h2>Attitude [/status/attitude]<a class="headerlink" href="#attitude-status-attitude" title="Permalink to this headline">¶</a></h2>
-<p>Returns the plane&#8217;s attitude, containing:</p>
-<ul class="simple">
-<li>Pitch [float]</li>
-<li>Yaw [float]</li>
-<li>Roll [float]</li>
-<li>Pitchspeed [float]</li>
-<li>Yawspeed [float]</li>
-<li>Rollspeed [float]</li>
-</ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
-<span class="p">{</span>
-   <span class="s2">&quot;pitch&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-   <span class="s2">&quot;yaw&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-   <span class="s2">&quot;roll&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-   <span class="s2">&quot;pitchspeed&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-   <span class="s2">&quot;yawspeed&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-   <span class="s2">&quot;rollspeed&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
- <span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="battery-status-battery">
-<h2>Battery [/status/battery]<a class="headerlink" href="#battery-status-battery" title="Permalink to this headline">¶</a></h2>
-<p>Returns the current state of the plane&#8217;s battery, containing:</p>
-<ul class="simple">
-<li>pct [float]</li>
-<li>voltage [float]</li>
-</ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
-       <span class="p">{</span>
-           <span class="s2">&quot;pct&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-           <span class="s2">&quot;voltage&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-       <span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="link-status-link">
-<h2>Link [/status/link]<a class="headerlink" href="#link-status-link" title="Permalink to this headline">¶</a></h2>
-<p>Returns the status of links, containing:</p>
-<ul class="simple">
-<li>gps_link [boolean]</li>
-<li>plane_link [boolean]</li>
-</ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
-       <span class="p">{</span>
-           <span class="s2">&quot;gps_link&quot;</span> <span class="p">:</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span>
-           <span class="s2">&quot;plane_link&quot;</span> <span class="p">:</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span>
-       <span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="time-status-time">
-<h2>Time [/status/time]<a class="headerlink" href="#time-status-time" title="Permalink to this headline">¶</a></h2>
-<p>Returns the current time as an long representing a [unix timestamp](<a class="reference external" href="https://en.wikipedia.org/wiki/Unix_time">https://en.wikipedia.org/wiki/Unix_time</a>)</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
-      <span class="p">{</span>
-         <span class="mi">0</span>
-      <span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="gps-status-gps">
-<h2>GPS [/status/gps]<a class="headerlink" href="#gps-status-gps" title="Permalink to this headline">¶</a></h2>
-<p>Returns various values from the plane&#8217;s onboard GPS, containing:</p>
-<ul class="simple">
-<li>rel_alt [float]</li>
-<li>asl_alt [float]</li>
-<li>lat [float]</li>
-<li>lon [float]</li>
-<li>heading [float]</li>
-<li>vx [float]</li>
-<li>vy [float]</li>
-<li>vz [float]</li>
-</ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
-      <span class="p">{</span>
-          <span class="s2">&quot;rel_alt&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-          <span class="s2">&quot;asl_alt&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-          <span class="s2">&quot;lat&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-          <span class="s2">&quot;lon&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-          <span class="s2">&quot;heading&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-          <span class="s2">&quot;vx&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-          <span class="s2">&quot;vy&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-          <span class="s2">&quot;vz&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-      <span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="mode-status-mode">
-<h2>Mode [/status/mode]<a class="headerlink" href="#mode-status-mode" title="Permalink to this headline">¶</a></h2>
-<p>Returns the current flying mode of the plane as a string, e.g. &#8220;AUTO&#8221;, &#8220;MANUAL&#8221;, &#8220;FLY_BY_WIRE_A&#8221;</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
-       <span class="p">{</span>
-          <span class="s2">&quot;AUTO&quot;</span>
-       <span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="airspeed-status-airspeed">
-<h2>Airspeed [/status/airspeed]<a class="headerlink" href="#airspeed-status-airspeed" title="Permalink to this headline">¶</a></h2>
-<p>Returns vectors vx, vy, vz representing the airspeed velocity of the airplane as floats</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
-       <span class="p">{</span>
-           <span class="s2">&quot;vx&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-           <span class="s2">&quot;vy&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-           <span class="s2">&quot;vz&quot;</span> <span class="p">:</span> <span class="mf">0.0</span>
-       <span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="wind-status-wind">
-<h2>Wind [/status/wind]<a class="headerlink" href="#wind-status-wind" title="Permalink to this headline">¶</a></h2>
-<p>Returns vectors vx, vy, vz representing the wind velocity vector as floats</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
-       <span class="p">{</span>
-           <span class="s2">&quot;vx&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-           <span class="s2">&quot;vy&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-           <span class="s2">&quot;vz&quot;</span> <span class="p">:</span> <span class="mf">0.0</span>
-       <span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="throttle-status-throttle">
-<h2>Throttle [/status/throttle]<a class="headerlink" href="#throttle-status-throttle" title="Permalink to this headline">¶</a></h2>
-<p>An integer from 0 to 100 representing the current throttle level of the plane</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
-       <span class="p">{</span>
-           <span class="mi">0</span>
-       <span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="waypoints-status-waypoints">
-<h2>Waypoints [/status/waypoints]<a class="headerlink" href="#waypoints-status-waypoints" title="Permalink to this headline">¶</a></h2>
-<p>Returns a list of JSON objects representing the current waypoints altitude, latitude, and longitude</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
-       <span class="p">[{</span>
-               <span class="s2">&quot;alt&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-               <span class="s2">&quot;lon&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-               <span class="s2">&quot;lat&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-       <span class="p">}]</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="waypoint-count-status-wp-count">
-<h2>Waypoint Count [/status/wp_count]<a class="headerlink" href="#waypoint-count-status-wp-count" title="Permalink to this headline">¶</a></h2>
-<p>Returns an integer representing the current number of waypoints</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
-       <span class="p">{</span>
-           <span class="mi">0</span>
-       <span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="current-waypoint-status-current-wp">
-<h2>Current Waypoint [/status/current_wp]<a class="headerlink" href="#current-waypoint-status-current-wp" title="Permalink to this headline">¶</a></h2>
-<p>Returns an integer representing the current waypoint</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
-
-       <span class="p">{</span>
-           <span class="mi">0</span>
-       <span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="geofence-status-geofences">
-<h2>Geofence [/status/geofences]<a class="headerlink" href="#geofence-status-geofences" title="Permalink to this headline">¶</a></h2>
-<p>Returns a list of JSON objects representing the latitude and longitude of the geofences</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
-       <span class="p">[{</span>
-           <span class="s2">&quot;lat&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-           <span class="s2">&quot;lon&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-       <span class="p">}]</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="hud-status-hud">
-<h2>HUD [/status/hud]<a class="headerlink" href="#hud-status-hud" title="Permalink to this headline">¶</a></h2>
-<p>Returns a list of values needed for the HUD, containing,</p>
-<ul class="simple">
-<li>airspeed [float]</li>
-<li>groundspeed [float]</li>
-<li>heading [integer]</li>
-<li>throttle [integer]</li>
-<li>alt [float]</li>
-<li>climb [float]</li>
-</ul>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
-       <span class="p">{</span>
-           <span class="s2">&quot;airspeed&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-           <span class="s2">&quot;groudspeed&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-           <span class="s2">&quot;heading&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-           <span class="s2">&quot;throttle&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-           <span class="s2">&quot;alt&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
-           <span class="s2">&quot;climb&quot;</span><span class="p">:</span> <span class="mf">0.0</span>
-       <span class="p">}</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="software-status-status-softstatus-time-time">
-<h2>Software Status [/status/softstatus?time=TIME]<a class="headerlink" href="#software-status-status-softstatus-time-time" title="Permalink to this headline">¶</a></h2>
-<p>Use the GET argument &#8220;time&#8221; (/status/softstatus?time=TIME) to request a status at a specific time. If an exact value is not available, an interoplated value will be provided.</p>
-<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
-       <span class="p">{</span>
-       <span class="n">attitude</span><span class="p">:</span> <span class="p">{</span>
-           <span class="s1">&#39;roll&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-           <span class="s1">&#39;pitch&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-           <span class="s1">&#39;yaw&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-           <span class="s1">&#39;rollspeed&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-           <span class="s1">&#39;yawspeed&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-           <span class="s1">&#39;pitchspeed&#39;</span><span class="p">:</span> <span class="mi">0</span>
-
-       <span class="p">},</span>
-       <span class="n">gps</span><span class="p">:{</span>
-            <span class="n">lat</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="n">lon</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="n">asl_alt</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="n">vx</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="n">vy</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="n">vz</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="n">heading</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="n">rel_alt</span><span class="p">:</span> <span class="mi">0</span>
-        <span class="p">},</span>
-        <span class="n">airspeed</span><span class="p">:{</span>
-            <span class="s1">&#39;vx&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="s1">&#39;vy&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="s1">&#39;vz&#39;</span><span class="p">:</span> <span class="mi">0</span>
-        <span class="p">},</span>
-        <span class="n">wind</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s1">&#39;vx&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="s1">&#39;vy&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-            <span class="s1">&#39;vz&#39;</span><span class="p">:</span> <span class="mi">0</span>
-        <span class="p">}</span>
-</pre></div>
-</div>
-<hr class="docutils" />
+  <div class="section" id="ground-station">
+<h1>Ground Station<a class="headerlink" href="#ground-station" title="Permalink to this headline">¶</a></h1>
 <p>This section describes the use and design of the autopilot ground station</p>
-</div>
-</div>
 <div class="section" id="installation">
-<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="setup-with-plane">
-<h1>Setup with plane<a class="headerlink" href="#setup-with-plane" title="Permalink to this headline">¶</a></h1>
+<h2>Setup with plane<a class="headerlink" href="#setup-with-plane" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="setup-with-sitl">
-<h1>Setup with SITL<a class="headerlink" href="#setup-with-sitl" title="Permalink to this headline">¶</a></h1>
+<h2>Setup with SITL<a class="headerlink" href="#setup-with-sitl" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="using-the-front-end">
-<h1>Using the front end<a class="headerlink" href="#using-the-front-end" title="Permalink to this headline">¶</a></h1>
+<h2>Using the front end<a class="headerlink" href="#using-the-front-end" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="interoperability">
-<h1>Interoperability<a class="headerlink" href="#interoperability" title="Permalink to this headline">¶</a></h1>
+<h2>Interoperability<a class="headerlink" href="#interoperability" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<h3>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h3>
 <p><a class="reference external" href="http://auvsi-suas-competition-interoperability-system.readthedocs.io/en/latest/">See the Judge&#8217;s server interoperability documentation here.</a></p>
 </div>
 <div class="section" id="interoperability-use">
-<h2>Interoperability Use<a class="headerlink" href="#interoperability-use" title="Permalink to this headline">¶</a></h2>
+<h3>Interoperability Use<a class="headerlink" href="#interoperability-use" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="mavproxy-ground-station-use">
-<h3>MAVProxy/Ground Station use<a class="headerlink" href="#mavproxy-ground-station-use" title="Permalink to this headline">¶</a></h3>
+<h4>MAVProxy/Ground Station use<a class="headerlink" href="#mavproxy-ground-station-use" title="Permalink to this headline">¶</a></h4>
 <ol class="arabic simple">
 <li>Enter the correct username, password, and url (include the http: and the port (usually 8000) in the settings tab of gcs2</li>
 <li>Hit &#8220;Toggle Interop&#8221; to activate server</li>
@@ -398,19 +82,19 @@ individual bit of data (below):</p>
 </div></blockquote>
 </div>
 <div class="section" id="judge-s-server-use">
-<h3>Judge&#8217;s Server use<a class="headerlink" href="#judge-s-server-use" title="Permalink to this headline">¶</a></h3>
+<h4>Judge&#8217;s Server use<a class="headerlink" href="#judge-s-server-use" title="Permalink to this headline">¶</a></h4>
 <blockquote>
 <div><a class="reference external" href="http://auvsi-suas-competition-interoperability-system.readthedocs.io/en/latest/">See the Judge&#8217;s server interoperability documentation here.</a></div></blockquote>
 </div>
 </div>
 <div class="section" id="interoperability-design">
-<h2>Interoperability Design<a class="headerlink" href="#interoperability-design" title="Permalink to this headline">¶</a></h2>
+<h3>Interoperability Design<a class="headerlink" href="#interoperability-design" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="system-design">
-<h3>System Design<a class="headerlink" href="#system-design" title="Permalink to this headline">¶</a></h3>
+<h4>System Design<a class="headerlink" href="#system-design" title="Permalink to this headline">¶</a></h4>
 <p>The backend is designed with 3 main components - the API, which provides a REST API for the front end to control and query the backend, the backend itself, which sends information to and retrieves information from the judge&#8217;s server, and the test suite, which tests the functionality of the backend.</p>
 <img alt="_images/interop_flowchart.png" src="_images/interop_flowchart.png" />
 <div class="section" id="api">
-<h4>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h4>
+<h5>API<a class="headerlink" href="#api" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p><strong>Location:</strong> modules/server/views/interop_api.py</p>
 <p>The program creates a flask server to serve data to the front end and other subteams. It retrieves data related to interoperability from the MAVProxy.modules.server.data file. It also contains an endpoint to start and stop the backend.</p>
@@ -448,7 +132,7 @@ individual bit of data (below):</p>
 </div></blockquote>
 </div>
 <div class="section" id="mavproxy-backend">
-<h4>MAVProxy Backend<a class="headerlink" href="#mavproxy-backend" title="Permalink to this headline">¶</a></h4>
+<h5>MAVProxy Backend<a class="headerlink" href="#mavproxy-backend" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p><strong>Location:</strong> modules/server/interop.py</p>
 <p>This program is the script that does the work of  sending telemetry data to the judge’s interoperability server and retrieving data about the server and obstacles to store for other MAVProxy modules.</p>
@@ -497,7 +181,7 @@ individual bit of data (below):</p>
 </div></blockquote>
 </div>
 <div class="section" id="test-suite">
-<h4>Test Suite<a class="headerlink" href="#test-suite" title="Permalink to this headline">¶</a></h4>
+<h5>Test Suite<a class="headerlink" href="#test-suite" title="Permalink to this headline">¶</a></h5>
 <blockquote>
 <div><p><strong>Location:</strong> /modules/server/interop_test_cases.py</p>
 <p>This is the test suite that is used for testing the interop backend. It simulates the judge’s interoperability server on the machine, serves up simulated server data and obstacles, and accepts telemetry requests. It then performs a number of tests to ensure that the data was received and store properly, and the the telemetry data received is formatted correctly and being sent quickly enough.</p>
@@ -517,7 +201,7 @@ individual bit of data (below):</p>
 </div>
 </div>
 <div class="section" id="competition-rules">
-<h3>Competition rules<a class="headerlink" href="#competition-rules" title="Permalink to this headline">¶</a></h3>
+<h4>Competition rules<a class="headerlink" href="#competition-rules" title="Permalink to this headline">¶</a></h4>
 <p>Below are the rules that govern interoperability for the competition. The interoperability system is made to comply with these rules..</p>
 <dl class="docutils">
 <dt><strong>5.3.1.</strong> As a flight‐mission demonstration requirement, teams shall upload the UAS autopilot telemetry (TM) data (position, altitude, and related attributes) to support scoring using the interoperability system</dt>
@@ -531,6 +215,7 @@ individual bit of data (below):</p>
 </div>
 </div>
 </div>
+</div>
 
 
           </div>
@@ -540,24 +225,7 @@ individual bit of data (below):</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">Status [/status]</a><ul>
-<li><a class="reference internal" href="#attitude-status-attitude">Attitude [/status/attitude]</a></li>
-<li><a class="reference internal" href="#battery-status-battery">Battery [/status/battery]</a></li>
-<li><a class="reference internal" href="#link-status-link">Link [/status/link]</a></li>
-<li><a class="reference internal" href="#time-status-time">Time [/status/time]</a></li>
-<li><a class="reference internal" href="#gps-status-gps">GPS [/status/gps]</a></li>
-<li><a class="reference internal" href="#mode-status-mode">Mode [/status/mode]</a></li>
-<li><a class="reference internal" href="#airspeed-status-airspeed">Airspeed [/status/airspeed]</a></li>
-<li><a class="reference internal" href="#wind-status-wind">Wind [/status/wind]</a></li>
-<li><a class="reference internal" href="#throttle-status-throttle">Throttle [/status/throttle]</a></li>
-<li><a class="reference internal" href="#waypoints-status-waypoints">Waypoints [/status/waypoints]</a></li>
-<li><a class="reference internal" href="#waypoint-count-status-wp-count">Waypoint Count [/status/wp_count]</a></li>
-<li><a class="reference internal" href="#current-waypoint-status-current-wp">Current Waypoint [/status/current_wp]</a></li>
-<li><a class="reference internal" href="#geofence-status-geofences">Geofence [/status/geofences]</a></li>
-<li><a class="reference internal" href="#hud-status-hud">HUD [/status/hud]</a></li>
-<li><a class="reference internal" href="#software-status-status-softstatus-time-time">Software Status [/status/softstatus?time=TIME]</a></li>
-</ul>
-</li>
+<li><a class="reference internal" href="#">Ground Station</a><ul>
 <li><a class="reference internal" href="#installation">Installation</a></li>
 <li><a class="reference internal" href="#setup-with-plane">Setup with plane</a></li>
 <li><a class="reference internal" href="#setup-with-sitl">Setup with SITL</a></li>
@@ -577,6 +245,8 @@ individual bit of data (below):</p>
 </ul>
 </li>
 <li><a class="reference internal" href="#competition-rules">Competition rules</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
