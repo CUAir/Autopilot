@@ -11,7 +11,15 @@ This section describes the use and design of the autopilot ground station
 
 Installation
 -------------
+git clone https://github.com/CUAir/MAVProxy.git
 
+To edit the front-end:
+Install Node/NPM: https://nodejs.org/en/download/
+cd MAVProxy
+npm install -g gulp
+cd MAVProxy/modules/server/static/gcs2
+npm install
+gulp
 
 Setup with plane
 -----------------
@@ -23,8 +31,12 @@ Setup with SITL
 
 Using the front end
 --------------------
+To edit:
+Make changes to files you want (don't touch css, fonts, bundle.js)
+gulp
 
-
+To use:
+Once MAVProxy is running, go to http://localhost:8001/static/gcs2/index.html
 
 Interoperability
 ------------------
