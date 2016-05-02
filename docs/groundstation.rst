@@ -4,6 +4,7 @@
    contain the root `toctree` directive.
 
 
+<<<<<<< HEAD
 Autopilot API endpoints
 ============================
 
@@ -351,6 +352,8 @@ Use the GET argument "time" (/status/softstatus?time=TIME) to request a status a
 
 
 
+=======
+>>>>>>> c25dde23a4f9ddcb721991222cd74831b897c3be
 Ground Station
 ===============
 
