@@ -11,6 +11,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   api
    groundstation
 
 Welcome
@@ -33,6 +34,15 @@ Installation
 
 Use 
 ----
+
+* To create a page, make a new file called foobar.rst. 
+* Add your page to the table of contents in the file index.rst under the api and groundstation pages. 
+* Edit your page using sphinx markup. 
+* To see what your page looks like, compile it with ``make html``
+* When you are happy with what the page looks like commit your changes with git (``git add --all; git commit -m "change message"; git push``).
+* The online documentation will update sometime in the next few minutes.
+
+
 To learn more about how to use sphinx, see the following guides
 
 http://www.sphinx-doc.org/en/stable/tutorial.html

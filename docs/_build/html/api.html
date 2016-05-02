@@ -1,0 +1,436 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Autopilot API endpoints &mdash; CUAir Autopilot Documentation v1.0</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="CUAir Autopilot Documentation v1.0" href="index.html" />
+    <link rel="next" title="Ground Station" href="groundstation.html" />
+    <link rel="prev" title="Autopilot documentation" href="index.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="autopilot-api-endpoints">
+<h1>Autopilot API endpoints<a class="headerlink" href="#autopilot-api-endpoints" title="Permalink to this headline">¶</a></h1>
+<p>The API for communicating between the autopilot and the ground station.</p>
+<div class="section" id="status-status">
+<h2>Status [/status]<a class="headerlink" href="#status-status" title="Permalink to this headline">¶</a></h2>
+<p>Get the status of the plane: A large json containing each piece of data as a name/value pair. A call can also be made to /status/... to receive an
+individual bit of data (below):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
+      <span class="p">{</span>
+          <span class="s2">&quot;attitude&quot;</span> <span class="p">:</span> <span class="p">{</span>
+              <span class="s2">&quot;pitch&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+              <span class="s2">&quot;yaw&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+              <span class="s2">&quot;roll&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+              <span class="s2">&quot;pitchspeed&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+              <span class="s2">&quot;yawspeed&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+              <span class="s2">&quot;rollspeed&quot;</span> <span class="p">:</span> <span class="mf">0.0</span>
+              <span class="p">},</span>
+          <span class="s2">&quot;battery&quot;</span> <span class="p">:</span> <span class="p">{</span>
+              <span class="s2">&quot;pct&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+              <span class="s2">&quot;voltage&quot;</span> <span class="p">:</span> <span class="mf">0.0</span>
+              <span class="p">},</span>
+
+          <span class="s2">&quot;link&quot;</span> <span class="p">:</span> <span class="p">{</span>
+              <span class="s2">&quot;gps_link&quot;</span> <span class="p">:</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span>
+              <span class="s2">&quot;plane_link&quot;</span> <span class="p">:</span> <span class="s2">&quot;True&quot;</span>
+              <span class="p">},</span>
+
+          <span class="s2">&quot;time&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+
+          <span class="s2">&quot;gps&quot;</span> <span class="p">:</span> <span class="p">{</span>
+              <span class="s2">&quot;rel_alt&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+              <span class="s2">&quot;asl_alt&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+              <span class="s2">&quot;lat&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+              <span class="s2">&quot;lon&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+              <span class="s2">&quot;heading&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+              <span class="s2">&quot;vx&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+              <span class="s2">&quot;vy&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+              <span class="s2">&quot;vz&quot;</span> <span class="p">:</span> <span class="mf">0.0</span>
+          <span class="p">},</span>
+          <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="s2">&quot;AUTO&quot;</span><span class="p">,</span>
+          <span class="s2">&quot;airspeed&quot;</span> <span class="p">:</span> <span class="p">{</span>
+              <span class="s2">&quot;vx&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+              <span class="s2">&quot;vy&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+              <span class="s2">&quot;vz&quot;</span> <span class="p">:</span> <span class="mf">0.0</span>
+          <span class="p">},</span>
+
+          <span class="s2">&quot;wind&quot;</span> <span class="p">:</span> <span class="p">{</span>
+              <span class="s2">&quot;vx&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+              <span class="s2">&quot;vy&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+              <span class="s2">&quot;vz&quot;</span> <span class="p">:</span> <span class="mf">0.0</span>
+          <span class="p">},</span>
+
+          <span class="s2">&quot;throttle&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+
+          <span class="s2">&quot;waypoints&quot;</span> <span class="p">:</span> <span class="p">[{</span>
+              <span class="s2">&quot;alt&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+              <span class="s2">&quot;lon&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+              <span class="s2">&quot;lat&quot;</span> <span class="p">:</span> <span class="mf">0.0</span>
+          <span class="p">}],</span>
+
+          <span class="s2">&quot;wp_count&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;current_wp&quot;</span> <span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;geofences&quot;</span> <span class="p">:</span>  <span class="p">[{</span>
+              <span class="s2">&quot;lat&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+              <span class="s2">&quot;lon&quot;</span> <span class="p">:</span> <span class="mf">0.0</span>
+          <span class="p">}],</span>
+          <span class="s2">&quot;hud&quot;</span> <span class="p">:</span> <span class="p">{</span>
+          <span class="s2">&quot;airspeed&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+          <span class="s2">&quot;groudspeed&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+          <span class="s2">&quot;heading&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;throttle&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+          <span class="s2">&quot;alt&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+          <span class="s2">&quot;climb&quot;</span><span class="p">:</span> <span class="mf">0.0</span>
+          <span class="p">}</span>
+      <span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="attitude-status-attitude">
+<h3>Attitude [/status/attitude]<a class="headerlink" href="#attitude-status-attitude" title="Permalink to this headline">¶</a></h3>
+<p>Returns the plane&#8217;s attitude, containing:</p>
+<ul class="simple">
+<li>Pitch [float]</li>
+<li>Yaw [float]</li>
+<li>Roll [float]</li>
+<li>Pitchspeed [float]</li>
+<li>Yawspeed [float]</li>
+<li>Rollspeed [float]</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
+<span class="p">{</span>
+   <span class="s2">&quot;pitch&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+   <span class="s2">&quot;yaw&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+   <span class="s2">&quot;roll&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+   <span class="s2">&quot;pitchspeed&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+   <span class="s2">&quot;yawspeed&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+   <span class="s2">&quot;rollspeed&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+ <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="battery-status-battery">
+<h3>Battery [/status/battery]<a class="headerlink" href="#battery-status-battery" title="Permalink to this headline">¶</a></h3>
+<p>Returns the current state of the plane&#8217;s battery, containing:</p>
+<ul class="simple">
+<li>pct [float]</li>
+<li>voltage [float]</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="s2">&quot;pct&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+           <span class="s2">&quot;voltage&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+       <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="link-status-link">
+<h3>Link [/status/link]<a class="headerlink" href="#link-status-link" title="Permalink to this headline">¶</a></h3>
+<p>Returns the status of links, containing:</p>
+<ul class="simple">
+<li>gps_link [boolean]</li>
+<li>plane_link [boolean]</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="s2">&quot;gps_link&quot;</span> <span class="p">:</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span>
+           <span class="s2">&quot;plane_link&quot;</span> <span class="p">:</span> <span class="s2">&quot;True&quot;</span><span class="p">,</span>
+       <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="time-status-time">
+<h3>Time [/status/time]<a class="headerlink" href="#time-status-time" title="Permalink to this headline">¶</a></h3>
+<p>Returns the current time as an long representing a [unix timestamp](<a class="reference external" href="https://en.wikipedia.org/wiki/Unix_time">https://en.wikipedia.org/wiki/Unix_time</a>)</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
+      <span class="p">{</span>
+         <span class="mi">0</span>
+      <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="gps-status-gps">
+<h3>GPS [/status/gps]<a class="headerlink" href="#gps-status-gps" title="Permalink to this headline">¶</a></h3>
+<p>Returns various values from the plane&#8217;s onboard GPS, containing:</p>
+<ul class="simple">
+<li>rel_alt [float]</li>
+<li>asl_alt [float]</li>
+<li>lat [float]</li>
+<li>lon [float]</li>
+<li>heading [float]</li>
+<li>vx [float]</li>
+<li>vy [float]</li>
+<li>vz [float]</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
+      <span class="p">{</span>
+          <span class="s2">&quot;rel_alt&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+          <span class="s2">&quot;asl_alt&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+          <span class="s2">&quot;lat&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+          <span class="s2">&quot;lon&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+          <span class="s2">&quot;heading&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+          <span class="s2">&quot;vx&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+          <span class="s2">&quot;vy&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+          <span class="s2">&quot;vz&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+      <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mode-status-mode">
+<h3>Mode [/status/mode]<a class="headerlink" href="#mode-status-mode" title="Permalink to this headline">¶</a></h3>
+<p>Returns the current flying mode of the plane as a string, e.g. &#8220;AUTO&#8221;, &#8220;MANUAL&#8221;, &#8220;FLY_BY_WIRE_A&#8221;</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
+       <span class="p">{</span>
+          <span class="s2">&quot;AUTO&quot;</span>
+       <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="airspeed-status-airspeed">
+<h3>Airspeed [/status/airspeed]<a class="headerlink" href="#airspeed-status-airspeed" title="Permalink to this headline">¶</a></h3>
+<p>Returns vectors vx, vy, vz representing the airspeed velocity of the airplane as floats</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="s2">&quot;vx&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+           <span class="s2">&quot;vy&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+           <span class="s2">&quot;vz&quot;</span> <span class="p">:</span> <span class="mf">0.0</span>
+       <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="wind-status-wind">
+<h3>Wind [/status/wind]<a class="headerlink" href="#wind-status-wind" title="Permalink to this headline">¶</a></h3>
+<p>Returns vectors vx, vy, vz representing the wind velocity vector as floats</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="s2">&quot;vx&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+           <span class="s2">&quot;vy&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+           <span class="s2">&quot;vz&quot;</span> <span class="p">:</span> <span class="mf">0.0</span>
+       <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="throttle-status-throttle">
+<h3>Throttle [/status/throttle]<a class="headerlink" href="#throttle-status-throttle" title="Permalink to this headline">¶</a></h3>
+<p>An integer from 0 to 100 representing the current throttle level of the plane</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="mi">0</span>
+       <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="waypoints-status-waypoints">
+<h3>Waypoints [/status/waypoints]<a class="headerlink" href="#waypoints-status-waypoints" title="Permalink to this headline">¶</a></h3>
+<p>Returns a list of JSON objects representing the current waypoints altitude, latitude, and longitude</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
+       <span class="p">[{</span>
+               <span class="s2">&quot;alt&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+               <span class="s2">&quot;lon&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+               <span class="s2">&quot;lat&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+       <span class="p">}]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="waypoint-count-status-wp-count">
+<h3>Waypoint Count [/status/wp_count]<a class="headerlink" href="#waypoint-count-status-wp-count" title="Permalink to this headline">¶</a></h3>
+<p>Returns an integer representing the current number of waypoints</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="mi">0</span>
+       <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="current-waypoint-status-current-wp">
+<h3>Current Waypoint [/status/current_wp]<a class="headerlink" href="#current-waypoint-status-current-wp" title="Permalink to this headline">¶</a></h3>
+<p>Returns an integer representing the current waypoint</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
+
+       <span class="p">{</span>
+           <span class="mi">0</span>
+       <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="geofence-status-geofences">
+<h3>Geofence [/status/geofences]<a class="headerlink" href="#geofence-status-geofences" title="Permalink to this headline">¶</a></h3>
+<p>Returns a list of JSON objects representing the latitude and longitude of the geofences</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
+       <span class="p">[{</span>
+           <span class="s2">&quot;lat&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+           <span class="s2">&quot;lon&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+       <span class="p">}]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="hud-status-hud">
+<h3>HUD [/status/hud]<a class="headerlink" href="#hud-status-hud" title="Permalink to this headline">¶</a></h3>
+<p>Returns a list of values needed for the HUD, containing,</p>
+<ul class="simple">
+<li>airspeed [float]</li>
+<li>groundspeed [float]</li>
+<li>heading [integer]</li>
+<li>throttle [integer]</li>
+<li>alt [float]</li>
+<li>climb [float]</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
+       <span class="p">{</span>
+           <span class="s2">&quot;airspeed&quot;</span> <span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+           <span class="s2">&quot;groudspeed&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+           <span class="s2">&quot;heading&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+           <span class="s2">&quot;throttle&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+           <span class="s2">&quot;alt&quot;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span>
+           <span class="s2">&quot;climb&quot;</span><span class="p">:</span> <span class="mf">0.0</span>
+       <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="software-status-status-softstatus-time-time">
+<h3>Software Status [/status/softstatus?time=TIME]<a class="headerlink" href="#software-status-status-softstatus-time-time" title="Permalink to this headline">¶</a></h3>
+<p>Use the GET argument &#8220;time&#8221; (/status/softstatus?time=TIME) to request a status at a specific time. If an exact value is not available, an interoplated value will be provided.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Response</span> <span class="mi">200</span> <span class="p">(</span><span class="n">application</span><span class="o">/</span><span class="n">json</span><span class="p">)</span>
+       <span class="p">{</span>
+       <span class="n">attitude</span><span class="p">:</span> <span class="p">{</span>
+           <span class="s1">&#39;roll&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+           <span class="s1">&#39;pitch&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+           <span class="s1">&#39;yaw&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+           <span class="s1">&#39;rollspeed&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+           <span class="s1">&#39;yawspeed&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+           <span class="s1">&#39;pitchspeed&#39;</span><span class="p">:</span> <span class="mi">0</span>
+
+       <span class="p">},</span>
+       <span class="n">gps</span><span class="p">:{</span>
+            <span class="n">lat</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="n">lon</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="n">asl_alt</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="n">vx</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="n">vy</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="n">vz</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="n">heading</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="n">rel_alt</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">},</span>
+        <span class="n">airspeed</span><span class="p">:{</span>
+            <span class="s1">&#39;vx&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s1">&#39;vy&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s1">&#39;vz&#39;</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">},</span>
+        <span class="n">wind</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;vx&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s1">&#39;vy&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s1">&#39;vz&#39;</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Autopilot API endpoints</a><ul>
+<li><a class="reference internal" href="#status-status">Status [/status]</a><ul>
+<li><a class="reference internal" href="#attitude-status-attitude">Attitude [/status/attitude]</a></li>
+<li><a class="reference internal" href="#battery-status-battery">Battery [/status/battery]</a></li>
+<li><a class="reference internal" href="#link-status-link">Link [/status/link]</a></li>
+<li><a class="reference internal" href="#time-status-time">Time [/status/time]</a></li>
+<li><a class="reference internal" href="#gps-status-gps">GPS [/status/gps]</a></li>
+<li><a class="reference internal" href="#mode-status-mode">Mode [/status/mode]</a></li>
+<li><a class="reference internal" href="#airspeed-status-airspeed">Airspeed [/status/airspeed]</a></li>
+<li><a class="reference internal" href="#wind-status-wind">Wind [/status/wind]</a></li>
+<li><a class="reference internal" href="#throttle-status-throttle">Throttle [/status/throttle]</a></li>
+<li><a class="reference internal" href="#waypoints-status-waypoints">Waypoints [/status/waypoints]</a></li>
+<li><a class="reference internal" href="#waypoint-count-status-wp-count">Waypoint Count [/status/wp_count]</a></li>
+<li><a class="reference internal" href="#current-waypoint-status-current-wp">Current Waypoint [/status/current_wp]</a></li>
+<li><a class="reference internal" href="#geofence-status-geofences">Geofence [/status/geofences]</a></li>
+<li><a class="reference internal" href="#hud-status-hud">HUD [/status/hud]</a></li>
+<li><a class="reference internal" href="#software-status-status-softstatus-time-time">Software Status [/status/softstatus?time=TIME]</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="index.html" title="previous chapter">Autopilot documentation</a></li>
+      <li>Next: <a href="groundstation.html" title="next chapter">Ground Station</a></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/api.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, CUAIR.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.4.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="_sources/api.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

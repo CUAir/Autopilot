@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="CUAir Autopilot Documentation v1.0" href="#" />
-    <link rel="next" title="Autopilot API endpoints" href="groundstation.html" />
+    <link rel="next" title="Autopilot API endpoints" href="api.html" />
    
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
@@ -43,11 +43,11 @@
 <p>Contents:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="groundstation.html">Autopilot API endpoints</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="groundstation.html#status-status">Status [/status]</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">Autopilot API endpoints</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="api.html#status-status">Status [/status]</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="groundstation.html#ground-station">Ground Station</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="groundstation.html">Ground Station</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="groundstation.html#installation">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="groundstation.html#setup-with-plane">Setup with plane</a></li>
 <li class="toctree-l2"><a class="reference internal" href="groundstation.html#setup-with-sitl">Setup with SITL</a></li>
@@ -75,6 +75,14 @@ $ make html
 </div>
 <div class="section" id="use">
 <h2>Use<a class="headerlink" href="#use" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>To create a page, make a new file called foobar.rst.</li>
+<li>Add your page to the table of contents in the file index.rst under the api and groundstation pages.</li>
+<li>Edit your page using sphinx markup.</li>
+<li>To see what your page looks like, compile it with <code class="docutils literal"><span class="pre">make</span> <span class="pre">html</span></code></li>
+<li>When you are happy with what the page looks like commit your changes with git (<code class="docutils literal"><span class="pre">git</span> <span class="pre">add</span> <span class="pre">--all;</span> <span class="pre">git</span> <span class="pre">commit</span> <span class="pre">-m</span> <span class="pre">&quot;change</span> <span class="pre">message&quot;;</span> <span class="pre">git</span> <span class="pre">push</span></code>).</li>
+<li>The online documentation will update sometime in the next few minutes.</li>
+</ul>
 <p>To learn more about how to use sphinx, see the following guides</p>
 <p><a class="reference external" href="http://www.sphinx-doc.org/en/stable/tutorial.html">http://www.sphinx-doc.org/en/stable/tutorial.html</a></p>
 <p><a class="reference external" href="http://www.sphinx-doc.org/en/stable/rest.html#rst-primer">http://www.sphinx-doc.org/en/stable/rest.html#rst-primer</a></p>
@@ -119,7 +127,7 @@ $ make html
 <h3>Related Topics</h3>
 <ul>
   <li><a href="#">Documentation overview</a><ul>
-      <li>Next: <a href="groundstation.html" title="next chapter">Autopilot API endpoints</a></li>
+      <li>Next: <a href="api.html" title="next chapter">Autopilot API endpoints</a></li>
   </ul></li>
 </ul>
 </div>
