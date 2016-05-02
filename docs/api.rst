@@ -356,3 +356,93 @@ Waypoints [/waypoints]
 
 Interop [/interop]
 ------------------
+
+
+Server Control [/v1/interop] [ground/api/v3/interop]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+* **POST**
+
+  Sending a POST request to this endpoint starts the interop backend. To do this, it creates a new instance of the backend object, then starts the backend on a separate thread and sets the server to active. It will fail if the server is either already started, or if it has been less that a half second since the server was either started or stopped last. Requires a valid JSON containing the server data (username, password, and url fields). Requires a valid auth token to access. ::
+
+    Response 200
+
+
+* **DELETE**
+
+  Sending a DELETE request to this endpoint will stop the interop backend. It simply sets the Data.server_active global variable to false. This is the loop condition on the backend, so the server will stop as soon as it completes its current loop. This will fail if the server is either already stopped or if it has been less that a half second since the server was either started or stopped last. Requires a valid auth token to access ::
+
+    Response 200
+
+
+* **GET**
+
+  Returns a JSON string containing the obstacle data and server info ::
+
+    Response 200 (application/json)
+            {
+              obstacles : {
+                        stationary_obstacles : [{
+                              cylinder_height : 0.0, 
+                              cylinder_radius : 0.0, 
+                              latitude : 0.0, 
+                              longitude : 0.0
+                            }],
+                        moving_obstacles : [{
+                              altitude_msl: 0.0, 
+                              latitude : 0.0, 
+                              longitude : 0.0, 
+                              sphere_radius : 0.0
+                        }],
+              },
+              server_info : {
+                  message : "Hello World!", 
+                  message_timestamp : "2015-08-02T01:16:15.609002+00:00", 
+                  server_time : "2015-10-31T18:12:44.210815"
+              }
+              server_working : "True"
+            }
+    
+
+Obstacles [/v1/interop/obstacles] [/ground/api/v3/interop/obstacles]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Returns a JSON object string that contains a list of both moving and stationary objects. Checks to see if the server is active, and, if so, retrieves data from the MAVProxy.modules.server.data module, jsonifies it and returns it. ::
+
+  Response 200 (application/json)
+          {
+            stationary_obstacles : [{
+                  cylinder_height : 0.0, 
+                  cylinder_radius : 0.0, 
+                  latitude : 0.0, 
+                  longitude : 0.0
+                }],
+            moving_obstacles : [{
+                  altitude_msl : 0.0, 
+                  latitude : 0.0, 
+                  longitude : 0.0, 
+                  sphere_radius : 0.0
+            }],
+          }
+
+
+Server Info [/v1/interop/server_info] [/ground/api/v3/interop/server_info]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Returns a JSON object string that contains the server message, message timestamp, and the server time at last retrieval. Checks to see if the server is active, and, if so, retrieves data from the MAVProxy.modules.server.data module, jsonifies it and returns it. ::
+
+  Response 200 (application/json)
+        {
+          message : "Hello World!", 
+          message_timestamp : "2015-08-02T01:16:15.609002+00:00", 
+          server_time : "2015-10-31T18:12:44.210815"
+        }
+
+
+Time [/v1/interop/time] [/ground/api/v3/interop/time]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Returns a single string that represents the server time at last retrieval. Checks to see if the server is active, and, if so, retrieves data from the MAVProxy.modules.server.data module, then returns it as a raw string. ::
+
+  Response 200 (application/json)
+
+        "2015-10-27T16:34:33.594240"
