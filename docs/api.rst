@@ -7,6 +7,8 @@
 Autopilot API endpoints
 ============================
 
+.. contents::
+
 The API for communicating between the autopilot and the ground station.
 
 Status [/status]

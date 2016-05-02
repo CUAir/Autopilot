@@ -1,6 +1,8 @@
 Ardupilot
 ===============
 
+.. contents::
+
 This section documents any CUAir specific uses of or changes to Ardupilot
 
 Tuning
