@@ -53,7 +53,7 @@ master_doc = 'index'
 # General information about the project.
 project = u'CUAIR'
 copyright = u'2016, CUAIR'
-author = u'Troy Joseph, Brendan Quinn, Jimmy Stoyell, Blake Goodwyn, Declan Sander, Jesse Lupica, Sitar Harel, Yasmeen Mushtaq'
+author = u'Troy Joseph\nBrendan Quinn\nJimmy Stoyell\nBlake Goodwyn\nDeclan Sander\nJesse Lupica\nSitar Harel\nYasmeen Mushtaq'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the

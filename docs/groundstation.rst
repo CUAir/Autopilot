@@ -12,18 +12,49 @@ This section describes the use and design of the autopilot ground station
 
 Installation
 -------------
-git clone https://github.com/CUAir/MAVProxy.git
+1. git clone https://github.com/CUAir/MAVProxy.git
+2. On Linux:
+
+  1. sh setup.sh
+  2. pip install python-dev pymavlink tornado requests_futures requests flask sympy
+
+2. On Mac:
+
+  1. cd MAVProxy/MAVProxy
+  2. virtualenv venv
+  3. source venv/bin/active (try venv/bin/activate if that doesn't work)
+  4. pip install pyserial matplotlib Pillow numpy pyparsing python-dev pymavlink tornado requests_futures requests flask sympy
+  5. `Install OpenCV <http://jjyap.wordpress.com/2014/05/24/installing-opencv-2-4-9-on-mac-osx-with-python-support/>`_
 
 To edit the front-end:
-Install Node/NPM: https://nodejs.org/en/download/
-cd MAVProxy
-npm install -g gulp
-cd MAVProxy/modules/server/static/gcs2
-npm install
-gulp
+
+1. Install Node/NPM: https://nodejs.org/en/download/
+2. cd MAVProxy
+3. npm install -g gulp
+4. cd MAVProxy/modules/server/static/gcs2
+5. npm install
+6. gulp
 
 Setup with plane
 -----------------
+
+Linux:
+
+1. cd MAVProxy/MAVProxy
+2. python mavproxy.py --master=/dev/ttyUSB<X> --baudrate=57600
+
+  * Run ls /dev/ to see what X should be - also could by TTYACM<X>
+  * If you can't find anything, open mission planner and it should show the appropriate path in the upper right
+  * If using MAVProxy through wired micro-USB rather than wireless, baudrate should be 115200
+
+Mac
+
+1. cd MAVProxy/MAVProxy
+2. python mavprox.py --master=/dev/tty.usb<tab complete> --baudrate=57600
+
+  * Run ls /dev/ if tab completion doesn't work
+  * If you can't find anything, open mission planner and it should show the appropriate path in the upper right
+  * If using MAVProxy through wired micro-USB rather than wireless, baudrate should be 115200
 
 
 Setup with SITL
@@ -33,11 +64,13 @@ Setup with SITL
 Using the front end
 --------------------
 To edit:
-Make changes to files you want (don't touch css, fonts, bundle.js)
-gulp
+
+1. Make changes to files you want (don't touch css, fonts, bundle.js)
+2. gulp
 
 To use:
-Once MAVProxy is running, go to http://localhost:8001/static/gcs2/index.html
+
+  Once MAVProxy is running, go to http://localhost:8001/static/gcs2/index.html
 
 Interoperability
 ------------------
@@ -56,8 +89,11 @@ MAVProxy/Ground Station use
 
 1. Enter the correct username, password, and url (include the http: and the port (usually 8000) in the settings tab of gcs2
 2. Hit "Toggle Interop" to activate server
+
   * You should see "interop server started" printed on the MAVProxy console and get a green success status message on the ground station
+
 3. To stop, hit "Toggle Interop" again
+
   * You should see "interop server stopped" printed on the MAVProxy console and get a green success status message on the ground station
 
 Judge's Server use
@@ -185,6 +221,7 @@ This is the test suite that is used for testing the interop backend. It simulate
 2. In the API (modules/server/views/interop_api.py), set RUN_TESTS to True
 3. Run MAVProxy normally, then from the front end hit “toggle interop”
 4. Review console printout (should take about 100 seconds to run to completion)
+
   * Upon completion, type ‘reset’ to fix the console.
 
 
