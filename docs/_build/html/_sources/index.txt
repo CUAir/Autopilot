@@ -27,8 +27,8 @@ Installation
    $ git clone https://github.com/CUAir/Autopilot
    $ virtualenv venv 
    $ source venv/bin/activate
-   $ cd docs
    $ pip install requirements.txt
+   $ cd docs
    $ make html
 
 
