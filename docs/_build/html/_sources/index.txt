@@ -11,7 +11,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   intro
+   groundstation
 
 Welcome
 =========
@@ -19,27 +19,34 @@ Welcome
 Yay, documentation!
 
 
-How to use this stuff
----------------------
-``$ git clone https://github.com/CUAir/Autopilot
-  $ virtualenv venv
-  $ source venv/bin/activate
-  $ pip install requirements.txt
-  $ cd docs``
+Installation
+--------------
+::
+
+   $ git clone https://github.com/CUAir/Autopilot
+   $ virtualenv venv 
+   $ source venv/bin/activate
+   $ cd docs
+   $ pip install requirements.txt
+   $ make html
 
 
-- Be awesome
-- Make things faster
+Use 
+----
+To learn more about how to use sphinx, see the following guides
 
+http://www.sphinx-doc.org/en/stable/tutorial.html
+
+http://www.sphinx-doc.org/en/stable/rest.html#rst-primer
 
 Support
 -------
 
-If you are having issues, please slack Troy know.
+If you are having issues, please slack Troy.
 
 License
 -------
-The project is licensed under 
+The project may or may not have a license.
 
 
 Indices and tables

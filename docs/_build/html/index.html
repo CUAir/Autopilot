@@ -25,7 +25,7 @@
     <script type="text/javascript" src="_static/doctools.js"></script>
     <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <link rel="top" title="CUAir Autopilot Documentation v1.0" href="#" />
-    <link rel="next" title="Welcome to CUAir Autopilot’s documentation!" href="intro.html" />
+    <link rel="next" title="Autopilot API endpoints" href="groundstation.html" />
    
   
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
@@ -43,42 +43,46 @@
 <p>Contents:</p>
 <div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Welcome to CUAir Autopilot&#8217;s documentation!</a><ul class="simple">
+<li class="toctree-l1"><a class="reference internal" href="groundstation.html">Autopilot API endpoints</a></li>
+<li class="toctree-l1"><a class="reference internal" href="groundstation.html#ground-station">Ground Station</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="groundstation.html#installation">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groundstation.html#setup-with-plane">Setup with plane</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groundstation.html#setup-with-sitl">Setup with SITL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groundstation.html#using-the-front-end">Using the front end</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groundstation.html#interoperability-setup">Interoperability Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groundstation.html#interoperability-use">Interoperability Use</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="intro.html#intro">Intro</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#subhead">Subhead</a></li>
-<li class="toctree-l2"><a class="reference internal" href="intro.html#id1">Subhead</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="intro.html#indices-and-tables">Indices and tables</a></li>
 </ul>
 </div>
 </div>
 <div class="section" id="welcome">
 <h1>Welcome<a class="headerlink" href="#welcome" title="Permalink to this headline">¶</a></h1>
 <p>Yay, documentation!</p>
-<div class="section" id="how-to-use-this-stuff">
-<h2>How to use this stuff<a class="headerlink" href="#how-to-use-this-stuff" title="Permalink to this headline">¶</a></h2>
-<dl class="docutils">
-<dt><a href="#id1"><span class="problematic" id="id2">``</span></a>$ git clone <a class="reference external" href="https://github.com/CUAir/Autopilot">https://github.com/CUAir/Autopilot</a></dt>
-<dd>$ virtualenv venv
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ git clone https://github.com/CUAir/Autopilot
+$ virtualenv venv
 $ source venv/bin/activate
+$ cd docs
 $ pip install requirements.txt
-$ cd docs``</dd>
-</dl>
-<ul class="simple">
-<li>Be awesome</li>
-<li>Make things faster</li>
-</ul>
+$ make html
+</pre></div>
+</div>
+</div>
+<div class="section" id="use">
+<h2>Use<a class="headerlink" href="#use" title="Permalink to this headline">¶</a></h2>
+<p>To learn more about how to use sphinx, see the following guides</p>
+<p><a class="reference external" href="http://www.sphinx-doc.org/en/stable/tutorial.html">http://www.sphinx-doc.org/en/stable/tutorial.html</a></p>
+<p><a class="reference external" href="http://www.sphinx-doc.org/en/stable/rest.html#rst-primer">http://www.sphinx-doc.org/en/stable/rest.html#rst-primer</a></p>
 </div>
 <div class="section" id="support">
 <h2>Support<a class="headerlink" href="#support" title="Permalink to this headline">¶</a></h2>
-<p>If you are having issues, please slack Troy know.</p>
+<p>If you are having issues, please slack Troy.</p>
 </div>
 <div class="section" id="license">
 <h2>License<a class="headerlink" href="#license" title="Permalink to this headline">¶</a></h2>
-<p>The project is licensed under</p>
+<p>The project may or may not have a license.</p>
 </div>
 </div>
 <div class="section" id="indices-and-tables">
@@ -100,7 +104,8 @@ $ cd docs``</dd>
   <ul>
 <li><a class="reference internal" href="#">Autopilot documentation</a></li>
 <li><a class="reference internal" href="#welcome">Welcome</a><ul>
-<li><a class="reference internal" href="#how-to-use-this-stuff">How to use this stuff</a></li>
+<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#use">Use</a></li>
 <li><a class="reference internal" href="#support">Support</a></li>
 <li><a class="reference internal" href="#license">License</a></li>
 </ul>
@@ -111,7 +116,7 @@ $ cd docs``</dd>
 <h3>Related Topics</h3>
 <ul>
   <li><a href="#">Documentation overview</a><ul>
-      <li>Next: <a href="intro.html" title="next chapter">Welcome to CUAir Autopilot&#8217;s documentation!</a></li>
+      <li>Next: <a href="groundstation.html" title="next chapter">Autopilot API endpoints</a></li>
   </ul></li>
 </ul>
 </div>
