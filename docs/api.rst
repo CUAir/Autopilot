@@ -349,3 +349,8 @@ Use the GET argument "time" (/status/softstatus?time=TIME) to request a status a
          }
 
 
+Waypoints [/waypoints]
+----------------------
+
+Interop [/interop]
+------------------
