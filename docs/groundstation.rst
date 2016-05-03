@@ -49,7 +49,7 @@ Linux:
   * If you can't find anything, open mission planner and it should show the appropriate path in the upper right
   * If using MAVProxy through wired micro-USB rather than wireless, baudrate should be 115200
 
-Mac
+Mac:
 
 1. cd MAVProxy/MAVProxy
 2. python mavprox.py --master=/dev/tty.usb<tab complete> --baudrate=57600
@@ -58,15 +58,17 @@ Mac
   * If you can't find anything, open mission planner and it should show the appropriate path in the upper right
   * If using MAVProxy through wired micro-USB rather than wireless, baudrate should be 115200
 
-| To edit the front-end:
-| Make changes to files you want. Don't touch css (use sass folder instead), fonts, or bundle.js (gets overwritten by gulp)
-| ``gulp``
-|
-| To use:
-| Once MAVProxy is running, go to http://localhost:8001/static/gcs2/index.html
-
 How the front-end works
 ------------------------
+
+Use
+^^^
+
+To use:
+
+  Once MAVProxy is running, go to http://localhost:8001/static/gcs2/index.html
+
+  The judge's view can be found at http://localhost:8001/static/judges/index.html
 
 React
 ^^^^^^
@@ -84,10 +86,6 @@ To edit:
 
 1. Make changes to files you want (don't touch css, fonts, bundle.js)
 2. gulp
-
-To use:
-
-  Once MAVProxy is running, go to http://localhost:8001/static/gcs2/index.html
 
 Interoperability
 ------------------
