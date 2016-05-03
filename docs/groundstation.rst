@@ -42,21 +42,73 @@ Setup with plane
 
 Linux:
 
-1. cd MAVProxy/MAVProxy
-2. python mavproxy.py --master=/dev/ttyUSB<X> --baudrate=57600
+1. Run the command ::
 
-  * Run ls /dev/ to see what X should be - also could by TTYACM<X>
-  * If you can't find anything, open mission planner and it should show the appropriate path in the upper right
-  * If using MAVProxy through wired micro-USB rather than wireless, baudrate should be 115200
+	cd MAVProxy/MAVProxy
+
+2. Next, run ::
+
+	python mavproxy.py --master=/dev/ttyUSB<X> --baudrate=57600
+
+* Run ls /dev/ to see what X should be - also could by TTYACM<X>
+* If you can't find anything, open mission planner and it should show the appropriate path in the upper right
+* If using MAVProxy through wired micro-USB rather than wireless, baudrate should be 115200
 
 Mac:
 
-1. cd MAVProxy/MAVProxy
-2. python mavprox.py --master=/dev/tty.usb<tab complete> --baudrate=57600
+1. Run the command ::
 
-  * Run ls /dev/ if tab completion doesn't work
-  * If you can't find anything, open mission planner and it should show the appropriate path in the upper right
-  * If using MAVProxy through wired micro-USB rather than wireless, baudrate should be 115200
+	cd MAVProxy/MAVProxy
+
+2. Next, run ::
+
+	python mavproxy.py --master=/dev/tty.usb<tab complete> --baudrate=57600
+
+* Run ls /dev/ if tab completion doesn't work
+* If you can't find anything, open mission planner and it should show the appropriate path in the upper right
+* If using MAVProxy through wired micro-USB rather than wireless, baudrate should be 115200
+
+
+Setup with SITL
+---------------
+
+The Software in the Loop is a simulation of ArduPilot with FlightGear. This can be used as a virtual environment to test changes without needing a physical plane.
+
+Use:
+
+1. Connect to RedRover or EduRoam
+
+	* There is a VPN to connect from elsewhere, but it's usually too slow to make work. Ask if you want to set it up, but at that point you may want to just install the SITL on your personal computer (`Linux instructions <http://ardupilot.org/dev/docs/setting-up-sitl-on-linux.html>`_, `Windows Instructions <http://ardupilot.org/dev/docs/sitl-native-on-windows.html>`_)
+
+2. ssh into the computer running the SITL. The IP address may be out of date - see Troy for an updated version ::
+	
+	ssh -Y cuair@10.145.14.217
+
+3. Run ::
+
+	cd /Users/cuair/src
+
+4. Run 'vagrant up' to confirm that the virtualbox running the autopilot is active ::
+
+	vagrant up
+
+5. It's likely that flightgear is already running on the server. If these next steps fail, then open a separate terminal window and run the following commands to start it ::
+
+	cd ardupilot/Tools/autotest
+	sh sim_fg_host.sh
+
+6. ssh into the virtual machine running the autopilot ::
+
+	vagrant ssh
+
+7. Finally, start the SITL ::
+
+	sim_FG.sh
+
+8. You should see two X11 windows pop up on your computer. This may take up to a few minutes to happen.
+9. To run the ground station, in a separate terminal window from the MAVProxy/MAVProxy directory, start MAVProxy ::
+
+	python mavproxy.py --master=tcp:10.145.14.217:5555
 
 How the front-end works
 ------------------------
