@@ -53,7 +53,7 @@ master_doc = 'index'
 # General information about the project.
 project = u'CUAIR'
 copyright = u'2016, CUAIR'
-author = u'Troy Joseph, Brendan Quinn, Jimmy Stoyell, Blake Goodwyn, Declan Sander, Jesse Lupica, Sitar Harel, Yasmeen Mushtaq'
+author = u'Troy Joseph\nBrendan Quinn\nJimmy Stoyell\nBlake Goodwyn\nDeclan Sander\nJesse Lupica\nSitar Harel\nYasmeen Mushtaq'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -231,7 +231,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'CUAirAutopilotDocumentation.tex', u'CUAir Autopilot Documentation Documentation',
-     u'Troy Joseph, Brendan Quinn, Jimmy Stoyell, Blake Goodwyn, Declan Sander, Jesse Lupica, Sitar Harel, Yasmeen Mushtaq', 'manual'),
+     u'Troy Joseph\nBrendan Quinn\nJimmy Stoyell\nBlake Goodwyn\nDeclan Sander\nJesse Lupica\nSitar Harel\nYasmeen Mushtaq', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
