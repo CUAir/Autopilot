@@ -11,32 +11,48 @@ This section describes the use and design of the autopilot ground station
 
 Installation
 -------------
-git clone https://github.com/CUAir/MAVProxy.git
-
-To edit the front-end:
-Install Node/NPM: https://nodejs.org/en/download/
-cd MAVProxy
-npm install -g gulp
-cd MAVProxy/modules/server/static/gcs2
-npm install
-gulp
+| ``git clone https://github.com/CUAir/MAVProxy.git``
+| 
+| To edit the front-end:
+| Install Node/NPM: https://nodejs.org/en/download/
+| ``cd MAVProxy``
+| ``npm install -g gulp``
+| ``cd MAVProxy/modules/server/static/gcs2``
+| ``npm install``
+| ``gulp``
 
 Setup with plane
 -----------------
-
+| ``cd MAVProxy/MAVProxy``
+| ``python mavproxy --master=/dev/tty.usbserial<tab>``
+| ``Go to http://localhost:8001/static/gcs2/index.html``
 
 Setup with SITL
 ----------------
 
-
 Using the front end
 --------------------
-To edit:
-Make changes to files you want (don't touch css, fonts, bundle.js)
-gulp
+| To edit:
+| Make changes to files you want. Don't touch css (use sass folder instead), fonts, or bundle.js (gets overwritten by gulp)
+| ``gulp``
+|
+| To use:
+| Once MAVProxy is running, go to http://localhost:8001/static/gcs2/index.html
 
-To use:
-Once MAVProxy is running, go to http://localhost:8001/static/gcs2/index.html
+How the front-end works
+------------------------
+
+React
+^^^^^^
+The front-end (gcs2) is built in React, a javascript library from Facebook that makes the front-end faster by diff-ing the current DOM with the new state to reduce the number of DOM operations (which are very expensive) and rendering changes to the front-end in real-time. `See the documentation for the React here <https://facebook.github.io/react/docs/getting-started.html>`_. 
+
+Flux
+^^^^^
+To power our react system, we used vanilla `Flux <https://facebook.github.io/flux/docs/overview.html>`_ which is powered through a system called action-store-dispatcher that makes all changes 1-way interactions (rather than Angular's 2-way bindings). We broke the application down into essentially 8 sections: Calibration, Geofences, Interoperability, Parameters, SDA, Settings, Plane Status, and Waypoints. Each section has it's own action creator and store. For an example of how to use React with Flux, `this <https://github.com/facebook/flux/tree/master/examples/flux-chat/>`_ is simple but extremely useful. You should either read it through in its entirety or try to make it/mess with it to get familiar. Once you understand the general code structure, it shouldn't be hard to get the hang over making a simple app. One of the benefits of Flux over other javascript frameworks like Angular is that since everything is 1-way, the stack traces are very clear, which assists in debugging. One of the downsides of Flux is that it requires a bit of boilerplate code/scaffolding.
+
+Bootstrap
+^^^^^^^^^^
+Additionally, for our visual library we used `Twitter's Bootstrap <http://getbootstrap.com/>`_ because it is ubiquitous on the internet, it has an enormous community, and it is has a very appealing UI. 
 
 Interoperability
 ------------------
