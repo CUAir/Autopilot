@@ -79,7 +79,7 @@ To power our react system, we used vanilla `Flux <https://facebook.github.io/flu
 Bootstrap
 ^^^^^^^^^^
 Additionally, for our visual library we used `Twitter's Bootstrap <http://getbootstrap.com/>`_ because it is ubiquitous on the internet, it has an enormous community, and it is has a very appealing UI. 
-=======
+
 To edit:
 
 1. Make changes to files you want (don't touch css, fonts, bundle.js)
@@ -88,7 +88,6 @@ To edit:
 To use:
 
   Once MAVProxy is running, go to http://localhost:8001/static/gcs2/index.html
->>>>>>> c15515dd33d757d9232b9666d8ac700aca9afd76
 
 Interoperability
 ------------------
