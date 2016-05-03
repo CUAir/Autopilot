@@ -97,7 +97,7 @@ This is the failsafe system that causes flight termination after 3 minutes of tr
 	AFS_MAX_GPS_LOSS, 	0
 	AFS_MAX_COM_LOSS, 	0
 	AFS_GEOFENCE, 		0
-	AFS_RC, 			1
+	AFS_RC,      		1
 	AFS_RC_MAN_ONLY,	0
 	AFS_DUAL_LOSS,		0
 	AFS_RC_FAIL_TIME, 	180

@@ -14,6 +14,7 @@ Contents:
    api
    groundstation
    ardupilot
+   catapult
 
 Welcome
 =========
