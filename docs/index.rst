@@ -25,6 +25,17 @@ Yay, documentation!
 How to edit this page
 ---------------------
 
+Easy Mode
+^^^^^^^^^
+
+- Click the "Edit on GitHub button at the top of any page"
+- Edit the page
+- Add a change message and commit when you have finished your changes
+- In a few minutes, readthedocs will be updated
+
+Leet Mode
+^^^^^^^^
+
 **Installation**
 
 ::
