@@ -351,8 +351,98 @@ Use the GET argument "time" (/status/softstatus?time=TIME) to request a status a
          }
 
 
-Waypoints [/waypoints]
-----------------------
+Waypoints [/wp]
+-----------------
+
+* **GET**
+
+Returns a list of waypoints, each containing, altitude, longitude, latitude, current waypoint, waypoint type or `MAV_CMD <http://mavlink.org/messages/common>`_ , waypoint index::
+
+ Response 200 (application/json)
+        [{
+            "alt" : 0.0, [meters]
+            "lon" : 0.0, [degrees]
+            "lat" : 0.0, [degrees]
+            "current": 0, 
+            "type": 12, 
+            "index": 0 
+        }, 
+        {
+            "alt" : 0.0,
+            "lon" : 0.0,
+            "lat" : 0.0,
+            "current": 0,
+            "type": 16,
+            "index": 0
+        }]
+    
+*  **GET with arguments [GET /wp/{?wpnum}]**
+
+The response field, "type" in GET is the same as the "command" field in POST and PUT. 
+The associated waypoint types and numbers are listed under POST. 
+
+Parameters: *wpnum*  - the index of the waypoint you wish to recieve::
+
+  Response 200 (application/json)
+
+        {
+            "alt" : 0.0,
+            "lon" : 0.0,
+            "lat" : 0.0,
+            "current": 0,
+            "type": 21,
+            "index": 0
+        }
+        
+* **DELETE**
+   Delete a specific waypoint.
+   
+   Parameters: *wpnum*  - The waypoints index
+
+::
+
+   Response 200 (application/json)
+        "True"
+
+* **POST**
+
+
+::
+
+   Headers
+      Content-Type: application/json
+      token: <secret token>
+
+   Requests
+      "lat: <lat>,        [The waypoint's latitude]
+      lon: <lon>,        [The waypoint's longitude]
+      alt: <alt>,        [The waypoint's altitude]
+      index: <index>,    [The waypoints index]
+      commant: <command> [The waypoints type or `MAV_CMD <http://mavlink.org/messages/common>`]
+
+   Response 200 (application/json)
+        "True"
+
+* **PUT**
+
+   PUT has the same parameters as POST but will update the values of the waypoint at the specified index.
+
+::
+
+   Headers
+      Content-Type: application/json
+      token: <secret token>
+
+   Requests:
+    "lat: <lat>,        [The waypoint's latitude]
+     lon: <lon>,        [The waypoint's longitude]
+     alt: <alt>,        [The waypoint's altitude]
+     index: <index>,    [The waypoints index]
+     commant: <command> [The waypoints type or `MAV_CMD <http://mavlink.org/messages/common>`]
+
+   Response 200 (application/json)
+        "True"
+
 
 Interop [/interop]
 ------------------
