@@ -1,9 +1,3 @@
-.. CUAir Autopilot Documentation documentation master file, created by
-   sphinx-quickstart on Mon May  2 11:28:43 2016.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-
 Ground Station
 ===============
 
@@ -11,6 +5,13 @@ Ground Station
 
 
 This section describes the use and design of the autopilot ground station
+
+Overview
+--------
+
+We use a terminal-based ground station software called `MAVProxy <http://dronecode.github.io/MAVProxy/html/index.html>`_ that receives data from and sends data to the plane via a radio and antenna connected to a computer via USB and the plane. MAVProxy receives telemetry data and other data from the plane, and is able to control the plane by setting up a mission, changing parameters, arming and disarming the plane, and more. We've customized it to do a few mission-specific things like interoperability, SDA, and more.
+
+Probably the biggest custom feature is the browser-based front end to MAVProxy for easy and intuitive control of the plane. MAVProxy now provides a REST API that the front end queries to receive data and control the plane. This front end provides a GUI to perform the majority of tasks that MAVProxy can do, and see the data from the plane in a user-friendly layout.
 
 Installation
 -------------
