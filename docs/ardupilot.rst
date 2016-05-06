@@ -63,7 +63,7 @@ For the standard failsafe to function as described, complete the above setup ins
 	THR_FS_VALUE, 		<SEE ABOVE - in range 925-1100>
 	THR_FAILSAFE,		1
 	FS_SHORT_ACTN, 		0
-	FS_SHORT_ACTN,		2
+	FS_SHORT_TIMEOUT,	2
 	FS_LONG_ACTN,		1
 	FS_LONG_TIMEOUT,	30
 	FS_BATT_VOLTAGE,	0
@@ -89,7 +89,7 @@ Advanced Failsafe Configuration
 This is the failsafe system that causes flight termination after 3 minutes of transmitter loss. The AFS parameters should be set as follows to comply with competition rules::
 
 	AFS_WP_COMMS, 		0
-	AFS_GPS_LOSS,		0
+	AFS_WP_GPS_LOSS,	0
 	AFS_TERM_ACTION, 	42
 	AFS_AMSL_ERR_GPS, 	100
 	AFS_QNH_PRESSURE, 	0
