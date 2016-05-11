@@ -48,7 +48,7 @@ Setup instructions:
 
 3. Set the low point of the throttle back to its original value. If you ever need to bind the transmitter again for any reason, you will need to repeat the setup process
 
-	* If it was not possible to set the throttle beyond -100%, then at this step set it to a higher value such as 90%. If this is necessary, DO NOT turn on the plane's throttle until you finish these instructions completely, or the throttle will activate while the stick is down
+	* If it was not possible to set the throttle beyond -100%, then at this step set it to a higher value such as -90%. If this is necessary, DO NOT turn on the plane's throttle until you finish these instructions completely, or the throttle will activate while the stick is down
 
 4. Do the radio calibration in mission planner to tell Ardupilot what the new range of the throttle is. Once this is done, record the low point of the throttle stick while the transmitter is on. Afterwards, turn the transmitter off and ensure that that value drops.
 5. Set the THR_FS_VALUE to a value between the throttle down point and the transmitter off point you recorded in step 4. A value somewhere in the middle is good - not too close to either endpoint to account for some variation.
