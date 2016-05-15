@@ -152,6 +152,62 @@ Setup
 Interoperability Use
 ^^^^^^^^^^^^^^^^^^^^^
 
+General Test Flight Use
+************************
+
+1. Make sure to bring a computer with the interop server installed on it. If possible, have a template mission ready to got
+
+2. cd interop/setup and run vagrant up to start the server
+    
+    * The server will run on localhost:8000
+
+3. To load the template mission:
+    
+    a. vagrant ssh
+    b. cd interop/server
+    c. python manage.py flush (This will flush the database - do not do this if you want to keep the current database - see below for storing a dump)
+    d. python manage.py loaddata template_mission.json
+
+4. Now the mission must be set up on the interop server to match the mission in Ardupilot
+
+    a. Go to localhost:8000/admin/
+    b. Click "Mission configs"
+    c. Click the first mission
+    d. In "Mission Waypoints", hit the + button at the side to add a new waypoint
+    e. Enter the proper order (1 indexed), then hit the spyglass then 'add aerial position'
+    f. Enter the proper altitude IN FEET
+    g. Hit the spyglass, then 'add gps position'
+    h. Enter the proper latitude and longitude
+    i. Continue starting from set e. until all waypoints are entered
+
+5. Save the mission config
+6. Go to localhost:8000 and hit "Mission 1". You should see a picture of your setup, where blue spheres are the waypoints and the rest is not relevant to navigation. Confirm that the blue spheres look like what your waypoint setup should be (If you don't see the picture, try Firefox instead of Chrome)
+7. Enter the correct username, password, and url (include the http: and the port (usually 8000) in the settings tab of gcs2
+    
+    * This will usually be 'cuairsim' and 'aeolus' for the username/password, and "http://<some ip>:8000" for the url
+
+8. Hit "Toggle interop".  Look at the Mission 1 again, and confirm that a yellow box appears, meaning that the interop server is receiving data
+
+9. Hit "Toggle interop" again to turn off data sending until you're ready to fly
+
+10. When you're ready to fly, FIRST hit 'toggle interop' on the front end to start sending data to the interop server
+
+11. Then, go to "localhost:8000/admin/", then click "Takeoff or landing events"
+
+12. Hit "add a takeoff or landing event", then select the appropriate user and "Uas in air". Hit save.
+
+    * As of now the server is checking for data and recording data. Make sure the plane has data link as much as possible after this, or the avg telemetry HZ will be low
+
+13. Fly!
+
+14. Create a LANDING event for the appropriate user (same thing, but leave "Uas in air" unchecked)
+
+15. Hit "Toggle interop" to stop sending data to the interop server
+
+16. Go to the mission page and mouse over "System". Right click "Evaluate Teams (csv)" and save it as a file. Open that file in Excel or an equivalent to view the flight data (Don't try to view it as plaintext, it's doable but annoying)
+
+17. To create a database dump, ssh in as if you were about to load a mission config (see beginning), but instead use 'python manage.py dumpdata > mydatadump.json'
+
 MAVProxy/Ground Station use
 ****************************
 
