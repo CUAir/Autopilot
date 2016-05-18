@@ -165,8 +165,9 @@ General Test Flight Use
     
     a. vagrant ssh
     b. cd interop/server
-    c. python manage.py flush (This will flush the database - do not do this if you want to keep the current database - see below for storing a dump)
-    d. python manage.py loaddata template_mission.json
+    c. source venv/bin/activate
+    d. python manage.py flush (This will flush the database - do not do this if you want to keep the current database - see below for storing a dump)
+    e. python manage.py loaddata template_mission.json
 
 4. Now the mission must be set up on the interop server to match the mission in Ardupilot
 
