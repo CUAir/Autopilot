@@ -3,6 +3,8 @@ Catapult
 
 .. contents::
 
+Additional information, including BOM and Design paper, can be found at the catapult github repository: https://github.com/CUAir/catapult
+
 Overview
 ---------
 
