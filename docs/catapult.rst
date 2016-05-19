@@ -6,9 +6,9 @@ Catapult
 Overview
 ---------
 
-The catapult cart is the direct interface between the catapult and the aircraft and is critical for a successful takeoff.
+The catapult cart is the direct interface between the catapult and the aircraft. Its design is critical for successful takeoff.
 
-The cart is composed mainly of 3/16” aluminum sheet metal which has been water-jet cut to shape. The geometry of the cart adds strength in the needed locations while keeping mass to a minimum. Two identical side plates serve as the primary mounting surfaces for the cart's various interfaces as well as large stopping bloacks that contact the frame damper springs and distribute the loads present during deceleraion. Four shafts contain a total of eight wheels that ride along the corners of the frame. An additional piece known as the pin tension member spans the top two shafts. A carabiner connects this member to the cable at the front of the cart. At the back of the pin tension member is a hole that interfaces with the safety pin.
+The cart is composed mainly of aluminum sheet metal which has been water-jet cut to shape. The geometry of the cart adds strength in the needed locations while keeping mass to a minimum. Two identical side plates serve as the primary mounting surfaces for the cart's various interfaces as well as large stopping bloacks that contact the frame damper springs and distribute the loads present during deceleraion. Four shafts contain a total of eight wheels that ride along the corners of the frame. An additional piece known as the pin tension member spans the top two shafts. A carabiner connects this member to the cable at the front of the cart. At the back of the pin tension member is a hole that interfaces with the safety pin.
 
 The cart frame experiences its highest loading upon impact with the spring stoppers. It must decelerate from 15 m/s to rest in about 5.7 cm. This is a deceleration of approximately 200 G. Since all of the force of the deceleration is applied to the stopping blocks, they have to sustain an average force of approximately 1000 N (225 lb) each. Thus, ensuring that the cart's connections fully constrain the aircraft from undesired motion is a high priority in all present and future design changes.
 
