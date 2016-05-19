@@ -26,7 +26,7 @@ In its final iteration, the cart was 1.0 kg and 12.5" in length.
 The interface between the arms and the plane was designed to lock into the plane during acceleration and slide away during detachment. All four arm tips fit into small holes cut into the bottom of the plane. Icarus was designed with a Kevlar fuselage embedded with high-strength garolite plates laser-cut to conform with the arms of the cart. During acceleration, the plane has a tendency to pitch up since the horizontal forces are being applied below the center of mass. To prevent this pitching response, the front two arms feature small hooks that grip the fuselage skin. The back arms only require small nubs that interface with the fuselage holes since the pitching tendency acts to push them further into the holes. Upon detachment, the arms pivot out of the holes and the plane continues in straight-line motion.
 
 
-Odysseus Interface
+Odysseus Interface v1.0
 -------------------
 
 .. image:: images/odysseus_cart.png
@@ -37,6 +37,14 @@ The interface designed for Odysseus required significant modification to the exi
 Foremost, the cart's side plates and the pin tension member were extended to 18.5" in length. Additional changes made to the weight reduction design for three holes, the back two 0.375" in diameter and the front 0.19" in diameter, on the top side of each side plate. These holes were included to attach the cradle as well as facilitate future interface designs as needed.
 
 The cradle provides a surface that is stable enough to constrain the aircraft during acceleration while smooth enough to allow for clear removal from the cart. It is comprised of two side plates, three ribs, and a polycarbonate cover. Each rib pieces into the side plates and is held in place by the side plate's connection to the three mounting holes on the cart itself. These plates are bolted through 4 18-8 machine screws in each of the back two holes and a 8-32 machine screw in each front hole. The polycarbonate cover is attached to the upper surface of the finished cradle assembly via wet cement or gorilla glue.
+
+Odysseus Interface v1.1
+---------------------
+
+.. image:: images/odysseus_cart_2.PNG
+	:align: center
+
+As of May 2016, significant modifications have been made to the Odysseus interface and base cart. The thickness of the base cart's side plating, the pin member, and the front cart arms have been increased from 3/16" to 1/4". After observations of parallel plate motion in field testing, six perpendicular rods have been incorporated into the cart into to restrict parallel plate motion. The upper three of the rods have replaced the the machine screws which piece the cradle to the base cart. The stopper pieces for the front cart arms and the launch arm's springs have been merged into one piece called the stopper. Testing of these cart modifications has yet to be conducted.
 
 
 Bixler Interface
