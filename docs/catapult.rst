@@ -42,7 +42,7 @@ The cradle provides a surface that is stable enough to constrain the aircraft du
 Bixler Interface
 -----------------
 
-[Awaiting finalization]
+The interface developed for the Bixler 3 consists of two sloped extended shafts that piece into a channel cut in the bottom of the Bixler's fuselage.
 
 
 Control
