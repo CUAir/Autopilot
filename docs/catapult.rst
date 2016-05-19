@@ -60,5 +60,71 @@ This assembly is functional in securing the Bixler to the catapult throughout la
 	:align: center
 
 
-Control
--------
+Control System
+--------------
+
+The following describes the catapult control system. The microprocessor used for control of the catapult is the Adafruit Pro Trinket 5V/16MHz. The latest version of the control code can be found at https://github.com/CUAir/catapult/blob/master/catapult.ino
+
+How to Flash the Arduino
+^^^^^^^^^^^^^^^^^^^^^^^^
+Dependencies:
+Arduino Liquid Crystal Library
+http://playground.arduino.cc/Main/LiquidCrystal
+
+1. Prepare your IDE to be compatible with the Adafruit trinket. Follow these instructions: https://learn.adafruit.com/adafruit-arduino-ide-setup/overview
+2. Clone the git repository and make any necessary edits using the Arduino IDE.
+3. Plug in FTDI cable to the pins on the front of the control box and to a USB port on your computer.
+4. Under the Tools menu, set the Board to the Pro Trinket 5V/16MHz (FTDI) and set the Programmer to USBtinyISP
+5. Check that the IDE recognizes the Arduino COM port by the presence of a check next to the COM port in the Tools>Serial Port menu.
+6. Compile the code by pressing the check-mark icon in the top left corner
+7. Upload the code to the Arduino by pressing the arrow icon in the top left corner
+
+
+Code Description
+^^^^^^^^^^^^^^^^
+The control code is structured as a state machine - to allow for distinct states like pressurizing and primed and especially for added safety. Please refer to the source code for a detailed descriptions of each state. See operation section for operation instructions.
+
+The catapult control software has several functions. It controls the behavior of the compressor and the launch valve, it shows diagnostic information to the operator, and it enacts several safety measures to prevent accidents. Battery voltage and current/target pressure are displayed to the user. User input determines what value to pressurize to, when to pressurize, and when to launch.
+
+The raw values of the pressure and battery voltage readings are mapped by constants that were measured by hand. The battery voltage mapping is a direct scale factor of 0.012289, in the code it is the constant 'battVoltageFactor'. The pressure mapping is more complex. The value displayed to the user is the direct reading from the transducer, but an altered value is used to determine when to stop compressing because there are fluctuations in pressure readings while the compressor is on. These fluctuations are larger at higher pressures, so a jitter value is determined based on a scaling down of the target pressure. The compressor stops when the pressure reading minus the jitter value is equal to the target pressure. This was thoroughly tested and shows excellent results. The jitter value is a linear mapping of the range 0-150 (target pressure) to 3-10. If altering the code, under no circumstances should the upper pressure threshold (read from the potentiometer) be raised above 150.
+
+
+Software safety mechanisms
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+- Device will never pressurize to values above 150 psi. 
+- Software makes sure that the launch valve is closed before comprpession begins. 
+- System cannot launch without primed LED (on the launch switch) being on.
+- Debouncing disregards false launch and pressurize readings.
+- Screen shows warning messages upon initialization.
+- Battery voltage displays 'CRITICAL' when voltage is below 11.45V
+- State machine design ensures that launch CANNOT occur if not in the primed state.
+
+
+
+Operation Instructions
+----------------------
+
+Setup
+^^^^^
+1. Catapult should typically be set up to launch into the wind. Catapult box must be set up next to the catapult and must open towards it, plan accordingly and place the box in the correct location.
+2. Remove two main parts of the catapult (large metal extrusions). Unsecrew the thumbscrews from the back portion and unwrap the cord from the front portion. Unfold the legs of the front piece and insert the respective pins. 
+3. Slide the catapult cart onto the back piece in the correct orientation. 
+4. Insert the back piece into the front piece and screw the thumb screws in. Make sure they are screwed in tight and have someone double check that this is the case.
+4. Connect carabiner to catapult cart. Insert safety pin into the back of the catapult
+5. Connect the longest tube from the pressure tank to the front of the catapult. Connect compressor tube to the catapult box.
+6. Unspool ethernet cord, connect one end to catapult box and the other end to the control box, lay box far away, behind and to the side of the catapult.
+7. Connect compressor power cable and connect 12V battery cable to catapult box. 
+
+
+Operation
+^^^^^^^^^
+1. Turn the system on by turning the key to the on position.
+2. Read warning displayed on control box.
+3. Make sure that the safety pin is in place before proceeding.
+4. Turn pressure dial until the screen displays the desired target pressure.
+5. Announce that you are pressurizing the catapult and press the pressurize button. 
+6. Once the compressor is finished pressurizing, the LED on the launch switch will turn on. This means that the catapult is primed and ready to fire. Do not lift the switch cap unless you are prepared to fire.
+7. Have someone else pull out safety pin.
+8. When everyone is ready, lift switch cap and toggle the launch switch to fire. 
+9. Once the plane has launched, send two or three people to remove the catapult from the runway. 
+10. To launch again return to step 3, otherwise turn the key to the off position and pack up the device.
