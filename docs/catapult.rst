@@ -86,7 +86,7 @@ The control code is structured as a state machine - to allow for distinct states
 
 The catapult control software has several functions. It controls the behavior of the compressor and the launch valve, it shows diagnostic information to the operator, and it enacts several safety measures to prevent accidents. Battery voltage and current/target pressure are displayed to the user. User input determines what value to pressurize to, when to pressurize, and when to launch.
 
-The raw values of the pressure and battery voltage readings are mapped by constants that were measured by hand. The battery voltage mapping is a direct scale factor of 0.012289, in the code it is the constant 'battVoltageFactor'. The pressure mapping is more complex. The value displayed to the user is the direct reading from the transducer, but an altered value is used to determine when to stop compressing because there are fluctuations in pressure readings while the compressor is on. These fluctuations are larger at higher pressures, so a jitter value is determined based on a scaling down of the target pressure. The compressor stops when the pressure reading minus the jitter value is equal to the target pressure. This was thoroughly tested and shows excellent results. The jitter value is a linear mapping of the range 0-150 (target pressure) to 3-10. If altering the code, under no circumstances should the upper pressure threshold (read from the potentiometer) be raised above 150.
+The raw values of the pressure and battery voltage readings are mapped by constants that were measured by hand. The battery voltage mapping is a direct scale factor of 0.012289, in the code it is the constant 'battVoltageFactor'. The pressure mapping is more complex. The value displayed to the user is the direct reading from the transducer, but an altered value is used to determine when to stop compressing because there are fluctuations in pressure readings while the compressor is on. These fluctuations are larger at higher pressures, so a jitter value is determined based on a scaling down of the target pressure. The compressor stops when the pressure reading minus the jitter value is equal to the target pressure. This was thoroughly tested and shows excellent results. The jitter value is a linear mapping of the range 0-150 (target pressure) to 3-10. If altering the code, under no circumstances should the upper pressure threshold (read from the potentiometer) be raised above 150. Refer to source code for further comments.
 
 
 Software safety mechanisms
@@ -110,10 +110,10 @@ Setup
 2. Remove two main parts of the catapult (large metal extrusions). Unsecrew the thumbscrews from the back portion and unwrap the cord from the front portion. Unfold the legs of the front piece and insert the respective pins. 
 3. Slide the catapult cart onto the back piece in the correct orientation. 
 4. Insert the back piece into the front piece and screw the thumb screws in. Make sure they are screwed in tight and have someone double check that this is the case.
-4. Connect carabiner to catapult cart. Insert safety pin into the back of the catapult
-5. Connect the longest tube from the pressure tank to the front of the catapult. Connect compressor tube to the catapult box.
-6. Unspool ethernet cord, connect one end to catapult box and the other end to the control box, lay box far away, behind and to the side of the catapult.
-7. Connect compressor power cable and connect 12V battery cable to catapult box. 
+5. Connect carabiner to catapult cart. Insert safety pin into the back of the catapult
+6. Connect the longest tube from the pressure tank to the front of the catapult. Connect compressor tube to the catapult box.
+7. Unspool ethernet cord, connect one end to catapult box and the other end to the control box, lay box far away, behind and to the side of the catapult.
+8. Connect compressor power cable and connect 12V battery cable to catapult box. 
 
 
 Operation
