@@ -80,8 +80,8 @@ http://playground.arduino.cc/Main/LiquidCrystal
 7. Upload the code to the Arduino by pressing the arrow icon in the top left corner
 
 
-Code Description
-^^^^^^^^^^^^^^^^
+Description
+^^^^^^^^^^^
 The control code is structured as a state machine - to allow for distinct states like pressurizing and primed and especially for added safety. Please refer to the source code for a detailed descriptions of each state. See operation section for operation instructions.
 
 The catapult control software has several functions. It controls the behavior of the compressor and the launch valve, it shows diagnostic information to the operator, and it enacts several safety measures to prevent accidents. Battery voltage and current/target pressure are displayed to the user. User input determines what value to pressurize to, when to pressurize, and when to launch.
@@ -98,7 +98,6 @@ Software safety mechanisms
 - Screen shows warning messages upon initialization.
 - Battery voltage displays 'CRITICAL' when voltage is below 11.45V
 - State machine design ensures that launch CANNOT occur if not in the primed state.
-
 
 
 Operation Instructions
