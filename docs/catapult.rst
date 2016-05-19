@@ -41,10 +41,15 @@ The cradle provides a surface that is stable enough to constrain the aircraft du
 
 Bixler Interface
 -----------------
-.. image:: images/bixler-rough.jpg
+.. image:: images/bixler-rough.JPG
 	:align: center
 
-The interface developed for the Bixler 3 consists of two sloped extended shafts that piece into a channel cut in the bottom of the Bixler's fuselage.
+The interface developed for the Bixler 3 test plane consists of two sloped extended shafts that piece into a channel cut in the bottom of the Bixler's fuselage. Initial development consisted of two wooden tabs cut to 2.5" and sloped on their upper edge. These tabs are connected by means of an single 8-32 machine screw, locknut, and a mirrored washer arrangement threaded through the centered pin member of the cart. 
+
+This assembly is functional in securing the Bixler to the catapult throughout launch; however, several improvements are needed for further use. Issues that have arisen in testing thus far include: failure to constrain lateral motion, excessive tearing of the Bixler's fuselage, and complete mechanical failure. Foremost, 3D printing of the functional assembly into a single or two interlocking parts has been explored and should be fabricated for future use. Conceptual CAD schematics for a new Bixler interface are pictured below and are available on the Mechanical Subteam's Cornell Box.
+
+.. image:: images/primary_bixler_interface.png
+	:align: center
 
 
 Control
