@@ -114,14 +114,24 @@ Use:
 How the front-end works
 ------------------------
 
-Use
-^^^
+Setup
+^^^^^^
 
 To use:
 
   Once MAVProxy is running, go to http://localhost:8001/static/gcs2/index.html
 
   The judge's view can be found at http://localhost:8001/static/judges/index.html
+
+Usage instructions
+^^^^^^^^^^^^^^^^^^^
+The home screen has all of the flight information and flight controls used in normal operation of the ground station. The map displays the waypoints shown below it and the map can be changed in the settings tab. Additionally, the settings tab contains settings for the interop server, authentication information, geofences andthe reboot control (which requires double-confirmation). The parameters tab contains all of the parameter information. Grey parameters indicate that those parameters haven't been received yet. The calibration tab allows accelerometer, gyroscope and pressure (airspeed) calibration. Finally, the Flight Notes tab can be used to store information. The Flight notes store your notes locally to your browser using localStorage (basically cookies) so they will not transfer between computers.
+
+.. image:: images/GCS.png
+
+The stack
+^^^^^^^^^^
+Our stack consists of python (MAVProxy & Flask) on the backend with React, Flux, Sass, gulp and Jade being used on the front-end. Additionally, our backend can technically serve information over a rest API as well as over websockets, however websockets tended to be pretty buggy so we decided to switch back to only using the REST API.
 
 React
 ^^^^^^
@@ -145,11 +155,14 @@ Bootstrap
 ^^^^^^^^^^
 Additionally, for our visual library we used `Twitter's Bootstrap <http://getbootstrap.com/>`_ because it is ubiquitous on the internet, it has an enormous community, and it is has a very appealing UI. 
 
+Testing
+^^^^^^^^
+The ground station has 2 primary tests: front-end tests and backend tests. The front-end uses selenium tests which get run by going to MAVProxy/MAVProxy/modules/server/static/gcs2/test and running python test.py (run setup.sh the first time before running test.py) which runs front-end selenium tests. The backend tests are run by going to MAVProxy/MAVProxy/modules/server and running python tests.py which uses the requests module to test the REST API. We plan on adding these tests to our CI server next semsester once we get CI set up.
+
 Communications
 ^^^^^^^^^^^^^^^
 Our front-end system uses a simple polling system (in ReceiveApi.js). We originally used socket.io with websockets, but it was way too slow (may be a result of synchronous socket emits, not entirely sure). Basically we just take advantage of the REST API implemented in flask on the back-end. We use post/delete/put requests to send information to the server. All non-GET requests are protected with a token/password and all highly vulnerable actions (i.e. reboot) are protected with an extra layer of checks and a second confirm element in the request.
 
-.. image:: images/GCS.png
 
 Interoperability
 ------------------
