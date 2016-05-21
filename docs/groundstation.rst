@@ -74,21 +74,27 @@ The front-end (gcs2) is built in React, a javascript library from Facebook that 
 
 Flux
 ^^^^^
-To power our react system, we used vanilla `Flux <https://facebook.github.io/flux/docs/overview.html>`_ which is powered through a system called action-store-dispatcher that makes all changes 1-way interactions (rather than Angular's 2-way bindings). We broke the application down into essentially 8 sections: Calibration, Geofences, Interoperability, Parameters, SDA, Settings, Plane Status, and Waypoints. Each section has it's own action creator and store. For an example of how to use React with Flux, `this <https://github.com/facebook/flux/tree/master/examples/flux-chat/>`_ is simple but extremely useful. You should either read it through in its entirety or try to make it/mess with it to get familiar. Once you understand the general code structure, it shouldn't be hard to get the hang over making a simple app. One of the benefits of Flux over other javascript frameworks like Angular is that since everything is 1-way, the stack traces are very clear, which assists in debugging. One of the downsides of Flux is that it requires a bit of boilerplate code/scaffolding.
+To power our react system, we used vanilla `Flux <https://facebook.github.io/flux/docs/overview.html>`_ which is powered through a system called action-store-dispatcher that makes all changes 1-way interactions (rather than Angular's 2-way bindings). We broke the application down into essentially 8 sections: Calibration, Geofences, Interoperability, Parameters, SDA, Settings, Plane Status, and Waypoints. Each section has it's own action creator and store. For an example of how to use React with Flux, `this <https://github.com/facebook/flux/tree/master/examples/flux-chat/>`_ is simple but extremely useful. You should either read it through in its entirety or try to make it/mess with it to get familiar. Once you understand the general code structure, it shouldn't be hard to get the hang over making a simple app. One of the benefits of Flux over other javascript frameworks like Angular is that since everything is 1-way, the stack traces are very clear, which assists in debugging. One of the downsides of Flux is that it requires a bit of boilerplate code/scaffolding. We may switch to redux instead of flux at some point, but we want to get to know that framework better before commiting to doing so.
+
+.. image:: images/flux.png
+
+Leaflet.js
+^^^^^^^^^^^
+To handle our maps, we use Leaflet.js, a leading mobile-compatible open source mapping library. All of the map functions get handled in MapUtils.js and handles waypoints, obstacles, plane-tracking, geofences and locations. The plane has an icon and there is a marker icon for each waypoint. Additionally obstacles and geofences are treated as shapes and locations are set in settings.
+
+Parameters
+^^^^^^^^^^^
+To generate the parameters list, we have a python/bash script that pulls the parameters from the ardupilot website (in the documentation folder), parses them from xml, removes extraneous characters, converts them to json, and copies them to a javascript file (ParamDocumentation.js) so the object can be loaded in as json.
 
 Bootstrap
 ^^^^^^^^^^
 Additionally, for our visual library we used `Twitter's Bootstrap <http://getbootstrap.com/>`_ because it is ubiquitous on the internet, it has an enormous community, and it is has a very appealing UI. 
-=======
-To edit:
 
-1. Make changes to files you want (don't touch css, fonts, bundle.js)
-2. gulp
+Communications
+^^^^^^^^^^^^^^^
+Our front-end system uses a simple polling system (in ReceiveApi.js). We originally used socket.io with websockets, but it was way too slow (may be a result of synchronous socket emits, not entirely sure). Basically we just take advantage of the REST API implemented in flask on the back-end.
 
-To use:
-
-  Once MAVProxy is running, go to http://localhost:8001/static/gcs2/index.html
->>>>>>> c15515dd33d757d9232b9666d8ac700aca9afd76
+.. image:: images/GCS.png
 
 Interoperability
 ------------------
