@@ -464,7 +464,7 @@ Other Details
 Implementation
 ***************
 
-SDA is mostly contained to /modules/mavproxy_sda.py but it also uses the /modules/sda_geometry.py module for geometry and unit conversions between longitude/latitude and an x-y-z coordinate system using meters. Mavproxy runs everytime the mavlink_package() method is return a 'GLOBAL_POSITION_INT' package and therefore runs every time new GPS location data from the plane is available. 
+SDA is mostly contained to /modules/mavproxy_sda.py but it also uses the /modules/sda_geometry.py module for geometry and unit conversions between longitude/latitude and an x-y-z coordinate system using meters. Mavproxy runs SDA everytime the mavlink_package() method is return a 'GLOBAL_POSITION_INT' package and therefore runs every time new GPS location data from the plane is available. 
 
 Future Directions for SDA
 *************************
