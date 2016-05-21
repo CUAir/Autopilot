@@ -90,6 +90,17 @@ The catapult control software has several functions. It controls the behavior of
 
 The raw values of the pressure and battery voltage readings are mapped by constants that were measured by hand. The battery voltage mapping is a direct scale factor of 0.012289, in the code it is the constant 'battVoltageFactor'. The pressure mapping is more complex. The value displayed to the user is the direct reading from the transducer, but an altered value is used to determine when to stop compressing because there are fluctuations in pressure readings while the compressor is on. These fluctuations are larger at higher pressures, so a jitter value is determined based on a scaling down of the target pressure. The compressor stops when the pressure reading minus the jitter value is equal to the target pressure. This was thoroughly tested and shows excellent results. The jitter value is a linear mapping of the range 0-150 (target pressure) to 3-10. If altering the code, under no circumstances should the upper pressure threshold (read from the potentiometer) be raised above 150. Refer to source code for further comments.
 
+.. image:: images/catapult_control_fsm.png
+	:align: center
+	
+Key:
+init - Initialize: default state, displays warning to user and initializes sensors
+dSP - Pressure Set Display: Displays the text template to for pressure to the screen and then sets state to SP
+SP - Set Pressure: Displays potentiometer data to the screen and saves value to pressure variable. On press of the pressurize button, sets state to dPress.
+dPress - Pressurize Display: Displays template for pressure and battery diagnostics
+Press - Pressurize: Turns on pump, displays current pressure, goal pressure, and battery voltage. When current pressure = goal pressure, sets state to Primed.
+Primed - Primed: Turns off pump, displays pressure and battery stats and turns on launch LED. On pressurize button push, returns to dPress. On launch switch, sets state to Fire.
+Fire - Launch Catapult:  Opens servo, waits launch duration, closes servo. (fires catapult). Turns off launch switch LED and sets state to dSP
 
 Software safety mechanisms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
