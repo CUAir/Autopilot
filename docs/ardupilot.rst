@@ -89,7 +89,7 @@ Advanced Failsafe Configuration
 
 ***Important:*** If these parameters are set as above, the plane **will** terminate after 3 minutes of lost transmitter signal. Make absolutely sure you know what you are doing when use this failsafe system. Aerodynamic termination WILL result in a crash and is UNRECOVERABLE once activated.
 
-This is the failsafe system that causes flight termination after 3 minutes of transmitter loss. The AFS parameters should be set as follows to comply with competition rules::
+This is the failsafe system that causes flight termination after 3 minutes of transmitter loss. This system works through the throttle failsafe as shown above, so the throttle failsafe needs to be set up correctly for this to work. The AFS parameters should be set as follows to comply with competition rules::
 
 	AFS_WP_COMMS, 		0
 	AFS_WP_GPS_LOSS,	0
@@ -105,4 +105,7 @@ This is the failsafe system that causes flight termination after 3 minutes of tr
 	AFS_DUAL_LOSS,		0
 	AFS_RC_FAIL_TIME, 	180
 
+
+	The AFS_TERM_ACTION parameter is the final safeguard between terminating the plane and doing nothing when the flight termination condition is met. It should **never** be 42 unless you are absolutely sure you want the plane to terminate when the transmitter link has been lost for 3 minutes. For test flights, it should always be at 0 - the only time it should be 42 is during competition.
+	
 See the `AFS documentation <http://ardupilot.org/plane/docs/advanced-failsafe-configuration.html>`_ and the `AFS parameter list <http://ardupilot.org/plane/docs/parameters.html#afs-parameters>`_ for more information.
