@@ -15,6 +15,7 @@ Contents:
    groundstation
    ardupilot
    catapult
+   testflight
 
 Welcome
 =========
@@ -35,7 +36,7 @@ Easy Mode
 - In a few minutes, readthedocs will be updated
 
 Leet Mode
-^^^^^^^^
+^^^^^^^^^
 
 **Installation**
 
