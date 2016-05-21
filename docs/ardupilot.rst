@@ -38,19 +38,22 @@ The standard failsafe uses the throttle input channel of the transmitter to dete
 
 Setup instructions:
 
-1. Set the low point of the throttle on the transmitter (Channel 3) to extend below -100%
+1. Set the low point of the throttle on the transmitter (Should be Channel 3, but check on Mission Planner's Radio Calibration page) to extend below -100%
 
 	* If this is not possible, set it to its lowest possible value
 
 2. Bind the transmitter with the receiver
 
-	* For the ezUHF receiver, follow the instructions in the "binding" section `here <https://s3.amazonaws.com/cdn.freshdesk.com/data/helpdesk/attachments/production/12132153/original/EzUHFManual_EN_v1.0.pdf>`_ 
+	* For the ezUHF receiver, follow the instructions in the "binding" section `here <http://www.immersionrc.com/downloads/manuals/EzUHFManual_EN_v1.0.pdf>`_ 
 
 3. Set the low point of the throttle back to its original value. If you ever need to bind the transmitter again for any reason, you will need to repeat the setup process
 
 	* If it was not possible to set the throttle beyond -100%, then at this step set it to a higher value such as -90%. If this is necessary, DO NOT turn on the plane's throttle until you finish these instructions completely, or the throttle will activate while the stick is down
 
 4. Do the radio calibration in mission planner to tell Ardupilot what the new range of the throttle is. Once this is done, record the low point of the throttle stick while the transmitter is on. Afterwards, turn the transmitter off and ensure that that value drops.
+
+	* If it does not drop, it is possible that the failsafe levels of the receiver need to be set. Set the transmitter back to the low point, then while the receiver is on and the throttle is down, hold the button on the back of the transmitter. Then repeat from step 3
+
 5. Set the THR_FS_VALUE to a value between the throttle down point and the transmitter off point you recorded in step 4. A value somewhere in the middle is good - not too close to either endpoint to account for some variation.
 6. Set THR_FAILSAFE to 1 to enable the failsafe
 7. Ensure the other parameters are set as below
