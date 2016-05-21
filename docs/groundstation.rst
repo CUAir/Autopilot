@@ -111,6 +111,37 @@ Use:
 
 	python mavproxy.py --master=tcp:10.145.14.217:5555
 
+Autopilot Server on the NUC
+---------------------------
+
+The autopilot sever on the NUK provides an API for distributed to access autopilot data.
+
+::
+
+  ------  --(telem2 fdti)--> AutoPilot NUC server ----------> distributed
+  Plane |      
+  ------  <----(RFD900)----> AutoPilot Ground Server <------> AutoPilot Ground Station
+
+
+To install, connect to the NUC and connect the NUC to the Internet. Then, ::
+  
+  git clone https://github.com/CUAir/MAVProxy
+  git checkut airapi
+  cd MAVProxy/MAVProxy
+  virtualenv venv
+  source venv/bin/activate
+  pip install -r requirements.txt
+
+
+To start the server, run ::
+  
+  cd MAVProxy/MAVProxy
+  source venv/bin/activate
+  python mavproxy.py --master=/dev/ttyUSB0
+
+**NOTE:** The serial port is not bound to ttyUSB0. Sometimes you will have to try ttyUSB1 or ttyUSB2
+
+
 How the front-end works
 ------------------------
 
