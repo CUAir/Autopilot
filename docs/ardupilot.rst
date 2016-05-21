@@ -106,6 +106,6 @@ This is the failsafe system that causes flight termination after 3 minutes of tr
 	AFS_RC_FAIL_TIME, 	180
 
 
-	The AFS_TERM_ACTION parameter is the final safeguard between terminating the plane and doing nothing when the flight termination condition is met. It should **never** be 42 unless you are absolutely sure you want the plane to terminate when the transmitter link has been lost for 3 minutes. For test flights, it should always be at 0 - the only time it should be 42 is during competition.
+The AFS_TERM_ACTION parameter is the final safeguard between terminating the plane and doing nothing when the flight termination condition is met. It should **never** be 42 unless you are absolutely sure you want the plane to terminate when the transmitter link has been lost for 3 minutes. For test flights, it should always be at 0 - the only time it should be 42 is during competition.
 	
 See the `AFS documentation <http://ardupilot.org/plane/docs/advanced-failsafe-configuration.html>`_ and the `AFS parameter list <http://ardupilot.org/plane/docs/parameters.html#afs-parameters>`_ for more information.
