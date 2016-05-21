@@ -1,5 +1,5 @@
-Test Flight
-=========
+Test Flights
+============
 
 .. contents::
 
@@ -35,5 +35,15 @@ Roles -- Assigning more limited roles at test flights ensures team members can w
 `Tuning guide <https://docs.google.com/a/cornell.edu/document/d/1GEGPoO7C8SVG3ce17zwZWjsApVifKiyOvoxnIkX4Or4/edit?usp=sharing>`_ -- This manual details the steps needed to tunning ArduPlane. Print the manual and follow along accordingly. 
 
 `Flight Cards <https://docs.google.com/a/cornell.edu/presentation/d/1QKiTktPquDpCYcg-_-agLuD5t6N1zBHpDIT-jldJb_s/edit?usp=sharing>`_ -- Fill out one of these at each test flight.
+
+Code to run at test flights
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+- `APM Planner <http://ardupilot.com/downloads/#apm_planner_20_9_raquo>`_ -- as a backup APM should be installed on all computers 
+
+- `MAVProxy <http://cuairautopilot.readthedocs.io/en/latest/groundstation.html#ground-station>`_ -- Installation and instructions for using the ground station can be found here.
+
+- `Interoperability <http://cuairautopilot.readthedocs.io/en/latest/groundstation.html#interoperability>`_ -- Setup can use of the interoperability server can be found here
+
+--`Autopilot server <>`_ -- Setup and use of autopliot server for the NUC can be found here.
 
 
