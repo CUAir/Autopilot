@@ -1,9 +1,3 @@
-.. CUAir Autopilot Documentation documentation master file, created by
-   sphinx-quickstart on Mon May  2 11:28:43 2016.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
-
-
 Ground Station
 ===============
 
@@ -11,6 +5,13 @@ Ground Station
 
 
 This section describes the use and design of the autopilot ground station
+
+Overview
+--------
+
+We use a terminal-based ground station software called `MAVProxy <http://dronecode.github.io/MAVProxy/html/index.html>`_ that receives data from and sends data to the plane via a radio and antenna connected to a computer via USB and the plane. MAVProxy receives telemetry data and other data from the plane, and is able to control the plane by setting up a mission, changing parameters, arming and disarming the plane, and more. We've customized it to do a few mission-specific things like interoperability, SDA, and more.
+
+Probably the biggest custom feature is the browser-based front end to MAVProxy for easy and intuitive control of the plane. MAVProxy now provides a REST API that the front end queries to receive data and control the plane. This front end provides a GUI to perform the majority of tasks that MAVProxy can do, and see the data from the plane in a user-friendly layout.
 
 Installation
 -------------
@@ -42,31 +43,85 @@ Setup with plane
 
 Linux:
 
-1. cd MAVProxy/MAVProxy
-2. python mavproxy.py --master=/dev/ttyUSB<X> --baudrate=57600
+1. Run the command ::
 
-  * Run ls /dev/ to see what X should be - also could by TTYACM<X>
-  * If you can't find anything, open mission planner and it should show the appropriate path in the upper right
-  * If using MAVProxy through wired micro-USB rather than wireless, baudrate should be 115200
+	cd MAVProxy/MAVProxy
 
-Mac
+2. Next, run ::
 
-1. cd MAVProxy/MAVProxy
-2. python mavprox.py --master=/dev/tty.usb<tab complete> --baudrate=57600
+	python mavproxy.py --master=/dev/ttyUSB<X> --baudrate=57600
 
-  * Run ls /dev/ if tab completion doesn't work
-  * If you can't find anything, open mission planner and it should show the appropriate path in the upper right
-  * If using MAVProxy through wired micro-USB rather than wireless, baudrate should be 115200
+* Run ls /dev/ to see what X should be - also could by TTYACM<X>
+* If you can't find anything, open mission planner and it should show the appropriate path in the upper right
+* If using MAVProxy through wired micro-USB rather than wireless, baudrate should be 115200
 
-| To edit the front-end:
-| Make changes to files you want. Don't touch css (use sass folder instead), fonts, or bundle.js (gets overwritten by gulp)
-| ``gulp``
-|
-| To use:
-| Once MAVProxy is running, go to http://localhost:8001/static/gcs2/index.html
+Mac:
+
+1. Run the command ::
+
+	cd MAVProxy/MAVProxy
+
+2. Next, run ::
+
+	python mavproxy.py --master=/dev/tty.usb<tab complete> --baudrate=57600
+
+* Run ls /dev/ if tab completion doesn't work
+* If you can't find anything, open mission planner and it should show the appropriate path in the upper right
+* If using MAVProxy through wired micro-USB rather than wireless, baudrate should be 115200
+
+
+Setup with SITL
+---------------
+
+The Software in the Loop is a simulation of ArduPilot with FlightGear. This can be used as a virtual environment to test changes without needing a physical plane.
+
+Use:
+
+1. Connect to RedRover or EduRoam
+
+	* There is a VPN to connect from elsewhere, but it's usually too slow to make work. Ask if you want to set it up, but at that point you may want to just install the SITL on your personal computer (`Linux instructions <http://ardupilot.org/dev/docs/setting-up-sitl-on-linux.html>`_, `Windows Instructions <http://ardupilot.org/dev/docs/sitl-native-on-windows.html>`_)
+
+2. ssh into the computer running the SITL. The IP address may be out of date - see Troy for an updated version ::
+	
+	ssh -Y cuair@10.145.14.217
+
+3. Run ::
+
+	cd /Users/cuair/src
+
+4. Run 'vagrant up' to confirm that the virtualbox running the autopilot is active ::
+
+	vagrant up
+
+5. It's likely that flightgear is already running on the server. If these next steps fail, then open a separate terminal window and run the following commands to start it ::
+
+	cd ardupilot/Tools/autotest
+	sh sim_fg_host.sh
+
+6. ssh into the virtual machine running the autopilot ::
+
+	vagrant ssh
+
+7. Finally, start the SITL ::
+
+	sim_FG.sh
+
+8. You should see two X11 windows pop up on your computer. This may take up to a few minutes to happen.
+9. To run the ground station, in a separate terminal window from the MAVProxy/MAVProxy directory, start MAVProxy ::
+
+	python mavproxy.py --master=tcp:10.145.14.217:5555
 
 How the front-end works
 ------------------------
+
+Use
+^^^
+
+To use:
+
+  Once MAVProxy is running, go to http://localhost:8001/static/gcs2/index.html
+
+  The judge's view can be found at http://localhost:8001/static/judges/index.html
 
 React
 ^^^^^^
@@ -92,13 +147,12 @@ Additionally, for our visual library we used `Twitter's Bootstrap <http://getboo
 
 Communications
 ^^^^^^^^^^^^^^^
-Our front-end system uses a simple polling system (in ReceiveApi.js). We originally used socket.io with websockets, but it was way too slow (may be a result of synchronous socket emits, not entirely sure). Basically we just take advantage of the REST API implemented in flask on the back-end.
+Our front-end system uses a simple polling system (in ReceiveApi.js). We originally used socket.io with websockets, but it was way too slow (may be a result of synchronous socket emits, not entirely sure). Basically we just take advantage of the REST API implemented in flask on the back-end. We use post/delete/put requests to send information to the server. All non-GET requests are protected with a token/password and all highly vulnerable actions (i.e. reboot) are protected with an extra layer of checks and a second confirm element in the request.
 
 .. image:: images/GCS.png
 
 Interoperability
 ------------------
-
 
 Setup
 ^^^^^^^^
@@ -107,6 +161,63 @@ Setup
 
 Interoperability Use
 ^^^^^^^^^^^^^^^^^^^^^
+
+General Test Flight Use
+************************
+
+1. Make sure to bring a computer with the interop server installed on it. If possible, have a template mission ready to got
+
+2. cd interop/setup and run vagrant up to start the server
+    
+    * The server will run on localhost:8000
+
+3. To load the template mission:
+    
+    a. vagrant ssh
+    b. cd interop/server
+    c. source venv/bin/activate
+    d. python manage.py flush (This will flush the database - do not do this if you want to keep the current database - see below for storing a dump)
+    e. python manage.py loaddata template_mission.json
+
+4. Now the mission must be set up on the interop server to match the mission in Ardupilot
+
+    a. Go to localhost:8000/admin/
+    b. Click "Mission configs"
+    c. Click the first mission
+    d. In "Mission Waypoints", hit the + button at the side to add a new waypoint
+    e. Enter the proper order (1 indexed), then hit the spyglass then 'add aerial position'
+    f. Enter the proper altitude IN FEET
+    g. Hit the spyglass, then 'add gps position'
+    h. Enter the proper latitude and longitude
+    i. Continue starting from set e. until all waypoints are entered
+
+5. Save the mission config
+6. Go to localhost:8000 and hit "Mission 1". You should see a picture of your setup, where blue spheres are the waypoints and the rest is not relevant to navigation. Confirm that the blue spheres look like what your waypoint setup should be (If you don't see the picture, try Firefox instead of Chrome)
+7. Enter the correct username, password, and url (include the http: and the port (usually 8000) in the settings tab of gcs2
+    
+    * This will usually be 'cuairsim' and 'aeolus' for the username/password, and "http://<some ip>:8000" for the url
+
+8. Hit "Toggle interop".  Look at the Mission 1 again, and confirm that a yellow box appears, meaning that the interop server is receiving data
+
+9. Hit "Toggle interop" again to turn off data sending until you're ready to fly
+
+10. When you're ready to fly, FIRST hit 'toggle interop' on the front end to start sending data to the interop server
+
+11. Then, go to "localhost:8000/admin/", then click "Takeoff or landing events"
+
+12. Hit "add a takeoff or landing event", then select the appropriate user and "Uas in air". Hit save.
+
+    * As of now the server is checking for data and recording data. Make sure the plane has data link as much as possible after this, or the avg telemetry HZ will be low
+
+13. Fly!
+
+14. Create a LANDING event for the appropriate user (same thing, but leave "Uas in air" unchecked)
+
+15. Hit "Toggle interop" to stop sending data to the interop server
+
+16. Go to the mission page and mouse over "System". Right click "Evaluate Teams (csv)" and save it as a file. Open that file in Excel or an equivalent to view the flight data (Don't try to view it as plaintext, it's doable but annoying)
+
+17. To create a database dump, ssh in as if you were about to load a mission config (see beginning), but instead use 'python manage.py dumpdata > mydatadump.json'
 
 MAVProxy/Ground Station use
 ****************************
