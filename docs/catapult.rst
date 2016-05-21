@@ -93,14 +93,13 @@ The raw values of the pressure and battery voltage readings are mapped by consta
 .. image:: images/catapult_control_fsm.png
 	:align: center
 	
-Key:
-init - Initialize: default state, displays warning to user and initializes sensors
-dSP - Pressure Set Display: Displays the text template to for pressure to the screen and then sets state to SP
-SP - Set Pressure: Displays potentiometer data to the screen and saves value to pressure variable. On press of the pressurize button, sets state to dPress.
-dPress - Pressurize Display: Displays template for pressure and battery diagnostics
-Press - Pressurize: Turns on pump, displays current pressure, goal pressure, and battery voltage. When current pressure = goal pressure, sets state to Primed.
-Primed - Primed: Turns off pump, displays pressure and battery stats and turns on launch LED. On pressurize button push, returns to dPress. On launch switch, sets state to Fire.
-Fire - Launch Catapult:  Opens servo, waits launch duration, closes servo. (fires catapult). Turns off launch switch LED and sets state to dSP
+- init - Initialize: default state, displays warning to user and initializes sensors
+- dSP - Pressure Set Display: Displays the text template to for pressure to the screen and then sets state to SP
+- SP - Set Pressure: Displays potentiometer data to the screen and saves value to pressure variable. On press of the pressurize button, sets state to dPress.
+- dPress - Pressurize Display: Displays template for pressure and battery diagnostics
+- Press - Pressurize: Turns on pump, displays current pressure, goal pressure, and battery voltage. When current pressure = goal pressure, sets state to Primed.
+- Primed - Primed: Turns off pump, displays pressure and battery stats and turns on launch LED. On pressurize button push, returns to dPress. On launch switch, sets state to Fire.
+- Fire - Launch Catapult:  Opens servo, waits launch duration, closes servo. (fires catapult). Turns off launch switch LED and sets state to dSP
 
 Software safety mechanisms
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
