@@ -147,7 +147,6 @@ How the front-end works
 
 Setup
 ^^^^^^
-
 To use:
 
   Once MAVProxy is running, go to http://localhost:8001/static/gcs2/index.html
