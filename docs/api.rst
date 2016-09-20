@@ -314,7 +314,7 @@ Software Status [/status/softstatus?time=TIME]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
-Use the GET argument "time" (/status/softstatus?time=TIME) to request a status at a specific time. If an exact value is not available, an interoplated value will be provided.
+Use the GET argument "time" (/status/softstatus?time=TIME) to request a status at a specific time. If an exact value is not available, an interpolated value will be provided.
 
 ::
 
@@ -448,7 +448,7 @@ Interop [/interop]
 ------------------
 
 
-Server Control [/v1/interop] [ground/api/v3/interop]
+Server Control [ground/api/v3/interop]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 * **POST**
 
@@ -466,34 +466,43 @@ Server Control [/v1/interop] [ground/api/v3/interop]
 
 * **GET**
 
-  Returns a JSON string containing the obstacle data and server info ::
+  Returns a JSON string containing all available server info
+
+  "Obstacles" : Data structure containg obstacles ({"moving_obstacles":[],"stationary_obstacles":[]})
+  "server_working" : Does the server believe it is functioning correctly (boolean)
+  "hz" : Rolling frequency of interop telemetry posts (integer)
+  "active" : Is the server active (boolean)
+  "wp_distances" : Closest point of approach to each waypoint (integer list) ::
 
     Response 200 (application/json)
-            {
-              obstacles : {
-                        stationary_obstacles : [{
-                              cylinder_height : 0.0, 
-                              cylinder_radius : 0.0, 
-                              latitude : 0.0, 
-                              longitude : 0.0
-                            }],
-                        moving_obstacles : [{
-                              altitude_msl: 0.0, 
-                              latitude : 0.0, 
-                              longitude : 0.0, 
-                              sphere_radius : 0.0
-                        }],
-              },
-              server_info : {
-                  message : "Hello World!", 
-                  message_timestamp : "2015-08-02T01:16:15.609002+00:00", 
-                  server_time : "2015-10-31T18:12:44.210815"
-              }
-              server_working : "True"
+            {  
+                "hz":2.54398596238825,
+                "active":true,
+                "obstacles":{  
+                "moving_obstacles":[{  
+                    "latitude":38.14408581672201,
+                    "sphere_radius":15.239999976835199,
+                    "altitude_msl":44.71080290617531,
+                    "longitude":-76.42660275767808,
+                    "time":1474393406.993048
+                }],
+                "stationary_obstacles":[{    
+                    "latitude":38.14792,
+                    "cylinder_height":60.959999907340794,
+                    "cylinder_radius":45.7199999305056,
+                    "longitude":-76.427995
+                }]},
+                "wp_distances":[  
+                    0.3071459946680728,
+                    854.5473948275072,
+                    1768.1771508733752,
+                    1394.3356031300505
+                ],
+                "server_working":true
             }
     
 
-Obstacles [/v1/interop/obstacles] [/ground/api/v3/interop/obstacles]
+Obstacles [/ground/api/v3/interop/obstacles]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns a JSON object string that contains a list of both moving and stationary objects. Checks to see if the server is active, and, if so, retrieves data from the MAVProxy.modules.server.data module, jsonifies it and returns it. ::
@@ -514,25 +523,39 @@ Returns a JSON object string that contains a list of both moving and stationary 
             }],
           }
 
+Hz [/ground/api/v3/interop/hz]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Server Info [/v1/interop/server_info] [/ground/api/v3/interop/server_info]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Returns a string containing the rolling average of the frequency that the interop server has been posting telemetry data ::
 
-Returns a JSON object string that contains the server message, message timestamp, and the server time at last retrieval. Checks to see if the server is active, and, if so, retrieves data from the MAVProxy.modules.server.data module, jsonifies it and returns it. ::
+  Response 200
+          10.15234
 
-  Response 200 (application/json)
-        {
-          message : "Hello World!", 
-          message_timestamp : "2015-08-02T01:16:15.609002+00:00", 
-          server_time : "2015-10-31T18:12:44.210815"
-        }
+Server Active [/ground/api/v3/interop/active]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Returns a boolean string telling whether the interop server is currently active or not ::
 
-Time [/v1/interop/time] [/ground/api/v3/interop/time]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  Response 200
+          true
 
-Returns a single string that represents the server time at last retrieval. Checks to see if the server is active, and, if so, retrieves data from the MAVProxy.modules.server.data module, then returns it as a raw string. ::
+Waypoints [/ground/api/v3/interop/wp]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-  Response 200 (application/json)
+Returns an integer list giving the closest point of approach to each waypoint ::
 
-        "2015-10-27T16:34:33.594240"
+  Response 200
+          [  
+            0.3071459946680728,
+            854.5473948275072,
+            1768.1771508733752,
+            1394.3356031300505
+          ]
+
+Status [/ground/api/v3/interop/status]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Returns a boolean string telling whether the interop server believes it is working as intended right now. Automatically true if the server is not active ::
+
+  Response 200
+          true
