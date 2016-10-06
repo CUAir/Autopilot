@@ -200,7 +200,7 @@ Interoperability
 Setup
 ^^^^^^^^
 
-`See the Judge's server interoperability documentation here. <http://auvsi-suas-competition-interoperability-system.readthedocs.io/en/latest/>`_
+`See the Judge's server interoperability documentation here. <http://auvsi-suas-competition-interoperability-system.readthedocs.io/en/latest/>`_ All of those setup instructions must be followed before the following instructions will work.
 
 Interoperability Use
 ^^^^^^^^^^^^^^^^^^^^^
@@ -210,21 +210,20 @@ General Test Flight Use
 
 1. Make sure to bring a computer with the interop server installed on it. If possible, have a template mission ready to got
 
-2. cd interop/setup and run vagrant up to start the server
+2. cd interop then run ``sudo ./server/run.sh``
     
-    * The server will run on localhost:8000
+    * The server will run on ``localhost:8000``
 
 3. To load the template mission:
     
-    a. vagrant ssh
-    b. cd interop/server
-    c. source venv/bin/activate
-    d. python manage.py flush (This will flush the database - do not do this if you want to keep the current database - see below for storing a dump)
-    e. python manage.py loaddata template_mission.json
+    a. ``sudo docker exec -it interop-server bash``
+    b. ``python manage.py flush`` (This will flush the database - do not do this if you want to keep the current database - see below for storing a dump)
+    c. ``python manage.py loaddata`` template_mission.json
+    d. (Type `exit` to leave the docker bash shell)
 
 4. Now the mission must be set up on the interop server to match the mission in Ardupilot
 
-    a. Go to localhost:8000/admin/
+    a. Go to ``localhost:8000/admin/``
     b. Click "Mission configs"
     c. Click the first mission
     d. In "Mission Waypoints", hit the + button at the side to add a new waypoint
@@ -235,7 +234,7 @@ General Test Flight Use
     i. Continue starting from set e. until all waypoints are entered
 
 5. Save the mission config
-6. Go to localhost:8000 and hit "Mission 1". You should see a picture of your setup, where blue spheres are the waypoints and the rest is not relevant to navigation. Confirm that the blue spheres look like what your waypoint setup should be (If you don't see the picture, try Firefox instead of Chrome)
+6. Go to ``localhost:8000`` and hit "Mission 1". You should see a picture of your setup, where blue spheres are the waypoints and the rest is not relevant to navigation. Confirm that the blue spheres look like what your waypoint setup should be (If you don't see the picture, try Firefox instead of Chrome)
 7. Enter the correct username, password, and url (include the http: and the port (usually 8000) in the settings tab of gcs2
     
     * This will usually be 'cuairsim' and 'aeolus' for the username/password, and "http://<some ip>:8000" for the url
@@ -246,7 +245,7 @@ General Test Flight Use
 
 10. When you're ready to fly, FIRST hit 'toggle interop' on the front end to start sending data to the interop server
 
-11. Then, go to "localhost:8000/admin/", then click "Takeoff or landing events"
+11. Then, go to ``localhost:8000/admin/``, then click "Takeoff or landing events"
 
 12. Hit "add a takeoff or landing event", then select the appropriate user and "Uas in air". Hit save.
 
@@ -260,7 +259,7 @@ General Test Flight Use
 
 16. Go to the mission page and mouse over "System". Right click "Evaluate Teams (csv)" and save it as a file. Open that file in Excel or an equivalent to view the flight data (Don't try to view it as plaintext, it's doable but annoying)
 
-17. To create a database dump, ssh in as if you were about to load a mission config (see beginning), but instead use 'python manage.py dumpdata > mydatadump.json'
+17. To create a database dump, open the bash shell as if you were about to load a mission config (see beginning), but instead use ``python manage.py dumpdata > mydatadump.json``
 
 MAVProxy/Ground Station use
 ****************************
@@ -293,7 +292,7 @@ The backend is designed with 3 main components - the API, which provides a REST 
 API
 ##############################################
 
-**Location:** modules/server/views/interop_api.py
+**Location:** ``modules/server/views/interop_api.py``
 
 The program creates a flask server to serve data to the front end and other subteams. It retrieves data related to interoperability from the MAVProxy.modules.server.data file. It also contains an endpoint to start and stop the backend.
 
@@ -302,7 +301,7 @@ When multiple endpoints are listed, both are valid - the second is the newest is
 **Endpoints**
 
 
-  * **Server Control** (/v1/interop) (/ground/api/v3/interop)
+  * **Server Control** ``/ground/api/v3/interop``
       * **POST**
 
         Sending a POST request to this endpoint starts the interop backend. To do this, it creates a new instance of the backend object, then starts the backend on a separate thread and sets the server to active. It will fail if the server is either already started, or if it has been less that a half second since the server was either started or stopped last. Requires a valid JSON containing the server data (username, password, and url fields). Requires a valid auth token to 
@@ -318,24 +317,14 @@ When multiple endpoints are listed, both are valid - the second is the newest is
         Returns a JSON string containing the obstacle data and server info
     
 
-  * **Obstacles** (/v1/interop/obstacles) (/ground/api/v3/interop/obstacles)
+  * **Obstacles** ``/ground/api/v3/interop/obstacles``
 
     Returns a JSON object string that contains a list of both moving and stationary objects. Checks to see if the server is active, and, if so, retrieves data from the MAVProxy.modules.server.data module, jsonifies it and returns it
-
-
-  * **Server Info** (/v1/interop/server_info) (/ground/api/v3/interop/server_info)
-
-    Returns a JSON object string that contains the server message, message timestamp, and the server time at last retrieval. Checks to see if the server is active, and, if so, retrieves data from the MAVProxy.modules.server.data module, jsonifies it and returns it.
-
-
-  * **Time** (/v1/interop/time) (/ground/api/v3/interop/time)
-
-    Returns a single string that represents the server time at last retrieval. Checks to see if the server is active, and, if so, retrieves data from the MAVProxy.modules.server.dat'a module, then returns it as a raw string
 
 MAVProxy Backend
 ###################################################
 
-**Location:** modules/server/interop.py
+**Location:** ``modules/server/interop.py``
 
 This program is the script that does the work of  sending telemetry data to the judge’s interoperability server and retrieving data about the server and obstacles to store for other MAVProxy modules.
 
