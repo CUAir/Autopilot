@@ -71,7 +71,7 @@ Mac:
 
 
 Setup with SITL
----------------
+-----------------
 
 The Software in the Loop is a simulation of ArduPilot with FlightGear. This can be used as a virtual environment to test changes without needing a physical plane.
 
@@ -114,7 +114,7 @@ Use:
 Autopilot Server on the NUC
 ---------------------------
 
-The autopilot sever on the NUK provides an API for distributed to access autopilot data.
+The autopilot server on the NUC provides an API for distributed to access autopilot data.
 
 ::
 
@@ -140,6 +140,25 @@ To start the server, run ::
   python mavproxy.py --master=/dev/ttyUSB0
 
 **NOTE:** The serial port is not bound to ttyUSB0. Sometimes you will have to try ttyUSB1 or ttyUSB2
+
+WiFi Ground Station Link
+-------------------------
+
+The OBC can also be configured to forward its packets to the ground station on the ground. This allows WiFi to act as a redundant (and superior) link just as the radios do. When the WiFi link is established, packets can be sent and received often much faster than with the radios alone, and of course this acts as a secondary link in case either one fails.
+
+MAVProxy will consider the link passed on the command line as the "master" link, but both will send and receive packets at the same time. You will be alerted if either link goes down. Type "link" into the MAVProxy terminal to view the current links and there status (number of packets sent, packet loss %, etc)
+
+To use, start up the ground station on the NUC with the following command:
+
+``python mavproxy.py --master=/dev/ttyUSB0 --out=udp:GROUND_STATION_IP:14551``
+
+Where GROUND_STATION_IP is the IP of the computer that will be running MAVProxy from the ground.
+
+Then start MAVProxy normally on the ground, and run the command:
+
+``link add 0.0.0.0:14551``
+
+This will connect to the NUC if it's available.
 
 
 How the front-end works
@@ -375,23 +394,6 @@ This program is the script that does the work of  sending telemetry data to the 
     Converts a float from a value in feet to a value in meters
 
 
-Test Suite
-###############
-
-**Location:** /modules/server/interop_test_cases.py
-
-This is the test suite that is used for testing the interop backend. It simulates the judge’s interoperability server on the machine, serves up simulated server data and obstacles, and accepts telemetry requests. It then performs a number of tests to ensure that the data was received and store properly, and the the telemetry data received is formatted correctly and being sent quickly enough.
-
-**Running the test suite**
-
-1. In the backend (/modules/server/interop.py), set RUN_TESTS to True
-2. In the API (modules/server/views/interop_api.py), set RUN_TESTS to True
-3. Run MAVProxy normally, then from the front end hit “toggle interop”
-4. Review console printout (should take about 100 seconds to run to completion)
-
-  * Upon completion, type ‘reset’ to fix the console.
-
-
 
 Competition rules
 **********************
@@ -415,7 +417,7 @@ Below are the rules that govern interoperability for the competition. The intero
 
 
 Sense, Detect, and Avoid (SDA)
------------------------------
+--------------------------------
 
 Overview 
 ^^^^^^^^^
