@@ -62,6 +62,22 @@ individual bit of data (below)::
                 "vz" : 0.0
             },
             
+            "signal" : {
+                "time" : 0.0,
+                "signal_strength": 0
+            },
+            
+            "flight_time" : {
+                "time" : 0.0,
+                "time_start" : 0.0,
+                "is_flying" : "False"
+            },
+            
+            "gps_status" : {
+                "time" : 0.0,
+                "satellite_number": 0
+            },
+            
             "throttle" : 0,
             
             "waypoints" : [{
@@ -221,7 +237,50 @@ Returns vectors vx, vy, vz representing the wind velocity vector as floats
             "vy" : 0.0,
             "vz" : 0.0
         }    
+
+Signal [/status/signal]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Returns the time and the signal strength as an integer of the radio connection
+
+::
+
+ + Response 200 (application/json)
+        {
+            "time" : 0.0,
+            "signal_strength": 0
+        }
         
+Flight Time [/status/flight_time]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Returns the information about the flight time conntaing:
+
+* time_start [float]
+* if_flying [boolean]
+
+::
+
+ + Response 200 (application/json)
+        {
+            "time" : 0.0,
+            "time_start" : 0.0,
+            "is_flying" : "False"
+        }
+        
+GPS Status [/status/gps_status]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Returns the gps connection represented by an integer number of satellites visable
+
+::
+
+ + Response 200 (application/json)
+        {
+            "time" : 0.0,
+            "satellite_number": 0
+        }
+
 Throttle [/status/throttle]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
