@@ -13,8 +13,24 @@ We use a terminal-based ground station software called `MAVProxy <http://droneco
 
 Probably the biggest custom feature is the browser-based front end to MAVProxy for easy and intuitive control of the plane. MAVProxy now provides a REST API that the front end queries to receive data and control the plane. This front end provides a GUI to perform the majority of tasks that MAVProxy can do, and see the data from the plane in a user-friendly layout.
 
-Installation
--------------
+Installation for Development
+----------------------------
+```
+git clone https://github.com/CUAir/MAVProxy.git
+cd MAVProxy
+git submodule update --init --recursive
+vagrant up         # cool
+vagrant halt       # old version of guest additions
+vagrant up         # fine      
+vagrant provision  # should be good now
+vagrant provision  # sorry
+vagrant ssh
+cd MAVProxy
+./run.sh           # hey it worked!
+```
+
+Installation for Test Flight
+----------------------------
 1. git clone https://github.com/CUAir/MAVProxy.git
 2. On Linux:
 
