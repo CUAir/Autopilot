@@ -16,6 +16,7 @@ Contents:
    ardupilot
    catapult
    testflight
+   autopilot_configuration
 
 Welcome
 =========
