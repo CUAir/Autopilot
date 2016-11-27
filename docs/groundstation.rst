@@ -15,19 +15,20 @@ Probably the biggest custom feature is the browser-based front end to MAVProxy f
 
 Installation for Development
 ----------------------------
-```
-git clone https://github.com/CUAir/MAVProxy.git
-cd MAVProxy
-git submodule update --init --recursive
-vagrant up         # cool
-vagrant halt       # old version of guest additions
-vagrant up         # fine      
-vagrant provision  # should be good now
-vagrant provision  # sorry
-vagrant ssh
-cd MAVProxy
-./run.sh           # hey it worked!
-```
+::
+
+   git clone https://github.com/CUAir/MAVProxy.git
+   cd MAVProxy
+   git submodule update --init --recursive
+   vagrant up         # cool
+   vagrant halt       # old version of guest additions
+   vagrant up         # fine      
+   vagrant provision  # should be good now
+   vagrant provision  # sorry
+   vagrant ssh
+   cd MAVProxy
+   ./run.sh           # hey it worked!
+
 
 Installation for Test Flight
 ----------------------------
