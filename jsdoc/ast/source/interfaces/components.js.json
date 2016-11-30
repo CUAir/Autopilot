@@ -1,0 +1,675 @@
+{
+  "type": "Program",
+  "body": [
+    {
+      "type": "ImportDeclaration",
+      "specifiers": [],
+      "source": {
+        "type": "Literal",
+        "value": "js/dispatcher/GCSDispatcher",
+        "raw": "'js/dispatcher/GCSDispatcher'",
+        "range": [
+          37,
+          66
+        ],
+        "loc": {
+          "start": {
+            "line": 3,
+            "column": 7
+          },
+          "end": {
+            "line": 3,
+            "column": 36
+          }
+        }
+      },
+      "range": [
+        30,
+        67
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 3,
+          "column": 37
+        }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": " eslint-enable no-undef ",
+          "range": [
+            1,
+            29
+          ],
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 0
+            },
+            "end": {
+              "line": 2,
+              "column": 28
+            }
+          }
+        }
+      ],
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": " eslint-disable no-undef ",
+          "range": [
+            69,
+            98
+          ],
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 0
+            },
+            "end": {
+              "line": 5,
+              "column": 29
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} FullWidthButtonType\n * @property {string} color\n * @property {string} type\n * @property {function} [onClick]\n * @property {string} [key]\n * @property {string} text\n * @property {string} [id]\n * @property {Object} [style]\n ",
+          "range": [
+            99,
+            348
+          ],
+          "loc": {
+            "start": {
+              "line": 6,
+              "column": 0
+            },
+            "end": {
+              "line": 15,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} FullWidthTextInputType\n * @property {string} name\n * @property {string} type\n * @property {string} [id]\n * @property {string} [key]\n * @property {function} [onChange]\n * @property {string} [value]\n ",
+          "range": [
+            350,
+            575
+          ],
+          "loc": {
+            "start": {
+              "line": 17,
+              "column": 0
+            },
+            "end": {
+              "line": 25,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {(FullWidthButtonType|FullWidthTextInputType)} FullWidthElementType\n ",
+          "range": [
+            577,
+            664
+          ],
+          "loc": {
+            "start": {
+              "line": 27,
+              "column": 0
+            },
+            "end": {
+              "line": 29,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} DropdownOptionType\n * @property {function} [onClick]\n * @property {string} name\n * @property {string} [key]\n ",
+          "range": [
+            667,
+            803
+          ],
+          "loc": {
+            "start": {
+              "line": 32,
+              "column": 0
+            },
+            "end": {
+              "line": 37,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} SettingsButtonType\n * @property {function} [onClick]\n * @property {string} name\n * @property {string} [key]\n * @property {string} [id]\n ",
+          "range": [
+            806,
+            969
+          ],
+          "loc": {
+            "start": {
+              "line": 40,
+              "column": 0
+            },
+            "end": {
+              "line": 46,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Line",
+          "value": " SettingsCriticalButtonType, SettingsFileInputType",
+          "range": [
+            970,
+            1022
+          ],
+          "loc": {
+            "start": {
+              "line": 47,
+              "column": 0
+            },
+            "end": {
+              "line": 47,
+              "column": 52
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} SettingsCheckboxType\n * @property {function} [onChange]\n * @property {string} name\n * @property {string} [key]\n * @property {string} [id]\n * @property {boolean} value\n ",
+          "range": [
+            1023,
+            1218
+          ],
+          "loc": {
+            "start": {
+              "line": 48,
+              "column": 0
+            },
+            "end": {
+              "line": 55,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} SettingsDropdownType\n * @property {DropDownOptionType[]} options\n * @property {string} name\n * @property {string} [key]\n * @property {string} [id]\n * @property {string} value\n ",
+          "range": [
+            1220,
+            1423
+          ],
+          "loc": {
+            "start": {
+              "line": 57,
+              "column": 0
+            },
+            "end": {
+              "line": 64,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} SettingsTextType\n * @property {function} [onChange]\n * @property {string} name\n * @property {string} [key]\n * @property {string} [id]\n * @property {string} value\n ",
+          "range": [
+            1425,
+            1615
+          ],
+          "loc": {
+            "start": {
+              "line": 66,
+              "column": 0
+            },
+            "end": {
+              "line": 73,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {(SettingsButtonType|SettingsCheckboxType|SettingsDropdownType|SettingsTextType)} SettingsItemType\n ",
+          "range": [
+            1617,
+            1735
+          ],
+          "loc": {
+            "start": {
+              "line": 75,
+              "column": 0
+            },
+            "end": {
+              "line": 77,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} DisplayInfoType\n * @property {string} name\n * @property {NValue} value\n * @property {string} unit\n * @property {string} [key]\n ",
+          "range": [
+            1738,
+            1892
+          ],
+          "loc": {
+            "start": {
+              "line": 80,
+              "column": 0
+            },
+            "end": {
+              "line": 86,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} NavbarStatusType\n * @property {string} name\n * @property {boolean} status\n * @property {string} [key]\n ",
+          "range": [
+            1895,
+            2025
+          ],
+          "loc": {
+            "start": {
+              "line": 89,
+              "column": 0
+            },
+            "end": {
+              "line": 94,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} FlightNotesType\n * @property {string} value\n * @property {function} onChange\n ",
+          "range": [
+            2028,
+            2133
+          ],
+          "loc": {
+            "start": {
+              "line": 97,
+              "column": 0
+            },
+            "end": {
+              "line": 101,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} ModeOptionType\n * @property {string} name\n * @property {string} [key]\n * @property {function} onClick \n ",
+          "range": [
+            2136,
+            2267
+          ],
+          "loc": {
+            "start": {
+              "line": 104,
+              "column": 0
+            },
+            "end": {
+              "line": 109,
+              "column": 3
+            }
+          }
+        },
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} PlaneModeType\n * @property {string} name\n * @property {ModeOptionType[]} modes\n * @proprety {string} value\n * @property {string} [key]\n * @property {string} [id]\n ",
+          "range": [
+            2270,
+            2460
+          ],
+          "loc": {
+            "start": {
+              "line": 112,
+              "column": 0
+            },
+            "end": {
+              "line": 119,
+              "column": 3
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "sourceType": "module",
+  "range": [
+    30,
+    67
+  ],
+  "loc": {
+    "start": {
+      "line": 3,
+      "column": 0
+    },
+    "end": {
+      "line": 3,
+      "column": 37
+    }
+  },
+  "comments": [
+    {
+      "type": "Block",
+      "value": " eslint-enable no-undef ",
+      "range": [
+        1,
+        29
+      ],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 0
+        },
+        "end": {
+          "line": 2,
+          "column": 28
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": " eslint-disable no-undef ",
+      "range": [
+        69,
+        98
+      ],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 29
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * @typedef {Object} FullWidthButtonType\n * @property {string} color\n * @property {string} type\n * @property {function} [onClick]\n * @property {string} [key]\n * @property {string} text\n * @property {string} [id]\n * @property {Object} [style]\n ",
+      "range": [
+        99,
+        348
+      ],
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 0
+        },
+        "end": {
+          "line": 15,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * @typedef {Object} FullWidthTextInputType\n * @property {string} name\n * @property {string} type\n * @property {string} [id]\n * @property {string} [key]\n * @property {function} [onChange]\n * @property {string} [value]\n ",
+      "range": [
+        350,
+        575
+      ],
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 0
+        },
+        "end": {
+          "line": 25,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * @typedef {(FullWidthButtonType|FullWidthTextInputType)} FullWidthElementType\n ",
+      "range": [
+        577,
+        664
+      ],
+      "loc": {
+        "start": {
+          "line": 27,
+          "column": 0
+        },
+        "end": {
+          "line": 29,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * @typedef {Object} DropdownOptionType\n * @property {function} [onClick]\n * @property {string} name\n * @property {string} [key]\n ",
+      "range": [
+        667,
+        803
+      ],
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 0
+        },
+        "end": {
+          "line": 37,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * @typedef {Object} SettingsButtonType\n * @property {function} [onClick]\n * @property {string} name\n * @property {string} [key]\n * @property {string} [id]\n ",
+      "range": [
+        806,
+        969
+      ],
+      "loc": {
+        "start": {
+          "line": 40,
+          "column": 0
+        },
+        "end": {
+          "line": 46,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Line",
+      "value": " SettingsCriticalButtonType, SettingsFileInputType",
+      "range": [
+        970,
+        1022
+      ],
+      "loc": {
+        "start": {
+          "line": 47,
+          "column": 0
+        },
+        "end": {
+          "line": 47,
+          "column": 52
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * @typedef {Object} SettingsCheckboxType\n * @property {function} [onChange]\n * @property {string} name\n * @property {string} [key]\n * @property {string} [id]\n * @property {boolean} value\n ",
+      "range": [
+        1023,
+        1218
+      ],
+      "loc": {
+        "start": {
+          "line": 48,
+          "column": 0
+        },
+        "end": {
+          "line": 55,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * @typedef {Object} SettingsDropdownType\n * @property {DropDownOptionType[]} options\n * @property {string} name\n * @property {string} [key]\n * @property {string} [id]\n * @property {string} value\n ",
+      "range": [
+        1220,
+        1423
+      ],
+      "loc": {
+        "start": {
+          "line": 57,
+          "column": 0
+        },
+        "end": {
+          "line": 64,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * @typedef {Object} SettingsTextType\n * @property {function} [onChange]\n * @property {string} name\n * @property {string} [key]\n * @property {string} [id]\n * @property {string} value\n ",
+      "range": [
+        1425,
+        1615
+      ],
+      "loc": {
+        "start": {
+          "line": 66,
+          "column": 0
+        },
+        "end": {
+          "line": 73,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * @typedef {(SettingsButtonType|SettingsCheckboxType|SettingsDropdownType|SettingsTextType)} SettingsItemType\n ",
+      "range": [
+        1617,
+        1735
+      ],
+      "loc": {
+        "start": {
+          "line": 75,
+          "column": 0
+        },
+        "end": {
+          "line": 77,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * @typedef {Object} DisplayInfoType\n * @property {string} name\n * @property {NValue} value\n * @property {string} unit\n * @property {string} [key]\n ",
+      "range": [
+        1738,
+        1892
+      ],
+      "loc": {
+        "start": {
+          "line": 80,
+          "column": 0
+        },
+        "end": {
+          "line": 86,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * @typedef {Object} NavbarStatusType\n * @property {string} name\n * @property {boolean} status\n * @property {string} [key]\n ",
+      "range": [
+        1895,
+        2025
+      ],
+      "loc": {
+        "start": {
+          "line": 89,
+          "column": 0
+        },
+        "end": {
+          "line": 94,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * @typedef {Object} FlightNotesType\n * @property {string} value\n * @property {function} onChange\n ",
+      "range": [
+        2028,
+        2133
+      ],
+      "loc": {
+        "start": {
+          "line": 97,
+          "column": 0
+        },
+        "end": {
+          "line": 101,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * @typedef {Object} ModeOptionType\n * @property {string} name\n * @property {string} [key]\n * @property {function} onClick \n ",
+      "range": [
+        2136,
+        2267
+      ],
+      "loc": {
+        "start": {
+          "line": 104,
+          "column": 0
+        },
+        "end": {
+          "line": 109,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "*\n * @typedef {Object} PlaneModeType\n * @property {string} name\n * @property {ModeOptionType[]} modes\n * @proprety {string} value\n * @property {string} [key]\n * @property {string} [id]\n ",
+      "range": [
+        2270,
+        2460
+      ],
+      "loc": {
+        "start": {
+          "line": 112,
+          "column": 0
+        },
+        "end": {
+          "line": 119,
+          "column": 3
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">js/utils/MapUtils.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/CUAir/MAVProxy" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">actions</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addCalibrationLine">addCalibrationLine</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-clearCalibrationLines">clearCalibrationLines</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveFencePoints">receiveFencePoints</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveFencesEnabled">receiveFencesEnabled</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveInteropActive">receiveInteropActive</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveInteropAlive">receiveInteropAlive</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveObstacles">receiveObstacles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveOffAxis">receiveOffAxis</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-editParameter">editParameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-loadParametersFromFile">loadParametersFromFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveMaxParamCount">receiveMaxParamCount</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveModalOpen">receiveModalOpen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveMultipleParameters">receiveMultipleParameters</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveNote">receiveNote</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveSearchField">receiveSearchField</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveSingleParameter">receiveSingleParameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-saveParamModal">saveParamModal</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-selectParameter">selectParameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveSdaEnabled">receiveSdaEnabled</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-changeHistoricalSlider">changeHistoricalSlider</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveFlightNotes">receiveFlightNotes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveLocation">receiveLocation</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveLocations">receiveLocations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-unitSwitch">unitSwitch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-disconnect">disconnect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveAirspeed">receiveAirspeed</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveArmed">receiveArmed</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveAttitude">receiveAttitude</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveBattery">receiveBattery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveClimbRate">receiveClimbRate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveCurrentMode">receiveCurrentMode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveGPS">receiveGPS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveGPSLink">receiveGPSLink</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveModeSwitch">receiveModeSwitch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receivePlaneLink">receivePlaneLink</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receivePowerboard">receivePowerboard</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveSafetySwitch">receiveSafetySwitch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveThrottle">receiveThrottle</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveWind">receiveWind</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-reconnect">reconnect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-lockValue">lockValue</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-nextTuningFlight">nextTuningFlight</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-prevTuningFlight">prevTuningFlight</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-resetTuning">resetTuning</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updateValue">updateValue</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addWaypoint">addWaypoint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cellChange">cellChange</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-confirmSelect">confirmSelect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-confirmSelectMap">confirmSelectMap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deleteWaypoint">deleteWaypoint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-loadWaypointsFromFile">loadWaypointsFromFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveCurrent">receiveCurrent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveWaypoints">receiveWaypoints</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendWaypoint">sendWaypoint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setCurrent">setCurrent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setSelected">setSelected</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updateCellLatLon">updateCellLatLon</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updateItem">updateItem</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">constants</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CalibrationTypes">CalibrationTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FenceTypes">FenceTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-InteropTypes">InteropTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MapTypes">MapTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ParametersTypes">ParametersTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SdaTypes">SdaTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SettingsTypes">SettingsTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-StatusTypes">StatusTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TuningTypes">TuningTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-WaypointTypes">WaypointTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BUTTON">BUTTON</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CHECKBOX">CHECKBOX</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CRITICAL_BUTTON">CRITICAL_BUTTON</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATETIME">DATETIME</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DROPDOWN">DROPDOWN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FILE_INPUT">FILE_INPUT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEXT">TEXT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEXT_BUTTON">TEXT_BUTTON</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEXT_INPUT">TEXT_INPUT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEXT_LOCK">TEXT_LOCK</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEROP_RECEIVE_FREQUENCY">INTEROP_RECEIVE_FREQUENCY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PLANE_RECEIVE_FREQUENCY">PLANE_RECEIVE_FREQUENCY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-api">api</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-site">site</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">interfaces</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-assertJson">assertJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-airspeedType">airspeedType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-armedType">armedType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-attitudeType">attitudeType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-batteryType">batteryType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-climbRateType">climbRateType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-currentWaypointType">currentWaypointType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-fenceType">fenceType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-gpsType">gpsType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-linkType">linkType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-modeType">modeType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-powerboardType">powerboardType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-safetySwitchType">safetySwitchType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sdaType">sdaType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-throttleType">throttleType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-waypointsType">waypointsType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-windType">windType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-DisplayInfoType">DisplayInfoType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-DropdownOptionType">DropdownOptionType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FlightNotesType">FlightNotesType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FullWidthButtonType">FullWidthButtonType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FullWidthElementType">FullWidthElementType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FullWidthTextInputType">FullWidthTextInputType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ModeOptionType">ModeOptionType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-NavbarStatusType">NavbarStatusType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PlaneModeType">PlaneModeType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SettingsButtonType">SettingsButtonType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SettingsCheckboxType">SettingsCheckboxType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SettingsDropdownType">SettingsDropdownType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SettingsItemType">SettingsItemType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SettingsTextType">SettingsTextType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Airspeed">Airspeed</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Attitude">Attitude</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Battery">Battery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Cylinder">Cylinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FullParameter">FullParameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-GPS">GPS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-NValue">NValue</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Obstacle">Obstacle</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ObstacleList">ObstacleList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Parameter">Parameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Powerboard">Powerboard</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Sphere">Sphere</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Waypoint">Waypoint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Wind">Wind</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">stores</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/stores/CalibrationStore.js~CalibrationStore.html">CalibrationStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/stores/FenceStore.js~FenceStore.html">FenceStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/stores/InteropStore.js~InteropStore.html">InteropStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/stores/ParametersStore.js~ParametersStore.html">ParametersStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/stores/SdaStore.js~SdaStore.html">SdaStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/stores/SettingsStore.js~SettingsStore.html">SettingsStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/stores/StatusStore.js~StatusStore.html">StatusStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/stores/Store.js~Store.html">Store</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/stores/TuningStore.js~TuningStore.html">TuningStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-calibrationStoreInstance">calibrationStoreInstance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-fenceStoreInstance">fenceStoreInstance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-interopStoreInstance">interopStoreInstance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-parametersStoreInstance">parametersStoreInstance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sdaStoreInstance">sdaStoreInstance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-settingsStoreInstance">settingsStoreInstance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-statusStoreInstance">statusStoreInstance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-tuningStoreInstance">tuningStoreInstance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-WaypointStore">WaypointStore</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">utils</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-clickSection">clickSection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-colorToButton">colorToButton</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-dateToString">dateToString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-decround">decround</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-enabledToSuccess">enabledToSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ftToM">ftToM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mToFt">mToFt</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-m_sToKnots">m_sToKnots</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pythagorean">pythagorean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-valueClose">valueClose</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-valueToColor">valueToColor</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-valueToColorName">valueToColorName</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-valueToPercent">valueToPercent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-confirmObj">confirmObj</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getConfigValue">getConfigValue</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setConfigValue">setConfigValue</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-tokenObj">tokenObj</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-saveFenceToFile">saveFenceToFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-saveParamsToFile">saveParamsToFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-saveWaypointsToFile">saveWaypointsToFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-saveWaypointsToJson">saveWaypointsToJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-loadFenceFromFile">loadFenceFromFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-loadParamsFromFile">loadParamsFromFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-loadWaypointsFromFile">loadWaypointsFromFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-changeLocation">changeLocation</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initializeMap">initializeMap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mapResize">mapResize</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-redrawFence">redrawFence</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-redrawObstacles">redrawObstacles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-redrawOffAxis">redrawOffAxis</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-redrawPlane">redrawPlane</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-redrawWaypoints">redrawWaypoints</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-resetPlanePath">resetPlanePath</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updateLocations">updateLocations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getHistoricalData">getHistoricalData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getLocations">getLocations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-haltReceiveLoop">haltReceiveLoop</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initializeInterop">initializeInterop</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initializeParameters">initializeParameters</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-resumeReceiveLoop">resumeReceiveLoop</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-startInteropReceive">startInteropReceive</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-startPlaneReceive">startPlaneReceive</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-stopInteropReceive">stopInteropReceive</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-stopPlaneReceive">stopPlaneReceive</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addLocation">addLocation</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calibrationAStart">calibrationAStart</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calibrationContinue">calibrationContinue</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calibrationGStart">calibrationGStart</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calibrationPStart">calibrationPStart</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calibrationRCStart">calibrationRCStart</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calibrationRCStop">calibrationRCStop</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deleteAllWaypoints">deleteAllWaypoints</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deleteWP">deleteWP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-reboot">reboot</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendAllParameters">sendAllParameters</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendChangeMode">sendChangeMode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendGeofencePoints">sendGeofencePoints</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendModeSwitch">sendModeSwitch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendParameter">sendParameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendRTL">sendRTL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendWaypoint">sendWaypoint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendWaypointList">sendWaypointList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setCurrentWP">setCurrentWP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toggleArm">toggleArm</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toggleInterop">toggleInterop</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toggleSda">toggleSda</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updateWP">updateWP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-configNames">configNames</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-params">params</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/utils/MapUtils.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import L from &apos;leaflet&apos;;
+import Leaflet from &apos;leaflet&apos;;
+import swal from &apos;sweetalert&apos;;
+import &apos;leaflet-easybutton&apos;;
+import &apos;../../node_modules/leaflet-plugins/layer/Marker.Rotate&apos;;
+import _ from &apos;lodash&apos;;
+
+import * as WaypointActionCreator from &apos;js/actions/WaypointActionCreator&apos;;
+import geolib from &apos;geolib&apos;;
+import { mToFt, decround } from &apos;js/utils/ComponentUtils&apos;;
+
+var map;
+let dragging = false;
+let rulerActive = false;
+let rulerStart = null;
+function setMap() {
+  map = Leaflet.map(&apos;map&apos;).setZoom(17);
+}
+
+let planeMarker;
+let offAxisMarker; 
+function setMarkers() {
+  planeMarker = L.marker([0,0], {icon: planeIconW}).addTo(map);
+  offAxisMarker = L.marker([0,0], {icon: offAxisIcon}).addTo(map);
+}
+
+var waypointPath;
+var planePath;
+function setPaths() {
+  waypointPath = Leaflet.polyline([], {color: &apos;purple&apos;}).addTo(map);
+  planePath = Leaflet.polyline([], {color: &apos;orange&apos;, dashArray: &apos;5,15&apos;}).addTo(map);
+}
+
+///////////////Plane Icons//////////////////
+
+var offAxisIconHidden = L.icon({
+  iconUrl: &apos;./img/markers/offAxisMarker.png&apos;,
+  iconSize: [1, 1]
+});
+
+var planeIconHidden = L.icon({
+  iconUrl: &apos;./img/planeGraphics/planeN.png&apos;,
+  iconSize: [1, 1]
+});
+
+var planeIconN = L.icon({
+  iconUrl: &apos;./img/planeGraphics/planeN.png&apos;,
+  iconSize: [38, 45]
+});
+
+var planeIconNNE = L.icon({
+  iconUrl: &apos;./img/planeGraphics/planeNNE.png&apos;,
+  iconSize: [38, 45]
+});
+
+var planeIconNE = L.icon({
+  iconUrl: &apos;./img/planeGraphics/planeNE.png&apos;,
+  iconSize: [38, 45]
+});
+
+var planeIconNEE = L.icon({
+  iconUrl: &apos;./img/planeGraphics/planeNEE.png&apos;,
+  iconSize: [38, 45]
+});
+
+var planeIconE = L.icon({
+  iconUrl: &apos;./img/planeGraphics/planeE.png&apos;,
+  iconSize: [38, 45]
+});
+
+var planeIconSEE = L.icon({
+  iconUrl: &apos;./img/planeGraphics/planeSEE.png&apos;,
+  iconSize: [38, 45]
+});
+
+var planeIconSE = L.icon({
+  iconUrl: &apos;./img/planeGraphics/planeSE.png&apos;,
+  iconSize: [38, 45]
+});
+
+var planeIconSSE = L.icon({
+  iconUrl: &apos;./img/planeGraphics/planeSSE.png&apos;,
+  iconSize: [38, 45]
+});
+
+var planeIconS = L.icon({
+  iconUrl: &apos;./img/planeGraphics/planeS.png&apos;,
+  iconSize: [38, 45]
+});
+
+var planeIconSSW = L.icon({
+  iconUrl: &apos;./img/planeGraphics/planeSSW.png&apos;,
+  iconSize: [38, 45]
+});
+
+var planeIconSW = L.icon({
+  iconUrl: &apos;./img/planeGraphics/planeSW.png&apos;,
+  iconSize: [38, 45]
+});
+
+var planeIconSWW = L.icon({
+  iconUrl: &apos;./img/planeGraphics/planeSWW.png&apos;,
+  iconSize: [38, 45]
+});
+
+var planeIconW = L.icon({
+  iconUrl: &apos;./img/planeGraphics/planeW.png&apos;,
+  iconSize: [38, 45]
+});
+
+var planeIconNWW = L.icon({
+  iconUrl: &apos;./img/planeGraphics/planeNWW.png&apos;,
+  iconSize: [38, 45]
+});
+
+var planeIconNW = L.icon({
+  iconUrl: &apos;./img/planeGraphics/planeNW.png&apos;,
+  iconSize: [38, 45]
+});
+
+var planeIconNNW = L.icon({
+  iconUrl: &apos;./img/planeGraphics/planeNNW.png&apos;,
+  iconSize: [38, 45]
+});
+
+let offAxisIcon = L.icon({
+  iconUrl: &apos;./img/markers/offAxisMarker.png&apos;,
+  iconSize: [38, 38]
+});
+
+function headingToIcon(heading) {
+  const headingNormalized = heading/100;
+  let headingIcon;
+  if (headingNormalized &gt;= 348.75 || headingNormalized &lt; 11.25) {
+    headingIcon = planeIconN;
+  } else if (headingNormalized &lt; 33.75) {
+    headingIcon = planeIconNNE;
+  } else if (headingNormalized &lt; 56.25) {
+    headingIcon = planeIconNE;
+  } else if (headingNormalized &lt; 78.75) {
+    headingIcon = planeIconNEE;
+  } else if (headingNormalized &lt; 101.25) {
+    headingIcon = planeIconE;
+  } else if (headingNormalized &lt; 123.75) {
+    headingIcon = planeIconSEE;
+  } else if (headingNormalized &lt; 146.25) {
+    headingIcon = planeIconSE;
+  } else if (headingNormalized &lt; 168.75) {
+    headingIcon = planeIconSSE;
+  } else if (headingNormalized &lt; 191.25) {
+    headingIcon = planeIconS;
+  } else if (headingNormalized &lt; 213.75) {
+    headingIcon = planeIconSSW;
+  } else if (headingNormalized &lt; 236.25) {
+    headingIcon = planeIconSW;
+  } else if (headingNormalized &lt; 258.75) {
+    headingIcon = planeIconSWW;
+  } else if (headingNormalized &lt; 281.25) {
+    headingIcon = planeIconW;
+  } else if (headingNormalized &lt; 303.75) {
+    headingIcon = planeIconNWW;
+  } else if (headingNormalized &lt; 326.25) {
+    headingIcon = planeIconNW;
+  } else if (headingNormalized &lt; 348.75) {
+    headingIcon = planeIconNNW;
+  } else {
+    alert(headingNormalized + &apos; Heading out of bounds&apos;);
+  }
+  return headingIcon;
+}
+
+var tempMarkerIcon;
+var currentMarkerIcon;
+var markerIcon;
+/**
+ * Initializes the marker objects
+ * @returns {undefined}
+ */
+function initializeMarkers() {
+  var tempMarkerImageURL = &apos;img/markers/tempWPMarker.png&apos;;
+  var iconSize = [30, 41];
+  var iconAnchor = [15, 41];
+  var popupAnchor = [0, -41];
+  tempMarkerIcon = Leaflet.icon({
+    iconUrl: tempMarkerImageURL,
+    iconSize, iconAnchor, popupAnchor
+  });
+
+  var markerImageURL = &apos;img/markers/sentWPMarker.png&apos;;
+  markerIcon = Leaflet.icon({
+    iconUrl: markerImageURL,
+    iconSize, iconAnchor, popupAnchor
+  });
+
+  var currentMarkerImageURL = &apos;img/markers/currentWPMarker.png&apos;;
+  currentMarkerIcon = Leaflet.icon({
+    iconUrl: currentMarkerImageURL,
+    iconSize, iconAnchor, popupAnchor
+  });
+}
+
+/**
+ * Creates a temporary marker on the map
+ * @params {Object} e
+ * @returns {undefined}
+ */
+function createTempMarker(e) {
+  WaypointActionCreator.addWaypoint(e.latlng.lat, e.latlng.lng);
+}
+
+/**
+ * Centers the map on the plane&apos;s current GPS coordinates
+ * @returns {undefined}
+ */
+function centerOnPlane() {
+  var latlng = planeMarker.getLatLng();
+  map.panTo([latlng.lat, latlng.lng]);
+}
+
+/**
+ * Starts ruler on map
+ * @returns {undefined}
+ */
+function startRuler() {
+  rulerActive = true;
+}
+
+/**
+ * Displays distance from original point
+ * @param {Object} e
+ * @returns {undefined}
+ */
+function alertDistance(e) {
+  if (rulerActive) {
+    if (rulerStart === null) {
+      rulerStart = {lat: e.latlng.lat, lon: e.latlng.lng};
+    } else {
+      const meters = geolib.getDistance(
+        {latitude: rulerStart.lat, longitude: rulerStart.lon}, 
+        {latitude: e.latlng.lat, longitude: e.latlng.lng},
+        1, 1
+      );
+      swal(`${decround(mToFt(meters), 1)} ft`);
+      rulerActive = false;
+      rulerStart = null;
+    }
+  }
+}
+
+/**
+ * Initializes basic features of the map (tile layer, controls, etc.)
+ * @returns {undefined}
+ */
+function mapStarter() {
+  L.tileLayer(&apos;img/plainWhiteSquare.png&apos;, {
+    maxZoom: 19,
+    minZoom: 15
+  }).addTo(map);
+  map.doubleClickZoom.disable();
+  map.on(&apos;click&apos;, alertDistance);
+  map.on(&apos;dblclick&apos;, createTempMarker);
+  L.easyButton(&apos;fa-plane&apos;, centerOnPlane).addTo(map);
+  L.easyButton(&apos;fa-times&apos;, resetPlanePath).addTo(map);
+  L.easyButton(&apos;fa-arrows-h&apos;, startRuler).addTo(map);
+}
+
+/**
+ * Gets the index of a marker object in the array
+ * @param {LeafletObject[]} array
+ * @param {LeafletObject} object
+ * @returns {number} index of object
+ * @throws Object Not Found if no matching objects found
+ */
+function objectIndex(array, object) {
+  for (var i = 0; i &lt; array.length; i++) {
+    if (Leaflet.stamp(array[i]) === Leaflet.stamp(object)) { return i; }
+  }
+  throw &apos;Object Not Found&apos;;
+}
+
+/**
+ * Confirm that the user wants to click on the waypoint
+ * Only triggers warning if active and not recently clicked
+ * @param {Event} e - drag event with target property
+ * @returns {undefined}
+ */
+function confirmSelection(e) {
+  var marker = e.target;
+  var latlng = e.target.getLatLng();
+  var object_list = marker._popup._content[0] === &apos;T&apos; ? _old_temp_waypoint_objects : _old_waypoint_objects;
+  var wp_list = marker._popup._content[0] === &apos;T&apos; ? _old_temp_waypoints : _old_waypoints;
+  var index = objectIndex(object_list, marker);
+  var wp = wp_list[index];
+  WaypointActionCreator.updateCellLatLon(wp.index, latlng.lat, latlng.lng);
+  WaypointActionCreator.confirmSelectMap(wp.index);
+}
+
+/**
+ * Sends the current active waypoint
+ * @returns {undefined}
+ */
+function sendWP() {
+  WaypointActionCreator.sendWaypoint();
+}
+
+function waypointDrag(e) {
+  var marker = e.target;
+  var object_list = marker._popup._content[0] === &apos;T&apos; ? _old_temp_waypoint_objects : _old_waypoint_objects;
+  var wp_list = marker._popup._content[0] === &apos;T&apos; ? _old_temp_waypoints : _old_waypoints;
+  var index = objectIndex(object_list, marker);
+  var wp = wp_list[index];
+  var latlng = e.target.getLatLng();
+  WaypointActionCreator.updateCellLatLon(wp.index, latlng.lat, latlng.lng);
+}
+
+/**
+ * Draws a waypoint to the waypointPath and adds a marker to the map
+ * @param {Waypoint} waypoint
+ * @returns {(LeafletObject|null)} drawn marker
+ */
+function draw_waypoint(waypoint, current_waypoint) {
+  var wpMarkerIcon;
+  var wpMarkerText;
+  if (waypoint.type === 18) {
+    return null;
+  } else {
+    if (waypoint.isTemp) {
+      wpMarkerIcon = tempMarkerIcon;
+      wpMarkerText = &apos;Temp Waypoint&apos;;
+    } else if (waypoint.index === current_waypoint) {
+      wpMarkerIcon = currentMarkerIcon;
+      wpMarkerText = &apos;Waypoint #&apos; + waypoint.index;
+    } else {
+      wpMarkerIcon = markerIcon;
+      wpMarkerText = &apos;Waypoint #&apos; + waypoint.index;
+    }
+    var marker = Leaflet.marker([waypoint.lat, waypoint.lon],
+      {draggable: true, icon: wpMarkerIcon})
+      .addTo(map).bindPopup(wpMarkerText);
+    marker.on(&apos;click&apos;, confirmSelection);
+    marker.on(&apos;dragend&apos;, confirmSelection);
+    if (waypoint.isTemp) {
+      marker.on(&apos;dragstart&apos;, () =&gt; { dragging = true; });
+      marker.on(&apos;drag&apos;, waypointDrag);
+      marker.on(&apos;dragend&apos;, () =&gt; { dragging = false; });
+    } else {
+      marker.on(&apos;dragend&apos;, sendWP);
+    }
+    return marker;
+  }
+}
+
+/**
+ * Resets and draws a waypont path (probably guards against GOTO values)
+ * @param {Waypoint[]} waypoints - List of waypoints
+ * @returns {undefined}
+ */
+function draw_path(waypoints) {
+  waypointPath.setLatLngs([]);
+  var i = 0;
+  while (i &lt; waypoints.length) {
+    if (waypoints[i].type === 177 &amp;&amp; !(Object.prototype.hasOwnProperty.call(waypoints[i], &apos;loops_left&apos;))) {
+      waypoints[i].loops_left = waypoints[i].lon;
+    } else if (waypoints[i].type === 177 &amp;&amp; waypoints[i].loops_left &gt; 0) {
+      waypoints[i].loops_left -= 1;
+      i = waypoints[i].lat;
+    } else if (waypoints[i].type === 177 &amp;&amp; waypoints[i].loops_left &lt;= 0) {
+      delete waypoints[i].loops_left;
+      i++;
+    } else {
+      waypointPath.addLatLng([waypoints[i].lat, waypoints[i].lon]);
+      i++;
+    }
+  }
+}
+
+/**
+ * Draws a geofence path
+ * @param {Waypoint[]} waypoints
+ * @returns {LeafletObject}
+ */
+function draw_geofence(waypoints) {
+  let fullMap = [[[90, -180], [90, 180], [-90, 180], [-90, -180]]];
+  const fence_points = waypoints.map(wp =&gt; [parseFloat(wp.lat), parseFloat(wp.lon)]);
+  fullMap = fence_points.length &gt; 0 ? fullMap.concat([waypoints]) : [];
+  return L.polygon(fullMap, {color: &apos;red&apos;}).addTo(map).bindPopup(&apos;Geofence&apos;);
+}
+
+/**
+ * Draws an obstacle
+ * @param {Obstacle} obstacle
+ * @returns {LeafletObject}
+ */
+function draw_obstacle(obstacle) {
+  let is_sphere = Object.prototype.hasOwnProperty.call(obstacle, &apos;sphere_radius&apos;);
+  let circle;
+  if (is_sphere) {
+    circle = L.circle([obstacle.latitude, obstacle.longitude],
+      obstacle.sphere_radius, {color: &apos;blue&apos;}).addTo(map)
+      .bindPopup(&apos;Sphere, Altitude: &apos; + obstacle.altitude_msl + &apos; m&apos;);
+    return circle;
+  } else {
+    circle = L.circle([obstacle.latitude, obstacle.longitude],
+      obstacle.cylinder_radius, {color: &apos;orange&apos;}).addTo(map)
+      .bindPopup(&apos;Cylinder, Height: &apos; + obstacle.cylinder_height + &apos; m&apos;);
+    return circle;
+  }
+}
+
+var _old_heading = 0;
+var _old_gps = {};
+/**
+ * Updates the plane marker if the plane&apos;s heading or location has changed
+ * @returns {undefined}
+ */
+function updatePlane(gps, connected) {
+  if (!connected) {
+    planeMarker.setIcon(planeIconHidden);
+    return;
+  }
+  if (gps.heading !== undefined &amp;&amp; gps.heading !== _old_heading) {
+    planeMarker.setIcon(headingToIcon(gps.heading));
+    _old_heading = gps.heading;
+  }
+  if (!_.isEqual(gps.lat, _old_gps.lat) || !_.isEqual(gps.lon, _old_gps.lon)) {
+    planeMarker.setLatLng([gps.lat, gps.lon]);
+    planePath.addLatLng([gps.lat, gps.lon]);
+  }
+}
+
+/**
+ * Removes an object from the map (make sure to initialize map first)
+ * @params {LeafletObject} layer - Must be a Leaflet ILayer
+ * @returns {undefined}
+ */
+function removeObj(layer) {
+  if (layer !== null) {
+    map.removeLayer(layer);
+  }
+}
+
+var _old_waypoints = [];
+var _old_waypoint_objects = [];
+/**
+ * Updates the waypoints if the waypoint list has changed
+ * @returns {undefined}
+ */
+function updateWaypoints(waypoints, current_waypoint, force = false) {
+  force = force == undefined ? false : force;
+  var different = waypoints.length !== _old_waypoints.length;
+  if (!different) {
+    for (var i = 0; i &lt; waypoints.length &amp;&amp; !different; i++) {
+      different = different ||
+        waypoints[i].lat !== _old_waypoints[i].lat ||
+        waypoints[i].lon !== _old_waypoints[i].lon ||
+        waypoints[i].alt !== _old_waypoints[i].alt ||
+        waypoints[i].type !== _old_waypoints[i].type;
+    }
+  }
+  if (force || different) {
+    _old_waypoint_objects.forEach(removeObj);
+    _old_waypoint_objects = waypoints.map(wp =&gt; draw_waypoint(wp, current_waypoint));
+  }
+  draw_path(waypoints);
+  _old_waypoints = waypoints;
+}
+
+var _old_temp_waypoints = [];
+var _old_temp_waypoint_objects = [];
+/**
+ * Updates the temp waypoints if the temp waypoint list has changed
+ * @returns {undefined}
+ */
+function updateTempWaypoints(temp_waypoints, current_waypoint) {
+  if (dragging) {
+    return;
+  }
+  var different = temp_waypoints.length !== _old_temp_waypoints.length;
+  if (!different) {
+    for (var i = 0; i &lt; temp_waypoints.length &amp;&amp; !different; i++) {
+      different = different ||
+        temp_waypoints[i].lat !== _old_temp_waypoints[i].originalLat ||
+        temp_waypoints[i].lon !== _old_temp_waypoints[i].originalLon ||
+        temp_waypoints[i].alt !== _old_temp_waypoints[i].originalAlt ||
+        temp_waypoints[i].type !== _old_temp_waypoints[i].originalType;
+    }
+  }
+
+  if (different) {
+    _old_temp_waypoint_objects.forEach(removeObj);
+    _old_temp_waypoint_objects = temp_waypoints.map(wp =&gt; draw_waypoint(wp, current_waypoint));
+  }
+  _old_temp_waypoints = temp_waypoints;
+}
+
+var _old_current = -1;
+/**
+ * Updates the current waypoint if it has changed
+ * @returns {undefined}
+ */
+function updateCurrentWaypoint(current) {
+  if (_old_waypoint_objects.length &gt; 0) {
+    if (_old_current &gt;= 0) {
+      _old_waypoint_objects[_old_current].setIcon(markerIcon);
+    }
+    if (current &lt; _old_waypoints.length) {
+      _old_waypoint_objects[current].setIcon(currentMarkerIcon);
+      _old_current = current;
+    }
+  }
+}
+
+var _old_geofence_objects = [];
+/**
+ * Updates the geofence
+ * @returns {undefined}
+ */
+function updateGeofences(fence, enabled) {
+  if (!enabled) {
+    _old_geofence_objects.forEach(removeObj);
+    _old_geofence_objects = [];
+  } else {
+    _old_geofence_objects.forEach(removeObj);
+    _old_geofence_objects = [draw_geofence(fence)];
+  }
+}
+
+var _old_obstacles = {stationary: [], moving: []};
+var _old_obstacle_objects = {stationary: [], moving: []};
+/**
+ * Updates the obstacles
+ * @returns {undefined}
+ */
+function updateObstacles(obstacles) {
+  if (!_.isEqual(obstacles, _old_obstacles)) {
+    _old_obstacle_objects.stationary.forEach(removeObj);
+    _old_obstacle_objects.moving.forEach(removeObj);
+    _old_obstacle_objects = {
+      stationary: obstacles.stationary.map(draw_obstacle),
+      moving: obstacles.moving.map(draw_obstacle)
+    };
+    _old_obstacles = obstacles;
+  }
+}
+
+let _old_off_axis = {lat: 0, lon: 0};
+function updateOffAxis(off_axis, interopActive, interopAlive) {
+  if (!interopActive || !interopAlive) {
+    offAxisMarker.setIcon(offAxisIconHidden);
+    return;
+  }
+  if (off_axis !== _old_off_axis &amp;&amp; off_axis !== undefined) {
+    offAxisMarker.setIcon(offAxisIcon);
+  }
+  if (!_.isEqual(off_axis.lat, _old_off_axis.lat) || !_.isEqual(off_axis.lon, _old_off_axis.lon)) {
+    offAxisMarker.setLatLng([off_axis.lat, off_axis.lon]);
+  }
+  _old_off_axis = off_axis;
+}
+
+/**
+ * Default location data, quickly overridden 
+ */
+var locationsData = {
+  &apos;Game_Farm&apos;: {
+    &apos;leftLon&apos;: -76.4650662435,
+    &apos;imageURL&apos;: &apos;img/satellites/Game_Farm_Satellite.png&apos;,
+    &apos;bottomLat&apos;: 42.4333928552,
+    &apos;topLat&apos;: 42.4536610611,
+    &apos;rightLon&apos;: -76.4376004232
+  },
+  &apos;Earth_Center&apos;: {
+    &apos;leftLon&apos;: -0.0274658203125,
+    &apos;imageURL&apos;: &apos;img/satellites/Earth_Center_Satellite.png&apos;,
+    &apos;bottomLat&apos;: -0.0274658192606,
+    &apos;topLat&apos;: 0.0274658192606,
+    &apos;rightLon&apos;: 0.0274658203125
+  },
+  &apos;Neno_Airfield&apos;: {
+    &apos;leftLon&apos;: -76.62631841015623,
+    &apos;centerLon&apos;: -76.6125855,
+    &apos;imageURL&apos;: &apos;img/satellites/Neno_Airfield_Satellite.png&apos;,
+    &apos;rightLon&apos;: -76.59885258984373,
+    &apos;centerLat&apos;: 42.44763,
+    &apos;bottomLat&apos;: 42.4374957409895,
+    &apos;topLat&apos;: 42.457762619755364
+  },
+  &apos;SFO_Airport&apos;: {
+    &apos;leftLon&apos;: 149.158355767,
+    &apos;imageURL&apos;: &apos;img/satellites/SFO_Airport_Satellite.png&apos;,
+    &apos;bottomLat&apos;: -35.3688493943,
+    &apos;topLat&apos;: -35.3576502173,
+    &apos;rightLon&apos;: 149.172088677
+  },
+  &apos;Cornell_Campus&apos;: {
+    &apos;leftLon&apos;: -76.4950662435,
+    &apos;imageURL&apos;: &apos;img/satellites/Cornell_Campus_Satellite.png&apos;,
+    &apos;bottomLat&apos;: 42.4384214463,
+    &apos;topLat&apos;: 42.4586880256,
+    &apos;rightLon&apos;: -76.4676004232
+  },
+  &apos;White Square&apos;: {
+    &apos;leftLon&apos;: 1,
+    &apos;imageURL&apos;: &apos;img/plainWhiteSquare.png&apos;,
+    &apos;bottomLat&apos;: -1,
+    &apos;topLat&apos;: 1,
+    &apos;rightLon&apos;: -1
+  },
+  &apos;NAS_Pax&apos;: {
+    &apos;leftLon&apos;: -76.423871799,
+    &apos;imageURL&apos;: &apos;img/satellites/NAS_Pax_Satellite.png&apos;,
+    &apos;bottomLat&apos;: 38.2750531654,
+    &apos;topLat&apos;: 38.2966119005,
+    &apos;rightLon&apos;: -76.3964059787
+  }
+};
+
+var locationMap2 = {
+  &apos;Neno Airfield&apos;: &apos;Neno_Airfield&apos;,
+  &apos;NAS Pax&apos;: &apos;NAS_Pax&apos;,
+  &apos;SFO Airport&apos;: &apos;SFO_Airport&apos;,
+  &apos;Cornell Campus&apos;: &apos;Cornell_Campus&apos;,
+  &apos;Game Farm&apos;: &apos;Game_Farm&apos;,
+  &apos;Earth Center&apos;: &apos;Earth_Center&apos;
+};
+
+/**
+ * Updates the locations data (image URL, coordinates, etc) and the location map 
+ * @params {object} locs
+ * @returns {undefined}
+ */
+export function updateLocations(locs) {
+  locationsData = locs;
+  for(var name in locs) {
+    locationMap2[name.replace(/_/g, &apos; &apos;)] = name;
+  }
+}
+
+/**
+ * Changes the location of the map to the new location
+ * @params {string} location - string of new map location
+ * @returns {undefined}
+ */
+export function changeLocation(location) {
+  location = locationMap2[location];
+  if (location == undefined) location = &apos;Neno_Airfield&apos;;
+  var loc = locationsData[location];
+
+  const imageBounds = [[loc.bottomLat, loc.leftLon], [loc.topLat, loc.rightLon]];
+  map.setMaxBounds(imageBounds);
+  map.setView([(loc.topLat + loc.bottomLat)/2, (loc.leftLon + loc.rightLon)/2]);
+  map.doubleClickZoom.disable();
+  Leaflet.imageOverlay(loc.imageURL, imageBounds).addTo(map);
+}
+
+/**
+ * Resets the plane&apos;s path (display only)
+ * @returns {undefined}
+ */
+export function resetPlanePath() {
+  planePath.setLatLngs([]);
+}
+
+/**
+ * Redraws all waypoints
+ * @returns {undefined}
+ */
+export function redrawWaypoints(waypoints, tempWaypoints, current, force = false) {
+  force = force == undefined ? false : force;
+  updateWaypoints(waypoints, current, force);
+  updateTempWaypoints(tempWaypoints, current);
+  updateCurrentWaypoint(current);
+}
+
+/**
+ * Redraws Fences
+ * @param {Point[]} fences
+ * @param {boolean} enabled
+ */
+export function redrawFence(fences, enabled: boolean) {
+  updateGeofences(fences, enabled);
+}
+
+/**
+ * Redraws all obstacles
+ * @param {ObstacleList} obstacles
+ * @returns {undefined}
+ */
+export function redrawObstacles(obstacles) {
+  updateObstacles(obstacles);
+}
+
+/**
+ * Redraws off-asxis target
+ * @param {Point} offAxis
+ * @param {boolean} interopActive
+ * @param {boolean} interopAlive
+ */
+export function redrawOffAxis(offAxis, interopActive: boolean, interopAlive: boolean) {
+  updateOffAxis(offAxis, interopActive, interopAlive);
+}
+
+/**
+ * Redraws plane
+ * @param {GPS} gps
+ * @param {boolean} connected
+ * @returns {undefined}
+ */
+export function redrawPlane(gps, connected: boolean) {
+  updatePlane(gps, connected);
+}
+
+/**
+ * Causes map to redraw/resize
+ * @returns {undefined}
+ */
+export function mapResize() {
+  setTimeout(() =&gt; map.invalidateSize(), 100);
+}
+
+/**
+ * Fully initializes the map
+ * @returns {undefined}
+ */
+export function initializeMap() {
+  setMap();
+  setMarkers();
+  setPaths();
+  initializeMarkers();
+  mapStarter();
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

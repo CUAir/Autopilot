@@ -1,0 +1,241 @@
+{
+  "coverage": "75.8%",
+  "expectCount": 248,
+  "actualCount": 188,
+  "files": {
+    "js/constants/ButtonTypes.js": {
+      "expectCount": 10,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        4,
+        6,
+        8,
+        7,
+        2,
+        5,
+        10,
+        3,
+        9
+      ]
+    },
+    "js/stores/CalibrationStore.js": {
+      "expectCount": 5,
+      "actualCount": 2,
+      "undocumentLines": [
+        21,
+        61,
+        23
+      ]
+    },
+    "js/constants/ActionTypes.js": {
+      "expectCount": 10,
+      "actualCount": 10,
+      "undocumentLines": []
+    },
+    "js/stores/FenceStore.js": {
+      "expectCount": 6,
+      "actualCount": 3,
+      "undocumentLines": [
+        29,
+        31,
+        77
+      ]
+    },
+    "js/constants/Frequency.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        2,
+        1
+      ]
+    },
+    "js/stores/InteropStore.js": {
+      "expectCount": 9,
+      "actualCount": 6,
+      "undocumentLines": [
+        43,
+        45,
+        124
+      ]
+    },
+    "js/stores/ParametersStore.js": {
+      "expectCount": 13,
+      "actualCount": 10,
+      "undocumentLines": [
+        199,
+        201,
+        352
+      ]
+    },
+    "js/stores/SdaStore.js": {
+      "expectCount": 5,
+      "actualCount": 2,
+      "undocumentLines": [
+        19,
+        21,
+        55
+      ]
+    },
+    "js/stores/SettingsStore.js": {
+      "expectCount": 11,
+      "actualCount": 8,
+      "undocumentLines": [
+        150,
+        152,
+        269
+      ]
+    },
+    "js/stores/StatusStore.js": {
+      "expectCount": 17,
+      "actualCount": 14,
+      "undocumentLines": [
+        120,
+        122,
+        336
+      ]
+    },
+    "js/stores/Store.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        5,
+        15,
+        7,
+        11,
+        19
+      ]
+    },
+    "js/stores/TuningStore.js": {
+      "expectCount": 8,
+      "actualCount": 5,
+      "undocumentLines": [
+        166,
+        168,
+        259
+      ]
+    },
+    "js/stores/WaypointStore.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "js/actions/CalibrationActionCreator.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "js/utils/SendApi.js": {
+      "expectCount": 23,
+      "actualCount": 23,
+      "undocumentLines": []
+    },
+    "js/actions/WaypointActionCreator.js": {
+      "expectCount": 13,
+      "actualCount": 13,
+      "undocumentLines": []
+    },
+    "js/interfaces/types.js": {
+      "expectCount": 17,
+      "actualCount": 0,
+      "undocumentLines": [
+        38,
+        54,
+        26,
+        45,
+        56,
+        61,
+        63,
+        65,
+        67,
+        77,
+        82,
+        84,
+        93,
+        95,
+        97,
+        99,
+        101
+      ]
+    },
+    "js/constants/Sites.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "js/actions/SettingsActionCreator.js": {
+      "expectCount": 5,
+      "actualCount": 5,
+      "undocumentLines": []
+    },
+    "js/utils/MapUtils.js": {
+      "expectCount": 10,
+      "actualCount": 10,
+      "undocumentLines": []
+    },
+    "js/utils/ComponentUtils.js": {
+      "expectCount": 13,
+      "actualCount": 13,
+      "undocumentLines": []
+    },
+    "js/utils/ConfigData.js": {
+      "expectCount": 5,
+      "actualCount": 5,
+      "undocumentLines": []
+    },
+    "js/actions/StatusActionCreator.js": {
+      "expectCount": 16,
+      "actualCount": 16,
+      "undocumentLines": []
+    },
+    "js/actions/ParametersActionCreator.js": {
+      "expectCount": 10,
+      "actualCount": 10,
+      "undocumentLines": []
+    },
+    "js/utils/ReceiveApi.js": {
+      "expectCount": 10,
+      "actualCount": 9,
+      "undocumentLines": [
+        299
+      ]
+    },
+    "js/utils/LoadApi.js": {
+      "expectCount": 3,
+      "actualCount": 3,
+      "undocumentLines": []
+    },
+    "js/actions/TuningActionCreator.js": {
+      "expectCount": 5,
+      "actualCount": 5,
+      "undocumentLines": []
+    },
+    "js/utils/ParamDocumentation.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        1
+      ]
+    },
+    "js/actions/FenceActionCreator.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "js/actions/InteropActionCreator.js": {
+      "expectCount": 4,
+      "actualCount": 4,
+      "undocumentLines": []
+    },
+    "js/actions/SdaActionCreator.js": {
+      "expectCount": 1,
+      "actualCount": 1,
+      "undocumentLines": []
+    },
+    "js/utils/DownloadApi.js": {
+      "expectCount": 4,
+      "actualCount": 4,
+      "undocumentLines": []
+    }
+  }
+}

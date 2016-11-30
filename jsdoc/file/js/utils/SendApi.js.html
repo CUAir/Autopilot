@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">js/utils/SendApi.js | API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <a data-ice="repoURL" href="https://github.com/CUAir/MAVProxy" class="repo-url-github">Repository</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">actions</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addCalibrationLine">addCalibrationLine</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-clearCalibrationLines">clearCalibrationLines</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveFencePoints">receiveFencePoints</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveFencesEnabled">receiveFencesEnabled</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveInteropActive">receiveInteropActive</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveInteropAlive">receiveInteropAlive</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveObstacles">receiveObstacles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveOffAxis">receiveOffAxis</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-editParameter">editParameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-loadParametersFromFile">loadParametersFromFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveMaxParamCount">receiveMaxParamCount</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveModalOpen">receiveModalOpen</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveMultipleParameters">receiveMultipleParameters</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveNote">receiveNote</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveSearchField">receiveSearchField</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveSingleParameter">receiveSingleParameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-saveParamModal">saveParamModal</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-selectParameter">selectParameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveSdaEnabled">receiveSdaEnabled</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-changeHistoricalSlider">changeHistoricalSlider</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveFlightNotes">receiveFlightNotes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveLocation">receiveLocation</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveLocations">receiveLocations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-unitSwitch">unitSwitch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-disconnect">disconnect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveAirspeed">receiveAirspeed</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveArmed">receiveArmed</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveAttitude">receiveAttitude</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveBattery">receiveBattery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveClimbRate">receiveClimbRate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveCurrentMode">receiveCurrentMode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveGPS">receiveGPS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveGPSLink">receiveGPSLink</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveModeSwitch">receiveModeSwitch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receivePlaneLink">receivePlaneLink</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receivePowerboard">receivePowerboard</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveSafetySwitch">receiveSafetySwitch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveThrottle">receiveThrottle</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveWind">receiveWind</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-reconnect">reconnect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-lockValue">lockValue</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-nextTuningFlight">nextTuningFlight</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-prevTuningFlight">prevTuningFlight</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-resetTuning">resetTuning</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updateValue">updateValue</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addWaypoint">addWaypoint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-cellChange">cellChange</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-confirmSelect">confirmSelect</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-confirmSelectMap">confirmSelectMap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deleteWaypoint">deleteWaypoint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-loadWaypointsFromFile">loadWaypointsFromFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveCurrent">receiveCurrent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveWaypoints">receiveWaypoints</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendWaypoint">sendWaypoint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setCurrent">setCurrent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setSelected">setSelected</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updateCellLatLon">updateCellLatLon</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updateItem">updateItem</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">constants</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CalibrationTypes">CalibrationTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FenceTypes">FenceTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-InteropTypes">InteropTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-MapTypes">MapTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ParametersTypes">ParametersTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SdaTypes">SdaTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-SettingsTypes">SettingsTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-StatusTypes">StatusTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TuningTypes">TuningTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-WaypointTypes">WaypointTypes</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-BUTTON">BUTTON</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CHECKBOX">CHECKBOX</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CRITICAL_BUTTON">CRITICAL_BUTTON</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DATETIME">DATETIME</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-DROPDOWN">DROPDOWN</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FILE_INPUT">FILE_INPUT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEXT">TEXT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEXT_BUTTON">TEXT_BUTTON</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEXT_INPUT">TEXT_INPUT</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-TEXT_LOCK">TEXT_LOCK</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-INTEROP_RECEIVE_FREQUENCY">INTEROP_RECEIVE_FREQUENCY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PLANE_RECEIVE_FREQUENCY">PLANE_RECEIVE_FREQUENCY</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-api">api</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-site">site</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">interfaces</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-assertJson">assertJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-airspeedType">airspeedType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-armedType">armedType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-attitudeType">attitudeType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-batteryType">batteryType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-climbRateType">climbRateType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-currentWaypointType">currentWaypointType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-fenceType">fenceType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-gpsType">gpsType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-linkType">linkType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-modeType">modeType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-powerboardType">powerboardType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-safetySwitchType">safetySwitchType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sdaType">sdaType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-throttleType">throttleType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-waypointsType">waypointsType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-windType">windType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-DisplayInfoType">DisplayInfoType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-DropdownOptionType">DropdownOptionType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FlightNotesType">FlightNotesType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FullWidthButtonType">FullWidthButtonType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FullWidthElementType">FullWidthElementType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FullWidthTextInputType">FullWidthTextInputType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ModeOptionType">ModeOptionType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-NavbarStatusType">NavbarStatusType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-PlaneModeType">PlaneModeType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SettingsButtonType">SettingsButtonType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SettingsCheckboxType">SettingsCheckboxType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SettingsDropdownType">SettingsDropdownType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SettingsItemType">SettingsItemType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-SettingsTextType">SettingsTextType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Airspeed">Airspeed</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Attitude">Attitude</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Battery">Battery</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Cylinder">Cylinder</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FullParameter">FullParameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-GPS">GPS</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-NValue">NValue</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Obstacle">Obstacle</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ObstacleList">ObstacleList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Parameter">Parameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Point">Point</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Powerboard">Powerboard</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Sphere">Sphere</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Waypoint">Waypoint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-Wind">Wind</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">stores</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/stores/CalibrationStore.js~CalibrationStore.html">CalibrationStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/stores/FenceStore.js~FenceStore.html">FenceStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/stores/InteropStore.js~InteropStore.html">InteropStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/stores/ParametersStore.js~ParametersStore.html">ParametersStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/stores/SdaStore.js~SdaStore.html">SdaStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/stores/SettingsStore.js~SettingsStore.html">SettingsStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/stores/StatusStore.js~StatusStore.html">StatusStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/stores/Store.js~Store.html">Store</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/js/stores/TuningStore.js~TuningStore.html">TuningStore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-calibrationStoreInstance">calibrationStoreInstance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-fenceStoreInstance">fenceStoreInstance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-interopStoreInstance">interopStoreInstance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-parametersStoreInstance">parametersStoreInstance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sdaStoreInstance">sdaStoreInstance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-settingsStoreInstance">settingsStoreInstance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-statusStoreInstance">statusStoreInstance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-tuningStoreInstance">tuningStoreInstance</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-WaypointStore">WaypointStore</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">utils</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-clickSection">clickSection</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-colorToButton">colorToButton</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-dateToString">dateToString</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-decround">decround</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-enabledToSuccess">enabledToSuccess</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-ftToM">ftToM</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mToFt">mToFt</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-m_sToKnots">m_sToKnots</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-pythagorean">pythagorean</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-valueClose">valueClose</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-valueToColor">valueToColor</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-valueToColorName">valueToColorName</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-valueToPercent">valueToPercent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-confirmObj">confirmObj</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getConfigValue">getConfigValue</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setConfigValue">setConfigValue</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-tokenObj">tokenObj</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-saveFenceToFile">saveFenceToFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-saveParamsToFile">saveParamsToFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-saveWaypointsToFile">saveWaypointsToFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-saveWaypointsToJson">saveWaypointsToJson</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-loadFenceFromFile">loadFenceFromFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-loadParamsFromFile">loadParamsFromFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-loadWaypointsFromFile">loadWaypointsFromFile</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-changeLocation">changeLocation</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initializeMap">initializeMap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-mapResize">mapResize</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-redrawFence">redrawFence</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-redrawObstacles">redrawObstacles</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-redrawOffAxis">redrawOffAxis</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-redrawPlane">redrawPlane</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-redrawWaypoints">redrawWaypoints</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-resetPlanePath">resetPlanePath</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updateLocations">updateLocations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getHistoricalData">getHistoricalData</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getLocations">getLocations</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-haltReceiveLoop">haltReceiveLoop</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initializeInterop">initializeInterop</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-initializeParameters">initializeParameters</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-resumeReceiveLoop">resumeReceiveLoop</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-startInteropReceive">startInteropReceive</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-startPlaneReceive">startPlaneReceive</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-stopInteropReceive">stopInteropReceive</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-stopPlaneReceive">stopPlaneReceive</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-addLocation">addLocation</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calibrationAStart">calibrationAStart</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calibrationContinue">calibrationContinue</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calibrationGStart">calibrationGStart</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calibrationPStart">calibrationPStart</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calibrationRCStart">calibrationRCStart</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calibrationRCStop">calibrationRCStop</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deleteAllWaypoints">deleteAllWaypoints</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-deleteWP">deleteWP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-reboot">reboot</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendAllParameters">sendAllParameters</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendChangeMode">sendChangeMode</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendGeofencePoints">sendGeofencePoints</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendModeSwitch">sendModeSwitch</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendParameter">sendParameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendRTL">sendRTL</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendWaypoint">sendWaypoint</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-sendWaypointList">sendWaypointList</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setCurrentWP">setCurrentWP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toggleArm">toggleArm</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toggleInterop">toggleInterop</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toggleSda">toggleSda</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updateWP">updateWP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-configNames">configNames</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-params">params</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">js/utils/SendApi.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">// @flow
+
+import $ from &apos;jquery&apos;;
+import alertify from &apos;alertifyjs&apos;;
+import swal from &apos;sweetalert&apos;;
+
+import { api } from &apos;js/constants/Sites&apos;;
+
+import * as ParametersActionCreator from &apos;js/actions/ParametersActionCreator&apos;;
+
+import { getConfigValue, configNames, tokenObj, confirmObj } from &apos;js/utils/ConfigData&apos;;
+
+const modeDict = {
+  &apos;MANUAL&apos;: 0, &apos;CIRCLE&apos;: 1, &apos;STABILIZE&apos;:2, &apos;TRAINING&apos;:3, &apos;ACRO&apos;:4, &apos;FBWA&apos;:5,
+  &apos;FBWB&apos;:6, &apos;CRUISE&apos;:7, &apos;AUTOTUNE&apos;:8,  &apos;AUTO&apos;:10, &apos;RTL&apos;:11, &apos;LOITER&apos;:12, &apos;GUIDED&apos;:15
+};
+
+function successGenerator(text: string, onSuccess: Function = $.noop) {
+  onSuccess = onSuccess == null ? $.noop : onSuccess;
+  return data =&gt; {
+    if (text) alertify.success(text);
+    onSuccess(data);
+  };
+}
+
+function errorGenerator(text: string, onFail: Function = $.noop) {
+  onFail = onFail == undefined ? $.noop : onFail;
+  return data =&gt; {
+    if (text) alertify.error(text);
+    console.log(data); // eslint-disable-line no-console
+    onFail(data);
+  };
+}
+
+/**
+ * Sends a parameter to the server
+ * @param {Parameter} parameter - The parameter to be sent
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+
+export function sendParameter(parameter: Parameter, onSuccess: Function = $.noop, onFail: Function = $.noop): void {
+  onSuccess = onSuccess == null ? onSuccess : $.noop;
+  onFail = onFail == null ? onFail : $.noop;
+
+  function successfulChange(data) {
+    alertify.success(`${parameter.name} changed`);
+    ParametersActionCreator.receiveSingleParameter(parameter.name, parameter.value);
+    onSuccess(data);
+  }
+
+  function failedChange(data) {
+    alertify.error(`${parameter.name} failed to change`);
+    console.log(data); // eslint-disable-line no-console
+    ParametersActionCreator.receiveSingleParameter(parameter.name, parameter.value);
+    onFail(data);
+  }
+
+  alertify.message(`Changing parameter ${parameter.name}`);
+  $.ajax({
+    url: api + &apos;params&apos;,
+    type: &apos;POST&apos;,
+    dataType: &apos;html&apos;,
+    contentType: &apos;application/json&apos;,
+    headers: tokenObj(),
+    success: successfulChange,
+    error: failedChange,
+    data: JSON.stringify({parameter: parameter.name, value: parameter.value})
+  });
+}
+
+/**
+ * Sends all the parameters in the store to the server
+ * @param {Parameter[]} parameters
+ * @returns {undefined}
+ */
+export function sendAllParameters(parameters: Parameter[]): void {
+  parameters
+    .filter(parameter =&gt; parameter.isTemp)
+    .forEach(parameter =&gt; sendParameter(parameter));
+}
+
+/**
+ * Send mode change to the server
+ * @param {string} mode - The mode to be sent
+ * @returns {undefined}
+ */
+export function sendChangeMode(mode: string): void {
+  $.ajax({
+    url: api + &apos;set_mode&apos;,
+    type: &apos;POST&apos;,
+    dataType: &apos;html&apos;,
+    contentType: &apos;application/json&apos;,
+    headers: tokenObj(),
+    success: successGenerator(&apos;Mode change succeeded&apos;),
+    error: errorGenerator(&apos;Mode change Failed&apos;),
+    data: JSON.stringify({mode: mode})
+  });
+}
+
+/**
+ * Send mode switch change to the server
+ * @param {string} mode - The mode switch to be sent
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+export function sendModeSwitch(mode: string, onSuccess: Function = $.noop, onFail: Function = $.noop) {
+  return sendParameter({name: &apos;FLTMODE1&apos;, value: modeDict[mode]}, onSuccess, onFail);
+}
+
+/**
+ * Send an RTL mode change to the server
+ * @returns {undefined}
+ */
+export function sendRTL() {
+  return sendChangeMode(&apos;RTL&apos;);
+}
+
+/**
+ * Sends a request to the server to delete a waypoint
+ * @param {number} index - index of waypoint in list
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+export function deleteWP(index: number, onSuccess: Function = $.noop, onFail: Function = $.noop) {
+  $.ajax({
+    url: api + &apos;wp?wpnum=&apos; + index,
+    type: &apos;DELETE&apos;,
+    contentType: &apos;application/json&apos;,
+    headers: tokenObj(),
+    success: successGenerator(&apos;Waypoint deleted&apos;, onSuccess),
+    error: errorGenerator(&apos;Waypoint deletion failed&apos;, onFail)
+  });
+}
+
+  /**
+ * Sends a request to the server to delete all waypoints
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+export function deleteAllWaypoints(onSuccess: Function, onFail: Function = $.noop) {
+  $.ajax({
+    url: api + &apos;wp/clear_all&apos;,
+    type: &apos;DELETE&apos;,
+    contentType: &apos;application/json&apos;,
+    headers: confirmObj(),
+    success: successGenerator(&apos;Waypoints deleted&apos;, onSuccess),
+    error: errorGenerator(&apos;Waypoints failed to delete&apos;, onFail)
+  });
+}
+
+/**
+ * Sends a request to the server to set a waypoint as current
+ * @param {number} index - index of waypoint in list
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+export function setCurrentWP(index: number, onSuccess: Function = $.noop, onFail: Function = $.noop) {
+  $.ajax({
+    url: api + &apos;set_current&apos;,
+    type: &apos;POST&apos;,
+    contentType: &apos;application/json&apos;,
+    headers: tokenObj(),
+    success: successGenerator(&apos;Current waypoint changed&apos;, onSuccess),
+    error: errorGenerator(&apos;Changing current waypoint failed&apos;, onFail),
+    data: JSON.stringify({current: index})
+  });
+}
+
+/**
+ * Sends a request to the server to add a waypoint
+ * @param {Waypoint} wp - waypoint to be added
+ * @param {number} index - index of waypoint in list
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+export function sendWaypoint(wp: Waypoint, index: number, onSuccess: Function = $.noop, onFail: Function = $.noop) {
+  const waypoint = {lat: wp.lat, lon: wp.lon, alt: wp.alt, index: index, command: wp.type};
+
+  $.ajax({
+    url: api + &apos;wp&apos;,
+    type: &apos;POST&apos;,
+    contentType: &apos;application/json&apos;,
+    headers: tokenObj(),
+    success: successGenerator(&apos;Waypoint sent&apos;, onSuccess),
+    error: errorGenerator(&apos;Waypoint failed to send&apos;, onFail),
+    data: JSON.stringify(waypoint)
+  });
+}
+
+/**
+ * Sends a request to the server to add a list waypoint
+ * @param {Waypoint[]} wpList - list waypoints to be added
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+export function sendWaypointList(wpList: Waypoint[], onSuccess: Function, onFail: Function = $.noop) {
+  $.ajax({
+    url: api + &apos;wp/replace&apos;,
+    type: &apos;DELETE&apos;,
+    contentType: &apos;application/json&apos;,
+    headers: confirmObj(),
+    success: successGenerator(&apos;Waypoints sent&apos;, onSuccess),
+    error: errorGenerator(&apos;Waypoints failed to send&apos;, onFail),
+    data: JSON.stringify(wpList)
+  });
+}
+
+/**
+ * Sends a request to the server to update a waypoint
+ * @param {Waypoint} wp - new values of waypoint
+ * @param {number} index - index of waypoint in list
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+export function updateWP(wp: Waypoint, index: number, onSuccess: Function = $.noop, onFail: Function = $.noop) {
+  const waypoint = {lat: wp.lat, lon: wp.lon, alt: wp.alt, index: index, command: wp.type};
+
+  $.ajax({
+    url: api + &apos;wp&apos;,
+    type: &apos;PUT&apos;,
+    contentType: &apos;application/json&apos;,
+    headers: tokenObj(),
+    success: successGenerator(&apos;Waypoint updated&apos;, onSuccess),
+    error: errorGenerator(&apos;Waypoint failed to update&apos;, onFail),
+    data: JSON.stringify(waypoint)
+  });
+}
+
+/**
+ * Sends a start sda request if the sda is off,
+ * Sends a stop sda request if the sda is on
+ * @param {boolean} enabled
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+export function toggleSda(enabled: boolean, onSuccess: Function = $.noop, onFail: Function = $.noop) {
+  if (enabled) {
+    alertify.message(&apos;Attempting to stop SDA&apos;);
+    $.ajax({
+      type: &apos;DELETE&apos;,
+      url: api + &apos;sda&apos;,
+      contentType: &apos;application/json&apos;,
+      headers: tokenObj(),
+      success: successGenerator(&apos;SDA stopped&apos;, onSuccess),
+      error: errorGenerator(&apos;SDA failed to stop&apos;, onFail)
+    });
+  } else {
+    alertify.message(&apos;Attempting to start SDA&apos;);
+    $.ajax({
+      type: &apos;POST&apos;,
+      url: api + &apos;sda&apos;,
+      contentType: &apos;application/json&apos;,
+      headers: tokenObj(),
+      success: successGenerator(&apos;SDA started&apos;, onSuccess),
+      error: errorGenerator(&apos;SDA failed to start&apos;, onFail)
+    });
+  }
+}
+
+/**
+ * Sends a start accelerometer calibration request to the server
+ * @returns {undefined}
+ */
+export function calibrationAStart() {
+  $.ajax({
+    type: &apos;POST&apos;,
+    url: api + &apos;cali/accel&apos;,
+    headers: tokenObj(),
+    contentType: &apos;application/json&apos;,
+    success: successGenerator(&apos;Acceleration calibration started&apos;),
+    error: errorGenerator(&apos;Acceleration calibration failed to start&apos;)
+  });
+}
+
+/**
+ * Sends a start gyroscope calibration request to the server
+ * @returns {undefined}
+ */
+export function calibrationGStart() {
+  $.ajax({
+    type: &apos;POST&apos;,
+    url: api + &apos;cali/gyro&apos;,
+    headers: tokenObj(),
+    contentType: &apos;application/json&apos;,
+    success: successGenerator(&apos;Gyroscope calibration started&apos;),
+    error: errorGenerator(&apos;Gyroscope calibration failed to start&apos;)
+  });
+}
+
+/**
+ * Sends a start pressure calibration request to the server
+ * @returns {undefined}
+ */
+export function calibrationPStart() {
+  $.ajax({
+    type: &apos;POST&apos;,
+    url: api + &apos;cali/pressure&apos;,
+    headers: tokenObj(),
+    contentType: &apos;application/json&apos;,
+    success: successGenerator(&apos;Pressure calibration started&apos;),
+    error: errorGenerator(&apos;Pressure calibration failed to start&apos;)
+  });
+}
+
+/**
+ * Sends a continue calibration request to the server
+ * @returns {undefined}
+ */
+export function calibrationContinue() {
+  $.ajax({
+    type: &apos;PUT&apos;,
+    headers: tokenObj(),
+    contentType: &apos;application/json&apos;,
+    url: api + &apos;cali/accel&apos;,
+    success: successGenerator(&apos;&apos;),
+    error: errorGenerator(&apos;&apos;)
+  });
+}
+
+/**
+ * Sends a start RC calibration request to the server
+ * @returns {undefined}
+ */
+export function calibrationRCStart() {
+  $.ajax({
+    type: &apos;POST&apos;,
+    url: api + &apos;cali/rc&apos;,
+    headers: tokenObj(),
+    contentType: &apos;application/json&apos;,
+    success: successGenerator(&apos;RC calibration started&apos;),
+    error: errorGenerator(&apos;RC calibration failed to start&apos;)
+  });
+}
+
+/**
+ * Sends a stop RC calibration request to the server
+ * @returns {undefined}
+ */
+export function calibrationRCStop() {
+  $.ajax({
+    type: &apos;DELETE&apos;,
+    url: api + &apos;cali/rc&apos;,
+    headers: tokenObj(),
+    contentType: &apos;application/json&apos;,
+    success: successGenerator(&apos;RC calibration finished&apos;),
+    error: errorGenerator(&apos;RC calibration failed to finish&apos;)
+  });
+}
+
+// Settings
+/**
+ * Sends geofence points to the server
+ * @param {Point[]} points
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+export function sendGeofencePoints(points: Point[], onSuccess: Function = $.noop, onFail: Function = $.noop) {
+  $.ajax({
+    type: &apos;POST&apos;,
+    url: api + &apos;geofence&apos;,
+    headers: tokenObj(),
+    data: JSON.stringify(points),
+    dataType: &apos;json&apos;,
+    contentType: &apos;application/json&apos;,
+    success: successGenerator(&apos;Geofence Points Sent&apos;, onSuccess),
+    error: errorGenerator(&apos;Geofence Points Failed to Send&apos;, onFail)
+  });
+}
+
+/**
+ * Sends a start interop request if the interop is off,
+ * Sends a stop interop request if the interop is on
+ * @param {boolean} status
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+export function toggleInterop(status: boolean, onSuccess: Function = $.noop, onFail: Function = $.noop) {
+  const data = JSON.stringify({
+    server_url: getConfigValue(configNames.INTEROP_URL),
+    username: getConfigValue(configNames.INTEROP_USERNAME),
+    password: getConfigValue(configNames.INTEROP_PASSWORD)
+  });
+  const nucUrl = getConfigValue(configNames.NUC_URL);
+  const headers = tokenObj();
+
+  if (status) {
+    alertify.message(&apos;Attempting to stop interop&apos;);
+    $.ajax({
+      type: &apos;DELETE&apos;,
+      url: nucUrl + &apos;/ground/api/v3/interop&apos;,
+      data: data,
+      headers: headers,
+      contentType: &apos;application/json&apos;,
+      success: successGenerator(&apos;Interop stopped&apos;, onSuccess),
+      error: errorGenerator(&apos;Interop failed to stop&apos;, onFail)
+    });
+  } else {
+    alertify.message(&apos;Attempting to start interop&apos;);
+    $.ajax({
+      type: &apos;POST&apos;,
+      url: nucUrl + &apos;/ground/api/v3/interop&apos;,
+      contentType: &apos;application/json&apos;,
+      data: data,
+      headers: headers,
+      success: successGenerator(&apos;Interop started&apos;, onSuccess),
+      error: errorGenerator(&apos;Interop failed to start&apos;, onFail)
+    });
+  }
+}
+
+const confirmButtonColor = &apos;#DD6B55&apos;;
+/**
+ * Toggles armed status
+ * @param {boolean} armed
+ * @returns {undefined}
+ */
+export function toggleArm(armed: boolean) {
+  if (armed) {
+    swal({
+      title: &apos;This action must be done when on the ground, if the vehicle is in the air, this action could result in a crash&apos;,
+      text: &apos;Are you sure you want to disarm?&apos;,
+      type: &apos;warning&apos;,
+      showCancelButton: true,
+      confirmButtonColor: confirmButtonColor,
+      confirmButtonText: &apos;Yes, disarm!&apos;,
+      cancelButtonText: &apos;No, don\&apos;t disarm!&apos;,
+      closeOnConfirm: false,
+      closeOnCancel: false
+    }, function(isConfirm) {
+      if (isConfirm) {
+        alertify.message(&apos;Attempting to disarm&apos;);
+        $.ajax({
+          type: &apos;DELETE&apos;,
+          url: api + &apos;arm&apos;,
+          contentType: &apos;application/json&apos;,
+          headers: confirmObj(),
+          success: () =&gt; swal(&apos;Disarm request sent!&apos;, &apos;&apos;, &apos;success&apos;),
+          error: data =&gt; { swal(&apos;Disarm request failed&apos;, &apos;&apos;, &apos;error&apos;); console.log(data); } // eslint-disable-line no-console
+        });
+      } else {
+        swal(&apos;Cancelled&apos;, &apos;The plane was not disarmed&apos;, &apos;info&apos;);
+      }
+    });
+  } else {
+    swal({
+      title: &apos;Make sure nobody is near the propeller!&apos;,
+      text: &apos;Are you sure you want to arm?&apos;,
+      type: &apos;warning&apos;,
+      showCancelButton: true,
+      confirmButtonColor: confirmButtonColor,
+      confirmButtonText: &apos;Yes, arm!&apos;,
+      cancelButtonText: &apos;No, don\&apos;t arm!&apos;,
+      closeOnConfirm: false,
+      closeOnCancel: false
+    }, function(isConfirm) {
+      if (isConfirm) {
+        alertify.message(&apos;Attempting to arm&apos;);
+        $.ajax({
+          type: &apos;POST&apos;,
+          url: api + &apos;arm&apos;,
+          contentType: &apos;application/json&apos;,
+          headers: confirmObj(),
+          success: () =&gt; swal(&apos;Arm Request Sent!&apos;, &apos;&apos;, &apos;success&apos;),
+          error: data =&gt; { swal(&apos;Arm Request Failed&apos;, &apos;&apos;, &apos;error&apos;); console.log(data); } // eslint-disable-line no-console
+        });
+      } else {
+        swal(&apos;Cancelled&apos;, &apos;The plane was not armed&apos;, &apos;info&apos;);
+      }
+    });
+  }
+}
+
+/**
+ * Causes reboot
+ * @returns {undefined}
+ */
+export function reboot() {
+  swal({
+    title: &apos;This action must be done when on the ground, if the vehicle is in the air, this action will result in a crash&apos;,
+    text: &apos;Are you sure you want to reboot?&apos;,
+    type: &apos;warning&apos;,
+    showCancelButton: true,
+    confirmButtonColor: confirmButtonColor,
+    confirmButtonText: &apos;Yes, reboot!&apos;,
+    cancelButtonText: &apos;No, don\&apos;t reboot!&apos;,
+    closeOnConfirm: false,
+    closeOnCancel: false
+  }, function(isConfirm) {
+    if (isConfirm) {
+      $.ajax({
+        type: &apos;POST&apos;,
+        headers: confirmObj(),
+        url: api + &apos;reboot&apos;,
+        contentType: &apos;application/json&apos;,
+        success: () =&gt; swal(&apos;Reboot Request Sent!&apos;, &apos;&apos;, &apos;success&apos;),
+        error: data =&gt; { swal(&apos;Reboot Request Failed&apos;, &apos;&apos;, &apos;error&apos;); console.log(data); } // eslint-disable-line no-console
+      });
+    } else {
+      swal(&apos;Cancelled&apos;, &apos;The plane was not rebooted&apos;, &apos;info&apos;);
+    }
+  });
+}
+
+/**
+* Guides user through GUI to add Location and sends to backend.
+* @returns {undefined}
+*/
+export function addLocation() {
+  swal({
+    title: &apos;Adding Location&apos;,
+    text: &apos;Location Name&apos;,
+    type: &apos;input&apos;,
+    showCancelButton: true,
+    closeOnConfirm: false,
+    animation: &apos;slide-from-top&apos;,
+    inputPlaceholder: &apos;Neno Airfield&apos;
+  }, function(name) {
+    if (name === false) return false;
+    if (name === &apos;&apos;) {
+      swal.showInputError(&apos;You need to write something!&apos;);
+      return false;
+    }
+    swal({
+      title: &apos;Adding Location&apos;,
+      text: &apos;Coordinates for &apos; + name + &apos; (leave blank to update)&apos;,
+      type: &apos;input&apos;,
+      showCancelButton: true,
+      closeOnConfirm: false,
+      animation: &apos;slide-from-top&apos;,
+      inputPlaceholder: &apos;42.4473054,-76.612611&apos;
+    }, function(inputValue) {
+      if (inputValue === false) return false;
+      if (inputValue === &apos;&apos;) {
+        swal.showInputError(&apos;You need to write something!&apos;);
+        return false;
+      }
+      inputValue = inputValue.replace(/ /g, &apos;&apos;);
+      var lat = parseFloat(inputValue.split(&apos;,&apos;)[0]);
+      var lng = parseFloat(inputValue.split(&apos;,&apos;)[1]);
+      swal(&apos;Success!&apos;, `Adding location ${name} at (${lat},${lng}). Please refresh the page in 10 seconds.`, &apos;success&apos;);
+
+      var locationdata = {
+        &apos;name&apos;: name.replace(/ /g, &apos;_&apos;),
+        &apos;lat&apos;: lat,
+        &apos;lng&apos;: lng,
+        &apos;zoom&apos;: 17
+      };
+      $.ajax({
+        url: &apos;http://localhost:8001/ground/api/v3/cachemaps&apos;,
+        type: &apos;POST&apos;,
+        data: JSON.stringify(locationdata),
+        contentType: &apos;application/json; charset=utf-8&apos;,
+        dataType: &apos;json&apos;
+      });
+    });
+  });
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.4.8)</span></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
