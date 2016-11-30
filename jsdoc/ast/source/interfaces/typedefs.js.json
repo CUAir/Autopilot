@@ -312,10 +312,10 @@
         },
         {
           "type": "Block",
-          "value": "*\n * @typedef {Object} Waypoint\n * @property {number} number\n * @property {lat} number\n * @property {lon} number\n * @property {alt} number\n * @property {type} number\n ",
+          "value": "*\n * @typedef {Object} Waypoint\n * @property {number} number\n * @property {number} lat\n * @property {number} lon\n * @property {number} alt\n * @property {number} type\n * @property {number} command\n * @property {number} index\n ",
           "range": [
             1907,
-            2078
+            2136
           ],
           "loc": {
             "start": {
@@ -323,25 +323,25 @@
               "column": 0
             },
             "end": {
-              "line": 119,
+              "line": 121,
               "column": 3
             }
           }
         },
         {
           "type": "Block",
-          "value": "*\n * @typedef {Object} Powerboard\n * @property {number} csbatt\n * @property {number} nuc\n * @property {number} gimbal\n * @property {number} comms\n * @proprety {number} 12v reg\n * @property {number} 24v reg\n ",
+          "value": "*\n * @typedef {Object} Powerboard\n * @property {number} csbatt\n * @property {number} nuc\n * @property {number} gimbal\n * @property {number} comms\n * @property {number} 12v_reg\n * @property {number} 24v_reg\n ",
           "range": [
-            2081,
-            2292
+            2139,
+            2350
           ],
           "loc": {
             "start": {
-              "line": 122,
+              "line": 124,
               "column": 0
             },
             "end": {
-              "line": 130,
+              "line": 132,
               "column": 3
             }
           }
@@ -637,10 +637,10 @@
     },
     {
       "type": "Block",
-      "value": "*\n * @typedef {Object} Waypoint\n * @property {number} number\n * @property {lat} number\n * @property {lon} number\n * @property {alt} number\n * @property {type} number\n ",
+      "value": "*\n * @typedef {Object} Waypoint\n * @property {number} number\n * @property {number} lat\n * @property {number} lon\n * @property {number} alt\n * @property {number} type\n * @property {number} command\n * @property {number} index\n ",
       "range": [
         1907,
-        2078
+        2136
       ],
       "loc": {
         "start": {
@@ -648,25 +648,25 @@
           "column": 0
         },
         "end": {
-          "line": 119,
+          "line": 121,
           "column": 3
         }
       }
     },
     {
       "type": "Block",
-      "value": "*\n * @typedef {Object} Powerboard\n * @property {number} csbatt\n * @property {number} nuc\n * @property {number} gimbal\n * @property {number} comms\n * @proprety {number} 12v reg\n * @property {number} 24v reg\n ",
+      "value": "*\n * @typedef {Object} Powerboard\n * @property {number} csbatt\n * @property {number} nuc\n * @property {number} gimbal\n * @property {number} comms\n * @property {number} 12v_reg\n * @property {number} 24v_reg\n ",
       "range": [
-        2081,
-        2292
+        2139,
+        2350
       ],
       "loc": {
         "start": {
-          "line": 122,
+          "line": 124,
           "column": 0
         },
         "end": {
-          "line": 130,
+          "line": 132,
           "column": 3
         }
       }

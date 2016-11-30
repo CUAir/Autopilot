@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "doc": "esdoc -c esdoc.json",
-    "lint": "eslint --quiet js/ && eslint --quiet __tests__/",
+    "lint": "eslint --cache --quiet js/ && eslint --cache --quiet __tests__/",
     "gulp": "gulp",
     "flow": "flow"
   },

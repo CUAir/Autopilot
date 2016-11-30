@@ -12,16 +12,16 @@
               "type": "Identifier",
               "name": "PLANE_RECEIVE_FREQUENCY",
               "range": [
-                13,
-                36
+                92,
+                115
               ],
               "loc": {
                 "start": {
-                  "line": 1,
+                  "line": 6,
                   "column": 13
                 },
                 "end": {
-                  "line": 1,
+                  "line": 6,
                   "column": 36
                 }
               }
@@ -31,31 +31,31 @@
               "value": 1,
               "raw": "1",
               "range": [
-                39,
-                40
+                118,
+                119
               ],
               "loc": {
                 "start": {
-                  "line": 1,
+                  "line": 6,
                   "column": 39
                 },
                 "end": {
-                  "line": 1,
+                  "line": 6,
                   "column": 40
                 }
               }
             },
             "range": [
-              13,
-              40
+              92,
+              119
             ],
             "loc": {
               "start": {
-                "line": 1,
+                "line": 6,
                 "column": 13
               },
               "end": {
-                "line": 1,
+                "line": 6,
                 "column": 40
               }
             }
@@ -63,38 +63,116 @@
         ],
         "kind": "const",
         "range": [
-          7,
-          41
+          86,
+          120
         ],
         "loc": {
           "start": {
-            "line": 1,
+            "line": 6,
             "column": 7
           },
           "end": {
-            "line": 1,
+            "line": 6,
             "column": 41
           }
         },
-        "leadingComments": [],
-        "trailingComments": []
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "* How many times per second to retrieve plane vitals\n * @type {number}\n ",
+            "range": [
+              2,
+              78
+            ],
+            "loc": {
+              "start": {
+                "line": 3,
+                "column": 0
+              },
+              "end": {
+                "line": 5,
+                "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": [
+          {
+            "type": "Block",
+            "value": "* How many times per second to retrieve interop data\n * @type {number}\n ",
+            "range": [
+              122,
+              198
+            ],
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 0
+              },
+              "end": {
+                "line": 10,
+                "column": 3
+              }
+            }
+          }
+        ]
       },
       "specifiers": [],
       "source": null,
       "range": [
-        0,
-        41
+        79,
+        120
       ],
       "loc": {
         "start": {
-          "line": 1,
+          "line": 6,
           "column": 0
         },
         "end": {
-          "line": 1,
+          "line": 6,
           "column": 41
         }
-      }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "* How many times per second to retrieve plane vitals\n * @type {number}\n ",
+          "range": [
+            2,
+            78
+          ],
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 0
+            },
+            "end": {
+              "line": 5,
+              "column": 3
+            }
+          }
+        }
+      ],
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": "* How many times per second to retrieve interop data\n * @type {number}\n ",
+          "range": [
+            122,
+            198
+          ],
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 0
+            },
+            "end": {
+              "line": 10,
+              "column": 3
+            }
+          }
+        }
+      ]
     },
     {
       "type": "ExportNamedDeclaration",
@@ -107,16 +185,16 @@
               "type": "Identifier",
               "name": "INTEROP_RECEIVE_FREQUENCY",
               "range": [
-                55,
-                80
+                212,
+                237
               ],
               "loc": {
                 "start": {
-                  "line": 2,
+                  "line": 11,
                   "column": 13
                 },
                 "end": {
-                  "line": 2,
+                  "line": 11,
                   "column": 38
                 }
               }
@@ -126,31 +204,31 @@
               "value": 15,
               "raw": "15",
               "range": [
-                83,
-                85
+                240,
+                242
               ],
               "loc": {
                 "start": {
-                  "line": 2,
+                  "line": 11,
                   "column": 41
                 },
                 "end": {
-                  "line": 2,
+                  "line": 11,
                   "column": 43
                 }
               }
             },
             "range": [
-              55,
-              85
+              212,
+              242
             ],
             "loc": {
               "start": {
-                "line": 2,
+                "line": 11,
                 "column": 13
               },
               "end": {
-                "line": 2,
+                "line": 11,
                 "column": 43
               }
             }
@@ -158,54 +236,130 @@
         ],
         "kind": "const",
         "range": [
-          49,
-          86
+          206,
+          243
         ],
         "loc": {
           "start": {
-            "line": 2,
+            "line": 11,
             "column": 7
           },
           "end": {
-            "line": 2,
+            "line": 11,
             "column": 44
           }
         },
-        "leadingComments": [],
+        "leadingComments": [
+          {
+            "type": "Block",
+            "value": "* How many times per second to retrieve interop data\n * @type {number}\n ",
+            "range": [
+              122,
+              198
+            ],
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 0
+              },
+              "end": {
+                "line": 10,
+                "column": 3
+              }
+            }
+          }
+        ],
         "trailingComments": []
       },
       "specifiers": [],
       "source": null,
       "range": [
-        42,
-        86
+        199,
+        243
       ],
       "loc": {
         "start": {
-          "line": 2,
+          "line": 11,
           "column": 0
         },
         "end": {
-          "line": 2,
+          "line": 11,
           "column": 44
         }
-      }
+      },
+      "leadingComments": [
+        {
+          "type": "Block",
+          "value": "* How many times per second to retrieve interop data\n * @type {number}\n ",
+          "range": [
+            122,
+            198
+          ],
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 0
+            },
+            "end": {
+              "line": 10,
+              "column": 3
+            }
+          }
+        }
+      ]
     }
   ],
   "sourceType": "module",
   "range": [
-    0,
-    86
+    79,
+    243
   ],
   "loc": {
     "start": {
-      "line": 1,
+      "line": 6,
       "column": 0
     },
     "end": {
-      "line": 2,
+      "line": 11,
       "column": 44
     }
   },
-  "comments": []
+  "comments": [
+    {
+      "type": "Block",
+      "value": "* How many times per second to retrieve plane vitals\n * @type {number}\n ",
+      "range": [
+        2,
+        78
+      ],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 0
+        },
+        "end": {
+          "line": 5,
+          "column": 3
+        }
+      }
+    },
+    {
+      "type": "Block",
+      "value": "* How many times per second to retrieve interop data\n * @type {number}\n ",
+      "range": [
+        122,
+        198
+      ],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 0
+        },
+        "end": {
+          "line": 10,
+          "column": 3
+        }
+      }
+    }
+  ]
 }

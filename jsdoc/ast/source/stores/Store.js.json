@@ -951,7 +951,7 @@
         ],
         "range": [
           101,
-          354
+          355
         ],
         "loc": {
           "start": {
@@ -959,14 +959,14 @@
             "column": 33
           },
           "end": {
-            "line": 22,
+            "line": 23,
             "column": 1
           }
         }
       },
       "range": [
         68,
-        354
+        355
       ],
       "loc": {
         "start": {
@@ -974,7 +974,7 @@
           "column": 0
         },
         "end": {
-          "line": 22,
+          "line": 23,
           "column": 1
         }
       },
@@ -988,31 +988,31 @@
         "type": "Identifier",
         "name": "Store",
         "range": [
-          371,
-          376
+          372,
+          377
         ],
         "loc": {
           "start": {
-            "line": 24,
+            "line": 25,
             "column": 15
           },
           "end": {
-            "line": 24,
+            "line": 25,
             "column": 20
           }
         }
       },
       "range": [
-        356,
-        377
+        357,
+        378
       ],
       "loc": {
         "start": {
-          "line": 24,
+          "line": 25,
           "column": 0
         },
         "end": {
-          "line": 24,
+          "line": 25,
           "column": 21
         }
       },
@@ -1825,7 +1825,7 @@
           ],
           "range": [
             101,
-            354
+            355
           ],
           "loc": {
             "start": {
@@ -1833,14 +1833,14 @@
               "column": 33
             },
             "end": {
-              "line": 22,
+              "line": 23,
               "column": 1
             }
           }
         },
         "range": [
           68,
-          354
+          355
         ],
         "loc": {
           "start": {
@@ -1848,7 +1848,7 @@
             "column": 0
           },
           "end": {
-            "line": 22,
+            "line": 23,
             "column": 1
           }
         },
@@ -1857,16 +1857,16 @@
         "trailingComments": []
       },
       "range": [
-        356,
-        377
+        357,
+        378
       ],
       "loc": {
         "start": {
-          "line": 24,
+          "line": 25,
           "column": 0
         },
         "end": {
-          "line": 24,
+          "line": 25,
           "column": 21
         }
       },
@@ -1876,7 +1876,7 @@
   "sourceType": "module",
   "range": [
     0,
-    377
+    378
   ],
   "loc": {
     "start": {
@@ -1884,7 +1884,7 @@
       "column": 0
     },
     "end": {
-      "line": 24,
+      "line": 25,
       "column": 21
     }
   },

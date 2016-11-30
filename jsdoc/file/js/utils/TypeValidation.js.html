@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <base data-ice="baseUrl" href="../../../../">
-  <title data-ice="title">js/components/Map/Slider.react.js | API Document</title>
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">js/utils/TypeValidation.js | API Document</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -51,6 +51,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-saveParamModal">saveParamModal</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-selectParameter">selectParameter</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveSdaEnabled">receiveSdaEnabled</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-changeHistoricalSlider">changeHistoricalSlider</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveFlightNotes">receiveFlightNotes</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveLocation">receiveLocation</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-receiveLocations">receiveLocations</a></span></span></li>
@@ -89,7 +90,6 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-setSelected">setSelected</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updateCellLatLon">updateCellLatLon</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updateItem">updateItem</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">components/Map</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-Slider">Slider</a></span></span></li>
 <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">constants</div><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-CalibrationTypes">CalibrationTypes</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-FenceTypes">FenceTypes</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-InteropTypes">InteropTypes</a></span></span></li>
@@ -114,24 +114,7 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-PLANE_RECEIVE_FREQUENCY">PLANE_RECEIVE_FREQUENCY</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-api">api</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-site">site</a></span></span></li>
-<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">interfaces</div><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-assertJson">assertJson</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-airspeedType">airspeedType</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-armedType">armedType</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-attitudeType">attitudeType</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-batteryType">batteryType</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-climbRateType">climbRateType</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-currentWaypointType">currentWaypointType</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-fenceType">fenceType</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-gpsType">gpsType</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-linkType">linkType</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-modeType">modeType</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-powerboardType">powerboardType</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-safetySwitchType">safetySwitchType</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sdaType">sdaType</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-throttleType">throttleType</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-waypointsType">waypointsType</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-windType">windType</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-DisplayInfoType">DisplayInfoType</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">interfaces</div><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-DisplayInfoType">DisplayInfoType</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-DropdownOptionType">DropdownOptionType</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FlightNotesType">FlightNotesType</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-FullWidthButtonType">FullWidthButtonType</a></span></span></li>
@@ -245,120 +228,165 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toggleInterop">toggleInterop</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-toggleSda">toggleSda</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-updateWP">updateWP</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-assertJson">assertJson</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-configNames">configNames</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-params">params</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-airspeedType">airspeedType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-armedType">armedType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-attitudeType">attitudeType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-batteryType">batteryType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-climbRateType">climbRateType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-currentWaypointType">currentWaypointType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-fenceType">fenceType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-gpsType">gpsType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-linkType">linkType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-modeType">modeType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-powerboardType">powerboardType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-safetySwitchType">safetySwitchType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-sdaType">sdaType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-throttleType">throttleType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-waypointsType">waypointsType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-windType">windType</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-typedef">T</span><span data-ice="name"><span><a href="typedef/index.html#static-typedef-ReceiveType">ReceiveType</a></span></span></li>
 </ul>
 </div>
 </nav>
 
-<div class="content" data-ice="content"><h1 data-ice="title">js/components/Map/Slider.react.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import React from &apos;react&apos;;
+<div class="content" data-ice="content"><h1 data-ice="title">js/utils/TypeValidation.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">// @flow
 
-import ReactSlider from &apos;rc-slider&apos;;
+const NUMBER = &apos;number&apos;;
+const STRING = &apos;string&apos;;
+const FUNCTION = &apos;function&apos;;
+const BOOLEAN = &apos;boolean&apos;;
+const UNDEFINED = &apos;undefined&apos;;
+const NULL = &apos;null&apos;;
+const ARRAY = &apos;array&apos;;
+const OBJECT = &apos;object&apos;;
 
-import { dateToString, decround } from &apos;../../utils/ComponentUtils&apos;;
-import { getConfigValue, configNames } from &apos;../../utils/ConfigData&apos;;
-import SettingsStore from &apos;../../stores/SettingsStore&apos;;
-
-const handleStyle = {
-  position: &apos;absolute&apos;,
-  transform: &apos;translate(-50%, -50%)&apos;,
-  cursor: &apos;pointer&apos;,
-  padding: &apos;2px&apos;,
-  border: &apos;2px solid #abe2fb&apos;,
-  borderRadius: &apos;3px&apos;,
-  background: &apos;#fff&apos;,
-  fontSize: &apos;14px&apos;,
-  textAlign: &apos;center&apos;
-};
-
-function getStateFromStore() {
-  const value = getConfigValue(configNames.SCROLL_END) - getConfigValue(configNames.SCROLL_START);
-  const seconds = decround(value/1000, 0);
-  return {
-    seconds: seconds
-  };
+function validType(value: any, type: any): boolean {
+  if (type === BOOLEAN || type === STRING || type === NUMBER ||
+      type === FUNCTION || type === UNDEFINED) {
+    return typeof value === type;
+  } else if (type === NULL) {
+    return value === null;
+  } else if (type === ARRAY) {
+    return Array.isArray(value);
+  } else if (typeof type === OBJECT) {
+    return Object.keys(type).reduce((acc, key) =&gt; {
+      return acc &amp;&amp; validType(value[key], type[key]);
+    }, true);
+  } else {
+    return false;
+  }
 }
 
-const Handle = React.createClass({
-  render: function() {
-    const style = Object.assign({left: `${this.props.offset}%`}, handleStyle);
-    const diff = this.props.seconds - this.props.value;
-    const dateAtValue = new Date(getConfigValue(configNames.SCROLL_END) - (diff * 1000));
-    const string = this.props.value === this.props.seconds ? &apos;Now&apos; : dateToString(dateAtValue);
-    return &lt;div style={style}&gt;{string}&lt;/div&gt;;
+/**
+ * Makes sure that json is valid and of the correct type
+ * @param {string} name - for printout purposes
+ * @param {string} stringValue - json to be parsed
+ * @param {any} type - the type to be validated against
+ * @returns {boolean}
+ */
+export function assertJson(name: string, stringValue: string, type: any) {
+  try {
+    const value = JSON.parse(stringValue);
+    const valid = validType(value, type);
+    if (!valid) console.log(`${name}: Invalid type`); // eslint-disable-line no-console
+    return valid;
+  } catch(err) {
+    console.log(`${name}: ${err}`); // eslint-disable-line no-console
+    return false;
   }
-});
+}
 
-const Slider = React.createClass({
-  getInitialState: function() {
-    const state = getStateFromStore();
-    return Object.assign({}, state, {play: false, value: state.seconds});
-  },
+/**
+ * @typedef {string | Object} ReceiveType */
 
-  componentDidMount: function() {
-    SettingsStore.addChangeListener(this._onChange);
-  },
+/** @type {ReceiveType} */
+export const airspeedType = {
+  airvx: NUMBER,
+  airvy: NUMBER,
+  airvz: NUMBER,
+  speed: NUMBER
+};
 
-  componentWillUnmount: function() {
-    SettingsStore.removeChangeListener(this._onChange);
-  },
+/** @type {ReceiveType} */
+export const attitudeType = {
+  pitch: NUMBER,
+  roll: NUMBER,
+  yaw: NUMBER,
+  pitchspeed: NUMBER,
+  rollspeed: NUMBER,
+  yawspeed: NUMBER
+};
 
-  _onChange: function() {
-    this.setState(getStateFromStore());
-  },
+/** @type {ReceiveType} */
+export const armedType = BOOLEAN;
 
-  _playPause: function() {
-    if (this.state.play) {  // person clicked pause
-      clearInterval(this._interval);
-    } else if (!this.state.play) {
-      this._interval = setInterval(this._onTick, 1000);
-    }
-    this.setState({play: !this.state.play});
-  },
+/** @type {ReceiveType} */
+export const batteryType = {
+  batteryvoltage: NUMBER,
+  batterypct: NUMBER
+};
 
-  _onTick: function() {
-    this._onSliderChange(this.state.value + 1);
-    this._onDrag(this.state.value + 1);
-  },
+/** @type {ReceiveType} */
+export const climbRateType = NUMBER;
 
-  _onSliderChange: function(sliderValue) {
-    SettingsStore.getSliderOnChange()(sliderValue);
-  },
+/** @type {ReceiveType} */
+export const currentWaypointType = NUMBER;
 
-  _onDrag: function(sliderValue) {
-    this.setState({value: sliderValue});
-  },
+/** @type {ReceiveType} */
+export const fenceType = ARRAY;
 
-  _interval: null,
+/** @type {ReceiveType} */
+export const gpsType = {
+  lat: NUMBER,
+  lon: NUMBER,
+  rel_alt: NUMBER,
+  groundvx: NUMBER,
+  groundvy: NUMBER,
+  groundvz: NUMBER,
+  heading: NUMBER
+};
 
-  render: function() {
-    const playStyle = {marginLeft: &apos;20px&apos;};
-    const icon = this.state.play ? &apos;pause&apos; : &apos;play&apos;;
+/** @type {ReceiveType} */
+export const linkType = {
+  gps_link: BOOLEAN,
+  plane_link: BOOLEAN
+};
 
-    return (
-      &lt;div className=&quot;row&quot;&gt;
-        &lt;div className=&quot;col-xs-11&quot;&gt;
-          &lt;div className=&quot;underline&quot;&gt;&lt;/div&gt;
-          &lt;ReactSlider
-            min={0}
-            max={this.state.seconds}
-            defaultValue={this.state.seconds}
-            value={this.state.value}
-            onChange={this._onDrag}
-            onAfterChange={this._onSliderChange}
-            handle={&lt;Handle seconds={this.state.seconds} /&gt;} /&gt;
-          &lt;div className=&quot;underline&quot;&gt;&lt;/div&gt;
-        &lt;/div&gt;
-        &lt;div className=&quot;col-xs-1&quot;&gt;
-          &lt;button style={playStyle} onClick={this._playPause} className=&quot;btn btn-default&quot;&gt;&lt;span className={`fa fa-${icon}`}&gt;&lt;/span&gt;&lt;/button&gt;
-        &lt;/div&gt;
-      &lt;/div&gt;
-    );
-  }
-});
+/** @type {ReceiveType} */
+export const modeType = STRING;
 
-export default Slider;
+/** @type {ReceiveType} */
+export const powerboardType = {
+  csbatt: NUMBER,
+  nuc: NUMBER,
+  gimbal: NUMBER,
+  comms: NUMBER,
+  &apos;12v reg&apos;: NUMBER,
+  &apos;24v reg&apos;: NUMBER
+};
+
+/** @type {ReceiveType} */
+export const safetySwitchType = BOOLEAN;
+
+/** @type {ReceiveType} */
+export const sdaType = BOOLEAN;
+
+/** @type {ReceiveType} */
+export const throttleType = NUMBER;
+
+/** @type {ReceiveType} */
+export const waypointsType = ARRAY;
+
+/** @type {ReceiveType} */
+export const windType = {
+  windvx: NUMBER,
+  windvy: NUMBER,
+  windvz: NUMBER
+};
 </code></pre>
 
 </div>

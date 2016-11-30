@@ -210,9 +210,9 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "gcs/js/interfaces/types.js~airspeedtype",
+    "gcs/js/utils/typevalidation.js~airspeedtype",
     "variable/index.html#static-variable-airspeedType",
-    "<span>airspeedType</span> <span class=\"search-result-import-path\">GCS/js/interfaces/types.js</span>",
+    "<span>airspeedType</span> <span class=\"search-result-import-path\">GCS/js/utils/TypeValidation.js</span>",
     "variable"
   ],
   [
@@ -222,27 +222,27 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "gcs/js/interfaces/types.js~armedtype",
+    "gcs/js/utils/typevalidation.js~armedtype",
     "variable/index.html#static-variable-armedType",
-    "<span>armedType</span> <span class=\"search-result-import-path\">GCS/js/interfaces/types.js</span>",
+    "<span>armedType</span> <span class=\"search-result-import-path\">GCS/js/utils/TypeValidation.js</span>",
     "variable"
   ],
   [
-    "gcs/js/interfaces/types.js~assertjson",
+    "gcs/js/utils/typevalidation.js~assertjson",
     "function/index.html#static-function-assertJson",
-    "<span>assertJson</span> <span class=\"search-result-import-path\">GCS/js/interfaces/types.js</span>",
+    "<span>assertJson</span> <span class=\"search-result-import-path\">GCS/js/utils/TypeValidation.js</span>",
     "function"
   ],
   [
-    "gcs/js/interfaces/types.js~attitudetype",
+    "gcs/js/utils/typevalidation.js~attitudetype",
     "variable/index.html#static-variable-attitudeType",
-    "<span>attitudeType</span> <span class=\"search-result-import-path\">GCS/js/interfaces/types.js</span>",
+    "<span>attitudeType</span> <span class=\"search-result-import-path\">GCS/js/utils/TypeValidation.js</span>",
     "variable"
   ],
   [
-    "gcs/js/interfaces/types.js~batterytype",
+    "gcs/js/utils/typevalidation.js~batterytype",
     "variable/index.html#static-variable-batteryType",
-    "<span>batteryType</span> <span class=\"search-result-import-path\">GCS/js/interfaces/types.js</span>",
+    "<span>batteryType</span> <span class=\"search-result-import-path\">GCS/js/utils/TypeValidation.js</span>",
     "variable"
   ],
   [
@@ -318,9 +318,9 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "gcs/js/interfaces/types.js~climbratetype",
+    "gcs/js/utils/typevalidation.js~climbratetype",
     "variable/index.html#static-variable-climbRateType",
-    "<span>climbRateType</span> <span class=\"search-result-import-path\">GCS/js/interfaces/types.js</span>",
+    "<span>climbRateType</span> <span class=\"search-result-import-path\">GCS/js/utils/TypeValidation.js</span>",
     "variable"
   ],
   [
@@ -354,9 +354,9 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "gcs/js/interfaces/types.js~currentwaypointtype",
+    "gcs/js/utils/typevalidation.js~currentwaypointtype",
     "variable/index.html#static-variable-currentWaypointType",
-    "<span>currentWaypointType</span> <span class=\"search-result-import-path\">GCS/js/interfaces/types.js</span>",
+    "<span>currentWaypointType</span> <span class=\"search-result-import-path\">GCS/js/utils/TypeValidation.js</span>",
     "variable"
   ],
   [
@@ -414,9 +414,9 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "gcs/js/interfaces/types.js~fencetype",
+    "gcs/js/utils/typevalidation.js~fencetype",
     "variable/index.html#static-variable-fenceType",
-    "<span>fenceType</span> <span class=\"search-result-import-path\">GCS/js/interfaces/types.js</span>",
+    "<span>fenceType</span> <span class=\"search-result-import-path\">GCS/js/utils/TypeValidation.js</span>",
     "variable"
   ],
   [
@@ -444,9 +444,9 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "gcs/js/interfaces/types.js~gpstype",
+    "gcs/js/utils/typevalidation.js~gpstype",
     "variable/index.html#static-variable-gpsType",
-    "<span>gpsType</span> <span class=\"search-result-import-path\">GCS/js/interfaces/types.js</span>",
+    "<span>gpsType</span> <span class=\"search-result-import-path\">GCS/js/utils/TypeValidation.js</span>",
     "variable"
   ],
   [
@@ -480,9 +480,9 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "gcs/js/interfaces/types.js~linktype",
+    "gcs/js/utils/typevalidation.js~linktype",
     "variable/index.html#static-variable-linkType",
-    "<span>linkType</span> <span class=\"search-result-import-path\">GCS/js/interfaces/types.js</span>",
+    "<span>linkType</span> <span class=\"search-result-import-path\">GCS/js/utils/TypeValidation.js</span>",
     "variable"
   ],
   [
@@ -540,9 +540,9 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "gcs/js/interfaces/types.js~modetype",
+    "gcs/js/utils/typevalidation.js~modetype",
     "variable/index.html#static-variable-modeType",
-    "<span>modeType</span> <span class=\"search-result-import-path\">GCS/js/interfaces/types.js</span>",
+    "<span>modeType</span> <span class=\"search-result-import-path\">GCS/js/utils/TypeValidation.js</span>",
     "variable"
   ],
   [
@@ -564,9 +564,9 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "gcs/js/interfaces/types.js~powerboardtype",
+    "gcs/js/utils/typevalidation.js~powerboardtype",
     "variable/index.html#static-variable-powerboardType",
-    "<span>powerboardType</span> <span class=\"search-result-import-path\">GCS/js/interfaces/types.js</span>",
+    "<span>powerboardType</span> <span class=\"search-result-import-path\">GCS/js/utils/TypeValidation.js</span>",
     "variable"
   ],
   [
@@ -834,9 +834,9 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "gcs/js/interfaces/types.js~safetyswitchtype",
+    "gcs/js/utils/typevalidation.js~safetyswitchtype",
     "variable/index.html#static-variable-safetySwitchType",
-    "<span>safetySwitchType</span> <span class=\"search-result-import-path\">GCS/js/interfaces/types.js</span>",
+    "<span>safetySwitchType</span> <span class=\"search-result-import-path\">GCS/js/utils/TypeValidation.js</span>",
     "variable"
   ],
   [
@@ -876,9 +876,9 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
-    "gcs/js/interfaces/types.js~sdatype",
+    "gcs/js/utils/typevalidation.js~sdatype",
     "variable/index.html#static-variable-sdaType",
-    "<span>sdaType</span> <span class=\"search-result-import-path\">GCS/js/interfaces/types.js</span>",
+    "<span>sdaType</span> <span class=\"search-result-import-path\">GCS/js/utils/TypeValidation.js</span>",
     "variable"
   ],
   [
@@ -1008,9 +1008,9 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "gcs/js/interfaces/types.js~throttletype",
+    "gcs/js/utils/typevalidation.js~throttletype",
     "variable/index.html#static-variable-throttleType",
-    "<span>throttleType</span> <span class=\"search-result-import-path\">GCS/js/interfaces/types.js</span>",
+    "<span>throttleType</span> <span class=\"search-result-import-path\">GCS/js/utils/TypeValidation.js</span>",
     "variable"
   ],
   [
@@ -1104,15 +1104,15 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
-    "gcs/js/interfaces/types.js~waypointstype",
+    "gcs/js/utils/typevalidation.js~waypointstype",
     "variable/index.html#static-variable-waypointsType",
-    "<span>waypointsType</span> <span class=\"search-result-import-path\">GCS/js/interfaces/types.js</span>",
+    "<span>waypointsType</span> <span class=\"search-result-import-path\">GCS/js/utils/TypeValidation.js</span>",
     "variable"
   ],
   [
-    "gcs/js/interfaces/types.js~windtype",
+    "gcs/js/utils/typevalidation.js~windtype",
     "variable/index.html#static-variable-windType",
-    "<span>windType</span> <span class=\"search-result-import-path\">GCS/js/interfaces/types.js</span>",
+    "<span>windType</span> <span class=\"search-result-import-path\">GCS/js/utils/TypeValidation.js</span>",
     "variable"
   ],
   [
@@ -1728,12 +1728,6 @@ window.esdocSearchIndex = [
     "typedef"
   ],
   [
-    "js/interfaces/types.js",
-    "file/js/interfaces/types.js.html",
-    "js/interfaces/types.js",
-    "file"
-  ],
-  [
     "js/stores/calibrationstore.js",
     "file/js/stores/CalibrationStore.js.html",
     "js/stores/CalibrationStore.js",
@@ -2212,5 +2206,17 @@ window.esdocSearchIndex = [
     "file/js/utils/SendApi.js.html",
     "js/utils/SendApi.js",
     "file"
+  ],
+  [
+    "js/utils/typevalidation.js",
+    "file/js/utils/TypeValidation.js.html",
+    "js/utils/TypeValidation.js",
+    "file"
+  ],
+  [
+    "js/utils/typevalidation.js~receivetype",
+    "typedef/index.html#static-typedef-ReceiveType",
+    "js/utils/TypeValidation.js~ReceiveType",
+    "typedef"
   ]
 ]
