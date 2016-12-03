@@ -6,17 +6,6 @@
 Autopilot documentation
 =========================================================
 
-Contents:
-
-.. toctree::
-   :maxdepth: 2
-
-   api
-   groundstation
-   ardupilot
-   catapult
-   testflight
-
 Welcome
 =========
 
@@ -75,6 +64,18 @@ License
 -------
 The project may or may not have a license.
 
+
+Contents:
+
+.. toctree::
+   :maxdepth: 2
+
+   api
+   groundstation
+   ardupilot
+   catapult
+   testflight
+   autopilot_configuration
 
 Indices and tables
 ==================

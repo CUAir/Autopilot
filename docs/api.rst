@@ -62,6 +62,22 @@ individual bit of data (below)::
                 "vz" : 0.0
             },
             
+            "signal" : {
+                "time" : 0.0,
+                "signal_strength": 0
+            },
+            
+            "flight_time" : {
+                "time" : 0.0,
+                "time_start" : 0.0,
+                "is_flying" : "False"
+            },
+            
+            "gps_status" : {
+                "time" : 0.0,
+                "satellite_number": 0
+            },
+            
             "throttle" : 0,
             
             "waypoints" : [{
@@ -221,7 +237,50 @@ Returns vectors vx, vy, vz representing the wind velocity vector as floats
             "vy" : 0.0,
             "vz" : 0.0
         }    
+
+Signal [/status/signal]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Returns the time and the signal strength as an integer of the radio connection
+
+::
+
+ + Response 200 (application/json)
+        {
+            "time" : 0.0,
+            "signal_strength": 0
+        }
         
+Flight Time [/status/flight_time]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Returns the information about the flight time conntaing:
+
+* time_start [float]
+* if_flying [boolean]
+
+::
+
+ + Response 200 (application/json)
+        {
+            "time" : 0.0,
+            "time_start" : 0.0,
+            "is_flying" : "False"
+        }
+        
+GPS Status [/status/gps_status]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Returns the gps connection represented by an integer number of satellites visable
+
+::
+
+ + Response 200 (application/json)
+        {
+            "time" : 0.0,
+            "satellite_number": 0
+        }
+
 Throttle [/status/throttle]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -468,38 +527,141 @@ Server Control [ground/api/v3/interop]
 
   Returns a JSON string containing all available server info
 
-  "Obstacles" : Data structure containg obstacles ({"moving_obstacles":[],"stationary_obstacles":[]})
-  "server_working" : Does the server believe it is functioning correctly (boolean)
-  "hz" : Rolling frequency of interop telemetry posts (integer)
-  "active" : Is the server active (boolean)
-  "wp_distances" : Closest point of approach to each waypoint (integer list) ::
+  * "Obstacles" : Data structure containg obstacles ({"moving_obstacles":[],"stationary_obstacles":[]})
+  * "server_working" : Does the server believe it is functioning correctly (boolean)
+  * "hz" : Rolling frequency of interop telemetry posts (integer)
+  * "active" : Is the server active (boolean)
+  * "wp_distances" : Closest point of approach to each waypoint (integer list)
+  * "active_mission" : JSON of active mission as described by the `interop documentation <http://auvsi-suas-competition-interoperability-system.readthedocs.io/en/latest/specification.html#missions>`_. 
+
+  ::
 
     Response 200 (application/json)
-            {  
-                "hz":2.54398596238825,
-                "active":true,
-                "obstacles":{  
-                "moving_obstacles":[{  
-                    "latitude":38.14408581672201,
+    {  
+        "hz":2.7496117782366105,
+        "obstacles":{  
+            "moving_obstacles":[  
+                {  
+                    "latitude":38.143752406998416,
                     "sphere_radius":15.239999976835199,
-                    "altitude_msl":44.71080290617531,
-                    "longitude":-76.42660275767808,
-                    "time":1474393406.993048
-                }],
-                "stationary_obstacles":[{    
+                    "altitude_msl":38.77596404856716,
+                    "longitude":-76.4332677324261,
+                    "time":1480738099.504048
+                }
+            ],
+            "stationary_obstacles":[  
+                {  
                     "latitude":38.14792,
                     "cylinder_height":60.959999907340794,
                     "cylinder_radius":45.7199999305056,
                     "longitude":-76.427995
-                }]},
-                "wp_distances":[  
-                    0.3071459946680728,
-                    854.5473948275072,
-                    1768.1771508733752,
-                    1394.3356031300505
-                ],
-                "server_working":true
+                },
+                {  
+                    "latitude":38.145823,
+                    "cylinder_height":91.4399998610112,
+                    "cylinder_radius":15.239999976835199,
+                    "longitude":-76.422396
+                }
+            ]
+        },
+        "wp_distances":[  
+            0.07176477460652146,
+            52572731.79846973,
+            52572653.50093492,
+            52572646.28086038,
+            52572701.55982889
+        ],
+        "active_mission":{  
+            "fly_zones":[  
+                {  
+                    "boundary_pts":[  
+                        {  
+                            "latitude":38.142544,
+                            "order":1,
+                            "longitude":-76.434088
+                        },
+                        {  
+                            "latitude":0.0,
+                            "order":1,
+                            "longitude":0.0
+                        },
+                        {  
+                            "latitude":38.141833,
+                            "order":2,
+                            "longitude":-76.425263
+                        },
+                        {  
+                            "latitude":38.144678,
+                            "order":3,
+                            "longitude":-76.427995
+                        }
+                    ],
+                    "altitude_msl_max":1000.0,
+                    "altitude_msl_min":0.0
+                }
+            ],
+            "off_axis_target_pos":{  
+                "latitude":42.4471955938344,
+                "longitude":-76.6138759083697
+            },
+            "mission_waypoints":[  
+                {  
+                    "latitude":42.4462099439294,
+                    "altitude_msl":2179.69165478027,
+                    "order":4,
+                    "longitude":-76.6105735301971
+                },
+                {  
+                    "latitude":42.4462811962498,
+                    "altitude_msl":2179.69165478027,
+                    "order":5,
+                    "longitude":-76.610374962911
+                },
+                {  
+                    "latitude":-35.3632621765137,
+                    "altitude_msl":1917.22445478027,
+                    "order":1,
+                    "longitude":149.165237426758
+                },
+                {  
+                    "latitude":42.4474133055778,
+                    "altitude_msl":2114.07485478027,
+                    "order":2,
+                    "longitude":-76.610369682312
+                },
+                {  
+                    "latitude":42.4474014304113,
+                    "altitude_msl":2179.69165478027,
+                    "order":3,
+                    "longitude":-76.6106593608856
+                }
+            ],
+            "search_grid_points":[  
+                {  
+                    "latitude":38.142544,
+                    "altitude_msl":200.0,
+                    "order":1,
+                    "longitude":-76.434088
+                }
+            ],
+            "sric_pos":{  
+                "latitude":38.141833,
+                "longitude":-76.425263
+            },
+            "active":true,
+            "id":1,
+            "home_pos":{  
+                "latitude":38.14792,
+                "longitude":-76.427995
+            },
+            "air_drop_pos":{  
+                "latitude":38.141833,
+                "longitude":-76.425263
             }
+        },
+        "server_working":true,
+        "active":true
+    }
     
 
 Obstacles [/ground/api/v3/interop/obstacles]

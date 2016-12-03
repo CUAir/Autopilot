@@ -13,8 +13,25 @@ We use a terminal-based ground station software called `MAVProxy <http://droneco
 
 Probably the biggest custom feature is the browser-based front end to MAVProxy for easy and intuitive control of the plane. MAVProxy now provides a REST API that the front end queries to receive data and control the plane. This front end provides a GUI to perform the majority of tasks that MAVProxy can do, and see the data from the plane in a user-friendly layout.
 
-Installation
--------------
+Installation for Development
+----------------------------
+::
+
+   git clone https://github.com/CUAir/MAVProxy.git
+   cd MAVProxy
+   git submodule update --init --recursive
+   vagrant up         # cool
+   vagrant halt       # old version of guest additions
+   vagrant up         # fine      
+   vagrant provision  # should be good now
+   vagrant provision  # sorry
+   vagrant ssh
+   cd MAVProxy
+   ./run.sh           # hey it worked!
+
+
+Installation for Test Flight
+----------------------------
 1. git clone https://github.com/CUAir/MAVProxy.git
 2. On Linux:
 
@@ -71,7 +88,7 @@ Mac:
 
 
 Setup with SITL
----------------
+-----------------
 
 The Software in the Loop is a simulation of ArduPilot with FlightGear. This can be used as a virtual environment to test changes without needing a physical plane.
 
@@ -114,7 +131,7 @@ Use:
 Autopilot Server on the NUC
 ---------------------------
 
-The autopilot sever on the NUK provides an API for distributed to access autopilot data.
+The autopilot server on the NUC provides an API for distributed to access autopilot data.
 
 ::
 
@@ -140,6 +157,25 @@ To start the server, run ::
   python mavproxy.py --master=/dev/ttyUSB0
 
 **NOTE:** The serial port is not bound to ttyUSB0. Sometimes you will have to try ttyUSB1 or ttyUSB2
+
+WiFi Ground Station Link
+-------------------------
+
+The OBC can also be configured to forward its packets to the ground station on the ground. This allows WiFi to act as a redundant (and superior) link just as the radios do. When the WiFi link is established, packets can be sent and received often much faster than with the radios alone, and of course this acts as a secondary link in case either one fails.
+
+MAVProxy will consider the link passed on the command line as the "master" link, but both will send and receive packets at the same time. You will be alerted if either link goes down. Type "link" into the MAVProxy terminal to view the current links and there status (number of packets sent, packet loss %, etc)
+
+To use, start up the ground station on the NUC with the following command:
+
+``python mavproxy.py --master=/dev/ttyUSB0 --out=udp:GROUND_STATION_IP:14551``
+
+Where GROUND_STATION_IP is the IP of the computer that will be running MAVProxy from the ground.
+
+Then start MAVProxy normally on the ground, and run the command:
+
+``link add 0.0.0.0:14551``
+
+This will connect to the NUC if it's available.
 
 
 How the front-end works
@@ -200,7 +236,7 @@ Interoperability
 Setup
 ^^^^^^^^
 
-`See the Judge's server interoperability documentation here. <http://auvsi-suas-competition-interoperability-system.readthedocs.io/en/latest/>`_
+`See the Judge's server interoperability documentation here. <http://auvsi-suas-competition-interoperability-system.readthedocs.io/en/latest/>`_ All of those setup instructions must be followed before the following instructions will work.
 
 Interoperability Use
 ^^^^^^^^^^^^^^^^^^^^^
@@ -210,21 +246,20 @@ General Test Flight Use
 
 1. Make sure to bring a computer with the interop server installed on it. If possible, have a template mission ready to got
 
-2. cd interop/setup and run vagrant up to start the server
+2. cd interop then run ``sudo ./server/run.sh``
     
-    * The server will run on localhost:8000
+    * The server will run on ``localhost:8000``
 
 3. To load the template mission:
     
-    a. vagrant ssh
-    b. cd interop/server
-    c. source venv/bin/activate
-    d. python manage.py flush (This will flush the database - do not do this if you want to keep the current database - see below for storing a dump)
-    e. python manage.py loaddata template_mission.json
+    a. ``sudo docker exec -it interop-server bash``
+    b. ``python manage.py flush`` (This will flush the database - do not do this if you want to keep the current database - see below for storing a dump)
+    c. ``python manage.py loaddata`` template_mission.json
+    d. (Type `exit` to leave the docker bash shell)
 
 4. Now the mission must be set up on the interop server to match the mission in Ardupilot
 
-    a. Go to localhost:8000/admin/
+    a. Go to ``localhost:8000/admin/``
     b. Click "Mission configs"
     c. Click the first mission
     d. In "Mission Waypoints", hit the + button at the side to add a new waypoint
@@ -235,7 +270,7 @@ General Test Flight Use
     i. Continue starting from set e. until all waypoints are entered
 
 5. Save the mission config
-6. Go to localhost:8000 and hit "Mission 1". You should see a picture of your setup, where blue spheres are the waypoints and the rest is not relevant to navigation. Confirm that the blue spheres look like what your waypoint setup should be (If you don't see the picture, try Firefox instead of Chrome)
+6. Go to ``localhost:8000`` and hit "Mission 1". You should see a picture of your setup, where blue spheres are the waypoints and the rest is not relevant to navigation. Confirm that the blue spheres look like what your waypoint setup should be (If you don't see the picture, try Firefox instead of Chrome)
 7. Enter the correct username, password, and url (include the http: and the port (usually 8000) in the settings tab of gcs2
     
     * This will usually be 'cuairsim' and 'aeolus' for the username/password, and "http://<some ip>:8000" for the url
@@ -246,7 +281,7 @@ General Test Flight Use
 
 10. When you're ready to fly, FIRST hit 'toggle interop' on the front end to start sending data to the interop server
 
-11. Then, go to "localhost:8000/admin/", then click "Takeoff or landing events"
+11. Then, go to ``localhost:8000/admin/``, then click "Takeoff or landing events"
 
 12. Hit "add a takeoff or landing event", then select the appropriate user and "Uas in air". Hit save.
 
@@ -260,7 +295,7 @@ General Test Flight Use
 
 16. Go to the mission page and mouse over "System". Right click "Evaluate Teams (csv)" and save it as a file. Open that file in Excel or an equivalent to view the flight data (Don't try to view it as plaintext, it's doable but annoying)
 
-17. To create a database dump, ssh in as if you were about to load a mission config (see beginning), but instead use 'python manage.py dumpdata > mydatadump.json'
+17. To create a database dump, open the bash shell as if you were about to load a mission config (see beginning), but instead use ``python manage.py dumpdata > mydatadump.json``
 
 MAVProxy/Ground Station use
 ****************************
@@ -293,7 +328,7 @@ The backend is designed with 3 main components - the API, which provides a REST 
 API
 ##############################################
 
-**Location:** modules/server/views/interop_api.py
+**Location:** ``modules/server/views/interop_api.py``
 
 The program creates a flask server to serve data to the front end and other subteams. It retrieves data related to interoperability from the MAVProxy.modules.server.data file. It also contains an endpoint to start and stop the backend.
 
@@ -302,7 +337,7 @@ When multiple endpoints are listed, both are valid - the second is the newest is
 **Endpoints**
 
 
-  * **Server Control** (/v1/interop) (/ground/api/v3/interop)
+  * **Server Control** ``/ground/api/v3/interop``
       * **POST**
 
         Sending a POST request to this endpoint starts the interop backend. To do this, it creates a new instance of the backend object, then starts the backend on a separate thread and sets the server to active. It will fail if the server is either already started, or if it has been less that a half second since the server was either started or stopped last. Requires a valid JSON containing the server data (username, password, and url fields). Requires a valid auth token to 
@@ -318,24 +353,14 @@ When multiple endpoints are listed, both are valid - the second is the newest is
         Returns a JSON string containing the obstacle data and server info
     
 
-  * **Obstacles** (/v1/interop/obstacles) (/ground/api/v3/interop/obstacles)
+  * **Obstacles** ``/ground/api/v3/interop/obstacles``
 
     Returns a JSON object string that contains a list of both moving and stationary objects. Checks to see if the server is active, and, if so, retrieves data from the MAVProxy.modules.server.data module, jsonifies it and returns it
-
-
-  * **Server Info** (/v1/interop/server_info) (/ground/api/v3/interop/server_info)
-
-    Returns a JSON object string that contains the server message, message timestamp, and the server time at last retrieval. Checks to see if the server is active, and, if so, retrieves data from the MAVProxy.modules.server.data module, jsonifies it and returns it.
-
-
-  * **Time** (/v1/interop/time) (/ground/api/v3/interop/time)
-
-    Returns a single string that represents the server time at last retrieval. Checks to see if the server is active, and, if so, retrieves data from the MAVProxy.modules.server.dat'a module, then returns it as a raw string
 
 MAVProxy Backend
 ###################################################
 
-**Location:** modules/server/interop.py
+**Location:** ``modules/server/interop.py``
 
 This program is the script that does the work of  sending telemetry data to the judge’s interoperability server and retrieving data about the server and obstacles to store for other MAVProxy modules.
 
@@ -386,23 +411,6 @@ This program is the script that does the work of  sending telemetry data to the 
     Converts a float from a value in feet to a value in meters
 
 
-Test Suite
-###############
-
-**Location:** /modules/server/interop_test_cases.py
-
-This is the test suite that is used for testing the interop backend. It simulates the judge’s interoperability server on the machine, serves up simulated server data and obstacles, and accepts telemetry requests. It then performs a number of tests to ensure that the data was received and store properly, and the the telemetry data received is formatted correctly and being sent quickly enough.
-
-**Running the test suite**
-
-1. In the backend (/modules/server/interop.py), set RUN_TESTS to True
-2. In the API (modules/server/views/interop_api.py), set RUN_TESTS to True
-3. Run MAVProxy normally, then from the front end hit “toggle interop”
-4. Review console printout (should take about 100 seconds to run to completion)
-
-  * Upon completion, type ‘reset’ to fix the console.
-
-
 
 Competition rules
 **********************
@@ -426,7 +434,7 @@ Below are the rules that govern interoperability for the competition. The intero
 
 
 Sense, Detect, and Avoid (SDA)
------------------------------
+--------------------------------
 
 Overview 
 ^^^^^^^^^
