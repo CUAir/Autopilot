@@ -1,675 +1,417 @@
 {
   "type": "Program",
-  "body": [
-    {
-      "type": "ImportDeclaration",
-      "specifiers": [],
-      "source": {
-        "type": "Literal",
-        "value": "js/dispatcher/GCSDispatcher",
-        "raw": "'js/dispatcher/GCSDispatcher'",
-        "range": [
-          37,
-          66
-        ],
-        "loc": {
-          "start": {
-            "line": 3,
-            "column": 7
-          },
-          "end": {
-            "line": 3,
-            "column": 36
-          }
-        }
-      },
-      "range": [
-        30,
-        67
-      ],
-      "loc": {
-        "start": {
-          "line": 3,
-          "column": 0
-        },
-        "end": {
-          "line": 3,
-          "column": 37
-        }
-      },
-      "leadingComments": [
-        {
-          "type": "Block",
-          "value": " eslint-enable no-undef ",
-          "range": [
-            1,
-            29
-          ],
-          "loc": {
-            "start": {
-              "line": 2,
-              "column": 0
-            },
-            "end": {
-              "line": 2,
-              "column": 28
-            }
-          }
-        }
-      ],
-      "trailingComments": [
-        {
-          "type": "Block",
-          "value": " eslint-disable no-undef ",
-          "range": [
-            69,
-            98
-          ],
-          "loc": {
-            "start": {
-              "line": 5,
-              "column": 0
-            },
-            "end": {
-              "line": 5,
-              "column": 29
-            }
-          }
-        },
-        {
-          "type": "Block",
-          "value": "*\n * @typedef {Object} Point\n * @property {number} lat\n * @property {number} lon\n ",
-          "range": [
-            99,
-            185
-          ],
-          "loc": {
-            "start": {
-              "line": 6,
-              "column": 0
-            },
-            "end": {
-              "line": 10,
-              "column": 3
-            }
-          }
-        },
-        {
-          "type": "Block",
-          "value": "*\n * @typedef {Object} Sphere\n * @property {number} latitude\n * @property {number} longitude\n * @property {number} sphere_radius\n * @property {number} altitude_msl - Height of center above mean sea level\n ",
-          "range": [
-            188,
-            397
-          ],
-          "loc": {
-            "start": {
-              "line": 13,
-              "column": 0
-            },
-            "end": {
-              "line": 19,
-              "column": 3
-            }
-          }
-        },
-        {
-          "type": "Block",
-          "value": "*\n * @typedef {Object} Cylinder\n * @property {number} latitude\n * @property {number} longitude\n * @property {number} cylinder_radius\n * @property {number} cylinder_height - Height of cylinder above groud\n ",
-          "range": [
-            400,
-            609
-          ],
-          "loc": {
-            "start": {
-              "line": 22,
-              "column": 0
-            },
-            "end": {
-              "line": 28,
-              "column": 3
-            }
-          }
-        },
-        {
-          "type": "Block",
-          "value": "*\n * @typedef {(Sphere|Cylinder)} Obstacle\n ",
-          "range": [
-            612,
-            660
-          ],
-          "loc": {
-            "start": {
-              "line": 31,
-              "column": 0
-            },
-            "end": {
-              "line": 33,
-              "column": 3
-            }
-          }
-        },
-        {
-          "type": "Block",
-          "value": "*\n * @typedef {Object} ObstacleList\n * @property {Obstacle[]} stationary\n * @property {Obstacle[]} moving\n ",
-          "range": [
-            663,
-            774
-          ],
-          "loc": {
-            "start": {
-              "line": 36,
-              "column": 0
-            },
-            "end": {
-              "line": 40,
-              "column": 3
-            }
-          }
-        },
-        {
-          "type": "Block",
-          "value": "*\n * @typedef {(number|string)} NValue\n ",
-          "range": [
-            777,
-            821
-          ],
-          "loc": {
-            "start": {
-              "line": 43,
-              "column": 0
-            },
-            "end": {
-              "line": 45,
-              "column": 3
-            }
-          }
-        },
-        {
-          "type": "Block",
-          "value": "*\n * @typedef {Object} Parameter\n * @property {string} name\n * @proprety {NValue} value\n ",
-          "range": [
-            824,
-            917
-          ],
-          "loc": {
-            "start": {
-              "line": 48,
-              "column": 0
-            },
-            "end": {
-              "line": 52,
-              "column": 3
-            }
-          }
-        },
-        {
-          "type": "Block",
-          "value": "*\n * @typedef {Object} FullParameter\n * @property {string} name\n * @property {NValue} value\n * @property {string} description\n * @property {string} documentation\n * @property {string} key\n ",
-          "range": [
-            920,
-            1113
-          ],
-          "loc": {
-            "start": {
-              "line": 55,
-              "column": 0
-            },
-            "end": {
-              "line": 62,
-              "column": 3
-            }
-          }
-        },
-        {
-          "type": "Block",
-          "value": "*\n * @typedef {Object} Airspeed\n * @property {number} vx\n * @property {number} vy\n * @property {number} vz\n ",
-          "range": [
-            1116,
-            1228
-          ],
-          "loc": {
-            "start": {
-              "line": 65,
-              "column": 0
-            },
-            "end": {
-              "line": 70,
-              "column": 3
-            }
-          }
-        },
-        {
-          "type": "Block",
-          "value": "* \n * @typedef {Object} Attitude\n * @property {number} roll\n * @property {number} pitch\n * @property {number} yaw\n * @property {number} rollspeed\n * @property {number} pitchspeed\n * @property {number} yawspeed\n ",
-          "range": [
-            1231,
-            1446
-          ],
-          "loc": {
-            "start": {
-              "line": 73,
-              "column": 0
-            },
-            "end": {
-              "line": 81,
-              "column": 3
-            }
-          }
-        },
-        {
-          "type": "Block",
-          "value": "*\n * @typedef {Object} GPS\n * @property {number} vx\n * @property {number} vy\n * @property {number} vz\n * @property {number} rel_alt\n * @property {number} heading\n * @property {number} lat\n * @property {number} lon\n ",
-          "range": [
-            1449,
-            1668
-          ],
-          "loc": {
-            "start": {
-              "line": 84,
-              "column": 0
-            },
-            "end": {
-              "line": 93,
-              "column": 3
-            }
-          }
-        },
-        {
-          "type": "Block",
-          "value": "*\n * @typedef {Object} Wind\n * @property {number} vx\n * @property {number} vy\n * @property {number} vz\n ",
-          "range": [
-            1671,
-            1779
-          ],
-          "loc": {
-            "start": {
-              "line": 96,
-              "column": 0
-            },
-            "end": {
-              "line": 101,
-              "column": 3
-            }
-          }
-        },
-        {
-          "type": "Block",
-          "value": "*\n * @typedef {Object} Battery\n * @property {number} current\n * @property {number} voltage\n * @property {number} pct\n ",
-          "range": [
-            1782,
-            1904
-          ],
-          "loc": {
-            "start": {
-              "line": 104,
-              "column": 0
-            },
-            "end": {
-              "line": 109,
-              "column": 3
-            }
-          }
-        },
-        {
-          "type": "Block",
-          "value": "*\n * @typedef {Object} Waypoint\n * @property {number} number\n * @property {number} lat\n * @property {number} lon\n * @property {number} alt\n * @property {number} type\n * @property {number} command\n * @property {number} index\n ",
-          "range": [
-            1907,
-            2136
-          ],
-          "loc": {
-            "start": {
-              "line": 112,
-              "column": 0
-            },
-            "end": {
-              "line": 121,
-              "column": 3
-            }
-          }
-        },
-        {
-          "type": "Block",
-          "value": "*\n * @typedef {Object} Powerboard\n * @property {number} csbatt\n * @property {number} nuc\n * @property {number} gimbal\n * @property {number} comms\n * @property {number} 12v_reg\n * @property {number} 24v_reg\n ",
-          "range": [
-            2139,
-            2350
-          ],
-          "loc": {
-            "start": {
-              "line": 124,
-              "column": 0
-            },
-            "end": {
-              "line": 132,
-              "column": 3
-            }
-          }
-        }
-      ]
-    }
-  ],
-  "sourceType": "module",
-  "range": [
-    30,
-    67
-  ],
+  "start": 0,
+  "end": 2424,
   "loc": {
     "start": {
-      "line": 3,
+      "line": 1,
       "column": 0
     },
     "end": {
-      "line": 3,
-      "column": 37
+      "line": 135,
+      "column": 3
     }
   },
-  "comments": [
+  "sourceType": "module",
+  "body": [
     {
-      "type": "Block",
-      "value": " eslint-enable no-undef ",
-      "range": [
-        1,
-        29
-      ],
-      "loc": {
-        "start": {
-          "line": 2,
-          "column": 0
-        },
-        "end": {
-          "line": 2,
-          "column": 28
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": " eslint-disable no-undef ",
-      "range": [
-        69,
-        98
-      ],
-      "loc": {
-        "start": {
-          "line": 5,
-          "column": 0
-        },
-        "end": {
-          "line": 5,
-          "column": 29
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": "*\n * @typedef {Object} Point\n * @property {number} lat\n * @property {number} lon\n ",
-      "range": [
-        99,
-        185
-      ],
+      "type": "ImportDeclaration",
+      "start": 103,
+      "end": 140,
       "loc": {
         "start": {
           "line": 6,
           "column": 0
         },
         "end": {
-          "line": 10,
-          "column": 3
+          "line": 6,
+          "column": 37
         }
-      }
-    },
-    {
-      "type": "Block",
-      "value": "*\n * @typedef {Object} Sphere\n * @property {number} latitude\n * @property {number} longitude\n * @property {number} sphere_radius\n * @property {number} altitude_msl - Height of center above mean sea level\n ",
-      "range": [
-        188,
-        397
-      ],
-      "loc": {
-        "start": {
-          "line": 13,
-          "column": 0
+      },
+      "specifiers": [],
+      "source": {
+        "type": "Literal",
+        "start": 110,
+        "end": 139,
+        "loc": {
+          "start": {
+            "line": 6,
+            "column": 7
+          },
+          "end": {
+            "line": 6,
+            "column": 36
+          }
         },
-        "end": {
-          "line": 19,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": "*\n * @typedef {Object} Cylinder\n * @property {number} latitude\n * @property {number} longitude\n * @property {number} cylinder_radius\n * @property {number} cylinder_height - Height of cylinder above groud\n ",
-      "range": [
-        400,
-        609
-      ],
-      "loc": {
-        "start": {
-          "line": 22,
-          "column": 0
+        "value": "js/dispatcher/GCSDispatcher",
+        "rawValue": "js/dispatcher/GCSDispatcher",
+        "raw": "'js/dispatcher/GCSDispatcher'",
+        "leadingComments": null
+      },
+      "leadingComments": [
+        {
+          "type": "CommentLine",
+          "value": " for some reason flow doesn't see this file without this fake import",
+          "start": 2,
+          "end": 72,
+          "loc": {
+            "start": {
+              "line": 3,
+              "column": 0
+            },
+            "end": {
+              "line": 3,
+              "column": 70
+            }
+          },
+          "range": [
+            2,
+            72
+          ]
         },
-        "end": {
-          "line": 28,
-          "column": 3
+        {
+          "type": "Block",
+          "value": " eslint-enable no-undef ",
+          "start": 74,
+          "end": 102,
+          "loc": {
+            "start": {
+              "line": 5,
+              "column": 0
+            },
+            "end": {
+              "line": 5,
+              "column": 28
+            }
+          },
+          "range": [
+            74,
+            102
+          ]
         }
-      }
-    },
-    {
-      "type": "Block",
-      "value": "*\n * @typedef {(Sphere|Cylinder)} Obstacle\n ",
-      "range": [
-        612,
-        660
       ],
-      "loc": {
-        "start": {
-          "line": 31,
-          "column": 0
+      "trailingComments": [
+        {
+          "type": "Block",
+          "value": " eslint-disable no-undef ",
+          "start": 142,
+          "end": 171,
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 0
+            },
+            "end": {
+              "line": 8,
+              "column": 29
+            }
+          },
+          "range": [
+            142,
+            171
+          ]
         },
-        "end": {
-          "line": 33,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": "*\n * @typedef {Object} ObstacleList\n * @property {Obstacle[]} stationary\n * @property {Obstacle[]} moving\n ",
-      "range": [
-        663,
-        774
-      ],
-      "loc": {
-        "start": {
-          "line": 36,
-          "column": 0
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} Point\n * @property {number} lat\n * @property {number} lon\n ",
+          "start": 172,
+          "end": 258,
+          "loc": {
+            "start": {
+              "line": 9,
+              "column": 0
+            },
+            "end": {
+              "line": 13,
+              "column": 3
+            }
+          },
+          "range": [
+            172,
+            258
+          ]
         },
-        "end": {
-          "line": 40,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": "*\n * @typedef {(number|string)} NValue\n ",
-      "range": [
-        777,
-        821
-      ],
-      "loc": {
-        "start": {
-          "line": 43,
-          "column": 0
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} Sphere\n * @property {number} latitude\n * @property {number} longitude\n * @property {number} sphere_radius\n * @property {number} altitude_msl - Height of center above mean sea level\n ",
+          "start": 261,
+          "end": 470,
+          "loc": {
+            "start": {
+              "line": 16,
+              "column": 0
+            },
+            "end": {
+              "line": 22,
+              "column": 3
+            }
+          },
+          "range": [
+            261,
+            470
+          ]
         },
-        "end": {
-          "line": 45,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": "*\n * @typedef {Object} Parameter\n * @property {string} name\n * @proprety {NValue} value\n ",
-      "range": [
-        824,
-        917
-      ],
-      "loc": {
-        "start": {
-          "line": 48,
-          "column": 0
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} Cylinder\n * @property {number} latitude\n * @property {number} longitude\n * @property {number} cylinder_radius\n * @property {number} cylinder_height - Height of cylinder above ground\n ",
+          "start": 473,
+          "end": 683,
+          "loc": {
+            "start": {
+              "line": 25,
+              "column": 0
+            },
+            "end": {
+              "line": 31,
+              "column": 3
+            }
+          },
+          "range": [
+            473,
+            683
+          ]
         },
-        "end": {
-          "line": 52,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": "*\n * @typedef {Object} FullParameter\n * @property {string} name\n * @property {NValue} value\n * @property {string} description\n * @property {string} documentation\n * @property {string} key\n ",
-      "range": [
-        920,
-        1113
-      ],
-      "loc": {
-        "start": {
-          "line": 55,
-          "column": 0
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {(Sphere|Cylinder)} Obstacle\n ",
+          "start": 686,
+          "end": 734,
+          "loc": {
+            "start": {
+              "line": 34,
+              "column": 0
+            },
+            "end": {
+              "line": 36,
+              "column": 3
+            }
+          },
+          "range": [
+            686,
+            734
+          ]
         },
-        "end": {
-          "line": 62,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": "*\n * @typedef {Object} Airspeed\n * @property {number} vx\n * @property {number} vy\n * @property {number} vz\n ",
-      "range": [
-        1116,
-        1228
-      ],
-      "loc": {
-        "start": {
-          "line": 65,
-          "column": 0
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} ObstacleList\n * @property {Obstacle[]} stationary\n * @property {Obstacle[]} moving\n ",
+          "start": 737,
+          "end": 848,
+          "loc": {
+            "start": {
+              "line": 39,
+              "column": 0
+            },
+            "end": {
+              "line": 43,
+              "column": 3
+            }
+          },
+          "range": [
+            737,
+            848
+          ]
         },
-        "end": {
-          "line": 70,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": "* \n * @typedef {Object} Attitude\n * @property {number} roll\n * @property {number} pitch\n * @property {number} yaw\n * @property {number} rollspeed\n * @property {number} pitchspeed\n * @property {number} yawspeed\n ",
-      "range": [
-        1231,
-        1446
-      ],
-      "loc": {
-        "start": {
-          "line": 73,
-          "column": 0
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {(number|string)} NValue\n ",
+          "start": 851,
+          "end": 895,
+          "loc": {
+            "start": {
+              "line": 46,
+              "column": 0
+            },
+            "end": {
+              "line": 48,
+              "column": 3
+            }
+          },
+          "range": [
+            851,
+            895
+          ]
         },
-        "end": {
-          "line": 81,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": "*\n * @typedef {Object} GPS\n * @property {number} vx\n * @property {number} vy\n * @property {number} vz\n * @property {number} rel_alt\n * @property {number} heading\n * @property {number} lat\n * @property {number} lon\n ",
-      "range": [
-        1449,
-        1668
-      ],
-      "loc": {
-        "start": {
-          "line": 84,
-          "column": 0
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} Parameter\n * @property {string} name\n * @proprety {NValue} value\n ",
+          "start": 898,
+          "end": 991,
+          "loc": {
+            "start": {
+              "line": 51,
+              "column": 0
+            },
+            "end": {
+              "line": 55,
+              "column": 3
+            }
+          },
+          "range": [
+            898,
+            991
+          ]
         },
-        "end": {
-          "line": 93,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": "*\n * @typedef {Object} Wind\n * @property {number} vx\n * @property {number} vy\n * @property {number} vz\n ",
-      "range": [
-        1671,
-        1779
-      ],
-      "loc": {
-        "start": {
-          "line": 96,
-          "column": 0
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} FullParameter\n * @property {string} name\n * @property {NValue} value\n * @property {string} description\n * @property {string} documentation\n * @property {string} key\n ",
+          "start": 994,
+          "end": 1187,
+          "loc": {
+            "start": {
+              "line": 58,
+              "column": 0
+            },
+            "end": {
+              "line": 65,
+              "column": 3
+            }
+          },
+          "range": [
+            994,
+            1187
+          ]
         },
-        "end": {
-          "line": 101,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": "*\n * @typedef {Object} Battery\n * @property {number} current\n * @property {number} voltage\n * @property {number} pct\n ",
-      "range": [
-        1782,
-        1904
-      ],
-      "loc": {
-        "start": {
-          "line": 104,
-          "column": 0
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} Airspeed\n * @property {number} vx\n * @property {number} vy\n * @property {number} vz\n ",
+          "start": 1190,
+          "end": 1302,
+          "loc": {
+            "start": {
+              "line": 68,
+              "column": 0
+            },
+            "end": {
+              "line": 73,
+              "column": 3
+            }
+          },
+          "range": [
+            1190,
+            1302
+          ]
         },
-        "end": {
-          "line": 109,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": "*\n * @typedef {Object} Waypoint\n * @property {number} number\n * @property {number} lat\n * @property {number} lon\n * @property {number} alt\n * @property {number} type\n * @property {number} command\n * @property {number} index\n ",
-      "range": [
-        1907,
-        2136
-      ],
-      "loc": {
-        "start": {
-          "line": 112,
-          "column": 0
+        {
+          "type": "Block",
+          "value": "* \n * @typedef {Object} Attitude\n * @property {number} roll\n * @property {number} pitch\n * @property {number} yaw\n * @property {number} rollspeed\n * @property {number} pitchspeed\n * @property {number} yawspeed\n ",
+          "start": 1305,
+          "end": 1520,
+          "loc": {
+            "start": {
+              "line": 76,
+              "column": 0
+            },
+            "end": {
+              "line": 84,
+              "column": 3
+            }
+          },
+          "range": [
+            1305,
+            1520
+          ]
         },
-        "end": {
-          "line": 121,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": "*\n * @typedef {Object} Powerboard\n * @property {number} csbatt\n * @property {number} nuc\n * @property {number} gimbal\n * @property {number} comms\n * @property {number} 12v_reg\n * @property {number} 24v_reg\n ",
-      "range": [
-        2139,
-        2350
-      ],
-      "loc": {
-        "start": {
-          "line": 124,
-          "column": 0
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} GPS\n * @property {number} vx\n * @property {number} vy\n * @property {number} vz\n * @property {number} rel_alt\n * @property {number} heading\n * @property {number} lat\n * @property {number} lon\n ",
+          "start": 1523,
+          "end": 1742,
+          "loc": {
+            "start": {
+              "line": 87,
+              "column": 0
+            },
+            "end": {
+              "line": 96,
+              "column": 3
+            }
+          },
+          "range": [
+            1523,
+            1742
+          ]
         },
-        "end": {
-          "line": 132,
-          "column": 3
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} Wind\n * @property {number} vx\n * @property {number} vy\n * @property {number} vz\n ",
+          "start": 1745,
+          "end": 1853,
+          "loc": {
+            "start": {
+              "line": 99,
+              "column": 0
+            },
+            "end": {
+              "line": 104,
+              "column": 3
+            }
+          },
+          "range": [
+            1745,
+            1853
+          ]
+        },
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} Battery\n * @property {number} current\n * @property {number} voltage\n * @property {number} pct\n ",
+          "start": 1856,
+          "end": 1978,
+          "loc": {
+            "start": {
+              "line": 107,
+              "column": 0
+            },
+            "end": {
+              "line": 112,
+              "column": 3
+            }
+          },
+          "range": [
+            1856,
+            1978
+          ]
+        },
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} Waypoint\n * @property {number} number\n * @property {number} lat\n * @property {number} lon\n * @property {number} alt\n * @property {number} type\n * @property {number} command\n * @property {number} index\n ",
+          "start": 1981,
+          "end": 2210,
+          "loc": {
+            "start": {
+              "line": 115,
+              "column": 0
+            },
+            "end": {
+              "line": 124,
+              "column": 3
+            }
+          },
+          "range": [
+            1981,
+            2210
+          ]
+        },
+        {
+          "type": "Block",
+          "value": "*\n * @typedef {Object} Powerboard\n * @property {number} csbatt\n * @property {number} nuc\n * @property {number} gimbal\n * @property {number} comms\n * @property {number} 12v_reg\n * @property {number} 24v_reg\n ",
+          "start": 2213,
+          "end": 2424,
+          "loc": {
+            "start": {
+              "line": 127,
+              "column": 0
+            },
+            "end": {
+              "line": 135,
+              "column": 3
+            }
+          },
+          "range": [
+            2213,
+            2424
+          ]
         }
-      }
+      ]
     }
   ]
 }

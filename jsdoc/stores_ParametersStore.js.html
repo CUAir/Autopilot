@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: stores/ParametersStore.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: stores/ParametersStore.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// @flow
+
+import _ from 'lodash';
+
+import GCSDispatcher from 'js/dispatcher/GCSDispatcher';
+import { ParametersTypes } from 'js/constants/ActionTypes';
+import { BUTTON, FILE_INPUT, TEXT_INPUT } from 'js/constants/ButtonTypes';
+import Store from 'js/stores/Store';
+
+import * as ParametersActionCreator from 'js/actions/ParametersActionCreator';
+
+import ParamDocumentation from 'js/utils/ParamDocumentation';
+import { saveParamsToFile } from 'js/utils/DownloadApi';
+import { loadParamsFromFile } from 'js/utils/LoadApi';
+import { sendParameter, sendAllParameters } from 'js/utils/SendApi';
+import { initializeParameters } from 'js/utils/ReceiveApi';
+
+/**
+ * @module stores/ParametersStore
+ */
+
+//For data type, see ParamDocumentation
+//invariant: List is sorted by parameter name
+let _parameters = _.cloneDeep(ParamDocumentation).sort((a,b) => a.name.localeCompare(b.name));
+
+//map of parameter names to list objects
+let _map = _createMap(_parameters);
+let _loaded_params = _.cloneDeep(ParamDocumentation).sort((a,b) => a.name.localeCompare(b.name));
+
+function _createMap(parameters: Parameter[]): Object {
+  let map = {};
+  parameters.forEach(param => {
+    param.isTemp = false;
+    param.originalValue = param.value;
+    map[param.name] = param;
+  });
+  return map;
+}
+
+// index of selected param
+let _selected: string = '';
+
+// number of parameters received
+let _param_count: number = 0;
+
+// max number of expected parameters
+let _param_max_count: number = 0;
+
+let _modal_open: boolean = false;
+
+let _note: string = '';
+let _search_field: string = '';
+function _update_note(note: string) { _note = note; }
+function _update_search_field(search_field: string) { _search_field = search_field; }
+function _update_modal_open(modal_open: boolean) { _modal_open = modal_open; }
+
+function saveParams() {
+  saveParamsToFile(_note, _parameters);
+}
+
+function sendParam() {
+  sendParameter(_map[_selected]);
+}
+
+function sendAllParams() {
+  sendAllParameters(_parameters);
+}
+
+function noteChange(e: EventObject) {
+  ParametersActionCreator.receiveNote(e.nativeEvent.target.value);
+}
+
+function searchChange(e: EventObject) {
+  ParametersActionCreator.receiveSearchField(e.nativeEvent.target.value);
+}
+
+function retrieveParameters() {
+  _param_count = 0;
+  initializeParameters();
+}
+
+function loadParams(e: EventObject) {
+  loadParamsFromFile(e);
+  ParametersActionCreator.receiveModalOpen(true);
+}
+
+const _param_controls: FullWidthElementType[] = [
+  {text: 'Send', type: BUTTON, color: 'success', key: 'SEND_PARAM', onClick: sendParam},
+  {text: 'Send All', type: BUTTON, color: 'success', key: 'SEND_ALL_PARAMS', onClick: sendAllParams},
+  {text: 'Refresh', type: BUTTON, color: 'unknown', key: 'REFRESH_PARAMS', onClick: retrieveParameters},
+  {text: 'Load From File', type: FILE_INPUT, color: 'unknown', id: 'LOAD_PARAMS_FROM_FILE', key: 'LOAD_PARAMS_FROM_FILE', onClick: loadParams},
+  {text: 'Save To File', type: BUTTON, color: 'unknown', key: 'SAVE_PARAMS_TO_FILE', onClick: saveParams}
+];
+
+/**
+ * Updates a single parameter
+ * @param {string} name
+ * @param {NValue} value - The new value of the param
+ * @returns {undefined}
+ */
+function _updateParameter(name: string, value: NValue) {
+  _param_count++;
+
+  // Insert parameter into sorted _parameters between start and end
+  // Uses binary search
+  function _insertParameter(p: Parameter, start: number, end: number) {
+    if (end-start &lt;= 1) {
+      _parameters.splice(end, 0, p);
+      return;
+    }
+    const mid = Math.floor((end - start)/2 + start);
+    
+    if (p.name.localeCompare(_parameters[mid].name) > 0) {
+      _insertParameter(p, mid, end);
+    } else {
+      _insertParameter(p, start, mid);
+    }
+  }
+
+  // if parameter is in map, update map
+  // if parameter is not in map, update map and insert object into list
+  if (name in _map) {
+    _map[name].value = value;
+    _map[name].originalValue = value;
+    _map[name].isTemp = false;
+  } else {
+    const p = {name: name, key: name, description: '' , value: value, documentation: '', isTemp: false, originalValue: value};
+    _map[name] = p;
+    _insertParameter(p, 0, _parameters.length - 1);
+  }
+  _param_count = Math.min(_parameters.length, _param_count);
+}
+
+/**
+ * Updates each parameter given
+ * @param {Parameter[]} parameterList
+ * @returns {undefined}
+ */
+function _updateParameters(parameterList: Parameter[]) {
+  parameterList.forEach(parameter => {
+    _updateParameter(parameter.name, parameter.value);
+  });
+}
+
+/**
+ * Updates max number parameters expected to be received
+ * @param {number} count
+ * @returns {undefined}
+ */
+function _updateMaxCount(count: number) {
+  _param_max_count = count;
+}
+
+/**
+ * Edits parameters
+ * @param {string} name
+ * @param {NValue} value
+ * @returns {undefined}
+ */
+function _editParameter(name: string, value: NValue) {
+  if (_map[name] === undefined) {
+    return;
+  }
+
+  _map[name].value = value;
+  if (_map[name].value != _map[name].originalValue) {
+    _map[name].isTemp = true;  
+  }
+}
+
+/**
+ * Loads the parameters from a list of parameters in a file
+ * @param {Parameter[]} parameters
+ * @returns {undefined}
+ */
+function _loadFromFile(parameters: Parameter[]) {
+  parameters.forEach(parameter => {
+    const checkbox = document.getElementsByName(`modal-${parameter.name}`);
+    if (checkbox.length > 0 &amp;&amp; checkbox[0].checked) {
+      _editParameter(parameter.name, parameter.value);
+    }
+  });
+}
+
+/**
+ * Sets the waypoint at index as selected
+ * @param {number} index - index of waypoint in waypoint list
+ * @returns {undefined}
+ */
+function _setSelected(name: string) { _selected = name; }
+
+function diffParams(params1, params2): ParamDiff[] {
+  return params2.map(param2 => {
+    const matchParams = params1.filter(param1 => param1.name === param2.name);
+    const param1Value = matchParams.length > 0 &amp;&amp; (matchParams[0].value + '') != '' ? matchParams[0].value : null;
+    return param1Value != param2.value ? {name: param2.name, old: param1Value, new: param2.value} : null;
+  }).filter(diff => diff != null);
+}
+
+class ParametersStore extends Store {
+
+  constructor() {
+    super();
+  }
+
+  /**
+   * Returns the parameters
+   * @returns {Parameter[]}
+   */
+  getParameters(): Parameter[] {
+    return _parameters;
+  }
+
+  /**
+   * Returns the list of parameters matching the search phrase
+   * @returns {Parameter[]}
+   */
+  getSearchedParameters(): Parameter[] {
+    const search_lowercase = _search_field.toLowerCase();
+    return _parameters.filter(param => {
+      const search_in_name = param.name.toLowerCase().indexOf(search_lowercase) !== -1;
+      const search_in_description = param.description.toLowerCase().indexOf(search_lowercase) !== -1;
+      const search_in_documentation = param.documentation.toLowerCase().indexOf(search_lowercase) !== -1;
+      return search_in_name || search_in_description || search_in_documentation;
+    });
+  }
+
+  /**
+   * Returns the parameter map
+   * @returns {Object}
+   */
+  getParameterMap(): Object {
+    return _map;
+  }
+
+  /**
+   * Returns the selected parameter name
+   * @returns {string}
+   */
+  getSelected(): string {
+    return _selected;
+  }
+
+  /**
+   * Returns the selected parameter
+   * @returns {Parameter}
+   */
+  getSelectedParameter(): Parameter {
+    return _map[_selected];
+  }
+    /**
+   * Returns data for parameter loading progress
+   * @returns {Object}
+   */
+  getProgress(): {key: string, value: number, max: number} {
+    return {key: 'PARAMETER_PROGRESS', value: _param_count, max: _param_max_count};
+  }
+
+  /**
+   * Returns the waypoint controls in the store
+   * @returns {FullWidthElementType[]}
+   */
+  getParameterControls(): FullWidthElementType[] {
+    const searchField: FullWidthElementType[] = [{name: 'Search', type: TEXT_INPUT, value: _search_field, key: 'SEARCH_PARAM', onChange: searchChange}];
+    const noteField: FullWidthElementType[] = [{name: 'Note', type: TEXT_INPUT, value: _note, key: 'NOTE_PARAM', onChange: noteChange}];
+    const allControls: FullWidthElementType[] = searchField.concat(_param_controls, noteField);
+    return allControls;
+  }
+
+  /**
+   * Returns whether the modal is open
+   * @returns {boolean}
+   */
+  getModalOpen(): boolean {
+    return _modal_open;
+  }
+
+  /**
+   * Returns the modal diff
+   * @returns {any[]}
+   */
+  getDiff(): ParamDiff[] {
+    return diffParams(_parameters, _loaded_params);
+  }
+
+  /**
+  *Returns the parameter related check items for the gonogo list
+  *@returns {Object[]}
+  */
+  getGoNoGo(): Object[] {
+    const modeParamsSet = _map['FLTMODE1'].value === 10 &amp;&amp; //auto
+                          _map['FLTMODE2'].value === 10 &amp;&amp; //auto
+                          _map['FLTMODE3'].value === 2 &amp;&amp; //stabilize
+                          _map['FLTMODE4'].value === 2 &amp;&amp; //stabilize
+                          _map['FLTMODE5'].value === 0 &amp;&amp; //manual
+                          _map['FLTMODE6'].value === 0; //manual
+    const autoTakeoffParamsSet = _map['TKOFF_THR_DELAY'].value === '0' &amp;&amp;
+                                 _map['TKOFF_THR_MINACC'].value === '10';
+    return [
+        {name: 'flight mode parameters are set', value: modeParamsSet, key: 'flight_mode_params', type: 'checkbox', autoCheck: true},
+        {name: 'auto-takeoff parameters configured', value: autoTakeoffParamsSet, key: 'autotakeoff_param', type: 'checkbox', autoCheck: true}
+    ];
+  }
+}
+
+const parametersStoreInstance = new ParametersStore();
+
+parametersStoreInstance.dispatchToken = GCSDispatcher.register(action => {
+  switch (action.type) {
+  case ParametersTypes.RECEIVE_SINGLE_PARAMETER:
+    _updateParameter(action.name, action.value);
+    parametersStoreInstance.emitChange();
+    break;
+  case ParametersTypes.RECEIVE_MULTIPLE_PARAMETERS:
+    _updateParameters(action.parameters);
+    parametersStoreInstance.emitChange();
+    break;
+  case ParametersTypes.RECEIVE_MAX_PARAM_COUNT:
+    _updateMaxCount(action.count);
+    parametersStoreInstance.emitChange();
+    break;
+  case ParametersTypes.EDIT_PARAMETER:
+    _editParameter(action.name, action.value);
+    parametersStoreInstance.emitChange();
+    break;
+  case ParametersTypes.SELECT_PARAMETER:
+    _setSelected(action.name);
+    parametersStoreInstance.emitChange();
+    break;
+  case ParametersTypes.PARAMETER_LOAD_FROM_FILE:
+    _loaded_params = action.parameters;
+    parametersStoreInstance.emitChange();
+    break;
+  case ParametersTypes.RECEIVE_NOTE:
+    _update_note(action.note);
+    parametersStoreInstance.emitChange();
+    break;
+  case ParametersTypes.RECEIVE_SEARCH_FIELD:
+    _update_search_field(action.search_field);
+    parametersStoreInstance.emitChange();
+    break;
+  case ParametersTypes.RECEIVE_MODAL_OPEN:
+    _update_modal_open(action.open);
+    parametersStoreInstance.emitChange();
+    break;
+  case ParametersTypes.PARAMETER_SAVE_FROM_MODAL:
+    _loadFromFile(_loaded_params);
+    parametersStoreInstance.emitChange();
+    break;
+  default:
+    // do nothing
+  }
+});
+
+export default parametersStoreInstance;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-actions_CalibrationActionCreator.html">actions/CalibrationActionCreator</a></li><li><a href="module-actions_FenceActionCreator.html">actions/FenceActionCreator</a></li><li><a href="module-actions_InteropActionCreator.html">actions/InteropActionCreator</a></li><li><a href="module-actions_ParametersActionCreator.html">actions/ParametersActionCreator</a></li><li><a href="module-actions_SdaActionCreator.html">actions/SdaActionCreator</a></li><li><a href="module-actions_SettingsActionCreator.html">actions/SettingsActionCreator</a></li><li><a href="module-actions_StatusActionCreator.html">actions/StatusActionCreator</a></li><li><a href="module-actions_TuningActionCreator.html">actions/TuningActionCreator</a></li><li><a href="module-actions_WaypointActionCreator.html">actions/WaypointActionCreator</a></li><li><a href="module-components_Navbar_GoNoGoDropdown.html">components/Navbar/GoNoGoDropdown</a></li><li><a href="module-components_PlaneAction_ModeButton.html">components/PlaneAction/ModeButton</a></li><li><a href="module-components_TuningGuide_TuningUtils.html">components/TuningGuide/TuningUtils</a></li><li><a href="module-constants_ActionTypes.html">constants/ActionTypes</a></li><li><a href="module-constants_ButtonTypes.html">constants/ButtonTypes</a></li><li><a href="module-constants_Frequency.html">constants/Frequency</a></li><li><a href="module-constants_Sites.html">constants/Sites</a></li><li><a href="module-stores_CalibrationStore.html">stores/CalibrationStore</a></li><li><a href="module-stores_FenceStore.html">stores/FenceStore</a></li><li><a href="module-stores_InteropStore.html">stores/InteropStore</a></li><li><a href="module-stores_ParametersStore.html">stores/ParametersStore</a></li><li><a href="module-stores_SdaStore.html">stores/SdaStore</a></li><li><a href="module-stores_SettingsStore.html">stores/SettingsStore</a></li><li><a href="module-stores_StatusStore.html">stores/StatusStore</a></li><li><a href="module-stores_Store.html">stores/Store</a></li><li><a href="module-stores_TuningStore.html">stores/TuningStore</a></li><li><a href="module-stores_WaypointStore.html">stores/WaypointStore</a></li><li><a href="module-utils_ComponentUtils.html">utils/ComponentUtils</a></li><li><a href="module-utils_ConfigData.html">utils/ConfigData</a></li><li><a href="module-utils_DownloadApi.html">utils/DownloadApi</a></li><li><a href="module-utils_LoadApi.html">utils/LoadApi</a></li><li><a href="module-utils_MapUtils.html">utils/MapUtils</a></li><li><a href="module-utils_ReceiveApi.html">utils/ReceiveApi</a></li><li><a href="module-utils_SendApi.html">utils/SendApi</a></li><li><a href="module-utils_TypeValidation.html">utils/TypeValidation</a></li></ul><h3>Classes</h3><ul><li><a href="module-stores_StatusStore.StatusStore.html">StatusStore</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Nov 30 2016 23:25:28 GMT-0500 (EST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

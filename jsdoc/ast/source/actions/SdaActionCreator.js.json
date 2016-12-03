@@ -1,68 +1,23 @@
 {
   "type": "Program",
+  "start": 0,
+  "end": 404,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 18,
+      "column": 1
+    }
+  },
+  "sourceType": "module",
   "body": [
     {
       "type": "ImportDeclaration",
-      "specifiers": [
-        {
-          "type": "ImportDefaultSpecifier",
-          "local": {
-            "type": "Identifier",
-            "name": "GCSDispatcher",
-            "range": [
-              7,
-              20
-            ],
-            "loc": {
-              "start": {
-                "line": 1,
-                "column": 7
-              },
-              "end": {
-                "line": 1,
-                "column": 20
-              }
-            }
-          },
-          "range": [
-            7,
-            20
-          ],
-          "loc": {
-            "start": {
-              "line": 1,
-              "column": 7
-            },
-            "end": {
-              "line": 1,
-              "column": 20
-            }
-          }
-        }
-      ],
-      "source": {
-        "type": "Literal",
-        "value": "js/dispatcher/GCSDispatcher",
-        "raw": "'js/dispatcher/GCSDispatcher'",
-        "range": [
-          26,
-          55
-        ],
-        "loc": {
-          "start": {
-            "line": 1,
-            "column": 26
-          },
-          "end": {
-            "line": 1,
-            "column": 55
-          }
-        }
-      },
-      "range": [
-        0,
-        56
-      ],
+      "start": 0,
+      "end": 56,
       "loc": {
         "start": {
           "line": 1,
@@ -72,88 +27,64 @@
           "line": 1,
           "column": 56
         }
+      },
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "start": 7,
+          "end": 20,
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 7
+            },
+            "end": {
+              "line": 1,
+              "column": 20
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 7,
+            "end": 20,
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 7
+              },
+              "end": {
+                "line": 1,
+                "column": 20
+              }
+            },
+            "name": "GCSDispatcher"
+          }
+        }
+      ],
+      "importKind": "value",
+      "source": {
+        "type": "Literal",
+        "start": 26,
+        "end": 55,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 26
+          },
+          "end": {
+            "line": 1,
+            "column": 55
+          }
+        },
+        "value": "js/dispatcher/GCSDispatcher",
+        "rawValue": "js/dispatcher/GCSDispatcher",
+        "raw": "'js/dispatcher/GCSDispatcher'"
       }
     },
     {
       "type": "ImportDeclaration",
-      "specifiers": [
-        {
-          "type": "ImportSpecifier",
-          "local": {
-            "type": "Identifier",
-            "name": "SdaTypes",
-            "range": [
-              66,
-              74
-            ],
-            "loc": {
-              "start": {
-                "line": 2,
-                "column": 9
-              },
-              "end": {
-                "line": 2,
-                "column": 17
-              }
-            }
-          },
-          "imported": {
-            "type": "Identifier",
-            "name": "SdaTypes",
-            "range": [
-              66,
-              74
-            ],
-            "loc": {
-              "start": {
-                "line": 2,
-                "column": 9
-              },
-              "end": {
-                "line": 2,
-                "column": 17
-              }
-            }
-          },
-          "range": [
-            66,
-            74
-          ],
-          "loc": {
-            "start": {
-              "line": 2,
-              "column": 9
-            },
-            "end": {
-              "line": 2,
-              "column": 17
-            }
-          }
-        }
-      ],
-      "source": {
-        "type": "Literal",
-        "value": "js/constants/ActionTypes",
-        "raw": "'js/constants/ActionTypes'",
-        "range": [
-          82,
-          108
-        ],
-        "loc": {
-          "start": {
-            "line": 2,
-            "column": 25
-          },
-          "end": {
-            "line": 2,
-            "column": 51
-          }
-        }
-      },
-      "range": [
-        57,
-        109
-      ],
+      "start": 57,
+      "end": 109,
       "loc": {
         "start": {
           "line": 2,
@@ -164,456 +95,519 @@
           "column": 52
         }
       },
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "start": 66,
+          "end": 74,
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 9
+            },
+            "end": {
+              "line": 2,
+              "column": 17
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "start": 66,
+            "end": 74,
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 9
+              },
+              "end": {
+                "line": 2,
+                "column": 17
+              }
+            },
+            "name": "SdaTypes"
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 66,
+            "end": 74,
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 9
+              },
+              "end": {
+                "line": 2,
+                "column": 17
+              }
+            },
+            "name": "SdaTypes"
+          }
+        }
+      ],
+      "importKind": "value",
+      "source": {
+        "type": "Literal",
+        "start": 82,
+        "end": 108,
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 25
+          },
+          "end": {
+            "line": 2,
+            "column": 51
+          }
+        },
+        "value": "js/constants/ActionTypes",
+        "rawValue": "js/constants/ActionTypes",
+        "raw": "'js/constants/ActionTypes'"
+      },
       "trailingComments": [
         {
           "type": "Block",
-          "value": "*\n * Sets the sda enabled parameter to enabled or disabled\n * @param {boolean} enabled\n * @returns {undefined}\n ",
-          "range": [
-            111,
-            227
-          ],
+          "value": "*\n * @module actions/SdaActionCreator\n ",
+          "start": 111,
+          "end": 154,
           "loc": {
             "start": {
               "line": 4,
               "column": 0
             },
             "end": {
-              "line": 8,
+              "line": 6,
               "column": 3
             }
-          }
+          },
+          "range": [
+            111,
+            154
+          ]
+        },
+        {
+          "type": "Block",
+          "value": "*\n * Sets the sda enabled parameter to enabled or disabled\n * @param {boolean} enabled\n * @returns {undefined}\n ",
+          "start": 156,
+          "end": 272,
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 0
+            },
+            "end": {
+              "line": 12,
+              "column": 3
+            }
+          },
+          "range": [
+            156,
+            272
+          ]
         }
       ]
     },
     {
       "type": "ExportNamedDeclaration",
+      "start": 273,
+      "end": 404,
+      "loc": {
+        "start": {
+          "line": 13,
+          "column": 0
+        },
+        "end": {
+          "line": 18,
+          "column": 1
+        }
+      },
       "declaration": {
         "type": "FunctionDeclaration",
+        "start": 280,
+        "end": 404,
+        "loc": {
+          "start": {
+            "line": 13,
+            "column": 7
+          },
+          "end": {
+            "line": 18,
+            "column": 1
+          }
+        },
         "id": {
           "type": "Identifier",
-          "name": "receiveSdaEnabled",
-          "range": [
-            244,
-            261
-          ],
+          "start": 289,
+          "end": 306,
           "loc": {
             "start": {
-              "line": 9,
+              "line": 13,
               "column": 16
             },
             "end": {
-              "line": 9,
+              "line": 13,
               "column": 33
             }
-          }
+          },
+          "name": "receiveSdaEnabled",
+          "leadingComments": null
         },
+        "generator": false,
+        "expression": false,
+        "async": false,
         "params": [
           {
             "type": "Identifier",
-            "name": "enabled",
-            "range": [
-              262,
-              269
-            ],
+            "start": 307,
+            "end": 314,
             "loc": {
               "start": {
-                "line": 9,
+                "line": 13,
                 "column": 34
               },
               "end": {
-                "line": 9,
+                "line": 13,
                 "column": 41
               }
-            }
+            },
+            "name": "enabled"
           }
         ],
         "body": {
           "type": "BlockStatement",
+          "start": 316,
+          "end": 404,
+          "loc": {
+            "start": {
+              "line": 13,
+              "column": 43
+            },
+            "end": {
+              "line": 18,
+              "column": 1
+            }
+          },
           "body": [
             {
               "type": "ExpressionStatement",
+              "start": 320,
+              "end": 402,
+              "loc": {
+                "start": {
+                  "line": 14,
+                  "column": 2
+                },
+                "end": {
+                  "line": 17,
+                  "column": 5
+                }
+              },
               "expression": {
                 "type": "CallExpression",
+                "start": 320,
+                "end": 401,
+                "loc": {
+                  "start": {
+                    "line": 14,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 17,
+                    "column": 4
+                  }
+                },
                 "callee": {
                   "type": "MemberExpression",
-                  "computed": false,
-                  "object": {
-                    "type": "Identifier",
-                    "name": "GCSDispatcher",
-                    "range": [
-                      275,
-                      288
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 10,
-                        "column": 2
-                      },
-                      "end": {
-                        "line": 10,
-                        "column": 15
-                      }
-                    }
-                  },
-                  "property": {
-                    "type": "Identifier",
-                    "name": "dispatch",
-                    "range": [
-                      289,
-                      297
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 10,
-                        "column": 16
-                      },
-                      "end": {
-                        "line": 10,
-                        "column": 24
-                      }
-                    }
-                  },
-                  "range": [
-                    275,
-                    297
-                  ],
+                  "start": 320,
+                  "end": 342,
                   "loc": {
                     "start": {
-                      "line": 10,
+                      "line": 14,
                       "column": 2
                     },
                     "end": {
-                      "line": 10,
+                      "line": 14,
                       "column": 24
                     }
-                  }
+                  },
+                  "object": {
+                    "type": "Identifier",
+                    "start": 320,
+                    "end": 333,
+                    "loc": {
+                      "start": {
+                        "line": 14,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 14,
+                        "column": 15
+                      }
+                    },
+                    "name": "GCSDispatcher"
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "start": 334,
+                    "end": 342,
+                    "loc": {
+                      "start": {
+                        "line": 14,
+                        "column": 16
+                      },
+                      "end": {
+                        "line": 14,
+                        "column": 24
+                      }
+                    },
+                    "name": "dispatch"
+                  },
+                  "computed": false
                 },
                 "arguments": [
                   {
                     "type": "ObjectExpression",
-                    "properties": [
-                      {
-                        "type": "Property",
-                        "key": {
-                          "type": "Identifier",
-                          "name": "type",
-                          "range": [
-                            304,
-                            308
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 11,
-                              "column": 4
-                            },
-                            "end": {
-                              "line": 11,
-                              "column": 8
-                            }
-                          }
-                        },
-                        "value": {
-                          "type": "MemberExpression",
-                          "computed": false,
-                          "object": {
-                            "type": "Identifier",
-                            "name": "SdaTypes",
-                            "range": [
-                              310,
-                              318
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 11,
-                                "column": 10
-                              },
-                              "end": {
-                                "line": 11,
-                                "column": 18
-                              }
-                            }
-                          },
-                          "property": {
-                            "type": "Identifier",
-                            "name": "RECEIVE_SDA_ENABLED",
-                            "range": [
-                              319,
-                              338
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 11,
-                                "column": 19
-                              },
-                              "end": {
-                                "line": 11,
-                                "column": 38
-                              }
-                            }
-                          },
-                          "range": [
-                            310,
-                            338
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 11,
-                              "column": 10
-                            },
-                            "end": {
-                              "line": 11,
-                              "column": 38
-                            }
-                          }
-                        },
-                        "kind": "init",
-                        "method": false,
-                        "shorthand": false,
-                        "computed": false,
-                        "range": [
-                          304,
-                          338
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 11,
-                            "column": 4
-                          },
-                          "end": {
-                            "line": 11,
-                            "column": 38
-                          }
-                        }
-                      },
-                      {
-                        "type": "Property",
-                        "key": {
-                          "type": "Identifier",
-                          "name": "enabled",
-                          "range": [
-                            344,
-                            351
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 12,
-                              "column": 4
-                            },
-                            "end": {
-                              "line": 12,
-                              "column": 11
-                            }
-                          }
-                        },
-                        "value": {
-                          "type": "Identifier",
-                          "name": "enabled",
-                          "range": [
-                            344,
-                            351
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 12,
-                              "column": 4
-                            },
-                            "end": {
-                              "line": 12,
-                              "column": 11
-                            }
-                          }
-                        },
-                        "kind": "init",
-                        "method": false,
-                        "shorthand": true,
-                        "computed": false,
-                        "range": [
-                          344,
-                          351
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 12,
-                            "column": 4
-                          },
-                          "end": {
-                            "line": 12,
-                            "column": 11
-                          }
-                        }
-                      }
-                    ],
-                    "range": [
-                      298,
-                      355
-                    ],
+                    "start": 343,
+                    "end": 400,
                     "loc": {
                       "start": {
-                        "line": 10,
+                        "line": 14,
                         "column": 25
                       },
                       "end": {
-                        "line": 13,
+                        "line": 17,
                         "column": 3
                       }
-                    }
+                    },
+                    "properties": [
+                      {
+                        "type": "Property",
+                        "start": 349,
+                        "end": 383,
+                        "loc": {
+                          "start": {
+                            "line": 15,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 15,
+                            "column": 38
+                          }
+                        },
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "key": {
+                          "type": "Identifier",
+                          "start": 349,
+                          "end": 353,
+                          "loc": {
+                            "start": {
+                              "line": 15,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 15,
+                              "column": 8
+                            }
+                          },
+                          "name": "type"
+                        },
+                        "value": {
+                          "type": "MemberExpression",
+                          "start": 355,
+                          "end": 383,
+                          "loc": {
+                            "start": {
+                              "line": 15,
+                              "column": 10
+                            },
+                            "end": {
+                              "line": 15,
+                              "column": 38
+                            }
+                          },
+                          "object": {
+                            "type": "Identifier",
+                            "start": 355,
+                            "end": 363,
+                            "loc": {
+                              "start": {
+                                "line": 15,
+                                "column": 10
+                              },
+                              "end": {
+                                "line": 15,
+                                "column": 18
+                              }
+                            },
+                            "name": "SdaTypes"
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "start": 364,
+                            "end": 383,
+                            "loc": {
+                              "start": {
+                                "line": 15,
+                                "column": 19
+                              },
+                              "end": {
+                                "line": 15,
+                                "column": 38
+                              }
+                            },
+                            "name": "RECEIVE_SDA_ENABLED"
+                          },
+                          "computed": false
+                        },
+                        "kind": "init"
+                      },
+                      {
+                        "type": "Property",
+                        "start": 389,
+                        "end": 396,
+                        "loc": {
+                          "start": {
+                            "line": 16,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 16,
+                            "column": 11
+                          }
+                        },
+                        "method": false,
+                        "shorthand": true,
+                        "computed": false,
+                        "key": {
+                          "type": "Identifier",
+                          "start": 389,
+                          "end": 396,
+                          "loc": {
+                            "start": {
+                              "line": 16,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 16,
+                              "column": 11
+                            }
+                          },
+                          "name": "enabled"
+                        },
+                        "kind": "init",
+                        "value": {
+                          "type": "Identifier",
+                          "start": 389,
+                          "end": 396,
+                          "loc": {
+                            "start": {
+                              "line": 16,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 16,
+                              "column": 11
+                            }
+                          },
+                          "name": "enabled"
+                        }
+                      }
+                    ]
                   }
-                ],
-                "range": [
-                  275,
-                  356
-                ],
-                "loc": {
-                  "start": {
-                    "line": 10,
-                    "column": 2
-                  },
-                  "end": {
-                    "line": 13,
-                    "column": 4
-                  }
-                }
-              },
-              "range": [
-                275,
-                357
-              ],
-              "loc": {
-                "start": {
-                  "line": 10,
-                  "column": 2
-                },
-                "end": {
-                  "line": 13,
-                  "column": 5
-                }
+                ]
               }
             }
-          ],
-          "range": [
-            271,
-            359
-          ],
-          "loc": {
-            "start": {
-              "line": 9,
-              "column": 43
-            },
-            "end": {
-              "line": 14,
-              "column": 1
-            }
-          }
-        },
-        "generator": false,
-        "expression": false,
-        "range": [
-          235,
-          359
-        ],
-        "loc": {
-          "start": {
-            "line": 9,
-            "column": 7
-          },
-          "end": {
-            "line": 14,
-            "column": 1
-          }
+          ]
         },
         "leadingComments": [
           {
             "type": "Block",
-            "value": "*\n * Sets the sda enabled parameter to enabled or disabled\n * @param {boolean} enabled\n * @returns {undefined}\n ",
-            "range": [
-              111,
-              227
-            ],
+            "value": "*\n * @module actions/SdaActionCreator\n ",
+            "start": 111,
+            "end": 154,
             "loc": {
               "start": {
                 "line": 4,
                 "column": 0
               },
               "end": {
-                "line": 8,
+                "line": 6,
                 "column": 3
               }
-            }
+            },
+            "range": [
+              111,
+              154
+            ]
+          },
+          {
+            "type": "Block",
+            "value": "*\n * Sets the sda enabled parameter to enabled or disabled\n * @param {boolean} enabled\n * @returns {undefined}\n ",
+            "start": 156,
+            "end": 272,
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 0
+              },
+              "end": {
+                "line": 12,
+                "column": 3
+              }
+            },
+            "range": [
+              156,
+              272
+            ]
           }
         ],
         "trailingComments": []
       },
       "specifiers": [],
       "source": null,
-      "range": [
-        228,
-        359
-      ],
-      "loc": {
-        "start": {
-          "line": 9,
-          "column": 0
-        },
-        "end": {
-          "line": 14,
-          "column": 1
-        }
-      },
       "leadingComments": [
         {
           "type": "Block",
-          "value": "*\n * Sets the sda enabled parameter to enabled or disabled\n * @param {boolean} enabled\n * @returns {undefined}\n ",
-          "range": [
-            111,
-            227
-          ],
+          "value": "*\n * @module actions/SdaActionCreator\n ",
+          "start": 111,
+          "end": 154,
           "loc": {
             "start": {
               "line": 4,
               "column": 0
             },
             "end": {
-              "line": 8,
+              "line": 6,
               "column": 3
             }
-          }
+          },
+          "range": [
+            111,
+            154
+          ]
+        },
+        {
+          "type": "Block",
+          "value": "*\n * Sets the sda enabled parameter to enabled or disabled\n * @param {boolean} enabled\n * @returns {undefined}\n ",
+          "start": 156,
+          "end": 272,
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 0
+            },
+            "end": {
+              "line": 12,
+              "column": 3
+            }
+          },
+          "range": [
+            156,
+            272
+          ]
         }
       ]
-    }
-  ],
-  "sourceType": "module",
-  "range": [
-    0,
-    359
-  ],
-  "loc": {
-    "start": {
-      "line": 1,
-      "column": 0
-    },
-    "end": {
-      "line": 14,
-      "column": 1
-    }
-  },
-  "comments": [
-    {
-      "type": "Block",
-      "value": "*\n * Sets the sda enabled parameter to enabled or disabled\n * @param {boolean} enabled\n * @returns {undefined}\n ",
-      "range": [
-        111,
-        227
-      ],
-      "loc": {
-        "start": {
-          "line": 4,
-          "column": 0
-        },
-        "end": {
-          "line": 8,
-          "column": 3
-        }
-      }
     }
   ]
 }

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: utils/DownloadApi.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: utils/DownloadApi.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// @flow
+
+import BabyParse from 'babyparse';
+import _ from 'lodash';
+
+import { mToFt } from './ComponentUtils';
+
+/**
+ * @module utils/DownloadApi
+ */
+
+/**
+ * Downloads a file using DOM magic
+ * @param {string} text - string of text to be inserted into downloaded file
+ * @param {string} filename - name of downloaded file
+ * @returns {undefined}
+ */
+function download(text: string, filename: string): void {
+  const element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+  element.setAttribute('download', filename);
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+
+/**
+ * Generates a human-readable string of the current time and date
+ * @returns {string} String of date (same as APM standard)
+ */
+function dateString(): string {
+  const date: Date = new Date();
+  return `${(date.getMonth() + 1)}/${date.getDate()}/${date.getFullYear()} ` +
+    `${('0' + date.getHours()).slice(-2)}:${('0' + date.getMinutes()).slice(-2)}:` +
+    `${('0' + date.getSeconds()).slice(-2)}`;
+}
+
+/**
+ * Generates a string of the current waypoint (for saving waypoints)
+ * @param {number} current_wp - Index of the current waypoint in the sent list
+ * @returns {function} Function that takes in a waypoint and index and
+ * returns the stringified version of the waypoint according to QGC standards
+ */
+function waypointToString(current_wp: number): Function {
+  return function(wp, i) {
+    const current = current_wp === i ? '1' : '0';
+    return `${i}\t${current}\t0\t${wp.type}\t0\t0\t0\t0\t${wp.lon}\t${wp.lat}\t${wp.alt}\t1`;
+  };
+}
+
+function minifyWaypoint(waypoint: Object): {altitude_msl: number, latitude: number, longitude: number} {
+  return {
+    altitude_msl: waypoint.alt,
+    latitude: waypoint.lat,
+    longitude: waypoint.lon
+  };
+}
+
+function isNavWaypoint(waypoint: Waypoint): boolean {
+  return waypoint.type === 16;
+}
+
+function waypointsToMSL(waypoints: Waypoint[]): Waypoint[] {
+  let waypoints_copy = _.cloneDeep(waypoints);
+  const msl_height = waypoints_copy.length > 0 ? mToFt(waypoints_copy[0].alt) : 0;
+
+  if (waypoints_copy.length > 0) waypoints_copy[0].alt = mToFt(waypoints_copy[0].alt);
+  for (let i = 1; i &lt; waypoints_copy.length; i++) {
+    waypoints_copy[i].alt = mToFt(waypoints_copy[i].alt) + msl_height;
+  }
+
+  return waypoints_copy;
+}
+
+/**
+ * Minifies a parameter down to its value and name (disregards other properties)
+ * @param {FullParameter} param
+ * @returns {Parameter} object containing value and name of given param
+ */
+function minifyParam(param: FullParameter): ?Parameter {
+  return typeof param.value !== 'number' ? null : {name: param.name, value: param.value};
+}
+
+/**
+ * Saves waypoints to file in CSV format
+ * @param {Waypoint[]} waypoints
+ * @param {number} current
+ * @returns {string}
+ */
+export function saveWaypointsToFile(waypoints: Waypoint[], current: number): string {
+  const wps = waypoints.map(waypointToString(current)).join('\r\n');
+  const file = 'QGC WPL 110\r\n' + wps;
+  download(file, 'waypoints.wp');
+  return file;
+}
+
+/**
+ * Saves waypoints to file in JSON format
+ * @param {Waypoint[]} waypoints
+ * @returns {string}
+ */
+export function saveWaypointsToJson(waypoints: Waypoint[]): string {
+  const wps = waypointsToMSL(waypoints).filter(isNavWaypoint).map(minifyWaypoint);
+  const file = JSON.stringify(wps);
+  download(file, 'waypoints_interop.wp');
+  return file;
+}
+
+/**
+ * Saves parameters to file
+ * @param {string} note_input
+ * @param {FullParameter[]} params
+ * @returns {string}
+ */
+export function saveParamsToFile(note_input: string, params: FullParameter[]): string {
+  const miniParams = params.map(minifyParam).filter(param => param != null);
+  const note = note_input === '' ? '' : ': ' + note_input;
+  const csv = '#Note: ' + dateString() + note + '\r\n' + 
+    BabyParse.unparse({fields: ['name', 'value'], data: miniParams});
+  const lines = csv.split('\r\n');
+  const file = lines.slice(0,1).concat(lines.slice(2)).join('\r\n');
+  download(file, 'parameters.p');
+  return file;
+}
+
+/**
+ * Saves the fence points
+ * @param {Point[]} fence_points
+ * @returns {string}
+ */
+export function saveFenceToFile(fence_points: Point[]): string {
+  const geofence_height = 2000;
+  const parsedPoints = fence_points.map(point => {
+    return {lat: parseFloat(point.lat), lon: parseFloat(point.lon)};
+  });
+  const csv = '0 ' + geofence_height + 
+    BabyParse.unparse({fields: ['lat', 'lon'], data: parsedPoints}, {delimiter: ' ', newline: '\n'});
+  const file = csv.split('\n').slice(1).join('\n');
+  download(file, 'fence.gf');
+  return file;
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-actions_CalibrationActionCreator.html">actions/CalibrationActionCreator</a></li><li><a href="module-actions_FenceActionCreator.html">actions/FenceActionCreator</a></li><li><a href="module-actions_InteropActionCreator.html">actions/InteropActionCreator</a></li><li><a href="module-actions_ParametersActionCreator.html">actions/ParametersActionCreator</a></li><li><a href="module-actions_SdaActionCreator.html">actions/SdaActionCreator</a></li><li><a href="module-actions_SettingsActionCreator.html">actions/SettingsActionCreator</a></li><li><a href="module-actions_StatusActionCreator.html">actions/StatusActionCreator</a></li><li><a href="module-actions_TuningActionCreator.html">actions/TuningActionCreator</a></li><li><a href="module-actions_WaypointActionCreator.html">actions/WaypointActionCreator</a></li><li><a href="module-components_Navbar_GoNoGoDropdown.html">components/Navbar/GoNoGoDropdown</a></li><li><a href="module-components_PlaneAction_ModeButton.html">components/PlaneAction/ModeButton</a></li><li><a href="module-components_TuningGuide_TuningUtils.html">components/TuningGuide/TuningUtils</a></li><li><a href="module-constants_ActionTypes.html">constants/ActionTypes</a></li><li><a href="module-constants_ButtonTypes.html">constants/ButtonTypes</a></li><li><a href="module-constants_Frequency.html">constants/Frequency</a></li><li><a href="module-constants_Sites.html">constants/Sites</a></li><li><a href="module-stores_CalibrationStore.html">stores/CalibrationStore</a></li><li><a href="module-stores_FenceStore.html">stores/FenceStore</a></li><li><a href="module-stores_InteropStore.html">stores/InteropStore</a></li><li><a href="module-stores_ParametersStore.html">stores/ParametersStore</a></li><li><a href="module-stores_SdaStore.html">stores/SdaStore</a></li><li><a href="module-stores_SettingsStore.html">stores/SettingsStore</a></li><li><a href="module-stores_StatusStore.html">stores/StatusStore</a></li><li><a href="module-stores_Store.html">stores/Store</a></li><li><a href="module-stores_TuningStore.html">stores/TuningStore</a></li><li><a href="module-stores_WaypointStore.html">stores/WaypointStore</a></li><li><a href="module-utils_ComponentUtils.html">utils/ComponentUtils</a></li><li><a href="module-utils_ConfigData.html">utils/ConfigData</a></li><li><a href="module-utils_DownloadApi.html">utils/DownloadApi</a></li><li><a href="module-utils_LoadApi.html">utils/LoadApi</a></li><li><a href="module-utils_MapUtils.html">utils/MapUtils</a></li><li><a href="module-utils_ReceiveApi.html">utils/ReceiveApi</a></li><li><a href="module-utils_SendApi.html">utils/SendApi</a></li><li><a href="module-utils_TypeValidation.html">utils/TypeValidation</a></li></ul><h3>Classes</h3><ul><li><a href="module-stores_StatusStore.StatusStore.html">StatusStore</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Nov 30 2016 23:25:28 GMT-0500 (EST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

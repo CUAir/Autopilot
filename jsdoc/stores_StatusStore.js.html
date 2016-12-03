@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: stores/StatusStore.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: stores/StatusStore.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// @flow
+
+import GCSDispatcher from 'js/dispatcher/GCSDispatcher';
+import { StatusTypes } from 'js/constants/ActionTypes';
+import { BUTTON } from 'js/constants/ButtonTypes';
+import Store from 'js/stores/Store';
+
+import * as StatusActionCreator from 'js/actions/StatusActionCreator';
+
+import { sendModeSwitch, sendChangeMode, toggleArm, sendRTL } from 'js/utils/SendApi';
+import { enabledToSuccess, decround, pythagorean } from 'js/utils/ComponentUtils';
+
+/**
+ * @module stores/StatusStore
+ */
+
+let _airspeed: Airspeed = {airvx: 0, airvy: 0, airvz: 0, speed: 0, climb: 0};
+let _climb_rate: number = 0;
+let _attitude: Attitude = {pitch: 0, roll: 0, yaw: 0, pitchspeed: 0, rollspeed: 0, yawspeed: 0};
+let _gps: GPS = {lat: 0, lon: 0, rel_alt: 0, groundvx: 0, groundvy: 0, groundvz: 0, heading: 0};
+let _wind: Wind = {windvx: 0, windvy: 0, windvz: 0};
+let _armed: boolean = false;
+let _safety_switch: boolean = false;
+let _gps_link: boolean = false;
+let _plane_link: boolean = false;
+let _battery: Battery = {batteryvoltage: 0, batterypct: 0};
+let _powerboard: Powerboard = {csbatt: 0, nuc: 0, gimbal: 0, comms: 0, '12v reg': 0, '24v reg': 0};
+let _throttle: number = 0;
+let _mode: ModeString = 'MANUAL';
+let _mode_switch: ModeString = 'MANUAL';
+let _connected: boolean = true;
+let _throttle100: boolean = false;
+
+/**
+ * Reacts to a user clicking on a mode change by dispatching a mode change
+ * and posting the mode change to the server
+ * @param {string} type - Either mode_switch or current_mode
+ * @param {string} mode - The mode being switched into
+ * @returns {undefined}
+ */
+function changeMode(type: ModeType, mode: ModeString): void {
+  if (type === 'Mode Switch') {
+    sendModeSwitch(mode, () => StatusActionCreator.receiveModeSwitch(mode));
+  } else if (type === 'Current Mode') {
+    sendChangeMode(mode, () => StatusActionCreator.receiveCurrentMode(mode));
+  } else {
+    throw 'Invalid Mode';
+  }
+}
+
+function toggleArmButton(): void {
+  toggleArm(_armed);
+}
+
+const _possible_modes: ModeOptionType[] = [
+  {name: 'MANUAL', key: 'MANUAL', onClick: changeMode},
+  {name: 'AUTO', key: 'AUTO', onClick: changeMode},
+  {name: 'AUTOTUNE', key: 'AUTOTUNE', onClick: changeMode},
+  {name: 'STABILIZE', key: 'STABILIZE', onClick: changeMode},
+  {name: 'LOITER', key: 'LOITER', onClick: changeMode},
+  {name: 'RTL', key: 'RTL', onClick: changeMode},
+  {name: 'FBWA', key: 'FBWA', onClick: changeMode},
+  {name: 'FBWB', key: 'FBWB', onClick: changeMode},
+  {name: 'TRAINING', key: 'TRAINING', onClick: changeMode},
+  {name: 'CIRCLE', key: 'CIRCLE', onClick: changeMode}
+];
+
+function _updateAirspeed(airspeed: Airspeed): void { _airspeed = airspeed; }
+function _updateClimbRate(climb_rate: number): void { _climb_rate = climb_rate; }
+function _updateAttitude(attitude: Attitude): void { _attitude = attitude; }
+function _updateGPS(gps: GPS): void { _gps = gps; }
+function _updateWind(wind: Wind): void { _wind = wind; }
+function _updateArmed(armed: boolean): void { _armed = armed; }
+function _updateGPSLink(gps_link: boolean): void { _gps_link = gps_link; }
+function _updatePlaneLink(plane_link: boolean): void { _plane_link = plane_link; }
+function _updateSafetySwitch(safety_switch: boolean): void { _safety_switch = safety_switch; }
+function _updateBattery(battery: Battery): void { _battery = battery; }
+function _updatePowerboard(powerboard: Powerboard): void { _powerboard = powerboard; }
+function _updateThrottle(throttle: number): void {
+  _throttle = throttle;
+  _throttle100 = (throttle === 100 ? true : _throttle100); // if throttle has ever reached 100, set throttle 100 to true
+}
+function _updateMode(mode: ModeString): void { _mode = mode; }
+function _updateModeSwitch(mode_switch: ModeString): void { _mode_switch = mode_switch; }
+function _updateConnected(connected: boolean): void { _connected = connected; }
+
+function _lostConnection(): void {
+  _updateAirspeed({airvx: 0, airvy: 0, airvz: 0, speed: 0, climb: 0});
+  _updateClimbRate(0);
+  _updateAttitude({pitch: 0, roll: 0, yaw: 0, pitchspeed: 0, rollspeed: 0, yawspeed: 0});
+  _updateGPS({lat: 0, lon: 0, rel_alt: 0, groundvx: 0, groundvy: 0, groundvz: 0, heading: 0});
+  _updateWind({windvx: 0, windvy: 0, windvz: 0});
+  _updateArmed(false);
+  _updateGPSLink(false);
+  _updatePlaneLink(false);
+  _updateSafetySwitch(false);
+  _updateBattery({batteryvoltage: 0, batterypct: 0});
+  _updatePowerboard({csbatt: 0, nuc: 0, gimbal: 0, comms: 0, '12v reg': 0, '24v reg': 0});
+  _updateThrottle(0);
+  _updateMode('MANUAL');
+  _updateModeSwitch('MANUAL');
+  _updateConnected(false);
+}
+
+function _gainedConnection(): void {
+  _updateConnected(true);
+}
+
+/** 
+ * @class module:stores/StatusStore.StatusStore
+ * @extends Store
+ * @public
+ */
+class StatusStore extends Store {
+
+  constructor() {
+    super();
+  }
+
+  /**
+   * Returns the plane mode switches
+   * @method StatusStore#getPlaneModes
+   * @function
+   * @memberof! StatusStore#
+   * @returns {PlaneModeType[]}
+   */
+  getPlaneModes(): PlaneModeType[] {
+    return [
+      {name: 'Mode Switch', modes: _possible_modes, value: _mode_switch, key: 'MODE_SWITCH'},
+      {name: 'Current Mode', modes: _possible_modes, value: _mode, key: 'CURRENT_MODE'}
+    ];
+  }
+
+  /**
+   * Returns the plane's gps infor
+   * @returns {GPS}
+   */
+  getGPS(): GPS {
+    return _gps;
+  }
+
+  /**
+   * Returns whether the plane is armed
+   * @returns {boolean}
+   */
+  getArmed(): boolean {
+    return _armed;
+  }
+
+  /**
+   * Returns whether the backend is connected
+   * @returns {boolean}
+   */
+  getConnected(): boolean {
+    return _connected;
+  }
+
+  /**
+   * Returns whether the throttle has been ramped all the way up yet
+   * @returns {boolean}
+   */
+  getThrottle100(): boolean {
+    return _throttle100;
+  }
+
+  /**
+   * Returns the current mode
+   * @returns {string}
+   */
+  getMode(): string {
+    return _mode;
+  }
+
+  /**
+   * Returns the airspeed
+   * @returns {number}
+   */
+  getAirspeed(): number {
+    return decround(_airspeed.speed, 2);
+  }
+
+  /**
+   * Returns the plane info relevant for display
+   * @returns {DisplayInfoType[]}
+   */
+  getPlaneInfo(): DisplayInfoType[] {
+    const speed_digits = 2;
+    const angle_digits = 2;
+    const coords_digits = 6;
+    const other_digits = 2;
+    return [
+      {name: 'Rel. Alt.', value: decround(_gps.rel_alt, other_digits), unit: 'm', key: 'REL_ALT'},
+      {name: 'Ground Speed', value: decround(pythagorean(_gps.groundvx, _gps.groundvy, _gps.groundvz), speed_digits), unit: 'm/s', key: 'GROUND_SPEED'},
+      {name: 'Air Speed', value: decround(_airspeed.speed, speed_digits), unit: 'm/s', key: 'AIR_SPEED'},
+      {name: 'Roll', value: decround(_attitude.roll, angle_digits), unit: '°', key: 'ROLL'},
+      {name: 'Pitch', value: decround(_attitude.pitch, angle_digits), unit: '°', key: 'PITCH'},
+      {name: 'Yaw', value: decround(_attitude.yaw, angle_digits), unit: '°', key: 'YAW'},
+      {name: 'Latitude', value: decround(_gps.lat, coords_digits), unit: '°', key: 'LATITUDE'},
+      {name: 'Longitude', value: decround(_gps.lon, coords_digits), unit: '°', key: 'LONGITUDE'},
+      {name: 'Wind Speed', value: decround(pythagorean(_wind.windvx, _wind.windvy, _wind.windvz), speed_digits), unit: 'm/s', key: 'WIND'},
+      {name: 'Throttle', value: decround(_throttle, other_digits), unit: '%', key: 'THROTTLE'},
+      {name: 'Climb Rate', value: decround(_climb_rate, speed_digits), unit: 'm/s', key: 'CLIMB_RATE'}
+    ];
+  }
+
+  /**
+   * Returns all plane values
+   * @returns {Object}
+   */
+  getPlaneValues(): Object {
+    return {
+      REL_ALT: decround(_gps.rel_alt, 2),
+      GROUND_SPEED: decround(pythagorean(_gps.groundvx, _gps.groundvz, _gps.groundvz), 2),
+      AIR_SPEED: decround(_airspeed.speed, 2),
+      ROLL: decround(_attitude.roll, 2),
+      PITCH: decround(_attitude.pitch, 2),
+      YAW: decround(_attitude.yaw, 2),
+      LATITUDE: decround(_gps.lat, 6),
+      LONGITUDE: decround(_gps.lon, 6),
+      WIND: decround(pythagorean(_wind.windvx, _wind.windvy, _wind.windvz), 4),
+      THROTTLE: decround(_throttle, 4),
+      CLIMB_RATE: decround(_climb_rate, 4)
+    };
+  }
+
+  /**
+   * Returns the Plane's link statuses
+   * @returns {NavbarStatusType[]}
+   */
+  getPlaneStatus(): NavbarStatusType[] {
+    const safetyName = _safety_switch ? 'Live' : 'Safe';
+    const armedName = _armed ? 'Armed' : 'Disarmed';
+    const planeLinkName = _plane_link ? 'Plane Link' : 'No Plane Link';
+    const gpsLinkName = _gps_link ? 'GPS Link' : 'No GPS Link';
+    return [
+      {name: safetyName, status: _safety_switch, key: 'SAFETY_SWITCH'},
+      {name: armedName, status: _armed, key: 'ARMED'},
+      {name: planeLinkName, status: _plane_link, key: 'PLANE_LINK'},
+      {name: gpsLinkName, status: _gps_link, key: 'GPS_LINK'}
+    ];
+  }
+
+  /**
+   * Returns the battery percentage
+   * @returns {number}
+   */
+  getBattery(): number {
+    return _battery.batterypct;
+  }
+
+  /**
+   * Returns the powerboard
+   * @returns {DisplayInfoType[]}
+   */
+  getPowerboard(): DisplayInfoType[] {
+    return [
+      {name: 'csbatt', value: _powerboard.csbatt, key: 'CSBATT', unit: 'mV'},
+      {name: 'nuc', value: _powerboard.nuc, key: 'NUC', unit: 'mA'},
+      {name: 'gimbal', value: _powerboard.gimbal, key: 'GIMBAL', unit: 'mA'},
+      {name: 'comms', value: _powerboard.comms, key: 'COMMS', unit: 'mA'},
+      {name: '12V Reg', value: _powerboard['12v reg'], key: '12VReg', unit: 'mV'},
+      {name: '24V Reg', value: _powerboard['24v reg'], key: '24VReg', unit: 'mV'}
+    ];
+  }
+
+  /**
+   * Returns the status controls
+   * @returns {FullWidthElementType[]}
+   */
+  getControls(): FullWidthElementType[] {
+    const armText = _armed ? 'DISARM' : 'ARM';
+    const armColor = enabledToSuccess(_armed);
+    return [
+      {text: armText, color: armColor, type: BUTTON,  onClick: toggleArmButton, id: 'TOGGLE_ARM', key: 'TOGGLE_ARM'},
+      {text: 'Return Home', color: 'error', type: BUTTON, onClick: sendRTL, id: 'RETURN_HOME', key: 'RETURN_HOME'}
+    ];
+  }
+  /**
+  *Returns all the check items for the go no go list that are related to the status store
+  *@Returns {Object[]}
+  */
+  getGoNoGo() {
+    const connected = _connected;
+    const throttle100 = _throttle100; 
+    const modeAuto = _mode === 'AUTO';
+    return [
+      {name: 'batteries recorded in flight log', key: 'Batteries_recorded', type: 'checkbox', autoCheck: false},
+      {name: 'redo airspeed calibration', key: 'airspeed_calibration', type: 'checkbox', autoCheck: false},
+      {name: 'receiving plane vitals', value: connected , key: 'plane_vitals', type: 'checkbox', autoCheck: true},
+      {name: 'throttle has reached 100%', value: throttle100, key: 'throtte_test', type: 'checkbox', autoCheck: true},
+      {name: 'catapult will not clip box', key: 'CATAPULT_CLIP_BOX', type: 'checkbox', autoCheck: false},
+      {name: 'no Slack in catapult line', key: 'CATAPULT_SLACK', type: 'checkbox', autoCheck: false},
+      {name: 'pilot and spotter recored in flight log', key: 'pilot_and_spotter_recorded', type: 'checkbox', autoCheck: false},
+      {name: 'catapult handlers recorded in flight log', key: 'catapult_handelers_recorded', type: 'checkbox', autoCheck: false},
+      {name: 'Timer &amp; video people recorded in flight log', key: 'timer_&amp;_video_recorded', type: 'checkbox', autoCheck: false},
+      {name: 'plane will not lift off catapult prematurely', key: 'no_premature_lift', type: 'checkbox', autoCheck: false},
+      {name: 'transmitter on high', key: 'transmitter_on_high', type: 'checkbox', autoCheck: false},
+      {name: 'catapult pressurized', key: 'catapult_pressurized', type: 'checkbox', autoCheck: false},
+      {name: 'mission brief complete', key: 'mission_brief', type: 'checkbox', autoCheck: false},
+      {name: 'autopilot in auto', value: modeAuto, key: 'autopilot_in_auto', type: 'checkbox', autoCheck: true},
+      {name: 'surface test', key: 'surface_test', type: 'checkbox', autoCheck: false},
+      {name: 'throttle test',  key: 'throttle_test', type: 'checkbox', autoCheck: false},
+      {name: 'safety pin',  key: 'safety_pin', type: 'checkbox', autoCheck: false},
+      {name: 'capturing images',  key: 'image_capture', type: 'checkbox', autoCheck: false},
+      {name: 'gimbal pointed at the ground',  key: 'gimbal_point_ground', type: 'checkbox', autoCheck: false}
+    ];
+  }
+}
+
+const statusStoreInstance = new StatusStore();
+
+statusStoreInstance.dispatchToken = GCSDispatcher.register(action => {
+  switch(action.type) {
+  case StatusTypes.RECEIVE_AIRSPEED:
+    _updateAirspeed(action.airspeed);
+    statusStoreInstance.emitChange();
+    break;
+  case StatusTypes.RECEIVE_CLIMB_RATE:
+    _updateClimbRate(action.climb_rate);
+    statusStoreInstance.emitChange();
+    break;
+  case StatusTypes.RECEIVE_ATTITUDE:
+    _updateAttitude(action.attitude);
+    statusStoreInstance.emitChange();
+    break;
+  case StatusTypes.RECEIVE_GPS:
+    _updateGPS(action.gps);
+    statusStoreInstance.emitChange();
+    break;
+  case StatusTypes.RECEIVE_WIND:
+    _updateWind(action.wind);
+    statusStoreInstance.emitChange();
+    break;
+  case StatusTypes.RECEIVE_ARMED:
+    _updateArmed(action.armed);
+    statusStoreInstance.emitChange();
+    break;
+  case StatusTypes.RECEIVE_SAFETY_SWITCH:
+    _updateSafetySwitch(action.safety_switch);
+    statusStoreInstance.emitChange();
+    break;
+  case StatusTypes.RECEIVE_GPS_LINK:
+    _updateGPSLink(action.gps_link);
+    statusStoreInstance.emitChange();
+    break;
+  case StatusTypes.RECEIVE_PLANE_LINK:
+    _updatePlaneLink(action.plane_link);
+    statusStoreInstance.emitChange();
+    break;
+  case StatusTypes.RECEIVE_BATTERY:
+    _updateBattery(action.battery);
+    statusStoreInstance.emitChange();
+    break;
+  case StatusTypes.RECEIVE_POWERBOARD:
+    _updatePowerboard(action.powerboard);
+    statusStoreInstance.emitChange();
+    break;
+  case StatusTypes.RECEIVE_THROTTLE:
+    _updateThrottle(action.throttle);
+    statusStoreInstance.emitChange();
+    break;
+  case StatusTypes.RECEIVE_CURRENT_MODE:
+    _updateMode(action.mode);
+    statusStoreInstance.emitChange();
+    break;
+  case StatusTypes.RECEIVE_MODE_SWITCH:
+    _updateModeSwitch(action.mode_switch);
+    statusStoreInstance.emitChange();
+    break;
+  case StatusTypes.LOST_CONNECTION:
+    _lostConnection();
+    statusStoreInstance.emitChange();
+    break;
+  case StatusTypes.GAINED_CONNECTION:
+    _gainedConnection();
+    statusStoreInstance.emitChange();
+    break;
+  default:
+    // do nothing
+  }
+});
+
+export default statusStoreInstance;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-actions_CalibrationActionCreator.html">actions/CalibrationActionCreator</a></li><li><a href="module-actions_FenceActionCreator.html">actions/FenceActionCreator</a></li><li><a href="module-actions_InteropActionCreator.html">actions/InteropActionCreator</a></li><li><a href="module-actions_ParametersActionCreator.html">actions/ParametersActionCreator</a></li><li><a href="module-actions_SdaActionCreator.html">actions/SdaActionCreator</a></li><li><a href="module-actions_SettingsActionCreator.html">actions/SettingsActionCreator</a></li><li><a href="module-actions_StatusActionCreator.html">actions/StatusActionCreator</a></li><li><a href="module-actions_TuningActionCreator.html">actions/TuningActionCreator</a></li><li><a href="module-actions_WaypointActionCreator.html">actions/WaypointActionCreator</a></li><li><a href="module-components_Navbar_GoNoGoDropdown.html">components/Navbar/GoNoGoDropdown</a></li><li><a href="module-components_PlaneAction_ModeButton.html">components/PlaneAction/ModeButton</a></li><li><a href="module-components_TuningGuide_TuningUtils.html">components/TuningGuide/TuningUtils</a></li><li><a href="module-constants_ActionTypes.html">constants/ActionTypes</a></li><li><a href="module-constants_ButtonTypes.html">constants/ButtonTypes</a></li><li><a href="module-constants_Frequency.html">constants/Frequency</a></li><li><a href="module-constants_Sites.html">constants/Sites</a></li><li><a href="module-stores_CalibrationStore.html">stores/CalibrationStore</a></li><li><a href="module-stores_FenceStore.html">stores/FenceStore</a></li><li><a href="module-stores_InteropStore.html">stores/InteropStore</a></li><li><a href="module-stores_ParametersStore.html">stores/ParametersStore</a></li><li><a href="module-stores_SdaStore.html">stores/SdaStore</a></li><li><a href="module-stores_SettingsStore.html">stores/SettingsStore</a></li><li><a href="module-stores_StatusStore.html">stores/StatusStore</a></li><li><a href="module-stores_Store.html">stores/Store</a></li><li><a href="module-stores_TuningStore.html">stores/TuningStore</a></li><li><a href="module-stores_WaypointStore.html">stores/WaypointStore</a></li><li><a href="module-utils_ComponentUtils.html">utils/ComponentUtils</a></li><li><a href="module-utils_ConfigData.html">utils/ConfigData</a></li><li><a href="module-utils_DownloadApi.html">utils/DownloadApi</a></li><li><a href="module-utils_LoadApi.html">utils/LoadApi</a></li><li><a href="module-utils_MapUtils.html">utils/MapUtils</a></li><li><a href="module-utils_ReceiveApi.html">utils/ReceiveApi</a></li><li><a href="module-utils_SendApi.html">utils/SendApi</a></li><li><a href="module-utils_TypeValidation.html">utils/TypeValidation</a></li></ul><h3>Classes</h3><ul><li><a href="module-stores_StatusStore.StatusStore.html">StatusStore</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Nov 30 2016 23:25:28 GMT-0500 (EST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

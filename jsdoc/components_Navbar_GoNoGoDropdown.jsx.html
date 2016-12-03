@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/Navbar/GoNoGoDropdown.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/Navbar/GoNoGoDropdown.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// @flow
+
+import React from 'react';
+
+import StatusStore from 'js/stores/StatusStore';
+import WaypointStore from 'js/stores/WaypointStore';
+import InteropStore from 'js/stores/InteropStore';
+import ParametersStore from 'js/stores/ParametersStore';
+
+import FullWidthButton from 'js/components/General/FullWidthButton';
+
+import { valueToColor, colorToButton, valueToColorName } from 'js/utils/ComponentUtils';
+
+/**
+ * @module components/Navbar/GoNoGoDropdown
+ */
+
+function getStateFromStore() {
+  let goNoGoList = [];
+  goNoGoList = goNoGoList.concat(InteropStore.getGoNoGo());
+  goNoGoList = goNoGoList.concat(ParametersStore.getGoNoGo());
+  goNoGoList = goNoGoList.concat(WaypointStore.getGoNoGo());
+  goNoGoList = goNoGoList.concat(StatusStore.getGoNoGo());
+  return {goNoGo: goNoGoList};
+}
+
+function buildFalseArray(length) {
+  let arr = [];
+  for (let i = 0; i &lt; length; i++) {
+    arr.push(false);
+  }
+  return arr;
+}
+
+const GoNoGoDropdown = React.createClass({
+  getInitialState: function() {
+    let storedArray = localStorage['goNoGo'];
+    let checkArr = [];
+    const goNoGoLength = getStateFromStore().goNoGo.length;
+    if (storedArray == undefined || JSON.parse(storedArray).length &lt; goNoGoLength) {
+      checkArr = buildFalseArray(goNoGoLength);
+    } else {
+      checkArr = JSON.parse(storedArray);
+    }
+    localStorage['goNoGo'] = JSON.stringify(checkArr);
+    return Object.assign(
+      {},
+      getStateFromStore(),
+      {checked: checkArr}
+    );
+  },
+
+  componentDidMount: function() {
+    StatusStore.addChangeListener(this._onChangeStatus);
+    WaypointStore.addChangeListener(this._onChangeStatus);
+    InteropStore.addChangeListener(this._onChangeStatus);
+    ParametersStore.addChangeListener(this._onChangeStatus);
+  },
+
+  componentWillUnmount: function() {
+    StatusStore.removeChangeListener(this._onChangeStatus);
+    WaypointStore.removeChangeListener(this._onChangeStatus);
+    InteropStore.removeChangeListener(this._onChangeStatus);
+    ParametersStore.removeChangeListener(this._onChangeStatus);
+  },
+
+  _onChangeStatus: function() {
+    this.setState(getStateFromStore());
+  },
+
+  _onChangeClick: function(i: number) {
+    let currentstate = this.state.checked;
+    currentstate[i] = !currentstate[i];
+    this.setState({checked: currentstate});
+    localStorage['goNoGo'] = JSON.stringify(currentstate);
+  },
+
+  createCheckBox: function(item: Object, i: number) {
+    const val = item.autoCheck ? item.value : this.state.checked[i];
+    return (
+      &lt;tr key={item.key}>
+        &lt;td>
+          &lt;input disabled={item.autoCheck} type={item.type} checked={val} onChange={this._onChangeClick.bind(this, i)} />
+        &lt;/td>
+        &lt;td>{item.name}&lt;/td>
+      &lt;/tr>
+    );
+  },
+
+  goNoGo: function(dropdown) {
+    const v = this.goCheck() ? 100: 0;
+    const className = `${valueToColor(v)} ${colorToButton(valueToColor(v))}`;
+    const color = valueToColorName(v);
+    const outerstyle = {height: '50px', marginBottom: '0px'};
+    return (
+      &lt;li key="GO_NOGO" className={className} id="GO_NOGO" style={outerstyle}>
+        &lt;a data-toggle="dropdown" style={{backgroundColor: color, color: 'white'}}>
+          GO_NOGO&lt;span className="caret">&lt;/span>
+        &lt;/a>
+        {dropdown}
+      &lt;/li>
+    );
+  },
+
+  /**
+  * checks if all the boxes are checked
+  * reaturns a boolean representing whether the boxes are all checked
+  */
+  goCheck() {
+    const list = this.state.goNoGo;
+    const checklist = this.state.checked;
+    for (let i = 0; i &lt; list.length; i++) {
+      if (list[i].autoCheck) {
+        if (!list[i].value) {
+          return false;
+        }
+      } else {
+        if (!checklist[i]) {
+          return false;
+        }
+      }
+    }
+    return true;
+  },
+
+  _clearStorage: function() {
+    const newArr = buildFalseArray(getStateFromStore().goNoGo.length);
+    this.setState({checked: newArr});
+    localStorage['goNoGo'] = JSON.stringify(newArr);
+  },
+
+  render: function() {
+    return this.goNoGo(
+      &lt;ul className='dropdown-menu' style={{width: '350px', color: 'black'}}>
+        &lt;table className="table">&lt;tbody>
+          {this.state.goNoGo.map(this.createCheckBox)}
+          &lt;FullWidthButton color="error" onClick={this._clearStorage} text="Clear Checklist" />
+        &lt;/tbody>&lt;/table>
+      &lt;/ul>
+    );
+  }
+});
+
+export default GoNoGoDropdown;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-actions_CalibrationActionCreator.html">actions/CalibrationActionCreator</a></li><li><a href="module-actions_FenceActionCreator.html">actions/FenceActionCreator</a></li><li><a href="module-actions_InteropActionCreator.html">actions/InteropActionCreator</a></li><li><a href="module-actions_ParametersActionCreator.html">actions/ParametersActionCreator</a></li><li><a href="module-actions_SdaActionCreator.html">actions/SdaActionCreator</a></li><li><a href="module-actions_SettingsActionCreator.html">actions/SettingsActionCreator</a></li><li><a href="module-actions_StatusActionCreator.html">actions/StatusActionCreator</a></li><li><a href="module-actions_TuningActionCreator.html">actions/TuningActionCreator</a></li><li><a href="module-actions_WaypointActionCreator.html">actions/WaypointActionCreator</a></li><li><a href="module-components_Navbar_GoNoGoDropdown.html">components/Navbar/GoNoGoDropdown</a></li><li><a href="module-components_PlaneAction_ModeButton.html">components/PlaneAction/ModeButton</a></li><li><a href="module-components_TuningGuide_TuningUtils.html">components/TuningGuide/TuningUtils</a></li><li><a href="module-constants_ActionTypes.html">constants/ActionTypes</a></li><li><a href="module-constants_ButtonTypes.html">constants/ButtonTypes</a></li><li><a href="module-constants_Frequency.html">constants/Frequency</a></li><li><a href="module-constants_Sites.html">constants/Sites</a></li><li><a href="module-stores_CalibrationStore.html">stores/CalibrationStore</a></li><li><a href="module-stores_FenceStore.html">stores/FenceStore</a></li><li><a href="module-stores_InteropStore.html">stores/InteropStore</a></li><li><a href="module-stores_ParametersStore.html">stores/ParametersStore</a></li><li><a href="module-stores_SdaStore.html">stores/SdaStore</a></li><li><a href="module-stores_SettingsStore.html">stores/SettingsStore</a></li><li><a href="module-stores_StatusStore.html">stores/StatusStore</a></li><li><a href="module-stores_Store.html">stores/Store</a></li><li><a href="module-stores_TuningStore.html">stores/TuningStore</a></li><li><a href="module-stores_WaypointStore.html">stores/WaypointStore</a></li><li><a href="module-utils_ComponentUtils.html">utils/ComponentUtils</a></li><li><a href="module-utils_ConfigData.html">utils/ConfigData</a></li><li><a href="module-utils_DownloadApi.html">utils/DownloadApi</a></li><li><a href="module-utils_LoadApi.html">utils/LoadApi</a></li><li><a href="module-utils_MapUtils.html">utils/MapUtils</a></li><li><a href="module-utils_ReceiveApi.html">utils/ReceiveApi</a></li><li><a href="module-utils_SendApi.html">utils/SendApi</a></li><li><a href="module-utils_TypeValidation.html">utils/TypeValidation</a></li></ul><h3>Classes</h3><ul><li><a href="module-stores_StatusStore.StatusStore.html">StatusStore</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Nov 30 2016 23:25:28 GMT-0500 (EST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

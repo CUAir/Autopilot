@@ -1,161 +1,171 @@
 {
   "type": "Program",
+  "start": 0,
+  "end": 216,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 15,
+      "column": 44
+    }
+  },
+  "sourceType": "module",
   "body": [
     {
       "type": "ExportNamedDeclaration",
+      "start": 81,
+      "end": 127,
+      "loc": {
+        "start": {
+          "line": 10,
+          "column": 0
+        },
+        "end": {
+          "line": 10,
+          "column": 46
+        }
+      },
       "declaration": {
         "type": "VariableDeclaration",
-        "declarations": [
-          {
-            "type": "VariableDeclarator",
-            "id": {
-              "type": "Identifier",
-              "name": "site",
-              "range": [
-                55,
-                59
-              ],
-              "loc": {
-                "start": {
-                  "line": 6,
-                  "column": 13
-                },
-                "end": {
-                  "line": 6,
-                  "column": 17
-                }
-              }
-            },
-            "init": {
-              "type": "BinaryExpression",
-              "operator": "+",
-              "left": {
-                "type": "Literal",
-                "value": "http://",
-                "raw": "'http://'",
-                "range": [
-                  62,
-                  71
-                ],
-                "loc": {
-                  "start": {
-                    "line": 6,
-                    "column": 20
-                  },
-                  "end": {
-                    "line": 6,
-                    "column": 29
-                  }
-                }
-              },
-              "right": {
-                "type": "MemberExpression",
-                "computed": false,
-                "object": {
-                  "type": "Identifier",
-                  "name": "location",
-                  "range": [
-                    74,
-                    82
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 6,
-                      "column": 32
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 40
-                    }
-                  }
-                },
-                "property": {
-                  "type": "Identifier",
-                  "name": "host",
-                  "range": [
-                    83,
-                    87
-                  ],
-                  "loc": {
-                    "start": {
-                      "line": 6,
-                      "column": 41
-                    },
-                    "end": {
-                      "line": 6,
-                      "column": 45
-                    }
-                  }
-                },
-                "range": [
-                  74,
-                  87
-                ],
-                "loc": {
-                  "start": {
-                    "line": 6,
-                    "column": 32
-                  },
-                  "end": {
-                    "line": 6,
-                    "column": 45
-                  }
-                }
-              },
-              "range": [
-                62,
-                87
-              ],
-              "loc": {
-                "start": {
-                  "line": 6,
-                  "column": 20
-                },
-                "end": {
-                  "line": 6,
-                  "column": 45
-                }
-              }
-            },
-            "range": [
-              55,
-              87
-            ],
-            "loc": {
-              "start": {
-                "line": 6,
-                "column": 13
-              },
-              "end": {
-                "line": 6,
-                "column": 45
-              }
-            }
-          }
-        ],
-        "kind": "const",
-        "range": [
-          49,
-          88
-        ],
+        "start": 88,
+        "end": 127,
         "loc": {
           "start": {
-            "line": 6,
+            "line": 10,
             "column": 7
           },
           "end": {
-            "line": 6,
+            "line": 10,
             "column": 46
           }
         },
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "start": 94,
+            "end": 126,
+            "loc": {
+              "start": {
+                "line": 10,
+                "column": 13
+              },
+              "end": {
+                "line": 10,
+                "column": 45
+              }
+            },
+            "id": {
+              "type": "Identifier",
+              "start": 94,
+              "end": 98,
+              "loc": {
+                "start": {
+                  "line": 10,
+                  "column": 13
+                },
+                "end": {
+                  "line": 10,
+                  "column": 17
+                }
+              },
+              "name": "site",
+              "leadingComments": null
+            },
+            "init": {
+              "type": "BinaryExpression",
+              "start": 101,
+              "end": 126,
+              "loc": {
+                "start": {
+                  "line": 10,
+                  "column": 20
+                },
+                "end": {
+                  "line": 10,
+                  "column": 45
+                }
+              },
+              "left": {
+                "type": "Literal",
+                "start": 101,
+                "end": 110,
+                "loc": {
+                  "start": {
+                    "line": 10,
+                    "column": 20
+                  },
+                  "end": {
+                    "line": 10,
+                    "column": 29
+                  }
+                },
+                "value": "http://",
+                "rawValue": "http://",
+                "raw": "'http://'"
+              },
+              "operator": "+",
+              "right": {
+                "type": "MemberExpression",
+                "start": 113,
+                "end": 126,
+                "loc": {
+                  "start": {
+                    "line": 10,
+                    "column": 32
+                  },
+                  "end": {
+                    "line": 10,
+                    "column": 45
+                  }
+                },
+                "object": {
+                  "type": "Identifier",
+                  "start": 113,
+                  "end": 121,
+                  "loc": {
+                    "start": {
+                      "line": 10,
+                      "column": 32
+                    },
+                    "end": {
+                      "line": 10,
+                      "column": 40
+                    }
+                  },
+                  "name": "location"
+                },
+                "property": {
+                  "type": "Identifier",
+                  "start": 122,
+                  "end": 126,
+                  "loc": {
+                    "start": {
+                      "line": 10,
+                      "column": 41
+                    },
+                    "end": {
+                      "line": 10,
+                      "column": 45
+                    }
+                  },
+                  "name": "host"
+                },
+                "computed": false
+              }
+            },
+            "leadingComments": null
+          }
+        ],
+        "kind": "const",
         "leadingComments": [
           {
             "type": "Block",
-            "value": "* The base site\n * @type {string}\n ",
-            "range": [
-              2,
-              41
-            ],
+            "value": "*\n * @module constants/Sites\n ",
+            "start": 2,
+            "end": 36,
             "loc": {
               "start": {
                 "line": 3,
@@ -165,54 +175,64 @@
                 "line": 5,
                 "column": 3
               }
-            }
+            },
+            "range": [
+              2,
+              36
+            ]
+          },
+          {
+            "type": "Block",
+            "value": "* The current site\n * @type {string}\n ",
+            "start": 38,
+            "end": 80,
+            "loc": {
+              "start": {
+                "line": 7,
+                "column": 0
+              },
+              "end": {
+                "line": 9,
+                "column": 3
+              }
+            },
+            "range": [
+              38,
+              80
+            ]
           }
         ],
         "trailingComments": [
           {
             "type": "Block",
             "value": "* The api base url\n * @type {string}\n ",
-            "range": [
-              90,
-              132
-            ],
+            "start": 129,
+            "end": 171,
             "loc": {
               "start": {
-                "line": 8,
+                "line": 12,
                 "column": 0
               },
               "end": {
-                "line": 10,
+                "line": 14,
                 "column": 3
               }
-            }
+            },
+            "range": [
+              129,
+              171
+            ]
           }
         ]
       },
       "specifiers": [],
       "source": null,
-      "range": [
-        42,
-        88
-      ],
-      "loc": {
-        "start": {
-          "line": 6,
-          "column": 0
-        },
-        "end": {
-          "line": 6,
-          "column": 46
-        }
-      },
       "leadingComments": [
         {
           "type": "Block",
-          "value": "* The base site\n * @type {string}\n ",
-          "range": [
-            2,
-            41
-          ],
+          "value": "*\n * @module constants/Sites\n ",
+          "start": 2,
+          "end": 36,
           "loc": {
             "start": {
               "line": 3,
@@ -222,252 +242,218 @@
               "line": 5,
               "column": 3
             }
-          }
+          },
+          "range": [
+            2,
+            36
+          ]
+        },
+        {
+          "type": "Block",
+          "value": "* The current site\n * @type {string}\n ",
+          "start": 38,
+          "end": 80,
+          "loc": {
+            "start": {
+              "line": 7,
+              "column": 0
+            },
+            "end": {
+              "line": 9,
+              "column": 3
+            }
+          },
+          "range": [
+            38,
+            80
+          ]
         }
       ],
       "trailingComments": [
         {
           "type": "Block",
           "value": "* The api base url\n * @type {string}\n ",
-          "range": [
-            90,
-            132
-          ],
+          "start": 129,
+          "end": 171,
           "loc": {
             "start": {
-              "line": 8,
+              "line": 12,
               "column": 0
             },
             "end": {
-              "line": 10,
+              "line": 14,
               "column": 3
             }
-          }
+          },
+          "range": [
+            129,
+            171
+          ]
         }
       ]
     },
     {
       "type": "ExportNamedDeclaration",
+      "start": 172,
+      "end": 216,
+      "loc": {
+        "start": {
+          "line": 15,
+          "column": 0
+        },
+        "end": {
+          "line": 15,
+          "column": 44
+        }
+      },
       "declaration": {
         "type": "VariableDeclaration",
-        "declarations": [
-          {
-            "type": "VariableDeclarator",
-            "id": {
-              "type": "Identifier",
-              "name": "api",
-              "range": [
-                146,
-                149
-              ],
-              "loc": {
-                "start": {
-                  "line": 11,
-                  "column": 13
-                },
-                "end": {
-                  "line": 11,
-                  "column": 16
-                }
-              }
-            },
-            "init": {
-              "type": "BinaryExpression",
-              "operator": "+",
-              "left": {
-                "type": "Identifier",
-                "name": "site",
-                "range": [
-                  152,
-                  156
-                ],
-                "loc": {
-                  "start": {
-                    "line": 11,
-                    "column": 19
-                  },
-                  "end": {
-                    "line": 11,
-                    "column": 23
-                  }
-                }
-              },
-              "right": {
-                "type": "Literal",
-                "value": "/ground/api/v3/",
-                "raw": "'/ground/api/v3/'",
-                "range": [
-                  159,
-                  176
-                ],
-                "loc": {
-                  "start": {
-                    "line": 11,
-                    "column": 26
-                  },
-                  "end": {
-                    "line": 11,
-                    "column": 43
-                  }
-                }
-              },
-              "range": [
-                152,
-                176
-              ],
-              "loc": {
-                "start": {
-                  "line": 11,
-                  "column": 19
-                },
-                "end": {
-                  "line": 11,
-                  "column": 43
-                }
-              }
-            },
-            "range": [
-              146,
-              176
-            ],
-            "loc": {
-              "start": {
-                "line": 11,
-                "column": 13
-              },
-              "end": {
-                "line": 11,
-                "column": 43
-              }
-            }
-          }
-        ],
-        "kind": "const",
-        "range": [
-          140,
-          177
-        ],
+        "start": 179,
+        "end": 216,
         "loc": {
           "start": {
-            "line": 11,
+            "line": 15,
             "column": 7
           },
           "end": {
-            "line": 11,
+            "line": 15,
             "column": 44
           }
         },
+        "declarations": [
+          {
+            "type": "VariableDeclarator",
+            "start": 185,
+            "end": 215,
+            "loc": {
+              "start": {
+                "line": 15,
+                "column": 13
+              },
+              "end": {
+                "line": 15,
+                "column": 43
+              }
+            },
+            "id": {
+              "type": "Identifier",
+              "start": 185,
+              "end": 188,
+              "loc": {
+                "start": {
+                  "line": 15,
+                  "column": 13
+                },
+                "end": {
+                  "line": 15,
+                  "column": 16
+                }
+              },
+              "name": "api",
+              "leadingComments": null
+            },
+            "init": {
+              "type": "BinaryExpression",
+              "start": 191,
+              "end": 215,
+              "loc": {
+                "start": {
+                  "line": 15,
+                  "column": 19
+                },
+                "end": {
+                  "line": 15,
+                  "column": 43
+                }
+              },
+              "left": {
+                "type": "Identifier",
+                "start": 191,
+                "end": 195,
+                "loc": {
+                  "start": {
+                    "line": 15,
+                    "column": 19
+                  },
+                  "end": {
+                    "line": 15,
+                    "column": 23
+                  }
+                },
+                "name": "site"
+              },
+              "operator": "+",
+              "right": {
+                "type": "Literal",
+                "start": 198,
+                "end": 215,
+                "loc": {
+                  "start": {
+                    "line": 15,
+                    "column": 26
+                  },
+                  "end": {
+                    "line": 15,
+                    "column": 43
+                  }
+                },
+                "value": "/ground/api/v3/",
+                "rawValue": "/ground/api/v3/",
+                "raw": "'/ground/api/v3/'"
+              }
+            },
+            "leadingComments": null
+          }
+        ],
+        "kind": "const",
         "leadingComments": [
           {
             "type": "Block",
             "value": "* The api base url\n * @type {string}\n ",
-            "range": [
-              90,
-              132
-            ],
+            "start": 129,
+            "end": 171,
             "loc": {
               "start": {
-                "line": 8,
+                "line": 12,
                 "column": 0
               },
               "end": {
-                "line": 10,
+                "line": 14,
                 "column": 3
               }
-            }
+            },
+            "range": [
+              129,
+              171
+            ]
           }
         ],
         "trailingComments": []
       },
       "specifiers": [],
       "source": null,
-      "range": [
-        133,
-        177
-      ],
-      "loc": {
-        "start": {
-          "line": 11,
-          "column": 0
-        },
-        "end": {
-          "line": 11,
-          "column": 44
-        }
-      },
       "leadingComments": [
         {
           "type": "Block",
           "value": "* The api base url\n * @type {string}\n ",
-          "range": [
-            90,
-            132
-          ],
+          "start": 129,
+          "end": 171,
           "loc": {
             "start": {
-              "line": 8,
+              "line": 12,
               "column": 0
             },
             "end": {
-              "line": 10,
+              "line": 14,
               "column": 3
             }
-          }
+          },
+          "range": [
+            129,
+            171
+          ]
         }
       ]
-    }
-  ],
-  "sourceType": "module",
-  "range": [
-    42,
-    177
-  ],
-  "loc": {
-    "start": {
-      "line": 6,
-      "column": 0
-    },
-    "end": {
-      "line": 11,
-      "column": 44
-    }
-  },
-  "comments": [
-    {
-      "type": "Block",
-      "value": "* The base site\n * @type {string}\n ",
-      "range": [
-        2,
-        41
-      ],
-      "loc": {
-        "start": {
-          "line": 3,
-          "column": 0
-        },
-        "end": {
-          "line": 5,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": "* The api base url\n * @type {string}\n ",
-      "range": [
-        90,
-        132
-      ],
-      "loc": {
-        "start": {
-          "line": 8,
-          "column": 0
-        },
-        "end": {
-          "line": 10,
-          "column": 3
-        }
-      }
     }
   ]
 }

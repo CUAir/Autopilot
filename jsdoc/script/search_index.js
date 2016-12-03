@@ -6,6 +6,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "gcs/js/components/navbar/battery.jsx~battery",
+    "class/js/components/Navbar/Battery.jsx~Battery.html",
+    "<span>Battery</span> <span class=\"search-result-import-path\">GCS/js/components/Navbar/Battery.jsx</span>",
+    "class"
+  ],
+  [
     "gcs/js/constants/buttontypes.js~checkbox",
     "variable/index.html#static-variable-CHECKBOX",
     "<span>CHECKBOX</span> <span class=\"search-result-import-path\">GCS/js/constants/ButtonTypes.js</span>",
@@ -16,6 +22,18 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-CRITICAL_BUTTON",
     "<span>CRITICAL_BUTTON</span> <span class=\"search-result-import-path\">GCS/js/constants/ButtonTypes.js</span>",
     "variable"
+  ],
+  [
+    "gcs/js/components/calibration/calibrationcontrolsection.jsx~calibrationcontrolsection",
+    "class/js/components/Calibration/CalibrationControlSection.jsx~CalibrationControlSection.html",
+    "<span>CalibrationControlSection</span> <span class=\"search-result-import-path\">GCS/js/components/Calibration/CalibrationControlSection.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/calibration/calibrationsection.jsx~calibrationsection",
+    "class/js/components/Calibration/CalibrationSection.jsx~CalibrationSection.html",
+    "<span>CalibrationSection</span> <span class=\"search-result-import-path\">GCS/js/components/Calibration/CalibrationSection.jsx</span>",
+    "class"
   ],
   [
     "gcs/js/stores/calibrationstore.js~calibrationstore",
@@ -60,6 +78,48 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "gcs/js/components/flightnotes/flightnotes.jsx~flightnotes",
+    "class/js/components/FlightNotes/FlightNotes.jsx~FlightNotes.html",
+    "<span>FlightNotes</span> <span class=\"search-result-import-path\">GCS/js/components/FlightNotes/FlightNotes.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/general/fullwidthbutton.jsx~fullwidthbutton",
+    "class/js/components/General/FullWidthButton.jsx~FullWidthButton.html",
+    "<span>FullWidthButton</span> <span class=\"search-result-import-path\">GCS/js/components/General/FullWidthButton.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/general/fullwidthelement.jsx~fullwidthelement",
+    "class/js/components/General/FullWidthElement.jsx~FullWidthElement.html",
+    "<span>FullWidthElement</span> <span class=\"search-result-import-path\">GCS/js/components/General/FullWidthElement.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/general/fullwidthfileinput.jsx~fullwidthfileinput",
+    "class/js/components/General/FullWidthFileInput.jsx~FullWidthFileInput.html",
+    "<span>FullWidthFileInput</span> <span class=\"search-result-import-path\">GCS/js/components/General/FullWidthFileInput.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/general/fullwidthtextinput.jsx~fullwidthtextinput",
+    "class/js/components/General/FullWidthTextInput.jsx~FullWidthTextInput.html",
+    "<span>FullWidthTextInput</span> <span class=\"search-result-import-path\">GCS/js/components/General/FullWidthTextInput.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/gcs.jsx~gcs",
+    "class/js/components/GCS.jsx~GCS.html",
+    "<span>GCS</span> <span class=\"search-result-import-path\">GCS/js/components/GCS.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/navbar/gonogodropdown.jsx~gonogodropdown",
+    "class/js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown.html",
+    "<span>GoNoGoDropdown</span> <span class=\"search-result-import-path\">GCS/js/components/Navbar/GoNoGoDropdown.jsx</span>",
+    "class"
+  ],
+  [
     "gcs/js/constants/frequency.js~interop_receive_frequency",
     "variable/index.html#static-variable-INTEROP_RECEIVE_FREQUENCY",
     "<span>INTEROP_RECEIVE_FREQUENCY</span> <span class=\"search-result-import-path\">GCS/js/constants/Frequency.js</span>",
@@ -78,10 +138,52 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "gcs/js/components/settings/locationbuttonelement.jsx~locationbuttonelement",
+    "class/js/components/Settings/LocationButtonElement.jsx~LocationButtonElement.html",
+    "<span>LocationButtonElement</span> <span class=\"search-result-import-path\">GCS/js/components/Settings/LocationButtonElement.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/map/mapsection.jsx~mapsection",
+    "class/js/components/Map/MapSection.jsx~MapSection.html",
+    "<span>MapSection</span> <span class=\"search-result-import-path\">GCS/js/components/Map/MapSection.jsx</span>",
+    "class"
+  ],
+  [
     "gcs/js/constants/actiontypes.js~maptypes",
     "variable/index.html#static-variable-MapTypes",
     "<span>MapTypes</span> <span class=\"search-result-import-path\">GCS/js/constants/ActionTypes.js</span>",
     "variable"
+  ],
+  [
+    "gcs/js/components/planeaction/modebutton.jsx~modebutton",
+    "class/js/components/PlaneAction/ModeButton.jsx~ModeButton.html",
+    "<span>ModeButton</span> <span class=\"search-result-import-path\">GCS/js/components/PlaneAction/ModeButton.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/general/modebuttonelement.jsx~modebuttonelement",
+    "class/js/components/General/ModeButtonElement.jsx~ModeButtonElement.html",
+    "<span>ModeButtonElement</span> <span class=\"search-result-import-path\">GCS/js/components/General/ModeButtonElement.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/navbar/navbarlinkitem.jsx~navbarlinkitem",
+    "class/js/components/Navbar/NavbarLinkItem.jsx~NavbarLinkItem.html",
+    "<span>NavbarLinkItem</span> <span class=\"search-result-import-path\">GCS/js/components/Navbar/NavbarLinkItem.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/navbar/navbarsection.jsx~navbarsection",
+    "class/js/components/Navbar/NavbarSection.jsx~NavbarSection.html",
+    "<span>NavbarSection</span> <span class=\"search-result-import-path\">GCS/js/components/Navbar/NavbarSection.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/navbar/navbarstatusitem.jsx~navbarstatusitem",
+    "class/js/components/Navbar/NavbarStatusItem.jsx~NavbarStatusItem.html",
+    "<span>NavbarStatusItem</span> <span class=\"search-result-import-path\">GCS/js/components/Navbar/NavbarStatusItem.jsx</span>",
+    "class"
   ],
   [
     "gcs/js/constants/frequency.js~plane_receive_frequency",
@@ -90,9 +192,33 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "gcs/js/components/parameters/parammodal.jsx~parammodal",
+    "class/js/components/Parameters/ParamModal.jsx~ParamModal.html",
+    "<span>ParamModal</span> <span class=\"search-result-import-path\">GCS/js/components/Parameters/ParamModal.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/parameters/parameterscontrolsection.jsx~parameterscontrolsection",
+    "class/js/components/Parameters/ParametersControlSection.jsx~ParametersControlSection.html",
+    "<span>ParametersControlSection</span> <span class=\"search-result-import-path\">GCS/js/components/Parameters/ParametersControlSection.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/parameters/parametersitem.jsx~parametersitem",
+    "class/js/components/Parameters/ParametersItem.jsx~ParametersItem.html",
+    "<span>ParametersItem</span> <span class=\"search-result-import-path\">GCS/js/components/Parameters/ParametersItem.jsx</span>",
+    "class"
+  ],
+  [
     "gcs/js/stores/parametersstore.js~parametersstore",
     "class/js/stores/ParametersStore.js~ParametersStore.html",
     "<span>ParametersStore</span> <span class=\"search-result-import-path\">GCS/js/stores/ParametersStore.js</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/parameters/parameterstablesection.jsx~parameterstablesection",
+    "class/js/components/Parameters/ParametersTableSection.jsx~ParametersTableSection.html",
+    "<span>ParametersTableSection</span> <span class=\"search-result-import-path\">GCS/js/components/Parameters/ParametersTableSection.jsx</span>",
     "class"
   ],
   [
@@ -100,6 +226,24 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-ParametersTypes",
     "<span>ParametersTypes</span> <span class=\"search-result-import-path\">GCS/js/constants/ActionTypes.js</span>",
     "variable"
+  ],
+  [
+    "gcs/js/components/planeaction/planeactionsection.jsx~planeactionsection",
+    "class/js/components/PlaneAction/PlaneActionSection.jsx~PlaneActionSection.html",
+    "<span>PlaneActionSection</span> <span class=\"search-result-import-path\">GCS/js/components/PlaneAction/PlaneActionSection.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/planeinfo/planeinfoitem.jsx~planeinfoitem",
+    "class/js/components/PlaneInfo/PlaneInfoItem.jsx~PlaneInfoItem.html",
+    "<span>PlaneInfoItem</span> <span class=\"search-result-import-path\">GCS/js/components/PlaneInfo/PlaneInfoItem.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/parameters/progressbar.jsx~progressbar",
+    "class/js/components/Parameters/ProgressBar.jsx~ProgressBar.html",
+    "<span>ProgressBar</span> <span class=\"search-result-import-path\">GCS/js/components/Parameters/ProgressBar.jsx</span>",
+    "class"
   ],
   [
     "gcs/js/stores/sdastore.js~sdastore",
@@ -114,9 +258,63 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "gcs/js/components/settings/settingsbutton.jsx~settingsbutton",
+    "class/js/components/Settings/SettingsButton.jsx~SettingsButton.html",
+    "<span>SettingsButton</span> <span class=\"search-result-import-path\">GCS/js/components/Settings/SettingsButton.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/settings/settingscheckbox.jsx~settingscheckbox",
+    "class/js/components/Settings/SettingsCheckbox.jsx~SettingsCheckbox.html",
+    "<span>SettingsCheckbox</span> <span class=\"search-result-import-path\">GCS/js/components/Settings/SettingsCheckbox.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/settings/settingscriticalbutton.jsx~settingscriticalbutton",
+    "class/js/components/Settings/SettingsCriticalButton.jsx~SettingsCriticalButton.html",
+    "<span>SettingsCriticalButton</span> <span class=\"search-result-import-path\">GCS/js/components/Settings/SettingsCriticalButton.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/settings/settingsdatetime.jsx~settingsdatetime",
+    "class/js/components/Settings/SettingsDateTime.jsx~SettingsDateTime.html",
+    "<span>SettingsDateTime</span> <span class=\"search-result-import-path\">GCS/js/components/Settings/SettingsDateTime.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/settings/settingsdropdown.jsx~settingsdropdown",
+    "class/js/components/Settings/SettingsDropdown.jsx~SettingsDropdown.html",
+    "<span>SettingsDropdown</span> <span class=\"search-result-import-path\">GCS/js/components/Settings/SettingsDropdown.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/settings/settingsfileinput.jsx~settingsfileinput",
+    "class/js/components/Settings/SettingsFileInput.jsx~SettingsFileInput.html",
+    "<span>SettingsFileInput</span> <span class=\"search-result-import-path\">GCS/js/components/Settings/SettingsFileInput.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/settings/settingsitem.jsx~settingsitem",
+    "class/js/components/Settings/SettingsItem.jsx~SettingsItem.html",
+    "<span>SettingsItem</span> <span class=\"search-result-import-path\">GCS/js/components/Settings/SettingsItem.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/settings/settingssection.jsx~settingssection",
+    "class/js/components/Settings/SettingsSection.jsx~SettingsSection.html",
+    "<span>SettingsSection</span> <span class=\"search-result-import-path\">GCS/js/components/Settings/SettingsSection.jsx</span>",
+    "class"
+  ],
+  [
     "gcs/js/stores/settingsstore.js~settingsstore",
     "class/js/stores/SettingsStore.js~SettingsStore.html",
     "<span>SettingsStore</span> <span class=\"search-result-import-path\">GCS/js/stores/SettingsStore.js</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/settings/settingstext.jsx~settingstext",
+    "class/js/components/Settings/SettingsText.jsx~SettingsText.html",
+    "<span>SettingsText</span> <span class=\"search-result-import-path\">GCS/js/components/Settings/SettingsText.jsx</span>",
     "class"
   ],
   [
@@ -124,6 +322,18 @@ window.esdocSearchIndex = [
     "variable/index.html#static-variable-SettingsTypes",
     "<span>SettingsTypes</span> <span class=\"search-result-import-path\">GCS/js/constants/ActionTypes.js</span>",
     "variable"
+  ],
+  [
+    "gcs/js/components/map/slider.jsx~slider",
+    "class/js/components/Map/Slider.jsx~Slider.html",
+    "<span>Slider</span> <span class=\"search-result-import-path\">GCS/js/components/Map/Slider.jsx</span>",
+    "class"
+  ],
+  [
+    "gcs/js/components/planeinfo/planeinfosection.jsx~statussection",
+    "class/js/components/PlaneInfo/PlaneInfoSection.jsx~StatusSection.html",
+    "<span>StatusSection</span> <span class=\"search-result-import-path\">GCS/js/components/PlaneInfo/PlaneInfoSection.jsx</span>",
+    "class"
   ],
   [
     "gcs/js/stores/statusstore.js~statusstore",
@@ -168,10 +378,112 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "gcs/js/components/tuningguide/tuningaction.jsx~tuningaction",
+    "variable/index.html#static-variable-TuningAction",
+    "<span>TuningAction</span> <span class=\"search-result-import-path\">GCS/js/components/TuningGuide/TuningAction.jsx</span>",
+    "variable"
+  ],
+  [
+    "gcs/js/components/tuningguide/tuningbutton.jsx~tuningbutton",
+    "variable/index.html#static-variable-TuningButton",
+    "<span>TuningButton</span> <span class=\"search-result-import-path\">GCS/js/components/TuningGuide/TuningButton.jsx</span>",
+    "variable"
+  ],
+  [
+    "gcs/js/components/tuningguide/tuningcheckbox.jsx~tuningcheckbox",
+    "variable/index.html#static-variable-TuningCheckbox",
+    "<span>TuningCheckbox</span> <span class=\"search-result-import-path\">GCS/js/components/TuningGuide/TuningCheckbox.jsx</span>",
+    "variable"
+  ],
+  [
+    "gcs/js/components/tuningguide/tuningcontent.jsx~tuningcontent",
+    "variable/index.html#static-variable-TuningContent",
+    "<span>TuningContent</span> <span class=\"search-result-import-path\">GCS/js/components/TuningGuide/TuningContent.jsx</span>",
+    "variable"
+  ],
+  [
+    "gcs/js/components/tuningguide/tuningguide.jsx~tuningguide",
+    "variable/index.html#static-variable-TuningGuide",
+    "<span>TuningGuide</span> <span class=\"search-result-import-path\">GCS/js/components/TuningGuide/TuningGuide.jsx</span>",
+    "variable"
+  ],
+  [
+    "gcs/js/components/tuningguide/tuningheader.jsx~tuningheader",
+    "variable/index.html#static-variable-TuningHeader",
+    "<span>TuningHeader</span> <span class=\"search-result-import-path\">GCS/js/components/TuningGuide/TuningHeader.jsx</span>",
+    "variable"
+  ],
+  [
+    "gcs/js/components/tuningguide/tuningpage0.jsx~tuningpage0",
+    "variable/index.html#static-variable-TuningPage0",
+    "<span>TuningPage0</span> <span class=\"search-result-import-path\">GCS/js/components/TuningGuide/TuningPage0.jsx</span>",
+    "variable"
+  ],
+  [
+    "gcs/js/components/tuningguide/tuningpage1.jsx~tuningpage1",
+    "variable/index.html#static-variable-TuningPage1",
+    "<span>TuningPage1</span> <span class=\"search-result-import-path\">GCS/js/components/TuningGuide/TuningPage1.jsx</span>",
+    "variable"
+  ],
+  [
+    "gcs/js/components/tuningguide/tuningpage2.jsx~tuningpage2",
+    "variable/index.html#static-variable-TuningPage2",
+    "<span>TuningPage2</span> <span class=\"search-result-import-path\">GCS/js/components/TuningGuide/TuningPage2.jsx</span>",
+    "variable"
+  ],
+  [
+    "gcs/js/components/tuningguide/tuningpage3.jsx~tuningpage3",
+    "variable/index.html#static-variable-TuningPage3",
+    "<span>TuningPage3</span> <span class=\"search-result-import-path\">GCS/js/components/TuningGuide/TuningPage3.jsx</span>",
+    "variable"
+  ],
+  [
+    "gcs/js/components/tuningguide/tuningpage4.jsx~tuningpage4",
+    "variable/index.html#static-variable-TuningPage4",
+    "<span>TuningPage4</span> <span class=\"search-result-import-path\">GCS/js/components/TuningGuide/TuningPage4.jsx</span>",
+    "variable"
+  ],
+  [
+    "gcs/js/components/tuningguide/tuningpage5.jsx~tuningpage5",
+    "variable/index.html#static-variable-TuningPage5",
+    "<span>TuningPage5</span> <span class=\"search-result-import-path\">GCS/js/components/TuningGuide/TuningPage5.jsx</span>",
+    "variable"
+  ],
+  [
+    "gcs/js/components/tuningguide/tuningpage6.jsx~tuningpage6",
+    "variable/index.html#static-variable-TuningPage6",
+    "<span>TuningPage6</span> <span class=\"search-result-import-path\">GCS/js/components/TuningGuide/TuningPage6.jsx</span>",
+    "variable"
+  ],
+  [
+    "gcs/js/components/tuningguide/tuningpage7.jsx~tuningpage6",
+    "variable/index.html#static-variable-TuningPage6",
+    "<span>TuningPage6</span> <span class=\"search-result-import-path\">GCS/js/components/TuningGuide/TuningPage7.jsx</span>",
+    "variable"
+  ],
+  [
+    "gcs/js/components/tuningguide/tuningrow.jsx~tuningrow",
+    "variable/index.html#static-variable-TuningRow",
+    "<span>TuningRow</span> <span class=\"search-result-import-path\">GCS/js/components/TuningGuide/TuningRow.jsx</span>",
+    "variable"
+  ],
+  [
     "gcs/js/stores/tuningstore.js~tuningstore",
     "class/js/stores/TuningStore.js~TuningStore.html",
     "<span>TuningStore</span> <span class=\"search-result-import-path\">GCS/js/stores/TuningStore.js</span>",
     "class"
+  ],
+  [
+    "gcs/js/components/tuningguide/tuningtextbutton.jsx~tuningtextbutton",
+    "variable/index.html#static-variable-TuningTextButton",
+    "<span>TuningTextButton</span> <span class=\"search-result-import-path\">GCS/js/components/TuningGuide/TuningTextButton.jsx</span>",
+    "variable"
+  ],
+  [
+    "gcs/js/components/tuningguide/tuningtextlock.jsx~tuningtextlock",
+    "variable/index.html#static-variable-TuningTextLock",
+    "<span>TuningTextLock</span> <span class=\"search-result-import-path\">GCS/js/components/TuningGuide/TuningTextLock.jsx</span>",
+    "variable"
   ],
   [
     "gcs/js/constants/actiontypes.js~tuningtypes",
@@ -180,9 +492,51 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "gcs/js/components/waypoints/waypointcell.jsx~waypointcell",
+    "variable/index.html#static-variable-WaypointCell",
+    "<span>WaypointCell</span> <span class=\"search-result-import-path\">GCS/js/components/Waypoints/WaypointCell.jsx</span>",
+    "variable"
+  ],
+  [
+    "gcs/js/components/waypoints/waypointcontainer.jsx~waypointcontainer",
+    "variable/index.html#static-variable-WaypointContainer",
+    "<span>WaypointContainer</span> <span class=\"search-result-import-path\">GCS/js/components/Waypoints/WaypointContainer.jsx</span>",
+    "variable"
+  ],
+  [
+    "gcs/js/components/waypoints/waypointcontrolsection.jsx~waypointcontrolsection",
+    "variable/index.html#static-variable-WaypointControlSection",
+    "<span>WaypointControlSection</span> <span class=\"search-result-import-path\">GCS/js/components/Waypoints/WaypointControlSection.jsx</span>",
+    "variable"
+  ],
+  [
+    "gcs/js/components/waypoints/waypointlist.jsx~waypointlist",
+    "variable/index.html#static-variable-WaypointList",
+    "<span>WaypointList</span> <span class=\"search-result-import-path\">GCS/js/components/Waypoints/WaypointList.jsx</span>",
+    "variable"
+  ],
+  [
+    "gcs/js/components/waypoints/waypointnumbercell.jsx~waypointnumbercell",
+    "variable/index.html#static-variable-WaypointNumberCell",
+    "<span>WaypointNumberCell</span> <span class=\"search-result-import-path\">GCS/js/components/Waypoints/WaypointNumberCell.jsx</span>",
+    "variable"
+  ],
+  [
+    "gcs/js/components/waypoints/waypointrow.jsx~waypointrow",
+    "variable/index.html#static-variable-WaypointRow",
+    "<span>WaypointRow</span> <span class=\"search-result-import-path\">GCS/js/components/Waypoints/WaypointRow.jsx</span>",
+    "variable"
+  ],
+  [
     "gcs/js/stores/waypointstore.js~waypointstore",
     "variable/index.html#static-variable-WaypointStore",
     "<span>WaypointStore</span> <span class=\"search-result-import-path\">GCS/js/stores/WaypointStore.js</span>",
+    "variable"
+  ],
+  [
+    "gcs/js/components/waypoints/waypointtypecell.jsx~waypointtypecell",
+    "variable/index.html#static-variable-WaypointTypeCell",
+    "<span>WaypointTypeCell</span> <span class=\"search-result-import-path\">GCS/js/components/Waypoints/WaypointTypeCell.jsx</span>",
     "variable"
   ],
   [
@@ -246,6 +600,12 @@ window.esdocSearchIndex = [
     "variable"
   ],
   [
+    "gcs/js/components/tuningguide/tuningutils.jsx~buildtuningrow",
+    "function/index.html#static-function-buildTuningRow",
+    "<span>buildTuningRow</span> <span class=\"search-result-import-path\">GCS/js/components/TuningGuide/TuningUtils.jsx</span>",
+    "function"
+  ],
+  [
     "gcs/js/utils/sendapi.js~calibrationastart",
     "function/index.html#static-function-calibrationAStart",
     "<span>calibrationAStart</span> <span class=\"search-result-import-path\">GCS/js/utils/SendApi.js</span>",
@@ -303,6 +663,12 @@ window.esdocSearchIndex = [
     "gcs/js/utils/maputils.js~changelocation",
     "function/index.html#static-function-changeLocation",
     "<span>changeLocation</span> <span class=\"search-result-import-path\">GCS/js/utils/MapUtils.js</span>",
+    "function"
+  ],
+  [
+    "gcs/js/components/tuningguide/tuningutils.jsx~changetextparam",
+    "function/index.html#static-function-changeTextParam",
+    "<span>changeTextParam</span> <span class=\"search-result-import-path\">GCS/js/components/TuningGuide/TuningUtils.jsx</span>",
     "function"
   ],
   [
@@ -912,6 +1278,12 @@ window.esdocSearchIndex = [
     "function"
   ],
   [
+    "gcs/js/components/tuningguide/tuningutils.jsx~sendparam",
+    "function/index.html#static-function-sendParam",
+    "<span>sendParam</span> <span class=\"search-result-import-path\">GCS/js/components/TuningGuide/TuningUtils.jsx</span>",
+    "function"
+  ],
+  [
     "gcs/js/utils/sendapi.js~sendparameter",
     "function/index.html#static-function-sendParameter",
     "<span>sendParameter</span> <span class=\"search-result-import-path\">GCS/js/utils/SendApi.js</span>",
@@ -921,6 +1293,12 @@ window.esdocSearchIndex = [
     "gcs/js/utils/sendapi.js~sendrtl",
     "function/index.html#static-function-sendRTL",
     "<span>sendRTL</span> <span class=\"search-result-import-path\">GCS/js/utils/SendApi.js</span>",
+    "function"
+  ],
+  [
+    "gcs/js/components/tuningguide/tuningutils.jsx~sendtextparam",
+    "function/index.html#static-function-sendTextParam",
+    "<span>sendTextParam</span> <span class=\"search-result-import-path\">GCS/js/components/TuningGuide/TuningUtils.jsx</span>",
     "function"
   ],
   [
@@ -1503,6 +1881,1164 @@ window.esdocSearchIndex = [
     "js/app.js",
     "file/js/app.js.html",
     "js/app.js",
+    "file"
+  ],
+  [
+    "js/components/calibration/calibrationcontrolsection.jsx",
+    "file/js/components/Calibration/CalibrationControlSection.jsx.html",
+    "js/components/Calibration/CalibrationControlSection.jsx",
+    "file"
+  ],
+  [
+    "js/components/calibration/calibrationcontrolsection.jsx~calibrationcontrolsection#_onchange",
+    "class/js/components/Calibration/CalibrationControlSection.jsx~CalibrationControlSection.html#instance-method-_onChange",
+    "js/components/Calibration/CalibrationControlSection.jsx~CalibrationControlSection#_onChange",
+    "method"
+  ],
+  [
+    "js/components/calibration/calibrationcontrolsection.jsx~calibrationcontrolsection#componentdidmount",
+    "class/js/components/Calibration/CalibrationControlSection.jsx~CalibrationControlSection.html#instance-method-componentDidMount",
+    "js/components/Calibration/CalibrationControlSection.jsx~CalibrationControlSection#componentDidMount",
+    "method"
+  ],
+  [
+    "js/components/calibration/calibrationcontrolsection.jsx~calibrationcontrolsection#componentwillunmount",
+    "class/js/components/Calibration/CalibrationControlSection.jsx~CalibrationControlSection.html#instance-method-componentWillUnmount",
+    "js/components/Calibration/CalibrationControlSection.jsx~CalibrationControlSection#componentWillUnmount",
+    "method"
+  ],
+  [
+    "js/components/calibration/calibrationcontrolsection.jsx~calibrationcontrolsection#constructor",
+    "class/js/components/Calibration/CalibrationControlSection.jsx~CalibrationControlSection.html#instance-constructor-constructor",
+    "js/components/Calibration/CalibrationControlSection.jsx~CalibrationControlSection#constructor",
+    "method"
+  ],
+  [
+    "js/components/calibration/calibrationcontrolsection.jsx~calibrationcontrolsection#render",
+    "class/js/components/Calibration/CalibrationControlSection.jsx~CalibrationControlSection.html#instance-method-render",
+    "js/components/Calibration/CalibrationControlSection.jsx~CalibrationControlSection#render",
+    "method"
+  ],
+  [
+    "js/components/calibration/calibrationsection.jsx",
+    "file/js/components/Calibration/CalibrationSection.jsx.html",
+    "js/components/Calibration/CalibrationSection.jsx",
+    "file"
+  ],
+  [
+    "js/components/calibration/calibrationsection.jsx~calibrationsection#_onchange",
+    "class/js/components/Calibration/CalibrationSection.jsx~CalibrationSection.html#instance-method-_onChange",
+    "js/components/Calibration/CalibrationSection.jsx~CalibrationSection#_onChange",
+    "method"
+  ],
+  [
+    "js/components/calibration/calibrationsection.jsx~calibrationsection#componentdidmount",
+    "class/js/components/Calibration/CalibrationSection.jsx~CalibrationSection.html#instance-method-componentDidMount",
+    "js/components/Calibration/CalibrationSection.jsx~CalibrationSection#componentDidMount",
+    "method"
+  ],
+  [
+    "js/components/calibration/calibrationsection.jsx~calibrationsection#componentwillunmount",
+    "class/js/components/Calibration/CalibrationSection.jsx~CalibrationSection.html#instance-method-componentWillUnmount",
+    "js/components/Calibration/CalibrationSection.jsx~CalibrationSection#componentWillUnmount",
+    "method"
+  ],
+  [
+    "js/components/calibration/calibrationsection.jsx~calibrationsection#constructor",
+    "class/js/components/Calibration/CalibrationSection.jsx~CalibrationSection.html#instance-constructor-constructor",
+    "js/components/Calibration/CalibrationSection.jsx~CalibrationSection#constructor",
+    "method"
+  ],
+  [
+    "js/components/calibration/calibrationsection.jsx~calibrationsection#render",
+    "class/js/components/Calibration/CalibrationSection.jsx~CalibrationSection.html#instance-method-render",
+    "js/components/Calibration/CalibrationSection.jsx~CalibrationSection#render",
+    "method"
+  ],
+  [
+    "js/components/flightnotes/flightnotes.jsx",
+    "file/js/components/FlightNotes/FlightNotes.jsx.html",
+    "js/components/FlightNotes/FlightNotes.jsx",
+    "file"
+  ],
+  [
+    "js/components/flightnotes/flightnotes.jsx~flightnotes#_onchange",
+    "class/js/components/FlightNotes/FlightNotes.jsx~FlightNotes.html#instance-method-_onChange",
+    "js/components/FlightNotes/FlightNotes.jsx~FlightNotes#_onChange",
+    "method"
+  ],
+  [
+    "js/components/flightnotes/flightnotes.jsx~flightnotes#componentdidmount",
+    "class/js/components/FlightNotes/FlightNotes.jsx~FlightNotes.html#instance-method-componentDidMount",
+    "js/components/FlightNotes/FlightNotes.jsx~FlightNotes#componentDidMount",
+    "method"
+  ],
+  [
+    "js/components/flightnotes/flightnotes.jsx~flightnotes#componentwillunmount",
+    "class/js/components/FlightNotes/FlightNotes.jsx~FlightNotes.html#instance-method-componentWillUnmount",
+    "js/components/FlightNotes/FlightNotes.jsx~FlightNotes#componentWillUnmount",
+    "method"
+  ],
+  [
+    "js/components/flightnotes/flightnotes.jsx~flightnotes#constructor",
+    "class/js/components/FlightNotes/FlightNotes.jsx~FlightNotes.html#instance-constructor-constructor",
+    "js/components/FlightNotes/FlightNotes.jsx~FlightNotes#constructor",
+    "method"
+  ],
+  [
+    "js/components/flightnotes/flightnotes.jsx~flightnotes#render",
+    "class/js/components/FlightNotes/FlightNotes.jsx~FlightNotes.html#instance-method-render",
+    "js/components/FlightNotes/FlightNotes.jsx~FlightNotes#render",
+    "method"
+  ],
+  [
+    "js/components/gcs.jsx",
+    "file/js/components/GCS.jsx.html",
+    "js/components/GCS.jsx",
+    "file"
+  ],
+  [
+    "js/components/gcs.jsx~gcs#componentdidmount",
+    "class/js/components/GCS.jsx~GCS.html#instance-method-componentDidMount",
+    "js/components/GCS.jsx~GCS#componentDidMount",
+    "method"
+  ],
+  [
+    "js/components/gcs.jsx~gcs#constructor",
+    "class/js/components/GCS.jsx~GCS.html#instance-constructor-constructor",
+    "js/components/GCS.jsx~GCS#constructor",
+    "method"
+  ],
+  [
+    "js/components/gcs.jsx~gcs#render",
+    "class/js/components/GCS.jsx~GCS.html#instance-method-render",
+    "js/components/GCS.jsx~GCS#render",
+    "method"
+  ],
+  [
+    "js/components/general/fullwidthbutton.jsx",
+    "file/js/components/General/FullWidthButton.jsx.html",
+    "js/components/General/FullWidthButton.jsx",
+    "file"
+  ],
+  [
+    "js/components/general/fullwidthbutton.jsx~fullwidthbutton#constructor",
+    "class/js/components/General/FullWidthButton.jsx~FullWidthButton.html#instance-constructor-constructor",
+    "js/components/General/FullWidthButton.jsx~FullWidthButton#constructor",
+    "method"
+  ],
+  [
+    "js/components/general/fullwidthbutton.jsx~fullwidthbutton#render",
+    "class/js/components/General/FullWidthButton.jsx~FullWidthButton.html#instance-method-render",
+    "js/components/General/FullWidthButton.jsx~FullWidthButton#render",
+    "method"
+  ],
+  [
+    "js/components/general/fullwidthelement.jsx",
+    "file/js/components/General/FullWidthElement.jsx.html",
+    "js/components/General/FullWidthElement.jsx",
+    "file"
+  ],
+  [
+    "js/components/general/fullwidthelement.jsx~fullwidthelement#constructor",
+    "class/js/components/General/FullWidthElement.jsx~FullWidthElement.html#instance-constructor-constructor",
+    "js/components/General/FullWidthElement.jsx~FullWidthElement#constructor",
+    "method"
+  ],
+  [
+    "js/components/general/fullwidthelement.jsx~fullwidthelement#render",
+    "class/js/components/General/FullWidthElement.jsx~FullWidthElement.html#instance-method-render",
+    "js/components/General/FullWidthElement.jsx~FullWidthElement#render",
+    "method"
+  ],
+  [
+    "js/components/general/fullwidthfileinput.jsx",
+    "file/js/components/General/FullWidthFileInput.jsx.html",
+    "js/components/General/FullWidthFileInput.jsx",
+    "file"
+  ],
+  [
+    "js/components/general/fullwidthfileinput.jsx~fullwidthfileinput#constructor",
+    "class/js/components/General/FullWidthFileInput.jsx~FullWidthFileInput.html#instance-constructor-constructor",
+    "js/components/General/FullWidthFileInput.jsx~FullWidthFileInput#constructor",
+    "method"
+  ],
+  [
+    "js/components/general/fullwidthfileinput.jsx~fullwidthfileinput#render",
+    "class/js/components/General/FullWidthFileInput.jsx~FullWidthFileInput.html#instance-method-render",
+    "js/components/General/FullWidthFileInput.jsx~FullWidthFileInput#render",
+    "method"
+  ],
+  [
+    "js/components/general/fullwidthtextinput.jsx",
+    "file/js/components/General/FullWidthTextInput.jsx.html",
+    "js/components/General/FullWidthTextInput.jsx",
+    "file"
+  ],
+  [
+    "js/components/general/fullwidthtextinput.jsx~fullwidthtextinput#constructor",
+    "class/js/components/General/FullWidthTextInput.jsx~FullWidthTextInput.html#instance-constructor-constructor",
+    "js/components/General/FullWidthTextInput.jsx~FullWidthTextInput#constructor",
+    "method"
+  ],
+  [
+    "js/components/general/fullwidthtextinput.jsx~fullwidthtextinput#render",
+    "class/js/components/General/FullWidthTextInput.jsx~FullWidthTextInput.html#instance-method-render",
+    "js/components/General/FullWidthTextInput.jsx~FullWidthTextInput#render",
+    "method"
+  ],
+  [
+    "js/components/general/modebuttonelement.jsx",
+    "file/js/components/General/ModeButtonElement.jsx.html",
+    "js/components/General/ModeButtonElement.jsx",
+    "file"
+  ],
+  [
+    "js/components/general/modebuttonelement.jsx~modebuttonelement#constructor",
+    "class/js/components/General/ModeButtonElement.jsx~ModeButtonElement.html#instance-constructor-constructor",
+    "js/components/General/ModeButtonElement.jsx~ModeButtonElement#constructor",
+    "method"
+  ],
+  [
+    "js/components/general/modebuttonelement.jsx~modebuttonelement#render",
+    "class/js/components/General/ModeButtonElement.jsx~ModeButtonElement.html#instance-method-render",
+    "js/components/General/ModeButtonElement.jsx~ModeButtonElement#render",
+    "method"
+  ],
+  [
+    "js/components/map/mapsection.jsx",
+    "file/js/components/Map/MapSection.jsx.html",
+    "js/components/Map/MapSection.jsx",
+    "file"
+  ],
+  [
+    "js/components/map/mapsection.jsx~mapsection#_fencechange",
+    "class/js/components/Map/MapSection.jsx~MapSection.html#instance-method-_fenceChange",
+    "js/components/Map/MapSection.jsx~MapSection#_fenceChange",
+    "method"
+  ],
+  [
+    "js/components/map/mapsection.jsx~mapsection#_interopchange",
+    "class/js/components/Map/MapSection.jsx~MapSection.html#instance-method-_interopChange",
+    "js/components/Map/MapSection.jsx~MapSection#_interopChange",
+    "method"
+  ],
+  [
+    "js/components/map/mapsection.jsx~mapsection#_settingschange",
+    "class/js/components/Map/MapSection.jsx~MapSection.html#instance-method-_settingsChange",
+    "js/components/Map/MapSection.jsx~MapSection#_settingsChange",
+    "method"
+  ],
+  [
+    "js/components/map/mapsection.jsx~mapsection#_statuschange",
+    "class/js/components/Map/MapSection.jsx~MapSection.html#instance-method-_statusChange",
+    "js/components/Map/MapSection.jsx~MapSection#_statusChange",
+    "method"
+  ],
+  [
+    "js/components/map/mapsection.jsx~mapsection#_updateall",
+    "class/js/components/Map/MapSection.jsx~MapSection.html#instance-method-_updateAll",
+    "js/components/Map/MapSection.jsx~MapSection#_updateAll",
+    "method"
+  ],
+  [
+    "js/components/map/mapsection.jsx~mapsection#_wpchange",
+    "class/js/components/Map/MapSection.jsx~MapSection.html#instance-method-_wpChange",
+    "js/components/Map/MapSection.jsx~MapSection#_wpChange",
+    "method"
+  ],
+  [
+    "js/components/map/mapsection.jsx~mapsection#componentdidmount",
+    "class/js/components/Map/MapSection.jsx~MapSection.html#instance-method-componentDidMount",
+    "js/components/Map/MapSection.jsx~MapSection#componentDidMount",
+    "method"
+  ],
+  [
+    "js/components/map/mapsection.jsx~mapsection#componentwillunmount",
+    "class/js/components/Map/MapSection.jsx~MapSection.html#instance-method-componentWillUnmount",
+    "js/components/Map/MapSection.jsx~MapSection#componentWillUnmount",
+    "method"
+  ],
+  [
+    "js/components/map/mapsection.jsx~mapsection#constructor",
+    "class/js/components/Map/MapSection.jsx~MapSection.html#instance-constructor-constructor",
+    "js/components/Map/MapSection.jsx~MapSection#constructor",
+    "method"
+  ],
+  [
+    "js/components/map/mapsection.jsx~mapsection#render",
+    "class/js/components/Map/MapSection.jsx~MapSection.html#instance-method-render",
+    "js/components/Map/MapSection.jsx~MapSection#render",
+    "method"
+  ],
+  [
+    "js/components/map/slider.jsx",
+    "file/js/components/Map/Slider.jsx.html",
+    "js/components/Map/Slider.jsx",
+    "file"
+  ],
+  [
+    "js/components/map/slider.jsx~slider#_interval",
+    "class/js/components/Map/Slider.jsx~Slider.html#instance-member-_interval",
+    "js/components/Map/Slider.jsx~Slider#_interval",
+    "member"
+  ],
+  [
+    "js/components/map/slider.jsx~slider#_intervalcurrent",
+    "class/js/components/Map/Slider.jsx~Slider.html#instance-member-_intervalCurrent",
+    "js/components/Map/Slider.jsx~Slider#_intervalCurrent",
+    "member"
+  ],
+  [
+    "js/components/map/slider.jsx~slider#_onchange",
+    "class/js/components/Map/Slider.jsx~Slider.html#instance-method-_onChange",
+    "js/components/Map/Slider.jsx~Slider#_onChange",
+    "method"
+  ],
+  [
+    "js/components/map/slider.jsx~slider#_ondrag",
+    "class/js/components/Map/Slider.jsx~Slider.html#instance-method-_onDrag",
+    "js/components/Map/Slider.jsx~Slider#_onDrag",
+    "method"
+  ],
+  [
+    "js/components/map/slider.jsx~slider#_onsliderchange",
+    "class/js/components/Map/Slider.jsx~Slider.html#instance-method-_onSliderChange",
+    "js/components/Map/Slider.jsx~Slider#_onSliderChange",
+    "method"
+  ],
+  [
+    "js/components/map/slider.jsx~slider#_ontick",
+    "class/js/components/Map/Slider.jsx~Slider.html#instance-method-_onTick",
+    "js/components/Map/Slider.jsx~Slider#_onTick",
+    "method"
+  ],
+  [
+    "js/components/map/slider.jsx~slider#_ontickcurrent",
+    "class/js/components/Map/Slider.jsx~Slider.html#instance-method-_onTickCurrent",
+    "js/components/Map/Slider.jsx~Slider#_onTickCurrent",
+    "method"
+  ],
+  [
+    "js/components/map/slider.jsx~slider#_playpause",
+    "class/js/components/Map/Slider.jsx~Slider.html#instance-method-_playPause",
+    "js/components/Map/Slider.jsx~Slider#_playPause",
+    "method"
+  ],
+  [
+    "js/components/map/slider.jsx~slider#componentdidmount",
+    "class/js/components/Map/Slider.jsx~Slider.html#instance-method-componentDidMount",
+    "js/components/Map/Slider.jsx~Slider#componentDidMount",
+    "method"
+  ],
+  [
+    "js/components/map/slider.jsx~slider#componentwillunmount",
+    "class/js/components/Map/Slider.jsx~Slider.html#instance-method-componentWillUnmount",
+    "js/components/Map/Slider.jsx~Slider#componentWillUnmount",
+    "method"
+  ],
+  [
+    "js/components/map/slider.jsx~slider#constructor",
+    "class/js/components/Map/Slider.jsx~Slider.html#instance-constructor-constructor",
+    "js/components/Map/Slider.jsx~Slider#constructor",
+    "method"
+  ],
+  [
+    "js/components/map/slider.jsx~slider#render",
+    "class/js/components/Map/Slider.jsx~Slider.html#instance-method-render",
+    "js/components/Map/Slider.jsx~Slider#render",
+    "method"
+  ],
+  [
+    "js/components/navbar/battery.jsx",
+    "file/js/components/Navbar/Battery.jsx.html",
+    "js/components/Navbar/Battery.jsx",
+    "file"
+  ],
+  [
+    "js/components/navbar/battery.jsx~battery#constructor",
+    "class/js/components/Navbar/Battery.jsx~Battery.html#instance-constructor-constructor",
+    "js/components/Navbar/Battery.jsx~Battery#constructor",
+    "method"
+  ],
+  [
+    "js/components/navbar/battery.jsx~battery#render",
+    "class/js/components/Navbar/Battery.jsx~Battery.html#instance-method-render",
+    "js/components/Navbar/Battery.jsx~Battery#render",
+    "method"
+  ],
+  [
+    "js/components/navbar/gonogodropdown.jsx",
+    "file/js/components/Navbar/GoNoGoDropdown.jsx.html",
+    "js/components/Navbar/GoNoGoDropdown.jsx",
+    "file"
+  ],
+  [
+    "js/components/navbar/gonogodropdown.jsx~gonogodropdown#_clearstorage",
+    "class/js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown.html#instance-method-_clearStorage",
+    "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#_clearStorage",
+    "method"
+  ],
+  [
+    "js/components/navbar/gonogodropdown.jsx~gonogodropdown#_onchangeclick",
+    "class/js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown.html#instance-method-_onChangeClick",
+    "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#_onChangeClick",
+    "method"
+  ],
+  [
+    "js/components/navbar/gonogodropdown.jsx~gonogodropdown#_onchangestatus",
+    "class/js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown.html#instance-method-_onChangeStatus",
+    "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#_onChangeStatus",
+    "method"
+  ],
+  [
+    "js/components/navbar/gonogodropdown.jsx~gonogodropdown#componentdidmount",
+    "class/js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown.html#instance-method-componentDidMount",
+    "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#componentDidMount",
+    "method"
+  ],
+  [
+    "js/components/navbar/gonogodropdown.jsx~gonogodropdown#componentwillunmount",
+    "class/js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown.html#instance-method-componentWillUnmount",
+    "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#componentWillUnmount",
+    "method"
+  ],
+  [
+    "js/components/navbar/gonogodropdown.jsx~gonogodropdown#constructor",
+    "class/js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown.html#instance-constructor-constructor",
+    "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#constructor",
+    "method"
+  ],
+  [
+    "js/components/navbar/gonogodropdown.jsx~gonogodropdown#createcheckbox",
+    "class/js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown.html#instance-method-createCheckBox",
+    "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#createCheckBox",
+    "method"
+  ],
+  [
+    "js/components/navbar/gonogodropdown.jsx~gonogodropdown#gocheck",
+    "class/js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown.html#instance-method-goCheck",
+    "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#goCheck",
+    "method"
+  ],
+  [
+    "js/components/navbar/gonogodropdown.jsx~gonogodropdown#gonogo",
+    "class/js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown.html#instance-method-goNoGo",
+    "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#goNoGo",
+    "method"
+  ],
+  [
+    "js/components/navbar/gonogodropdown.jsx~gonogodropdown#render",
+    "class/js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown.html#instance-method-render",
+    "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#render",
+    "method"
+  ],
+  [
+    "js/components/navbar/gonogodropdown.jsx~gonogodropdown#state",
+    "class/js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown.html#instance-member-state",
+    "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#state",
+    "member"
+  ],
+  [
+    "js/components/navbar/navbarlinkitem.jsx",
+    "file/js/components/Navbar/NavbarLinkItem.jsx.html",
+    "js/components/Navbar/NavbarLinkItem.jsx",
+    "file"
+  ],
+  [
+    "js/components/navbar/navbarlinkitem.jsx~navbarlinkitem#constructor",
+    "class/js/components/Navbar/NavbarLinkItem.jsx~NavbarLinkItem.html#instance-constructor-constructor",
+    "js/components/Navbar/NavbarLinkItem.jsx~NavbarLinkItem#constructor",
+    "method"
+  ],
+  [
+    "js/components/navbar/navbarlinkitem.jsx~navbarlinkitem#render",
+    "class/js/components/Navbar/NavbarLinkItem.jsx~NavbarLinkItem.html#instance-method-render",
+    "js/components/Navbar/NavbarLinkItem.jsx~NavbarLinkItem#render",
+    "method"
+  ],
+  [
+    "js/components/navbar/navbarsection.jsx",
+    "file/js/components/Navbar/NavbarSection.jsx.html",
+    "js/components/Navbar/NavbarSection.jsx",
+    "file"
+  ],
+  [
+    "js/components/navbar/navbarsection.jsx~navbarsection#_onchange",
+    "class/js/components/Navbar/NavbarSection.jsx~NavbarSection.html#instance-method-_onChange",
+    "js/components/Navbar/NavbarSection.jsx~NavbarSection#_onChange",
+    "method"
+  ],
+  [
+    "js/components/navbar/navbarsection.jsx~navbarsection#componentdidmount",
+    "class/js/components/Navbar/NavbarSection.jsx~NavbarSection.html#instance-method-componentDidMount",
+    "js/components/Navbar/NavbarSection.jsx~NavbarSection#componentDidMount",
+    "method"
+  ],
+  [
+    "js/components/navbar/navbarsection.jsx~navbarsection#componentwillunmount",
+    "class/js/components/Navbar/NavbarSection.jsx~NavbarSection.html#instance-method-componentWillUnmount",
+    "js/components/Navbar/NavbarSection.jsx~NavbarSection#componentWillUnmount",
+    "method"
+  ],
+  [
+    "js/components/navbar/navbarsection.jsx~navbarsection#constructor",
+    "class/js/components/Navbar/NavbarSection.jsx~NavbarSection.html#instance-constructor-constructor",
+    "js/components/Navbar/NavbarSection.jsx~NavbarSection#constructor",
+    "method"
+  ],
+  [
+    "js/components/navbar/navbarsection.jsx~navbarsection#render",
+    "class/js/components/Navbar/NavbarSection.jsx~NavbarSection.html#instance-method-render",
+    "js/components/Navbar/NavbarSection.jsx~NavbarSection#render",
+    "method"
+  ],
+  [
+    "js/components/navbar/navbarstatusitem.jsx",
+    "file/js/components/Navbar/NavbarStatusItem.jsx.html",
+    "js/components/Navbar/NavbarStatusItem.jsx",
+    "file"
+  ],
+  [
+    "js/components/navbar/navbarstatusitem.jsx~navbarstatusitem#constructor",
+    "class/js/components/Navbar/NavbarStatusItem.jsx~NavbarStatusItem.html#instance-constructor-constructor",
+    "js/components/Navbar/NavbarStatusItem.jsx~NavbarStatusItem#constructor",
+    "method"
+  ],
+  [
+    "js/components/navbar/navbarstatusitem.jsx~navbarstatusitem#render",
+    "class/js/components/Navbar/NavbarStatusItem.jsx~NavbarStatusItem.html#instance-method-render",
+    "js/components/Navbar/NavbarStatusItem.jsx~NavbarStatusItem#render",
+    "method"
+  ],
+  [
+    "js/components/parameters/parammodal.jsx",
+    "file/js/components/Parameters/ParamModal.jsx.html",
+    "js/components/Parameters/ParamModal.jsx",
+    "file"
+  ],
+  [
+    "js/components/parameters/parammodal.jsx~parammodal#checkall",
+    "class/js/components/Parameters/ParamModal.jsx~ParamModal.html#instance-method-checkAll",
+    "js/components/Parameters/ParamModal.jsx~ParamModal#checkAll",
+    "method"
+  ],
+  [
+    "js/components/parameters/parammodal.jsx~parammodal#constructor",
+    "class/js/components/Parameters/ParamModal.jsx~ParamModal.html#instance-constructor-constructor",
+    "js/components/Parameters/ParamModal.jsx~ParamModal#constructor",
+    "method"
+  ],
+  [
+    "js/components/parameters/parammodal.jsx~parammodal#hidemodal",
+    "class/js/components/Parameters/ParamModal.jsx~ParamModal.html#instance-method-hideModal",
+    "js/components/Parameters/ParamModal.jsx~ParamModal#hideModal",
+    "method"
+  ],
+  [
+    "js/components/parameters/parammodal.jsx~parammodal#render",
+    "class/js/components/Parameters/ParamModal.jsx~ParamModal.html#instance-method-render",
+    "js/components/Parameters/ParamModal.jsx~ParamModal#render",
+    "method"
+  ],
+  [
+    "js/components/parameters/parammodal.jsx~parammodal#save",
+    "class/js/components/Parameters/ParamModal.jsx~ParamModal.html#instance-method-save",
+    "js/components/Parameters/ParamModal.jsx~ParamModal#save",
+    "method"
+  ],
+  [
+    "js/components/parameters/parammodal.jsx~parammodal#uncheckall",
+    "class/js/components/Parameters/ParamModal.jsx~ParamModal.html#instance-method-uncheckAll",
+    "js/components/Parameters/ParamModal.jsx~ParamModal#uncheckAll",
+    "method"
+  ],
+  [
+    "js/components/parameters/parameterscontrolsection.jsx",
+    "file/js/components/Parameters/ParametersControlSection.jsx.html",
+    "js/components/Parameters/ParametersControlSection.jsx",
+    "file"
+  ],
+  [
+    "js/components/parameters/parameterscontrolsection.jsx~parameterscontrolsection#_onchange",
+    "class/js/components/Parameters/ParametersControlSection.jsx~ParametersControlSection.html#instance-method-_onChange",
+    "js/components/Parameters/ParametersControlSection.jsx~ParametersControlSection#_onChange",
+    "method"
+  ],
+  [
+    "js/components/parameters/parameterscontrolsection.jsx~parameterscontrolsection#componentdidmount",
+    "class/js/components/Parameters/ParametersControlSection.jsx~ParametersControlSection.html#instance-method-componentDidMount",
+    "js/components/Parameters/ParametersControlSection.jsx~ParametersControlSection#componentDidMount",
+    "method"
+  ],
+  [
+    "js/components/parameters/parameterscontrolsection.jsx~parameterscontrolsection#componentwillunmount",
+    "class/js/components/Parameters/ParametersControlSection.jsx~ParametersControlSection.html#instance-method-componentWillUnmount",
+    "js/components/Parameters/ParametersControlSection.jsx~ParametersControlSection#componentWillUnmount",
+    "method"
+  ],
+  [
+    "js/components/parameters/parameterscontrolsection.jsx~parameterscontrolsection#constructor",
+    "class/js/components/Parameters/ParametersControlSection.jsx~ParametersControlSection.html#instance-constructor-constructor",
+    "js/components/Parameters/ParametersControlSection.jsx~ParametersControlSection#constructor",
+    "method"
+  ],
+  [
+    "js/components/parameters/parameterscontrolsection.jsx~parameterscontrolsection#render",
+    "class/js/components/Parameters/ParametersControlSection.jsx~ParametersControlSection.html#instance-method-render",
+    "js/components/Parameters/ParametersControlSection.jsx~ParametersControlSection#render",
+    "method"
+  ],
+  [
+    "js/components/parameters/parametersitem.jsx",
+    "file/js/components/Parameters/ParametersItem.jsx.html",
+    "js/components/Parameters/ParametersItem.jsx",
+    "file"
+  ],
+  [
+    "js/components/parameters/parametersitem.jsx~parametersitem#constructor",
+    "class/js/components/Parameters/ParametersItem.jsx~ParametersItem.html#instance-constructor-constructor",
+    "js/components/Parameters/ParametersItem.jsx~ParametersItem#constructor",
+    "method"
+  ],
+  [
+    "js/components/parameters/parametersitem.jsx~parametersitem#getmodebuttonelement",
+    "class/js/components/Parameters/ParametersItem.jsx~ParametersItem.html#instance-method-getModeButtonElement",
+    "js/components/Parameters/ParametersItem.jsx~ParametersItem#getModeButtonElement",
+    "method"
+  ],
+  [
+    "js/components/parameters/parametersitem.jsx~parametersitem#render",
+    "class/js/components/Parameters/ParametersItem.jsx~ParametersItem.html#instance-method-render",
+    "js/components/Parameters/ParametersItem.jsx~ParametersItem#render",
+    "method"
+  ],
+  [
+    "js/components/parameters/parameterstablesection.jsx",
+    "file/js/components/Parameters/ParametersTableSection.jsx.html",
+    "js/components/Parameters/ParametersTableSection.jsx",
+    "file"
+  ],
+  [
+    "js/components/parameters/parameterstablesection.jsx~parameterstablesection#_onchange",
+    "class/js/components/Parameters/ParametersTableSection.jsx~ParametersTableSection.html#instance-method-_onChange",
+    "js/components/Parameters/ParametersTableSection.jsx~ParametersTableSection#_onChange",
+    "method"
+  ],
+  [
+    "js/components/parameters/parameterstablesection.jsx~parameterstablesection#componentdidmount",
+    "class/js/components/Parameters/ParametersTableSection.jsx~ParametersTableSection.html#instance-method-componentDidMount",
+    "js/components/Parameters/ParametersTableSection.jsx~ParametersTableSection#componentDidMount",
+    "method"
+  ],
+  [
+    "js/components/parameters/parameterstablesection.jsx~parameterstablesection#componentwillunmount",
+    "class/js/components/Parameters/ParametersTableSection.jsx~ParametersTableSection.html#instance-method-componentWillUnmount",
+    "js/components/Parameters/ParametersTableSection.jsx~ParametersTableSection#componentWillUnmount",
+    "method"
+  ],
+  [
+    "js/components/parameters/parameterstablesection.jsx~parameterstablesection#constructor",
+    "class/js/components/Parameters/ParametersTableSection.jsx~ParametersTableSection.html#instance-constructor-constructor",
+    "js/components/Parameters/ParametersTableSection.jsx~ParametersTableSection#constructor",
+    "method"
+  ],
+  [
+    "js/components/parameters/parameterstablesection.jsx~parameterstablesection#render",
+    "class/js/components/Parameters/ParametersTableSection.jsx~ParametersTableSection.html#instance-method-render",
+    "js/components/Parameters/ParametersTableSection.jsx~ParametersTableSection#render",
+    "method"
+  ],
+  [
+    "js/components/parameters/progressbar.jsx",
+    "file/js/components/Parameters/ProgressBar.jsx.html",
+    "js/components/Parameters/ProgressBar.jsx",
+    "file"
+  ],
+  [
+    "js/components/parameters/progressbar.jsx~progressbar#constructor",
+    "class/js/components/Parameters/ProgressBar.jsx~ProgressBar.html#instance-constructor-constructor",
+    "js/components/Parameters/ProgressBar.jsx~ProgressBar#constructor",
+    "method"
+  ],
+  [
+    "js/components/parameters/progressbar.jsx~progressbar#render",
+    "class/js/components/Parameters/ProgressBar.jsx~ProgressBar.html#instance-method-render",
+    "js/components/Parameters/ProgressBar.jsx~ProgressBar#render",
+    "method"
+  ],
+  [
+    "js/components/planeaction/modebutton.jsx",
+    "file/js/components/PlaneAction/ModeButton.jsx.html",
+    "js/components/PlaneAction/ModeButton.jsx",
+    "file"
+  ],
+  [
+    "js/components/planeaction/modebutton.jsx~modebutton#constructor",
+    "class/js/components/PlaneAction/ModeButton.jsx~ModeButton.html#instance-constructor-constructor",
+    "js/components/PlaneAction/ModeButton.jsx~ModeButton#constructor",
+    "method"
+  ],
+  [
+    "js/components/planeaction/modebutton.jsx~modebutton#getmodebuttonelement",
+    "class/js/components/PlaneAction/ModeButton.jsx~ModeButton.html#instance-method-getModeButtonElement",
+    "js/components/PlaneAction/ModeButton.jsx~ModeButton#getModeButtonElement",
+    "method"
+  ],
+  [
+    "js/components/planeaction/modebutton.jsx~modebutton#render",
+    "class/js/components/PlaneAction/ModeButton.jsx~ModeButton.html#instance-method-render",
+    "js/components/PlaneAction/ModeButton.jsx~ModeButton#render",
+    "method"
+  ],
+  [
+    "js/components/planeaction/planeactionsection.jsx",
+    "file/js/components/PlaneAction/PlaneActionSection.jsx.html",
+    "js/components/PlaneAction/PlaneActionSection.jsx",
+    "file"
+  ],
+  [
+    "js/components/planeaction/planeactionsection.jsx~planeactionsection#_onchange",
+    "class/js/components/PlaneAction/PlaneActionSection.jsx~PlaneActionSection.html#instance-method-_onChange",
+    "js/components/PlaneAction/PlaneActionSection.jsx~PlaneActionSection#_onChange",
+    "method"
+  ],
+  [
+    "js/components/planeaction/planeactionsection.jsx~planeactionsection#componentdidmount",
+    "class/js/components/PlaneAction/PlaneActionSection.jsx~PlaneActionSection.html#instance-method-componentDidMount",
+    "js/components/PlaneAction/PlaneActionSection.jsx~PlaneActionSection#componentDidMount",
+    "method"
+  ],
+  [
+    "js/components/planeaction/planeactionsection.jsx~planeactionsection#componentwillunmount",
+    "class/js/components/PlaneAction/PlaneActionSection.jsx~PlaneActionSection.html#instance-method-componentWillUnmount",
+    "js/components/PlaneAction/PlaneActionSection.jsx~PlaneActionSection#componentWillUnmount",
+    "method"
+  ],
+  [
+    "js/components/planeaction/planeactionsection.jsx~planeactionsection#constructor",
+    "class/js/components/PlaneAction/PlaneActionSection.jsx~PlaneActionSection.html#instance-constructor-constructor",
+    "js/components/PlaneAction/PlaneActionSection.jsx~PlaneActionSection#constructor",
+    "method"
+  ],
+  [
+    "js/components/planeaction/planeactionsection.jsx~planeactionsection#render",
+    "class/js/components/PlaneAction/PlaneActionSection.jsx~PlaneActionSection.html#instance-method-render",
+    "js/components/PlaneAction/PlaneActionSection.jsx~PlaneActionSection#render",
+    "method"
+  ],
+  [
+    "js/components/planeinfo/planeinfoitem.jsx",
+    "file/js/components/PlaneInfo/PlaneInfoItem.jsx.html",
+    "js/components/PlaneInfo/PlaneInfoItem.jsx",
+    "file"
+  ],
+  [
+    "js/components/planeinfo/planeinfoitem.jsx~planeinfoitem#constructor",
+    "class/js/components/PlaneInfo/PlaneInfoItem.jsx~PlaneInfoItem.html#instance-constructor-constructor",
+    "js/components/PlaneInfo/PlaneInfoItem.jsx~PlaneInfoItem#constructor",
+    "method"
+  ],
+  [
+    "js/components/planeinfo/planeinfoitem.jsx~planeinfoitem#render",
+    "class/js/components/PlaneInfo/PlaneInfoItem.jsx~PlaneInfoItem.html#instance-method-render",
+    "js/components/PlaneInfo/PlaneInfoItem.jsx~PlaneInfoItem#render",
+    "method"
+  ],
+  [
+    "js/components/planeinfo/planeinfosection.jsx",
+    "file/js/components/PlaneInfo/PlaneInfoSection.jsx.html",
+    "js/components/PlaneInfo/PlaneInfoSection.jsx",
+    "file"
+  ],
+  [
+    "js/components/planeinfo/planeinfosection.jsx~statussection#_onchange",
+    "class/js/components/PlaneInfo/PlaneInfoSection.jsx~StatusSection.html#instance-method-_onChange",
+    "js/components/PlaneInfo/PlaneInfoSection.jsx~StatusSection#_onChange",
+    "method"
+  ],
+  [
+    "js/components/planeinfo/planeinfosection.jsx~statussection#_unitchange",
+    "class/js/components/PlaneInfo/PlaneInfoSection.jsx~StatusSection.html#instance-method-_unitChange",
+    "js/components/PlaneInfo/PlaneInfoSection.jsx~StatusSection#_unitChange",
+    "method"
+  ],
+  [
+    "js/components/planeinfo/planeinfosection.jsx~statussection#componentdidmount",
+    "class/js/components/PlaneInfo/PlaneInfoSection.jsx~StatusSection.html#instance-method-componentDidMount",
+    "js/components/PlaneInfo/PlaneInfoSection.jsx~StatusSection#componentDidMount",
+    "method"
+  ],
+  [
+    "js/components/planeinfo/planeinfosection.jsx~statussection#componentwillunmount",
+    "class/js/components/PlaneInfo/PlaneInfoSection.jsx~StatusSection.html#instance-method-componentWillUnmount",
+    "js/components/PlaneInfo/PlaneInfoSection.jsx~StatusSection#componentWillUnmount",
+    "method"
+  ],
+  [
+    "js/components/planeinfo/planeinfosection.jsx~statussection#constructor",
+    "class/js/components/PlaneInfo/PlaneInfoSection.jsx~StatusSection.html#instance-constructor-constructor",
+    "js/components/PlaneInfo/PlaneInfoSection.jsx~StatusSection#constructor",
+    "method"
+  ],
+  [
+    "js/components/planeinfo/planeinfosection.jsx~statussection#gauge",
+    "class/js/components/PlaneInfo/PlaneInfoSection.jsx~StatusSection.html#instance-member-gauge",
+    "js/components/PlaneInfo/PlaneInfoSection.jsx~StatusSection#gauge",
+    "member"
+  ],
+  [
+    "js/components/planeinfo/planeinfosection.jsx~statussection#render",
+    "class/js/components/PlaneInfo/PlaneInfoSection.jsx~StatusSection.html#instance-method-render",
+    "js/components/PlaneInfo/PlaneInfoSection.jsx~StatusSection#render",
+    "method"
+  ],
+  [
+    "js/components/settings/locationbuttonelement.jsx",
+    "file/js/components/Settings/LocationButtonElement.jsx.html",
+    "js/components/Settings/LocationButtonElement.jsx",
+    "file"
+  ],
+  [
+    "js/components/settings/locationbuttonelement.jsx~locationbuttonelement#constructor",
+    "class/js/components/Settings/LocationButtonElement.jsx~LocationButtonElement.html#instance-constructor-constructor",
+    "js/components/Settings/LocationButtonElement.jsx~LocationButtonElement#constructor",
+    "method"
+  ],
+  [
+    "js/components/settings/locationbuttonelement.jsx~locationbuttonelement#render",
+    "class/js/components/Settings/LocationButtonElement.jsx~LocationButtonElement.html#instance-method-render",
+    "js/components/Settings/LocationButtonElement.jsx~LocationButtonElement#render",
+    "method"
+  ],
+  [
+    "js/components/settings/settingsbutton.jsx",
+    "file/js/components/Settings/SettingsButton.jsx.html",
+    "js/components/Settings/SettingsButton.jsx",
+    "file"
+  ],
+  [
+    "js/components/settings/settingsbutton.jsx~settingsbutton#constructor",
+    "class/js/components/Settings/SettingsButton.jsx~SettingsButton.html#instance-constructor-constructor",
+    "js/components/Settings/SettingsButton.jsx~SettingsButton#constructor",
+    "method"
+  ],
+  [
+    "js/components/settings/settingsbutton.jsx~settingsbutton#render",
+    "class/js/components/Settings/SettingsButton.jsx~SettingsButton.html#instance-method-render",
+    "js/components/Settings/SettingsButton.jsx~SettingsButton#render",
+    "method"
+  ],
+  [
+    "js/components/settings/settingscheckbox.jsx",
+    "file/js/components/Settings/SettingsCheckbox.jsx.html",
+    "js/components/Settings/SettingsCheckbox.jsx",
+    "file"
+  ],
+  [
+    "js/components/settings/settingscheckbox.jsx~settingscheckbox#constructor",
+    "class/js/components/Settings/SettingsCheckbox.jsx~SettingsCheckbox.html#instance-constructor-constructor",
+    "js/components/Settings/SettingsCheckbox.jsx~SettingsCheckbox#constructor",
+    "method"
+  ],
+  [
+    "js/components/settings/settingscheckbox.jsx~settingscheckbox#render",
+    "class/js/components/Settings/SettingsCheckbox.jsx~SettingsCheckbox.html#instance-method-render",
+    "js/components/Settings/SettingsCheckbox.jsx~SettingsCheckbox#render",
+    "method"
+  ],
+  [
+    "js/components/settings/settingscriticalbutton.jsx",
+    "file/js/components/Settings/SettingsCriticalButton.jsx.html",
+    "js/components/Settings/SettingsCriticalButton.jsx",
+    "file"
+  ],
+  [
+    "js/components/settings/settingscriticalbutton.jsx~settingscriticalbutton#constructor",
+    "class/js/components/Settings/SettingsCriticalButton.jsx~SettingsCriticalButton.html#instance-constructor-constructor",
+    "js/components/Settings/SettingsCriticalButton.jsx~SettingsCriticalButton#constructor",
+    "method"
+  ],
+  [
+    "js/components/settings/settingscriticalbutton.jsx~settingscriticalbutton#render",
+    "class/js/components/Settings/SettingsCriticalButton.jsx~SettingsCriticalButton.html#instance-method-render",
+    "js/components/Settings/SettingsCriticalButton.jsx~SettingsCriticalButton#render",
+    "method"
+  ],
+  [
+    "js/components/settings/settingsdatetime.jsx",
+    "file/js/components/Settings/SettingsDateTime.jsx.html",
+    "js/components/Settings/SettingsDateTime.jsx",
+    "file"
+  ],
+  [
+    "js/components/settings/settingsdatetime.jsx~settingsdatetime#constructor",
+    "class/js/components/Settings/SettingsDateTime.jsx~SettingsDateTime.html#instance-constructor-constructor",
+    "js/components/Settings/SettingsDateTime.jsx~SettingsDateTime#constructor",
+    "method"
+  ],
+  [
+    "js/components/settings/settingsdatetime.jsx~settingsdatetime#render",
+    "class/js/components/Settings/SettingsDateTime.jsx~SettingsDateTime.html#instance-method-render",
+    "js/components/Settings/SettingsDateTime.jsx~SettingsDateTime#render",
+    "method"
+  ],
+  [
+    "js/components/settings/settingsdropdown.jsx",
+    "file/js/components/Settings/SettingsDropdown.jsx.html",
+    "js/components/Settings/SettingsDropdown.jsx",
+    "file"
+  ],
+  [
+    "js/components/settings/settingsdropdown.jsx~settingsdropdown#constructor",
+    "class/js/components/Settings/SettingsDropdown.jsx~SettingsDropdown.html#instance-constructor-constructor",
+    "js/components/Settings/SettingsDropdown.jsx~SettingsDropdown#constructor",
+    "method"
+  ],
+  [
+    "js/components/settings/settingsdropdown.jsx~settingsdropdown#render",
+    "class/js/components/Settings/SettingsDropdown.jsx~SettingsDropdown.html#instance-method-render",
+    "js/components/Settings/SettingsDropdown.jsx~SettingsDropdown#render",
+    "method"
+  ],
+  [
+    "js/components/settings/settingsfileinput.jsx",
+    "file/js/components/Settings/SettingsFileInput.jsx.html",
+    "js/components/Settings/SettingsFileInput.jsx",
+    "file"
+  ],
+  [
+    "js/components/settings/settingsfileinput.jsx~settingsfileinput#constructor",
+    "class/js/components/Settings/SettingsFileInput.jsx~SettingsFileInput.html#instance-constructor-constructor",
+    "js/components/Settings/SettingsFileInput.jsx~SettingsFileInput#constructor",
+    "method"
+  ],
+  [
+    "js/components/settings/settingsfileinput.jsx~settingsfileinput#render",
+    "class/js/components/Settings/SettingsFileInput.jsx~SettingsFileInput.html#instance-method-render",
+    "js/components/Settings/SettingsFileInput.jsx~SettingsFileInput#render",
+    "method"
+  ],
+  [
+    "js/components/settings/settingsitem.jsx",
+    "file/js/components/Settings/SettingsItem.jsx.html",
+    "js/components/Settings/SettingsItem.jsx",
+    "file"
+  ],
+  [
+    "js/components/settings/settingsitem.jsx~settingsitem#constructor",
+    "class/js/components/Settings/SettingsItem.jsx~SettingsItem.html#instance-constructor-constructor",
+    "js/components/Settings/SettingsItem.jsx~SettingsItem#constructor",
+    "method"
+  ],
+  [
+    "js/components/settings/settingsitem.jsx~settingsitem#render",
+    "class/js/components/Settings/SettingsItem.jsx~SettingsItem.html#instance-method-render",
+    "js/components/Settings/SettingsItem.jsx~SettingsItem#render",
+    "method"
+  ],
+  [
+    "js/components/settings/settingssection.jsx",
+    "file/js/components/Settings/SettingsSection.jsx.html",
+    "js/components/Settings/SettingsSection.jsx",
+    "file"
+  ],
+  [
+    "js/components/settings/settingssection.jsx~settingssection#_onchange",
+    "class/js/components/Settings/SettingsSection.jsx~SettingsSection.html#instance-method-_onChange",
+    "js/components/Settings/SettingsSection.jsx~SettingsSection#_onChange",
+    "method"
+  ],
+  [
+    "js/components/settings/settingssection.jsx~settingssection#componentdidmount",
+    "class/js/components/Settings/SettingsSection.jsx~SettingsSection.html#instance-method-componentDidMount",
+    "js/components/Settings/SettingsSection.jsx~SettingsSection#componentDidMount",
+    "method"
+  ],
+  [
+    "js/components/settings/settingssection.jsx~settingssection#componentwillunmount",
+    "class/js/components/Settings/SettingsSection.jsx~SettingsSection.html#instance-method-componentWillUnmount",
+    "js/components/Settings/SettingsSection.jsx~SettingsSection#componentWillUnmount",
+    "method"
+  ],
+  [
+    "js/components/settings/settingssection.jsx~settingssection#constructor",
+    "class/js/components/Settings/SettingsSection.jsx~SettingsSection.html#instance-constructor-constructor",
+    "js/components/Settings/SettingsSection.jsx~SettingsSection#constructor",
+    "method"
+  ],
+  [
+    "js/components/settings/settingssection.jsx~settingssection#render",
+    "class/js/components/Settings/SettingsSection.jsx~SettingsSection.html#instance-method-render",
+    "js/components/Settings/SettingsSection.jsx~SettingsSection#render",
+    "method"
+  ],
+  [
+    "js/components/settings/settingstext.jsx",
+    "file/js/components/Settings/SettingsText.jsx.html",
+    "js/components/Settings/SettingsText.jsx",
+    "file"
+  ],
+  [
+    "js/components/settings/settingstext.jsx~settingstext#constructor",
+    "class/js/components/Settings/SettingsText.jsx~SettingsText.html#instance-constructor-constructor",
+    "js/components/Settings/SettingsText.jsx~SettingsText#constructor",
+    "method"
+  ],
+  [
+    "js/components/settings/settingstext.jsx~settingstext#render",
+    "class/js/components/Settings/SettingsText.jsx~SettingsText.html#instance-method-render",
+    "js/components/Settings/SettingsText.jsx~SettingsText#render",
+    "method"
+  ],
+  [
+    "js/components/tuningguide/tuningaction.jsx",
+    "file/js/components/TuningGuide/TuningAction.jsx.html",
+    "js/components/TuningGuide/TuningAction.jsx",
+    "file"
+  ],
+  [
+    "js/components/tuningguide/tuningbutton.jsx",
+    "file/js/components/TuningGuide/TuningButton.jsx.html",
+    "js/components/TuningGuide/TuningButton.jsx",
+    "file"
+  ],
+  [
+    "js/components/tuningguide/tuningcheckbox.jsx",
+    "file/js/components/TuningGuide/TuningCheckbox.jsx.html",
+    "js/components/TuningGuide/TuningCheckbox.jsx",
+    "file"
+  ],
+  [
+    "js/components/tuningguide/tuningcontent.jsx",
+    "file/js/components/TuningGuide/TuningContent.jsx.html",
+    "js/components/TuningGuide/TuningContent.jsx",
+    "file"
+  ],
+  [
+    "js/components/tuningguide/tuningguide.jsx",
+    "file/js/components/TuningGuide/TuningGuide.jsx.html",
+    "js/components/TuningGuide/TuningGuide.jsx",
+    "file"
+  ],
+  [
+    "js/components/tuningguide/tuningheader.jsx",
+    "file/js/components/TuningGuide/TuningHeader.jsx.html",
+    "js/components/TuningGuide/TuningHeader.jsx",
+    "file"
+  ],
+  [
+    "js/components/tuningguide/tuningpage0.jsx",
+    "file/js/components/TuningGuide/TuningPage0.jsx.html",
+    "js/components/TuningGuide/TuningPage0.jsx",
+    "file"
+  ],
+  [
+    "js/components/tuningguide/tuningpage1.jsx",
+    "file/js/components/TuningGuide/TuningPage1.jsx.html",
+    "js/components/TuningGuide/TuningPage1.jsx",
+    "file"
+  ],
+  [
+    "js/components/tuningguide/tuningpage2.jsx",
+    "file/js/components/TuningGuide/TuningPage2.jsx.html",
+    "js/components/TuningGuide/TuningPage2.jsx",
+    "file"
+  ],
+  [
+    "js/components/tuningguide/tuningpage3.jsx",
+    "file/js/components/TuningGuide/TuningPage3.jsx.html",
+    "js/components/TuningGuide/TuningPage3.jsx",
+    "file"
+  ],
+  [
+    "js/components/tuningguide/tuningpage4.jsx",
+    "file/js/components/TuningGuide/TuningPage4.jsx.html",
+    "js/components/TuningGuide/TuningPage4.jsx",
+    "file"
+  ],
+  [
+    "js/components/tuningguide/tuningpage5.jsx",
+    "file/js/components/TuningGuide/TuningPage5.jsx.html",
+    "js/components/TuningGuide/TuningPage5.jsx",
+    "file"
+  ],
+  [
+    "js/components/tuningguide/tuningpage6.jsx",
+    "file/js/components/TuningGuide/TuningPage6.jsx.html",
+    "js/components/TuningGuide/TuningPage6.jsx",
+    "file"
+  ],
+  [
+    "js/components/tuningguide/tuningpage7.jsx",
+    "file/js/components/TuningGuide/TuningPage7.jsx.html",
+    "js/components/TuningGuide/TuningPage7.jsx",
+    "file"
+  ],
+  [
+    "js/components/tuningguide/tuningrow.jsx",
+    "file/js/components/TuningGuide/TuningRow.jsx.html",
+    "js/components/TuningGuide/TuningRow.jsx",
+    "file"
+  ],
+  [
+    "js/components/tuningguide/tuningtextbutton.jsx",
+    "file/js/components/TuningGuide/TuningTextButton.jsx.html",
+    "js/components/TuningGuide/TuningTextButton.jsx",
+    "file"
+  ],
+  [
+    "js/components/tuningguide/tuningtextlock.jsx",
+    "file/js/components/TuningGuide/TuningTextLock.jsx.html",
+    "js/components/TuningGuide/TuningTextLock.jsx",
+    "file"
+  ],
+  [
+    "js/components/tuningguide/tuningutils.jsx",
+    "file/js/components/TuningGuide/TuningUtils.jsx.html",
+    "js/components/TuningGuide/TuningUtils.jsx",
+    "file"
+  ],
+  [
+    "js/components/waypoints/waypointcell.jsx",
+    "file/js/components/Waypoints/WaypointCell.jsx.html",
+    "js/components/Waypoints/WaypointCell.jsx",
+    "file"
+  ],
+  [
+    "js/components/waypoints/waypointcontainer.jsx",
+    "file/js/components/Waypoints/WaypointContainer.jsx.html",
+    "js/components/Waypoints/WaypointContainer.jsx",
+    "file"
+  ],
+  [
+    "js/components/waypoints/waypointcontrolsection.jsx",
+    "file/js/components/Waypoints/WaypointControlSection.jsx.html",
+    "js/components/Waypoints/WaypointControlSection.jsx",
+    "file"
+  ],
+  [
+    "js/components/waypoints/waypointlist.jsx",
+    "file/js/components/Waypoints/WaypointList.jsx.html",
+    "js/components/Waypoints/WaypointList.jsx",
+    "file"
+  ],
+  [
+    "js/components/waypoints/waypointnumbercell.jsx",
+    "file/js/components/Waypoints/WaypointNumberCell.jsx.html",
+    "js/components/Waypoints/WaypointNumberCell.jsx",
+    "file"
+  ],
+  [
+    "js/components/waypoints/waypointrow.jsx",
+    "file/js/components/Waypoints/WaypointRow.jsx.html",
+    "js/components/Waypoints/WaypointRow.jsx",
+    "file"
+  ],
+  [
+    "js/components/waypoints/waypointtypecell.jsx",
+    "file/js/components/Waypoints/WaypointTypeCell.jsx.html",
+    "js/components/Waypoints/WaypointTypeCell.jsx",
     "file"
   ],
   [

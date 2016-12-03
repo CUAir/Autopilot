@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: actions/WaypointActionCreator.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: actions/WaypointActionCreator.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// @flow
+
+import GCSDispatcher from 'js/dispatcher/GCSDispatcher';
+import { WaypointTypes } from 'js/constants/ActionTypes';
+
+/**
+ * @module actions/WaypointActionCreator
+ */
+
+/**
+ * Updates a waypoint
+ * @param {Waypoint} start
+ * @param {Waypoint} end
+ * @returns {undefined}
+ */
+export function updateItem(start: Waypoint, end: Waypoint): void {
+  GCSDispatcher.dispatch({
+    type: WaypointTypes.REORDER_WAYPOINTS,
+    start, end
+  });
+}
+
+/**
+ * Updates a cell of a waypoint to a new value
+ * @param {number} number
+ * @param {string} key
+ * @param {NValue} newValue
+ * @returns {undefined}
+ */
+export function cellChange(number: number, key: string, newValue: NValue): void {
+  GCSDispatcher.dispatch({
+    type: WaypointTypes.WAYPOINT_UPDATE_CELL,
+    number, key, newValue
+  });
+}
+
+/**
+ * Updates the lat and lon of a waypoint
+ * @param {number} index
+ * @param {number} lat
+ * @param {number} lon
+ * @returns {undefined}
+ */
+export function updateCellLatLon(index: number, lat: number, lon: number): void {
+  GCSDispatcher.dispatch({
+    type: WaypointTypes.WAYPOINT_UPDATE_CELL_LAT_LON,
+    index, lat, lon
+  });
+}
+
+/**
+ * Confirms that the user wanted to click on the waypoint in the list
+ * Warns if waypoint is already sent (changes are immediately pushed)
+ * @param {number} index
+ * @param {Object} formRef - References to form in DOM
+ * @returns {undefined}
+ */
+export function confirmSelect(index: number, formRef: Object): void {
+  GCSDispatcher.dispatch({
+    type: WaypointTypes.WAYPOINT_CONFIRM_SELECT,
+    index, formRef
+  });
+}
+
+/**
+ * Confirms that the user wanted to click on the waypoint in the map
+ * Warns if waypoint is already sent (changes are immediately pushed)
+ * @param {number} index - index of waypoint in list
+ * @returns {undefined}
+ */
+export function confirmSelectMap(index: number): void {
+  GCSDispatcher.dispatch({
+    type: WaypointTypes.WAYPOINT_CONFIRM_SELECT_MAP,
+    index
+  });
+}
+
+/**
+ * Sets the waypoint as selected
+ * @param {number} number
+ * @returns {undefined}
+ */
+export function setSelected(number: number): void {
+  GCSDispatcher.dispatch({
+    type: WaypointTypes.WAYPOINT_SET_SELECTED,
+    number
+  });
+}
+
+/**
+ * Adds a temporary waypoint
+ * @param {number} lat
+ * @param {number} lon
+ * @returns {undefined}
+ */
+export function addWaypoint(lat: number, lon: number): void {
+  GCSDispatcher.dispatch({
+    type: WaypointTypes.WAYPOINT_ADD,
+    lat, lon
+  });
+}
+
+/**
+ * Sends the selected waypoint to the server
+ * @returns {undefined}
+ */
+export function sendWaypoint(): void {
+  GCSDispatcher.dispatch({
+    type: WaypointTypes.WAYPOINT_SEND
+  });
+}
+
+/**
+ * Deletes the selected waypoint
+ * @returns {undefined}
+ */
+export function deleteWaypoint(): void {
+  GCSDispatcher.dispatch({
+    type: WaypointTypes.WAYPOINT_DELETE
+  });
+}
+
+/**
+ * Sets the selected waypoint as current
+ * @returns {undefined}
+ */
+export function setCurrent(): void {
+  GCSDispatcher.dispatch({
+    type: WaypointTypes.WAYPOINT_SET_CURRENT
+  });
+}
+
+ /**
+ * Loads waypoints from file
+ * @param {Waypoint[]} wps
+ * @returns {undefined}
+ */
+export function loadWaypointsFromFile(wps: Waypoint[]): void {
+  GCSDispatcher.dispatch({
+    type: WaypointTypes.WAYPOINTS_LOAD_FROM_FILE,
+    wps
+  });
+}
+
+/**
+ * Sets the waypoints to the new batch of received waypoints
+ * @param {Waypoint[]} waypoints
+ * @returns {undefined}
+ */
+export function receiveWaypoints(waypoints: Waypoint[]): void {
+  GCSDispatcher.dispatch({
+    type: WaypointTypes.WAYPOINTS_RECEIVE,
+    waypoints
+  });
+}
+
+/**
+ * Sets the received waypoint number as current
+ * @param {number} current
+ * @returns {undefined}
+ */
+export function receiveCurrent(current: number): void {
+  GCSDispatcher.dispatch({
+    type: WaypointTypes.WAYPOINTS_RECEIVE_CURRENT,
+    current
+  });
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-actions_CalibrationActionCreator.html">actions/CalibrationActionCreator</a></li><li><a href="module-actions_FenceActionCreator.html">actions/FenceActionCreator</a></li><li><a href="module-actions_InteropActionCreator.html">actions/InteropActionCreator</a></li><li><a href="module-actions_ParametersActionCreator.html">actions/ParametersActionCreator</a></li><li><a href="module-actions_SdaActionCreator.html">actions/SdaActionCreator</a></li><li><a href="module-actions_SettingsActionCreator.html">actions/SettingsActionCreator</a></li><li><a href="module-actions_StatusActionCreator.html">actions/StatusActionCreator</a></li><li><a href="module-actions_TuningActionCreator.html">actions/TuningActionCreator</a></li><li><a href="module-actions_WaypointActionCreator.html">actions/WaypointActionCreator</a></li><li><a href="module-components_Navbar_GoNoGoDropdown.html">components/Navbar/GoNoGoDropdown</a></li><li><a href="module-components_PlaneAction_ModeButton.html">components/PlaneAction/ModeButton</a></li><li><a href="module-components_TuningGuide_TuningUtils.html">components/TuningGuide/TuningUtils</a></li><li><a href="module-constants_ActionTypes.html">constants/ActionTypes</a></li><li><a href="module-constants_ButtonTypes.html">constants/ButtonTypes</a></li><li><a href="module-constants_Frequency.html">constants/Frequency</a></li><li><a href="module-constants_Sites.html">constants/Sites</a></li><li><a href="module-stores_CalibrationStore.html">stores/CalibrationStore</a></li><li><a href="module-stores_FenceStore.html">stores/FenceStore</a></li><li><a href="module-stores_InteropStore.html">stores/InteropStore</a></li><li><a href="module-stores_ParametersStore.html">stores/ParametersStore</a></li><li><a href="module-stores_SdaStore.html">stores/SdaStore</a></li><li><a href="module-stores_SettingsStore.html">stores/SettingsStore</a></li><li><a href="module-stores_StatusStore.html">stores/StatusStore</a></li><li><a href="module-stores_Store.html">stores/Store</a></li><li><a href="module-stores_TuningStore.html">stores/TuningStore</a></li><li><a href="module-stores_WaypointStore.html">stores/WaypointStore</a></li><li><a href="module-utils_ComponentUtils.html">utils/ComponentUtils</a></li><li><a href="module-utils_ConfigData.html">utils/ConfigData</a></li><li><a href="module-utils_DownloadApi.html">utils/DownloadApi</a></li><li><a href="module-utils_LoadApi.html">utils/LoadApi</a></li><li><a href="module-utils_MapUtils.html">utils/MapUtils</a></li><li><a href="module-utils_ReceiveApi.html">utils/ReceiveApi</a></li><li><a href="module-utils_SendApi.html">utils/SendApi</a></li><li><a href="module-utils_TypeValidation.html">utils/TypeValidation</a></li></ul><h3>Classes</h3><ul><li><a href="module-stores_StatusStore.StatusStore.html">StatusStore</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Nov 30 2016 23:25:28 GMT-0500 (EST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

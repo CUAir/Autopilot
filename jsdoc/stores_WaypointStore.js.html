@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: stores/WaypointStore.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: stores/WaypointStore.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import EventEmitter from 'events';
+import alertify from 'alertifyjs';
+EventEmitter.prototype.setMaxListeners(0);
+import assign from 'object-assign';
+const CHANGE_EVENT = 'change';
+
+import GCSDispatcher from 'js/dispatcher/GCSDispatcher';
+import { WaypointTypes } from 'js/constants/ActionTypes';
+
+import * as WaypointActionCreator from 'js/actions/WaypointActionCreator';
+
+import * as SendApi from 'js/utils/SendApi';
+import * as LoadApi from 'js/utils/LoadApi';
+import * as DownloadApi from 'js/utils/DownloadApi';
+import { valueClose } from 'js/utils/ComponentUtils';
+import { redrawWaypoints } from 'js/utils/MapUtils';
+
+/**
+ * @module stores/WaypointStore
+ */
+
+var _types = [
+  {name: 'NAV_WAYPOINT', value: 16},
+  {name: 'NAV_LOITER_UNLIM', value: 17},
+  {name: 'DO_JUMP', value: 177},
+  {name: 'NAV_RETURN_TO_LAUNCH', value: 20}, 
+  {name: 'NAV_LAND', value: 21},
+  {name: 'NAV_TAKEOFF', value: 22}];
+
+function saveWPsAPM() {
+  DownloadApi.saveWaypointsToFile(WaypointStore.getSentWaypoints(), WaypointStore.getCurrent());
+}
+
+function saveWPsInterop() {
+  DownloadApi.saveWaypointsToJson(WaypointStore.getSentWaypoints());
+}
+
+var _waypoint_controls = [
+  {color: 'unknown', text: 'Add', type: 'button', onClick: WaypointActionCreator.addWaypoint, key: 'ADD_WP'},
+  {color: 'error', text: 'Delete', type: 'button', onClick: WaypointActionCreator.deleteWaypoint, key: 'DELETE_WP'},
+  {color: 'success', text: 'Set Current', type: 'button', onClick: WaypointActionCreator.setCurrent, key: 'SET_CURRENT_WP'},
+  {color: 'unknown', text: 'Send WP', type: 'button', onClick: WaypointActionCreator.sendWaypoint, key: 'SEND_WP'},
+  {color: 'unknown', text: 'Load From File', type: 'fileInput', id: 'LOAD_WP_FROM_FILE', onClick: LoadApi.loadWaypointsFromFile, key: 'LOAD_WP_FROM_FILE'},
+  {color: 'unknown', text: 'Save To File (APM Format)', type: 'button', onClick: saveWPsAPM, key: 'SAVE_WP_TO_FILE_APM'},
+  {color: 'unknown', text: 'Save To File (Interop Format)', type: 'button', onClick: saveWPsInterop, key: 'SAVE_WP_TO_FILE_INTEROP'}];
+
+var _current_waypoint = 0;
+
+var _selectedRow = -1;
+
+//invariant: [listOrder] = corresponding index
+var _waypoints = [];
+
+function _updateCell(index, key, newValue) {
+  _waypoints[index][key] = newValue; 
+}
+
+function _updateCellLatLon(index, lat, lon) {
+  _waypoints[index].lat = lat; 
+  _waypoints[index].lon = lon; 
+}
+
+//Precondition: [to] and [from] are valid indices in _waypoints
+//Postcondition: waypoints [to] and [from] are swaped in _waypoints
+function _reorderWaypoints(to, frm) {
+  _setSelected(-1);
+  if (to >= _waypoints.length) to = _waypoints.length - 1;
+  var wp = _waypoints[frm];
+  _waypoints.splice(frm, 1);
+  _waypoints.splice(to, 0,  wp);
+}
+
+function _setSelected(number) {
+  _selectedRow = number;
+}
+
+
+var lastChange = 0;
+function _confirm_select(index, formRef) {
+  var d = new Date();
+  if (_waypoints[index].isTemp) {
+    _setSelected(index);
+    return;
+  }
+  if (d.getTime() - lastChange &lt; 10000 || confirm('Are you sure you want to edit an on-board waypoint?')) {
+    lastChange = d.getTime();
+    _setSelected(index);
+  } else {
+    formRef.blur();
+  }
+}
+
+function _confirm_select_map(index) {
+  var d = new Date();
+  if (_waypoints[index].isTemp) {
+    _setSelected(index);
+    return;
+  }
+  if (d.getTime() - lastChange &lt; 10000 || confirm('Are you sure you want to edit an on-board waypoint?')) {
+    lastChange = d.getTime();
+    _setSelected(index);
+    return;
+  }
+  // cancel drag
+  _waypoints[index].lat = _waypoints[index].originalLat;
+  _waypoints[index].lon = _waypoints[index].originalLon;
+  redrawWaypoints(
+    _waypoints.map(_addIndex).filter(wp => !wp.isTemp),
+    _waypoints.map(_addIndex).filter(wp => wp.isTemp),
+    _current_waypoint,
+    true
+  );
+}
+
+function _createNewTempWaypoint(lat, lon) {
+  lat = typeof lat !== 'number' ? 0 : lat;
+  lon = typeof lon !== 'number' ? 0 : lon;
+  _waypoints.push({isTemp: true, number: -1, sda: false, type: 16, alt: 0, lat: lat, lon: lon, originalType: 16,  originalAlt: 0, originalLat: lat, originalLon: lon});
+}
+
+function _deleteWaypoint() {
+  var waypoint = _waypoints[_selectedRow];
+  var onSuccess = function (_selectedRow) {
+    _waypoints.splice(_selectedRow, 1);
+  };
+  if (waypoint.isTemp) _waypoints.splice(_selectedRow, 1);
+  else SendApi.deleteWP(_selectedRow, onSuccess);
+  _selectedRow = -1;
+}
+
+
+function _setCurrent() {
+  if (_selectedRow == -1) {
+    alertify.warning('No waypoint selected!');
+    return;
+  }
+  if (_waypoints[_selectedRow].isTemp) {
+    alertify.warning('Can\'t set temp waypoint to current!');
+    return;
+  }
+  //_current_waypoint = _selectedRow;
+  SendApi.setCurrentWP(_selectedRow);
+}
+
+// waypoint must be in the form:
+// {isTemp: bool, number: int, type: int, alt: float, lat: float, lon: float}
+function _validateWaypoint(wp) {
+  if (isNaN(Number(wp.alt)) || wp.alt &lt; 0) {
+    wp.alt = wp.originalAlt;
+    alertify.warning('Waypoint altitude must be greater than zero');
+    return false;
+  }
+  if (isNaN(Number(wp.lat)) || wp.lat &lt; -90 || wp.lat > 90) {
+    wp.lat = wp.originalLat;
+    alertify.warning('Waypoint latitude out of range');
+    return false;
+  }
+  if (isNaN(Number(wp.lon)) || wp.lon &lt; -180 || wp.lat > 180) {
+    wp.lon = wp.originalLon;
+    alertify.warning('Waypoint longitude out of range');
+    return false;
+  }
+  return true;
+}
+
+// returns the closet non-temp waypoint index
+function _getIndex(index) {
+  if (index &lt;= 0) return 1;
+  if (!_waypoints[index].isTemp) return _waypoints[index].number + 1;
+  return _getIndex(index - 1);
+}
+
+function _sendWaypoint() {
+  if (_selectedRow == -1) {
+    alertify.warning('No waypoint selected!');
+    return;
+  }
+  var waypoint = _waypoints[_selectedRow];
+  if (!waypoint.isTemp &amp;&amp; (waypoint.type == waypoint.originalType 
+                       &amp;&amp; waypoint.lat == waypoint.originalLat 
+                       &amp;&amp; waypoint.lon == waypoint.originalLon 
+                       &amp;&amp; waypoint.alt == waypoint.originalAlt)) { 
+    return;
+  }
+  
+  if(!_validateWaypoint(waypoint)) {
+    return;
+  }
+  var onSuccess = function() {
+    waypoint.originalLat = waypoint.lat;
+    waypoint.originalLon = waypoint.lon;
+    waypoint.originalAlt = waypoint.alt;
+    waypoint.originalType = waypoint.type;
+    waypoint.isSDA = waypoint.sda;
+    waypoint.isTemp = false;
+  };
+  var onFail =  function() {
+    waypoint.lat = waypoint.originalLat;
+    waypoint.lon = waypoint.originalLon;
+    waypoint.alt = waypoint.originalAlt;
+    waypoint.type = waypoint.originalType;
+  };
+  if (waypoint.isTemp) {
+    var index;
+    if (_selectedRow == 0) index = 0;
+    else index = _getIndex(_selectedRow);
+    SendApi.sendWaypoint(waypoint, index, onSuccess, onFail);
+    _waypoints.splice(_selectedRow, 1);
+  } else {
+    index = _selectedRow;
+    const previousTempWaypointCount = _waypoints.slice(0, index).filter(wp => wp.isTemp).length;
+    SendApi.updateWP(waypoint, index - previousTempWaypointCount, onSuccess, onFail);
+  }
+
+}
+
+function _makeWPFromServerWP(wp) {
+  if (wp.isTemp) {
+    return wp;
+  } else {
+    return {
+      isTemp: false, number: wp.index, isSDA: wp.sda, type: wp.command, 
+      alt: wp.alt, lat: wp.lat, lon: wp.lon, originalType: wp.command, 
+      originalAlt: wp.alt, originalLon: wp.lon, originalLat: wp.lat
+    };
+  }
+}
+
+function _waypoint_equality(wp1, wp2) {
+  return wp1.isSDA === wp2.isSDA &amp;&amp;
+          wp1.isTemp === wp2.isTemp &amp;&amp;
+          wp1.number === wp2.number &amp;&amp;
+          valueClose(wp1.originalAlt, wp2.originalAlt) &amp;&amp;
+          wp1.originalLat === wp2.originalLat &amp;&amp;
+          wp1.originalLon === wp2.originalLon &amp;&amp;
+          wp1.originalType === wp2.originalType;
+}
+
+function _receive_waypoints(new_waypoints) {
+  // update new waypoints to sever waypoints
+  new_waypoints = new_waypoints.map(function(value) { return _makeWPFromServerWP(value); });
+    
+  // add temp waypoints into new waypoint list
+  _waypoints.forEach(function(value, index) { if (value.isTemp) new_waypoints.splice(index, 0, value); });
+  
+  // Check to see if the waypoints have actually change
+  let waypoints_have_not_changed = true;
+  new_waypoints.forEach(function(new_wp, index) {
+    const wp = _waypoints[index];
+    if (wp == null) waypoints_have_not_changed = false;
+    else waypoints_have_not_changed = waypoints_have_not_changed &amp;&amp; _waypoint_equality(wp, new_wp);  
+  });
+
+  // Updated only if we need to
+  if (!waypoints_have_not_changed) _waypoints = new_waypoints;
+}
+
+function _receiveCurrent(data) {
+  _current_waypoint = data;
+}
+
+function _addIndex(obj, i) {
+  var newObj = obj;
+  newObj.index = i;
+  return newObj;
+}
+
+
+//wplist [{lat: lat, lon: lon, alt: alt, type: type}]
+function _loadFromFile(wpList) {
+  for (var i = 0; i &lt; wpList.length; i++) {
+    if (!_validateWaypoint(wpList[i])) {
+      alertify.error('Can\'t send list!');
+      return;
+    }
+  }
+
+  _waypoints = []; // delete temp waypoints
+  wpList.forEach(function(item) { item.type = item.command; });
+  SendApi.sendWaypointList(wpList);
+}
+
+var WaypointStore = assign({}, EventEmitter.prototype, {
+  emitChange: function() {
+    this.emit(CHANGE_EVENT);
+  },
+
+  addChangeListener: function(callback) {
+    this.on(CHANGE_EVENT, callback);
+  },
+
+  removeChangeListener: function(callback) {
+    this.removeListener(CHANGE_EVENT, callback);
+  },
+
+  /**
+   * Gets the all of the waypoints
+   * @returns {Waypoint[]}
+   */
+  getWaypoints: function() {
+    return _waypoints;
+  },
+
+  /**
+   * Gets the sent waypoints (index in original waypoint list is included)
+   * @returns {Waypoint[]}
+   */
+  getSentWaypoints: function() {
+    return _waypoints.map(_addIndex).filter(function(wp) { return !wp.isTemp; });
+  },
+
+  /**
+   * Gets the temporary waypoints (index in original waypoint list is included)
+   * @returns {Waypoint[]}
+   */
+  getTempWaypoints: function() {
+    return _waypoints.map(_addIndex).filter(function(wp) { return wp.isTemp; });
+  },
+
+  /**
+   * Gets the index of the selected waypoint in the waypoint list
+   * @returns {number}
+   */
+  getSelectedRow: function() {
+    return _selectedRow;
+  },
+
+  /**
+   * Gets the index of the waypoint set to current in the waypoint list
+   * @returns {number}
+   */
+  getCurrent: function() {
+    return _current_waypoint;
+  },
+
+  /**
+   * Gets the a value corresponding to a key of a given waypoint
+   * @param {number} index - The index of the waypoint in the waypoint list
+   * @param {string} key - The key corresponding to the value being obtained
+   * @returns {NValue}
+   */
+  getValue: function(index, key) {
+    return _waypoints[index][key];
+  },
+
+  /**
+   * Returns the types of waypoints available
+   */
+  getTypes: function() {
+    return _types;
+  },
+
+  getAllCount: function() {
+    return _waypoints.length;
+  },
+
+  /**
+   * Gets the total number of sent waypoints
+   * @returns {number}
+   */
+  getCount: function() {
+    var total = _waypoints.length;
+    for (var i = 0; i &lt; _waypoints.length; i++)
+      if (_waypoints[i].isTemp) total--;
+    return total;
+  },
+
+  getWaypointControls: function() {
+    return _waypoint_controls;
+  },
+
+  getBaseAltitude: function()  {
+    return _waypoints.length > 0 ? _waypoints[0].alt : 0;
+  },
+
+  /**
+  *returns all the check items for the gonogo list that relate to the Waypoint store
+  *@returns {Object[]}
+  */
+  getGoNoGo: function() {
+    //if takeoff waypoint, landing waypoint and one other waypoint is present, a valid flightplan exists
+    var takeOff = false;
+    var landing = false;
+    var otherWP = false; 
+    for (var i = 0; i &lt; this.getSentWaypoints().length; i++) {
+      if (this.getSentWaypoints()[i].type === 22) {
+        takeOff = true;
+      } else if (this.getSentWaypoints()[i].type === 21) {
+        landing = true;
+      } else {
+        otherWP = true;
+      }
+      if (takeOff &amp;&amp; landing &amp;&amp; otherWP) {
+        break;
+      }
+    }
+    const waypointsSetup = takeOff &amp;&amp; landing &amp;&amp; otherWP;
+    const currIsTakeoff = _waypoints[_current_waypoint] === undefined ? false : _waypoints[_current_waypoint].type === 22;
+    const currIsAboveGround =  _waypoints[_current_waypoint] === undefined ? false : _waypoints[_current_waypoint].alt > 0;
+    return [
+      {name: 'waypoints are set up', value: waypointsSetup, key: 'waypoints', type: 'checkbox', autoCheck: true},
+      {name: 'takeoff waypoint is set to current', value: currIsTakeoff, key: 'takeoff_waypoint_is_current', type: 'checkbox', autoCheck: true},
+      {name: 'takeoff waypoint is above ground', value: currIsAboveGround, key: 'takeoff_waypoint_above_ground', type: 'checkbox', autoCheck: true}
+    ];
+  }
+});
+
+WaypointStore.dispatchToken = GCSDispatcher.register(action => {
+  switch(action.type) {
+  case WaypointTypes.REORDER_WAYPOINTS:
+    _reorderWaypoints(action.start, action.end);
+    WaypointStore.emitChange();
+    break;
+  case WaypointTypes.WAYPOINT_UPDATE_CELL:
+    _updateCell(action.number, action.key, action.newValue);
+    WaypointStore.emitChange();
+    break;
+  case WaypointTypes.WAYPOINT_UPDATE_CELL_LAT_LON:
+    _updateCellLatLon(action.index, action.lat, action.lon);
+    WaypointStore.emitChange();
+    break;
+  case WaypointTypes.WAYPOINT_SET_SELECTED:
+    _setSelected(action.number);
+    WaypointStore.emitChange();
+    break;
+  case WaypointTypes.WAYPOINT_ADD:
+    _createNewTempWaypoint(action.lat, action.lon);
+    WaypointStore.emitChange();
+    break;
+  case WaypointTypes.WAYPOINT_SEND:
+    _sendWaypoint();
+    WaypointStore.emitChange();
+    break;
+  case WaypointTypes.WAYPOINT_DELETE:
+    _deleteWaypoint();
+    WaypointStore.emitChange();
+    break;   
+  case WaypointTypes.WAYPOINT_SET_CURRENT:
+    _setCurrent();
+    WaypointStore.emitChange();
+    break; 
+  case WaypointTypes.WAYPOINT_CONFIRM_SELECT:
+    _confirm_select(action.index, action.formRef);
+    WaypointStore.emitChange();
+    break; 
+  case WaypointTypes.WAYPOINT_CONFIRM_SELECT_MAP:
+    _confirm_select_map(action.index);
+    WaypointStore.emitChange();
+    break; 
+  case WaypointTypes.WAYPOINTS_RECEIVE:
+    _receive_waypoints(action.waypoints);
+    WaypointStore.emitChange();
+    break;
+  case WaypointTypes.WAYPOINTS_RECEIVE_CURRENT:
+    _receiveCurrent(action.current);
+    WaypointStore.emitChange();
+    break; 
+  case WaypointTypes.WAYPOINTS_LOAD_FROM_FILE:
+    _loadFromFile(action.wps);
+    WaypointStore.emitChange();
+    break; 
+  default:
+    // do nothing
+  }
+});
+
+export default WaypointStore;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-actions_CalibrationActionCreator.html">actions/CalibrationActionCreator</a></li><li><a href="module-actions_FenceActionCreator.html">actions/FenceActionCreator</a></li><li><a href="module-actions_InteropActionCreator.html">actions/InteropActionCreator</a></li><li><a href="module-actions_ParametersActionCreator.html">actions/ParametersActionCreator</a></li><li><a href="module-actions_SdaActionCreator.html">actions/SdaActionCreator</a></li><li><a href="module-actions_SettingsActionCreator.html">actions/SettingsActionCreator</a></li><li><a href="module-actions_StatusActionCreator.html">actions/StatusActionCreator</a></li><li><a href="module-actions_TuningActionCreator.html">actions/TuningActionCreator</a></li><li><a href="module-actions_WaypointActionCreator.html">actions/WaypointActionCreator</a></li><li><a href="module-components_Navbar_GoNoGoDropdown.html">components/Navbar/GoNoGoDropdown</a></li><li><a href="module-components_PlaneAction_ModeButton.html">components/PlaneAction/ModeButton</a></li><li><a href="module-components_TuningGuide_TuningUtils.html">components/TuningGuide/TuningUtils</a></li><li><a href="module-constants_ActionTypes.html">constants/ActionTypes</a></li><li><a href="module-constants_ButtonTypes.html">constants/ButtonTypes</a></li><li><a href="module-constants_Frequency.html">constants/Frequency</a></li><li><a href="module-constants_Sites.html">constants/Sites</a></li><li><a href="module-stores_CalibrationStore.html">stores/CalibrationStore</a></li><li><a href="module-stores_FenceStore.html">stores/FenceStore</a></li><li><a href="module-stores_InteropStore.html">stores/InteropStore</a></li><li><a href="module-stores_ParametersStore.html">stores/ParametersStore</a></li><li><a href="module-stores_SdaStore.html">stores/SdaStore</a></li><li><a href="module-stores_SettingsStore.html">stores/SettingsStore</a></li><li><a href="module-stores_StatusStore.html">stores/StatusStore</a></li><li><a href="module-stores_Store.html">stores/Store</a></li><li><a href="module-stores_TuningStore.html">stores/TuningStore</a></li><li><a href="module-stores_WaypointStore.html">stores/WaypointStore</a></li><li><a href="module-utils_ComponentUtils.html">utils/ComponentUtils</a></li><li><a href="module-utils_ConfigData.html">utils/ConfigData</a></li><li><a href="module-utils_DownloadApi.html">utils/DownloadApi</a></li><li><a href="module-utils_LoadApi.html">utils/LoadApi</a></li><li><a href="module-utils_MapUtils.html">utils/MapUtils</a></li><li><a href="module-utils_ReceiveApi.html">utils/ReceiveApi</a></li><li><a href="module-utils_SendApi.html">utils/SendApi</a></li><li><a href="module-utils_TypeValidation.html">utils/TypeValidation</a></li></ul><h3>Classes</h3><ul><li><a href="module-stores_StatusStore.StatusStore.html">StatusStore</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Nov 30 2016 23:25:28 GMT-0500 (EST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

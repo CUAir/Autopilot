@@ -1,20 +1,53 @@
 {
-  "coverage": "87.9%",
-  "expectCount": 248,
-  "actualCount": 218,
+  "coverage": "50.9%",
+  "expectCount": 444,
+  "actualCount": 226,
   "files": {
     "js/constants/ButtonTypes.js": {
       "expectCount": 10,
       "actualCount": 10,
       "undocumentLines": []
     },
+    "js/components/Navbar/Battery.jsx": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        7,
+        13,
+        17
+      ]
+    },
+    "js/components/Calibration/CalibrationControlSection.jsx": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        16,
+        33,
+        24,
+        28,
+        20,
+        37
+      ]
+    },
+    "js/components/Calibration/CalibrationSection.jsx": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        14,
+        31,
+        22,
+        26,
+        18,
+        35
+      ]
+    },
     "js/stores/CalibrationStore.js": {
       "expectCount": 5,
       "actualCount": 2,
       "undocumentLines": [
-        21,
-        61,
-        23
+        25,
+        65,
+        27
       ]
     },
     "js/constants/ActionTypes.js": {
@@ -26,9 +59,83 @@
       "expectCount": 6,
       "actualCount": 3,
       "undocumentLines": [
-        29,
+        33,
+        35,
+        81
+      ]
+    },
+    "js/components/FlightNotes/FlightNotes.jsx": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        14,
         31,
-        77
+        22,
+        26,
+        18,
+        35
+      ]
+    },
+    "js/components/General/FullWidthButton.jsx": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        8,
+        23,
+        27
+      ]
+    },
+    "js/components/General/FullWidthElement.jsx": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        9,
+        11,
+        15
+      ]
+    },
+    "js/components/General/FullWidthFileInput.jsx": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        8,
+        22,
+        26
+      ]
+    },
+    "js/components/General/FullWidthTextInput.jsx": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        21,
+        25
+      ]
+    },
+    "js/components/GCS.jsx": {
+      "expectCount": 4,
+      "actualCount": 1,
+      "undocumentLines": [
+        18,
+        20,
+        36
+      ]
+    },
+    "js/components/Navbar/GoNoGoDropdown.jsx": {
+      "expectCount": 12,
+      "actualCount": 1,
+      "undocumentLines": [
+        36,
+        142,
+        83,
+        78,
+        63,
+        70,
+        43,
+        91,
+        104,
+        148,
+        56
       ]
     },
     "js/constants/Frequency.js": {
@@ -40,9 +147,117 @@
       "expectCount": 9,
       "actualCount": 6,
       "undocumentLines": [
-        43,
+        47,
+        49,
+        128
+      ]
+    },
+    "js/components/Settings/LocationButtonElement.jsx": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        18,
+        22
+      ]
+    },
+    "js/components/Map/MapSection.jsx": {
+      "expectCount": 11,
+      "actualCount": 0,
+      "undocumentLines": [
+        18,
+        50,
+        55,
+        66,
+        61,
+        72,
         45,
-        124
+        24,
+        36,
+        20,
+        80
+      ]
+    },
+    "js/components/PlaneAction/ModeButton.jsx": {
+      "expectCount": 4,
+      "actualCount": 2,
+      "undocumentLines": [
+        23,
+        36
+      ]
+    },
+    "js/components/General/ModeButtonElement.jsx": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        18,
+        22
+      ]
+    },
+    "js/components/Navbar/NavbarLinkItem.jsx": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        18,
+        22
+      ]
+    },
+    "js/components/Navbar/NavbarSection.jsx": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        34,
+        51,
+        42,
+        46,
+        38,
+        55
+      ]
+    },
+    "js/components/Navbar/NavbarStatusItem.jsx": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        9,
+        23,
+        27
+      ]
+    },
+    "js/components/Parameters/ParamModal.jsx": {
+      "expectCount": 7,
+      "actualCount": 0,
+      "undocumentLines": [
+        24,
+        48,
+        31,
+        36,
+        63,
+        42,
+        56
+      ]
+    },
+    "js/components/Parameters/ParametersControlSection.jsx": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        21,
+        38,
+        29,
+        33,
+        25,
+        42
+      ]
+    },
+    "js/components/Parameters/ParametersItem.jsx": {
+      "expectCount": 4,
+      "actualCount": 0,
+      "undocumentLines": [
+        8,
+        10,
+        15,
+        24
       ]
     },
     "js/stores/ParametersStore.js": {
@@ -54,57 +269,385 @@
         351
       ]
     },
+    "js/components/Parameters/ParametersTableSection.jsx": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        68,
+        85,
+        76,
+        80,
+        72,
+        89
+      ]
+    },
+    "js/components/PlaneAction/PlaneActionSection.jsx": {
+      "expectCount": 6,
+      "actualCount": 0,
+      "undocumentLines": [
+        22,
+        43,
+        30,
+        36,
+        26,
+        47
+      ]
+    },
+    "js/components/PlaneInfo/PlaneInfoItem.jsx": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        9,
+        24,
+        28
+      ]
+    },
+    "js/components/Parameters/ProgressBar.jsx": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        22,
+        30,
+        34
+      ]
+    },
     "js/stores/SdaStore.js": {
       "expectCount": 5,
-      "actualCount": 2,
+      "actualCount": 3,
+      "undocumentLines": [
+        25,
+        59
+      ]
+    },
+    "js/components/Settings/SettingsButton.jsx": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        19,
+        23
+      ]
+    },
+    "js/components/Settings/SettingsCheckbox.jsx": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        20,
+        24
+      ]
+    },
+    "js/components/Settings/SettingsCriticalButton.jsx": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        19,
+        23
+      ]
+    },
+    "js/components/Settings/SettingsDateTime.jsx": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        7,
+        22,
+        26
+      ]
+    },
+    "js/components/Settings/SettingsDropdown.jsx": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        7,
+        21,
+        25
+      ]
+    },
+    "js/components/Settings/SettingsFileInput.jsx": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        19,
+        23
+      ]
+    },
+    "js/components/Settings/SettingsItem.jsx": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        13,
+        15,
+        19
+      ]
+    },
+    "js/components/Settings/SettingsSection.jsx": {
+      "expectCount": 6,
+      "actualCount": 0,
       "undocumentLines": [
         19,
-        21,
-        55
+        38,
+        23,
+        28,
+        33,
+        42
       ]
     },
     "js/stores/SettingsStore.js": {
       "expectCount": 11,
       "actualCount": 8,
       "undocumentLines": [
-        150,
-        152,
-        269
+        154,
+        156,
+        273
+      ]
+    },
+    "js/components/Settings/SettingsText.jsx": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        20,
+        24
+      ]
+    },
+    "js/components/Map/Slider.jsx": {
+      "expectCount": 13,
+      "actualCount": 0,
+      "undocumentLines": [
+        43,
+        70,
+        72,
+        60,
+        95,
+        90,
+        78,
+        84,
+        65,
+        51,
+        55,
+        47,
+        103
+      ]
+    },
+    "js/components/PlaneInfo/PlaneInfoSection.jsx": {
+      "expectCount": 8,
+      "actualCount": 0,
+      "undocumentLines": [
+        22,
+        68,
+        76,
+        32,
+        62,
+        28,
+        33,
+        80
       ]
     },
     "js/stores/StatusStore.js": {
       "expectCount": 17,
       "actualCount": 14,
       "undocumentLines": [
-        120,
-        122,
-        336
+        124,
+        126,
+        340
       ]
     },
     "js/stores/Store.js": {
       "expectCount": 5,
       "actualCount": 0,
       "undocumentLines": [
-        5,
-        15,
-        7,
+        9,
+        19,
         11,
-        19
+        15,
+        23
+      ]
+    },
+    "js/components/TuningGuide/TuningAction.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        10
+      ]
+    },
+    "js/components/TuningGuide/TuningButton.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "js/components/TuningGuide/TuningCheckbox.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        4
+      ]
+    },
+    "js/components/TuningGuide/TuningContent.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        14
+      ]
+    },
+    "js/components/TuningGuide/TuningGuide.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        26
+      ]
+    },
+    "js/components/TuningGuide/TuningHeader.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "js/components/TuningGuide/TuningPage0.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        11
+      ]
+    },
+    "js/components/TuningGuide/TuningPage1.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        11
+      ]
+    },
+    "js/components/TuningGuide/TuningPage2.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        9
+      ]
+    },
+    "js/components/TuningGuide/TuningPage3.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        11
+      ]
+    },
+    "js/components/TuningGuide/TuningPage4.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        11
+      ]
+    },
+    "js/components/TuningGuide/TuningPage5.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        7
+      ]
+    },
+    "js/components/TuningGuide/TuningPage6.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        12
+      ]
+    },
+    "js/components/TuningGuide/TuningPage7.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        13
+      ]
+    },
+    "js/components/TuningGuide/TuningRow.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        5
       ]
     },
     "js/stores/TuningStore.js": {
       "expectCount": 8,
       "actualCount": 5,
       "undocumentLines": [
-        166,
-        168,
-        259
+        170,
+        172,
+        263
+      ]
+    },
+    "js/components/TuningGuide/TuningTextButton.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "js/components/TuningGuide/TuningTextLock.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        3
+      ]
+    },
+    "js/components/Waypoints/WaypointCell.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        7
+      ]
+    },
+    "js/components/Waypoints/WaypointContainer.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        18
+      ]
+    },
+    "js/components/Waypoints/WaypointControlSection.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        13
+      ]
+    },
+    "js/components/Waypoints/WaypointList.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        18
+      ]
+    },
+    "js/components/Waypoints/WaypointNumberCell.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        5
+      ]
+    },
+    "js/components/Waypoints/WaypointRow.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        9
       ]
     },
     "js/stores/WaypointStore.js": {
       "expectCount": 1,
-      "actualCount": 1,
-      "undocumentLines": []
+      "actualCount": 0,
+      "undocumentLines": [
+        255
+      ]
+    },
+    "js/components/Waypoints/WaypointTypeCell.jsx": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        27
+      ]
     },
     "js/actions/CalibrationActionCreator.js": {
       "expectCount": 2,
@@ -129,6 +672,11 @@
     "js/constants/Sites.js": {
       "expectCount": 2,
       "actualCount": 2,
+      "undocumentLines": []
+    },
+    "js/components/TuningGuide/TuningUtils.jsx": {
+      "expectCount": 4,
+      "actualCount": 4,
       "undocumentLines": []
     },
     "js/actions/SettingsActionCreator.js": {

@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: stores/SettingsStore.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: stores/SettingsStore.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// @flow
+
+import GCSDispatcher from 'js/dispatcher/GCSDispatcher';
+
+import { SettingsTypes } from 'js/constants/ActionTypes';
+import { TEXT, CRITICAL_BUTTON, DROPDOWN, BUTTON, DATETIME, CHECKBOX } from 'js/constants/ButtonTypes';
+import Store from 'js/stores/Store';
+
+import * as SettingsActionCreator from 'js/actions/SettingsActionCreator';
+
+import { reboot, addLocation } from 'js/utils/SendApi';
+import { getConfigValue, setConfigValue, configNames } from 'js/utils/ConfigData';
+import { getHistoricalData, haltReceiveLoop, resumeReceiveLoop } from 'js/utils/ReceiveApi';
+
+/**
+ * @module stores/SettingsStore
+ */
+
+const locationMap = {
+  Neno_Airfield: 'Neno Airfield',
+  NAS_Pax: 'Nas Pax',
+  SFO_Airport: 'SFO Airport',
+  Cornell_Campus: 'Cornell Campus',
+  Game_Farm: 'Game Farm',
+  Earth_Center: 'Earth Center'
+};
+
+function locationChange(location: string): () => void {
+  return () => SettingsActionCreator.receiveLocation(locationMap[location]);
+}
+
+function flightNotesChange(e: EventObject): void {
+  SettingsActionCreator.receiveFlightNotes(e.nativeEvent.target.value);
+}
+
+function historicalSliderChange(e: EventObject): void {
+  SettingsActionCreator.changeHistoricalSlider(e.nativeEvent.target.checked);
+}
+
+let _location: string = typeof localStorage.location === 'string' ? localStorage.location : 'Neno Airfield';
+let _flight_notes: string = '';
+let _unit_switch: boolean = true;
+let _historical_slider: boolean = false;
+
+function sliderOnChange(sliderValue: number): void {
+  const seconds = !_historical_slider ? 20*60 : (parseFloat(getConfigValue(configNames.SCROLL_END)) - parseFloat(getConfigValue(configNames.SCROLL_START)))/1000;
+  const secondsBack = seconds - sliderValue;
+  if (secondsBack &lt; 1 &amp;&amp; !_historical_slider) {
+    resumeReceiveLoop();
+  } else if (!_historical_slider) {
+    const now = new Date();
+    const selectedDate: number = now.getTime() - secondsBack * 1000; // in milliseconds UTC
+    getHistoricalData(selectedDate);
+    haltReceiveLoop();
+  } else {
+    const end = new Date(parseFloat(getConfigValue(configNames.SCROLL_END)));
+    const selectedDate: number = end.getTime() - secondsBack * 1000;
+    getHistoricalData(selectedDate);
+    haltReceiveLoop();
+  }
+}
+
+function _update_location(location: string): void {
+  _location = location;
+  localStorage['location'] = location;
+}
+
+function _update_flight_notes(flight_notes: ?string): void {
+  if (flight_notes != null) {
+    _flight_notes = flight_notes;
+    localStorage['flight_notes'] = flight_notes;
+  }
+}
+
+function _update_unit_switch(unit_switch: boolean): void { _unit_switch = unit_switch; }
+function _update_historical_slider(historical_value: boolean): void { _historical_slider = historical_value; }
+
+let _location_options = [
+  {name: 'Neno Airfield', onClick: locationChange('Neno_Airfield'), key: 'NENO'},
+  {name: 'PAX River AFB', onClick: locationChange('NAS_Pax'), key: 'PAX'},
+  {name: 'SFO Airport', onClick: locationChange('SFO_Airport'), key: 'SFO'},
+  {name: 'Cornell Campus', onClick: locationChange('Cornell_Campus'), key: 'CORNELL'},
+  {name: 'Earth Center', onClick: locationChange('Earth_Center'), key: 'EARTH_CENTER'},
+  {name: 'Game Farm', onClick: locationChange('Game_Farm'), key: 'GAME_FARM'}
+];
+
+/**
+ * Default location data, quickly overridden 
+ */
+let locationsData = {
+  'Game_Farm': {
+    'leftLon': -76.4650662435,
+    'imageURL': 'img/satellites/Game_Farm_Satellite.png',
+    'bottomLat': 42.4333928552,
+    'topLat': 42.4536610611,
+    'rightLon': -76.4376004232
+  },
+  'Earth_Center': {
+    'leftLon': -0.0274658203125,
+    'imageURL': 'img/satellites/Earth_Center_Satellite.png',
+    'bottomLat': -0.0274658192606,
+    'topLat': 0.0274658192606,
+    'rightLon': 0.0274658203125
+  },
+  'Neno_Airfield': {
+    'leftLon': -76.62631841015623,
+    'centerLon': -76.6125855,
+    'imageURL': 'img/satellites/Neno_Airfield_Satellite.png',
+    'rightLon': -76.59885258984373,
+    'centerLat': 42.44763,
+    'bottomLat': 42.4374957409895,
+    'topLat': 42.457762619755364
+  },
+  'SFO_Airport': {
+    'leftLon': 149.158355767,
+    'imageURL': 'img/satellites/SFO_Airport_Satellite.png',
+    'bottomLat': -35.3688493943,
+    'topLat': -35.3576502173,
+    'rightLon': 149.172088677
+  },
+  'Cornell_Campus': {
+    'leftLon': -76.4950662435,
+    'imageURL': 'img/satellites/Cornell_Campus_Satellite.png',
+    'bottomLat': 42.4384214463,
+    'topLat': 42.4586880256,
+    'rightLon': -76.4676004232
+  },
+  'White Square': {
+    'leftLon': 1,
+    'imageURL': 'img/plainWhiteSquare.png',
+    'bottomLat': -1,
+    'topLat': 1,
+    'rightLon': -1
+  },
+  'NAS_Pax': {
+    'leftLon': -76.423871799,
+    'imageURL': 'img/satellites/NAS_Pax_Satellite.png',
+    'bottomLat': 38.2750531654,
+    'topLat': 38.2966119005,
+    'rightLon': -76.3964059787
+  }
+};
+
+// takes in raw locations data from API and outputs options list
+function parse_location_options(locationsJSON) {
+  let res = [];
+  Object.keys(locationsJSON).forEach(name => {
+    res.push({name: name.replace(/_/g, ' '), onClick: locationChange(name), key: name.toUpperCase()});
+    locationMap[name] = name.replace(/_/g, ' ');
+  });
+  return res;
+}
+
+function _update_locations(locs) {
+  locationsData = locs;
+  _location_options = parse_location_options(locs);
+}
+
+class SettingsStore extends Store {
+
+  constructor() {
+    super();
+  }
+
+  /**
+   * Returns the map location
+   * @returns {string}
+   */
+  getLocation(): string {
+    return _location;
+  }
+
+  /**
+   * Returns the map location options
+   * @returns {Object}
+   */
+  getLocations() {
+    return locationsData;
+  }
+
+  /**
+   * Returns the critical controls
+   * @returns {SettingsItemType[]}
+   */
+  getCritical(): SettingsItemType[] {
+    return [{name: 'Reboot', id: 'REBOOT', key: 'REBOOT', type: CRITICAL_BUTTON, onClick: reboot}];
+  }
+
+  /**
+   * Returns the flight notes
+   * @returns {Object}
+   */
+  getFlightNotes(): {value: string, onChange: Function} {
+    if (_flight_notes === '') {
+      if (!localStorage.flight_notes) {
+        localStorage['flight_notes'] = ' ';
+      }
+    }
+    _update_flight_notes(localStorage['flight_notes']);
+    return {value: _flight_notes, onChange: flightNotesChange};
+  }
+
+  /**
+   * Returns the settings components
+   * @returns {SettingsItemType[]}
+   */
+  getSettings(): SettingsItemType[] {
+    return [
+      {name: 'Location', value: _location, key: 'LOCATION', type: DROPDOWN, options: _location_options},
+      {name: 'Add Location', key: 'ADD_LOC', type: BUTTON, onClick: addLocation},
+      {name: 'Scroll Start Time', value: getConfigValue(configNames.SCROLL_START), key: 'SCROLL_START', type: DATETIME, onChange: setDateConfig(configNames.SCROLL_START)},
+      {name: 'Scroll End Time', value: getConfigValue(configNames.SCROLL_END), key: 'SCROLL_END', type: DATETIME, onChange: setDateConfig(configNames.SCROLL_END)},
+      {name: 'Historical Slider', value: _historical_slider, key: 'HISTORICAL_SLIDER', type: CHECKBOX, onChange: historicalSliderChange},
+      {name: 'Interop URL', value: getConfigValue(configNames.INTEROP_URL), key: 'URL', type: TEXT, onChange: setInputConfig(configNames.INTEROP_URL)},
+      {name: 'Interop NUC URL', value: getConfigValue(configNames.NUC_URL), key: 'NUC_URL', type: TEXT, onChange: setInputConfig(configNames.NUC_URL)},
+      {name: 'Interop Username', value: getConfigValue(configNames.INTEROP_USERNAME), key: 'USERNAME', type: TEXT, onChange: setInputConfig(configNames.INTEROP_USERNAME)},
+      {name: 'Interop Password', value: getConfigValue(configNames.INTEROP_PASSWORD), key: 'PASSWORD', type: TEXT, onChange: setInputConfig(configNames.INTEROP_PASSWORD)},
+      {name: 'Auth Token', value: getConfigValue(configNames.TOKEN), key: 'AUTH_TOKEN', type: TEXT, onChange: setInputConfig(configNames.TOKEN)}
+    ];
+  }
+
+  /**
+   * Returns the function that should get called when the slider is changed
+   */
+  getSliderOnChange(): Function {
+    return sliderOnChange;
+  }
+
+  /**
+   * Returns whether the unit switch is in meters or feet (true = meters)
+   * @returns {boolean}
+   */
+  getUnitSwitch(): boolean {
+    return _unit_switch;
+  }
+
+  /**
+   * Returns whether the unit switch is in historical mode
+   * @returns {boolean}
+   */
+  getHistoricalSlider(): boolean {
+    return _historical_slider;
+  }
+}
+
+function setInputConfig(name) {
+  return (e: EventObject) => {
+    setConfigValue(name, e.nativeEvent.target.value);
+    settingsStoreInstance.emitChange();
+  };
+}
+
+function setDateConfig(name) {
+  return (time: string) => {
+    setConfigValue(name, time);
+    settingsStoreInstance.emitChange();
+  };
+}
+
+const settingsStoreInstance = new SettingsStore();
+
+settingsStoreInstance.dispatchToken = GCSDispatcher.register(action => {
+  switch (action.type) {
+  case SettingsTypes.RECEIVE_LOCATION:
+    _update_location(action.location);
+    settingsStoreInstance.emitChange();
+    break;
+  case SettingsTypes.RECEIVE_FLIGHT_NOTES:
+    _update_flight_notes(action.flight_notes);
+    settingsStoreInstance.emitChange();
+    break;
+  case SettingsTypes.RECEIVE_LOCATIONS:
+    _update_locations(action.locations);
+    settingsStoreInstance.emitChange();
+    break;
+  case SettingsTypes.UNIT_SWITCH:
+    _update_unit_switch(action.value);
+    settingsStoreInstance.emitChange();
+    break;
+  case SettingsTypes.CHANGE_HISTORICAL_SLIDER:
+    _update_historical_slider(action.value);
+    settingsStoreInstance.emitChange();
+    break;
+  default:
+    // do nothing
+  }
+});
+
+export default settingsStoreInstance;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-actions_CalibrationActionCreator.html">actions/CalibrationActionCreator</a></li><li><a href="module-actions_FenceActionCreator.html">actions/FenceActionCreator</a></li><li><a href="module-actions_InteropActionCreator.html">actions/InteropActionCreator</a></li><li><a href="module-actions_ParametersActionCreator.html">actions/ParametersActionCreator</a></li><li><a href="module-actions_SdaActionCreator.html">actions/SdaActionCreator</a></li><li><a href="module-actions_SettingsActionCreator.html">actions/SettingsActionCreator</a></li><li><a href="module-actions_StatusActionCreator.html">actions/StatusActionCreator</a></li><li><a href="module-actions_TuningActionCreator.html">actions/TuningActionCreator</a></li><li><a href="module-actions_WaypointActionCreator.html">actions/WaypointActionCreator</a></li><li><a href="module-components_Navbar_GoNoGoDropdown.html">components/Navbar/GoNoGoDropdown</a></li><li><a href="module-components_PlaneAction_ModeButton.html">components/PlaneAction/ModeButton</a></li><li><a href="module-components_TuningGuide_TuningUtils.html">components/TuningGuide/TuningUtils</a></li><li><a href="module-constants_ActionTypes.html">constants/ActionTypes</a></li><li><a href="module-constants_ButtonTypes.html">constants/ButtonTypes</a></li><li><a href="module-constants_Frequency.html">constants/Frequency</a></li><li><a href="module-constants_Sites.html">constants/Sites</a></li><li><a href="module-stores_CalibrationStore.html">stores/CalibrationStore</a></li><li><a href="module-stores_FenceStore.html">stores/FenceStore</a></li><li><a href="module-stores_InteropStore.html">stores/InteropStore</a></li><li><a href="module-stores_ParametersStore.html">stores/ParametersStore</a></li><li><a href="module-stores_SdaStore.html">stores/SdaStore</a></li><li><a href="module-stores_SettingsStore.html">stores/SettingsStore</a></li><li><a href="module-stores_StatusStore.html">stores/StatusStore</a></li><li><a href="module-stores_Store.html">stores/Store</a></li><li><a href="module-stores_TuningStore.html">stores/TuningStore</a></li><li><a href="module-stores_WaypointStore.html">stores/WaypointStore</a></li><li><a href="module-utils_ComponentUtils.html">utils/ComponentUtils</a></li><li><a href="module-utils_ConfigData.html">utils/ConfigData</a></li><li><a href="module-utils_DownloadApi.html">utils/DownloadApi</a></li><li><a href="module-utils_LoadApi.html">utils/LoadApi</a></li><li><a href="module-utils_MapUtils.html">utils/MapUtils</a></li><li><a href="module-utils_ReceiveApi.html">utils/ReceiveApi</a></li><li><a href="module-utils_SendApi.html">utils/SendApi</a></li><li><a href="module-utils_TypeValidation.html">utils/TypeValidation</a></li></ul><h3>Classes</h3><ul><li><a href="module-stores_StatusStore.StatusStore.html">StatusStore</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Nov 30 2016 23:25:28 GMT-0500 (EST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

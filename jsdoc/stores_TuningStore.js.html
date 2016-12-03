@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: stores/TuningStore.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: stores/TuningStore.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import _ from 'lodash';
+import swal from 'sweetalert';
+import geolib from 'geolib';
+
+import GCSDispatcher from 'js/dispatcher/GCSDispatcher';
+import { TuningTypes, ParametersTypes, WaypointTypes } from 'js/constants/ActionTypes';
+import Store from 'js/stores/Store';
+
+import WaypointStore from 'js/stores/WaypointStore';
+import ParametersStore from 'js/stores/ParametersStore';
+
+/**
+ * @module stores/TuningStore
+ */
+
+const defaultValues = [
+  [false, false, false, false, false, {locked: false, value: 0}, {locked: false, value: 0}, {locked: false, value: 0}, {locked: false, value: 0},
+    false, false, false, false, false, false, false],
+  [false, false, false, false],
+  [false, false, true, true],
+  [false, false, false, false, false, false, true, true, false, true],
+  [{locked: false, value: 0}, {locked: false, value: 0}, {locked: false, value: 0}, {locked: false, value: 0}, {locked: false, value: 0}, true, true, false, false, false, false],
+  [],
+  [false, false, false, false, false, false, false, false, false],
+  [false, false, false, false, false, false, false, false, false, false, false, false, false, false, {text: '', value: false}, false]
+];
+
+const flightTasks = [
+  'Manual Flight, Calibrate Airspeed Sensor',
+  'AutoTune',
+  'PTCH2SRV_RLL (retain height)',
+  'L1 Tuning',
+  'Techs Tuning',
+  'Techs Tuning Verification',
+  'Auto Takeoff',
+  'Auto Landing'
+];
+
+let _max_flight = 7;
+let _current_flight = typeof localStorage['tuning_current'] === 'string' ? JSON.parse(localStorage['tuning_current']) : 0;
+let _values = typeof localStorage['tuning_data'] === 'string' ? JSON.parse(localStorage['tuning_data']) : _.cloneDeep(defaultValues);
+
+function setParamValue(name, value, flightNumber, index, paramMap) {
+  if (paramMap[name].value === parseFloat(value)) _values[flightNumber][index] = true;
+  else _values[flightNumber][index] = false;
+}
+
+function updateParameters() {
+  const paramMap = ParametersStore.getParameterMap();
+
+  setParamValue('STALL_PREVENTION', 1, 0, 3, paramMap);
+  setParamValue('ARSPD_AUTOCAL', 1, 0, 4, paramMap);
+  setParamValue('ARSPD_AUTOCAL', 0, 0, 10, paramMap);
+  setParamValue('THR_MAX', 100, 0, 11, paramMap);
+  setParamValue('THR_MIN', 0, 0, 12, paramMap);
+
+  setParamValue('AUTOTUNE_LEVEL', 6, 1, 0, paramMap);
+  setParamValue('FLTMODE1', 8, 1, 1, paramMap);
+
+  setParamValue('NAVL1_PERIOD', 18, 2, 0, paramMap);
+  setParamValue('PTCH2SRV_RLL', 1, 2, 1, paramMap);
+
+  setParamValue('NAVL1_PERIOD', 20, 3, 2, paramMap);
+  setParamValue('NAVL1_DAMPING', 0.75, 3, 3, paramMap);
+  setParamValue('WP_RADIUS', 10, 3, 4, paramMap);
+  setParamValue('FLTMODE1', 10, 3, 5, paramMap);
+
+  let value6_0, value6_1, value6_2;
+  if (_values[6][0]) {
+    value6_0 = 9;
+    value6_1 = 0;
+    value6_2 = 0;
+  } else {
+    value6_0 = 10;
+    value6_1 = 11;
+    value6_2 = 4;
+  }
+
+  setParamValue('TKOFF_THR_MINACC', value6_0, 6, 1, paramMap);
+  setParamValue('TKOFF_THR_DELAY', value6_1, 6, 2, paramMap);
+  setParamValue('TKOFF_THR_MINSPD', value6_2, 6, 3, paramMap);
+  setParamValue('TECS_PITCH_MAX', 20, 6, 4, paramMap);
+  setParamValue('FLTMODE1', 10, 6, 6, paramMap);
+
+  setParamValue('LAND_FLARE_SEC', 1.5, 7, 3, paramMap);
+  setParamValue('LAND_FLARE_ALT', 2, 7, 4, paramMap);
+  setParamValue('TECS_LAND_SPDWGT', 1, 7, 6, paramMap);
+  setParamValue('LAND_PITCH_CD', 200, 7, 7, paramMap);
+  setParamValue('LEVEL_ROLL_LIMIT', 15, 7, 8, paramMap);
+  setParamValue('LAND_DISARMDELAY', 10, 7, 9, paramMap);
+  setParamValue('LAND_FLARE_SEC', 0, 7, 12, paramMap);
+  setParamValue('LAND_FLARE_ALT', 0, 7, 13, paramMap);
+  setParamValue('TECS_LAND_SPDWGT', 2, 7, 15, paramMap);
+}
+
+function updateWaypointsReachable(flightNumber: number, index: number): boolean {
+  const paramMap = ParametersStore.getParameterMap();
+  const sentWaypoints = WaypointStore.getSentWaypoints();
+  let valid = true;
+  for (let i = 1; i &lt; sentWaypoints.length - 1; i++) {
+    const firstWp = sentWaypoints[i];
+    const secondWp = sentWaypoints[i+1];
+    const distance = geolib.getDistance(
+      {latitude: firstWp.lat, longitude: firstWp.lon},
+      {latitude: secondWp.lat, longitude: secondWp.lon},
+      1, 1
+    );
+    const param = (firstWp.alt > secondWp.alt) ? 'TECS_SINK_MAX' : 'TECS_CLMB_MAX';
+    const maxHeightDiff = Math.abs(distance * _values[0][5].value / paramMap[param].value);
+    const heightDiff = Math.abs(firstWp.alt - secondWp.alt);
+    valid = valid &amp;&amp; (maxHeightDiff >= heightDiff);
+  }
+  _values[flightNumber][index] = valid;
+  return valid;
+}
+
+function updateLastWaypointSet(flightNumber: number, index: number): boolean {
+  const sentWaypoints = WaypointStore.getSentWaypoints();
+  let valid = sentWaypoints.length > 0;
+  valid = valid &amp;&amp; sentWaypoints[sentWaypoints.length - 1].type === 21;
+  valid = valid &amp;&amp; sentWaypoints[sentWaypoints.length - 1].alt === 0;
+  _values[flightNumber][index] = valid;
+  return valid;
+}
+
+function valueComplete(previous, current) {
+  if (typeof current === 'boolean') {
+    return previous &amp;&amp; current;
+  } else if (typeof current === 'object' &amp;&amp; current != null) {
+    return previous &amp;&amp; current.locked;
+  } else {
+    return false;
+  }
+}
+
+const finalRanges = [
+  [5, 15],
+  [2, 3],
+  [2, 3],
+  [6, 9],
+  [0, 11],
+  [0, 0],
+  [0, 0],
+  [0, 0]
+];
+
+function valuesFinished() {
+  const range = finalRanges[_current_flight];
+  if (_current_flight === 6) {
+    return _values[_current_flight].slice(range[0], range[1] + 1).reduce(valueComplete, true);
+  } else {
+    return _values[_current_flight].slice(range[0], range[1] + 1).reduce(valueComplete, true);
+  }
+}
+
+function save_data() {
+  localStorage['tuning_current'] = JSON.stringify(_current_flight);
+  localStorage['tuning_data'] = JSON.stringify(_values);
+}
+
+function _update_current_flight(current_flight) {
+  if (0 > current_flight || current_flight > _max_flight) {
+    save_data();
+    return;
+  }
+  if (!valuesFinished()) {
+    swal({
+      title: 'Are you sure you want to change flights?',
+      text: 'You haven\'t completed all the steps for this stage yet',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yep',
+      cancelButtonText: 'Stay here',
+      closeOnConfirm: true
+    }, function(isConfirm) {
+      if (isConfirm) {
+        _current_flight = current_flight;
+      }
+      save_data();
+    });
+  } else {
+    save_data();
+    _current_flight = current_flight;
+  }
+}
+
+function _update_tuning_value(flightNumber, elementNumber, value) {
+  _values[flightNumber][elementNumber] = value;
+  save_data();
+}
+
+function _lock_tuning_value(flightNumber, elementNumber, value) {
+  _values[flightNumber][elementNumber].locked = !_values[flightNumber][elementNumber].locked;
+  _values[flightNumber][elementNumber].value = value;
+}
+
+function _reset_tuning() {
+  _current_flight = 0;
+  _values = _.cloneDeep(defaultValues);
+  save_data();
+}
+
+class TuningStore extends Store {
+
+  constructor() {
+    super();
+  }
+
+  /**
+   * Returns the current tuning flight number
+   * @returns {number}
+   */
+  getCurrentFlight(): number {
+    return _current_flight;
+  }
+
+  /**
+   * Returns the current flight values
+   * @returns {Array}
+   */
+  getFlightValues(): Array {
+    return _values[_current_flight];
+  }
+
+  /**
+   * Returns the current flight task description
+   * @returns {string}
+   */
+  getFlightTask(): string {
+    return flightTasks[_current_flight];
+  }
+
+  /**
+   * Returns all the tuning flight values
+   * @returns {Array[]}
+   */
+  getAllValues(): Array[] {
+    return _values;
+  }
+
+  /**
+   * Returns the max flight number
+   * @returns {number}
+   */
+  getMaxFlight(): number {
+    return _max_flight;
+  }
+}
+
+const tuningStoreInstance = new TuningStore();
+
+tuningStoreInstance.dispatchToken = GCSDispatcher.register(action => {
+  switch(action.type) {
+  case TuningTypes.NEXT_TUNING_FLIGHT:
+    _update_current_flight(_current_flight + 1);
+    tuningStoreInstance.emitChange();
+    break;
+  case TuningTypes.PREV_TUNING_FLIGHT:
+    _update_current_flight(_current_flight - 1);
+    tuningStoreInstance.emitChange();
+    break;
+  case TuningTypes.UPDATE_TUNING_VALUE:
+    _update_tuning_value(action.flightNumber, action.elementNumber, action.value);
+    updateParameters();
+    tuningStoreInstance.emitChange();
+    break;
+  case TuningTypes.LOCK_TUNING_VALUE:
+    _lock_tuning_value(action.flightNumber, action.elementNumber, action.value);
+    tuningStoreInstance.emitChange();
+    break;
+  case TuningTypes.RESET_TUNING:
+    _reset_tuning();
+    tuningStoreInstance.emitChange();
+    break;
+  case ParametersTypes.RECEIVE_MULTIPLE_PARAMETERS:
+  case ParametersTypes.RECEIVE_SINGLE_PARAMETER:
+    GCSDispatcher.waitFor([ParametersStore.dispatchToken, WaypointStore.dispatchToken]);
+    updateParameters();
+    updateWaypointsReachable(7, 2);
+    updateWaypointsReachable(7, 11);
+    tuningStoreInstance.emitChange();
+    break;
+  case WaypointTypes.WAYPOINTS_RECEIVE:
+    GCSDispatcher.waitFor([WaypointStore.dispatchToken]);
+    updateWaypointsReachable(7, 2);
+    updateWaypointsReachable(7, 11);
+    updateLastWaypointSet(7, 1);
+    updateLastWaypointSet(7, 10);
+    tuningStoreInstance.emitChange();
+    break;
+  default:
+    // do nothing
+  }
+});
+
+export default tuningStoreInstance;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-actions_CalibrationActionCreator.html">actions/CalibrationActionCreator</a></li><li><a href="module-actions_FenceActionCreator.html">actions/FenceActionCreator</a></li><li><a href="module-actions_InteropActionCreator.html">actions/InteropActionCreator</a></li><li><a href="module-actions_ParametersActionCreator.html">actions/ParametersActionCreator</a></li><li><a href="module-actions_SdaActionCreator.html">actions/SdaActionCreator</a></li><li><a href="module-actions_SettingsActionCreator.html">actions/SettingsActionCreator</a></li><li><a href="module-actions_StatusActionCreator.html">actions/StatusActionCreator</a></li><li><a href="module-actions_TuningActionCreator.html">actions/TuningActionCreator</a></li><li><a href="module-actions_WaypointActionCreator.html">actions/WaypointActionCreator</a></li><li><a href="module-components_Navbar_GoNoGoDropdown.html">components/Navbar/GoNoGoDropdown</a></li><li><a href="module-components_PlaneAction_ModeButton.html">components/PlaneAction/ModeButton</a></li><li><a href="module-components_TuningGuide_TuningUtils.html">components/TuningGuide/TuningUtils</a></li><li><a href="module-constants_ActionTypes.html">constants/ActionTypes</a></li><li><a href="module-constants_ButtonTypes.html">constants/ButtonTypes</a></li><li><a href="module-constants_Frequency.html">constants/Frequency</a></li><li><a href="module-constants_Sites.html">constants/Sites</a></li><li><a href="module-stores_CalibrationStore.html">stores/CalibrationStore</a></li><li><a href="module-stores_FenceStore.html">stores/FenceStore</a></li><li><a href="module-stores_InteropStore.html">stores/InteropStore</a></li><li><a href="module-stores_ParametersStore.html">stores/ParametersStore</a></li><li><a href="module-stores_SdaStore.html">stores/SdaStore</a></li><li><a href="module-stores_SettingsStore.html">stores/SettingsStore</a></li><li><a href="module-stores_StatusStore.html">stores/StatusStore</a></li><li><a href="module-stores_Store.html">stores/Store</a></li><li><a href="module-stores_TuningStore.html">stores/TuningStore</a></li><li><a href="module-stores_WaypointStore.html">stores/WaypointStore</a></li><li><a href="module-utils_ComponentUtils.html">utils/ComponentUtils</a></li><li><a href="module-utils_ConfigData.html">utils/ConfigData</a></li><li><a href="module-utils_DownloadApi.html">utils/DownloadApi</a></li><li><a href="module-utils_LoadApi.html">utils/LoadApi</a></li><li><a href="module-utils_MapUtils.html">utils/MapUtils</a></li><li><a href="module-utils_ReceiveApi.html">utils/ReceiveApi</a></li><li><a href="module-utils_SendApi.html">utils/SendApi</a></li><li><a href="module-utils_TypeValidation.html">utils/TypeValidation</a></li></ul><h3>Classes</h3><ul><li><a href="module-stores_StatusStore.StatusStore.html">StatusStore</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Nov 30 2016 23:25:28 GMT-0500 (EST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

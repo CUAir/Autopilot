@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: utils/SendApi.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: utils/SendApi.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// @flow
+
+import $ from 'jquery';
+import alertify from 'alertifyjs';
+import swal from 'sweetalert';
+
+import { api } from 'js/constants/Sites';
+
+import * as ParametersActionCreator from 'js/actions/ParametersActionCreator';
+
+import { getConfigValue, configNames, tokenObj, confirmObj } from 'js/utils/ConfigData';
+
+/**
+ * @module utils/SendApi
+ */
+
+const modeDict = {
+  'MANUAL': 0, 'CIRCLE': 1, 'STABILIZE':2, 'TRAINING':3, 'ACRO':4, 'FBWA':5,
+  'FBWB':6, 'CRUISE':7, 'AUTOTUNE':8,  'AUTO':10, 'RTL':11, 'LOITER':12, 'GUIDED':15
+};
+
+function successGenerator(text: string, onSuccess: Function = $.noop) {
+  onSuccess = onSuccess == null ? $.noop : onSuccess;
+  return data => {
+    if (text) alertify.success(text);
+    onSuccess(data);
+  };
+}
+
+function errorGenerator(text: string, onFail: Function = $.noop) {
+  onFail = onFail == undefined ? $.noop : onFail;
+  return data => {
+    if (text) alertify.error(text);
+    console.log(data); // eslint-disable-line no-console
+    onFail(data);
+  };
+}
+
+/**
+ * Sends a parameter to the server
+ * @param {Parameter} parameter - The parameter to be sent
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+
+export function sendParameter(parameter: Parameter, onSuccess: Function = $.noop, onFail: Function = $.noop): void {
+  onSuccess = onSuccess == null ? onSuccess : $.noop;
+  onFail = onFail == null ? onFail : $.noop;
+
+  function successfulChange(data) {
+    alertify.success(`${parameter.name} changed`);
+    ParametersActionCreator.receiveSingleParameter(parameter.name, parameter.value);
+    onSuccess(data);
+  }
+
+  function failedChange(data) {
+    alertify.error(`${parameter.name} failed to change`);
+    console.log(data); // eslint-disable-line no-console
+    ParametersActionCreator.receiveSingleParameter(parameter.name, parameter.value);
+    onFail(data);
+  }
+
+  alertify.message(`Changing parameter ${parameter.name}`);
+  $.ajax({
+    url: api + 'params',
+    type: 'POST',
+    dataType: 'html',
+    contentType: 'application/json',
+    headers: tokenObj(),
+    success: successfulChange,
+    error: failedChange,
+    data: JSON.stringify({parameter: parameter.name, value: parameter.value})
+  });
+}
+
+/**
+ * Sends all the parameters in the store to the server
+ * @param {Parameter[]} parameters
+ * @returns {undefined}
+ */
+export function sendAllParameters(parameters: Parameter[]): void {
+  parameters
+    .filter(parameter => parameter.isTemp)
+    .forEach(parameter => sendParameter(parameter));
+}
+
+/**
+ * Send mode change to the server
+ * @param {string} mode - The mode to be sent
+ * @returns {undefined}
+ */
+export function sendChangeMode(mode: string): void {
+  $.ajax({
+    url: api + 'set_mode',
+    type: 'POST',
+    dataType: 'html',
+    contentType: 'application/json',
+    headers: tokenObj(),
+    success: successGenerator('Mode change succeeded'),
+    error: errorGenerator('Mode change Failed'),
+    data: JSON.stringify({mode: mode})
+  });
+}
+
+/**
+ * Send mode switch change to the server
+ * @param {string} mode - The mode switch to be sent
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+export function sendModeSwitch(mode: string, onSuccess: Function = $.noop, onFail: Function = $.noop) {
+  return sendParameter({name: 'FLTMODE1', value: modeDict[mode]}, onSuccess, onFail);
+}
+
+/**
+ * Send an RTL mode change to the server
+ * @returns {undefined}
+ */
+export function sendRTL() {
+  return sendChangeMode('RTL');
+}
+
+/**
+ * Sends a request to the server to delete a waypoint
+ * @param {number} index - index of waypoint in list
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+export function deleteWP(index: number, onSuccess: Function = $.noop, onFail: Function = $.noop) {
+  $.ajax({
+    url: api + 'wp?wpnum=' + index,
+    type: 'DELETE',
+    contentType: 'application/json',
+    headers: tokenObj(),
+    success: successGenerator('Waypoint deleted', onSuccess),
+    error: errorGenerator('Waypoint deletion failed', onFail)
+  });
+}
+
+  /**
+ * Sends a request to the server to delete all waypoints
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+export function deleteAllWaypoints(onSuccess: Function, onFail: Function = $.noop) {
+  $.ajax({
+    url: api + 'wp/clear_all',
+    type: 'DELETE',
+    contentType: 'application/json',
+    headers: confirmObj(),
+    success: successGenerator('Waypoints deleted', onSuccess),
+    error: errorGenerator('Waypoints failed to delete', onFail)
+  });
+}
+
+/**
+ * Sends a request to the server to set a waypoint as current
+ * @param {number} index - index of waypoint in list
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+export function setCurrentWP(index: number, onSuccess: Function = $.noop, onFail: Function = $.noop) {
+  $.ajax({
+    url: api + 'set_current',
+    type: 'POST',
+    contentType: 'application/json',
+    headers: tokenObj(),
+    success: successGenerator('Current waypoint changed', onSuccess),
+    error: errorGenerator('Changing current waypoint failed', onFail),
+    data: JSON.stringify({current: index})
+  });
+}
+
+/**
+ * Sends a request to the server to add a waypoint
+ * @param {Waypoint} wp - waypoint to be added
+ * @param {number} index - index of waypoint in list
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+export function sendWaypoint(wp: Waypoint, index: number, onSuccess: Function = $.noop, onFail: Function = $.noop) {
+  const waypoint = {lat: wp.lat, lon: wp.lon, alt: wp.alt, index: index, command: wp.type};
+
+  $.ajax({
+    url: api + 'wp',
+    type: 'POST',
+    contentType: 'application/json',
+    headers: tokenObj(),
+    success: successGenerator('Waypoint sent', onSuccess),
+    error: errorGenerator('Waypoint failed to send', onFail),
+    data: JSON.stringify(waypoint)
+  });
+}
+
+/**
+ * Sends a request to the server to add a list waypoint
+ * @param {Waypoint[]} wpList - list waypoints to be added
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+export function sendWaypointList(wpList: Waypoint[], onSuccess: Function, onFail: Function = $.noop) {
+  $.ajax({
+    url: api + 'wp/replace',
+    type: 'DELETE',
+    contentType: 'application/json',
+    headers: confirmObj(),
+    success: successGenerator('Waypoints sent', onSuccess),
+    error: errorGenerator('Waypoints failed to send', onFail),
+    data: JSON.stringify(wpList)
+  });
+}
+
+/**
+ * Sends a request to the server to update a waypoint
+ * @param {Waypoint} wp - new values of waypoint
+ * @param {number} index - index of waypoint in list
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+export function updateWP(wp: Waypoint, index: number, onSuccess: Function = $.noop, onFail: Function = $.noop) {
+  const waypoint = {lat: wp.lat, lon: wp.lon, alt: wp.alt, index: index, command: wp.type};
+
+  $.ajax({
+    url: api + 'wp',
+    type: 'PUT',
+    contentType: 'application/json',
+    headers: tokenObj(),
+    success: successGenerator('Waypoint updated', onSuccess),
+    error: errorGenerator('Waypoint failed to update', onFail),
+    data: JSON.stringify(waypoint)
+  });
+}
+
+/**
+ * Sends a start sda request if the sda is off,
+ * Sends a stop sda request if the sda is on
+ * @param {boolean} enabled
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+export function toggleSda(enabled: boolean, onSuccess: Function = $.noop, onFail: Function = $.noop) {
+  if (enabled) {
+    alertify.message('Attempting to stop SDA');
+    $.ajax({
+      type: 'DELETE',
+      url: api + 'sda',
+      contentType: 'application/json',
+      headers: tokenObj(),
+      success: successGenerator('SDA stopped', onSuccess),
+      error: errorGenerator('SDA failed to stop', onFail)
+    });
+  } else {
+    alertify.message('Attempting to start SDA');
+    $.ajax({
+      type: 'POST',
+      url: api + 'sda',
+      contentType: 'application/json',
+      headers: tokenObj(),
+      success: successGenerator('SDA started', onSuccess),
+      error: errorGenerator('SDA failed to start', onFail)
+    });
+  }
+}
+
+/**
+ * Sends a start accelerometer calibration request to the server
+ * @returns {undefined}
+ */
+export function calibrationAStart() {
+  $.ajax({
+    type: 'POST',
+    url: api + 'cali/accel',
+    headers: tokenObj(),
+    contentType: 'application/json',
+    success: successGenerator('Acceleration calibration started'),
+    error: errorGenerator('Acceleration calibration failed to start')
+  });
+}
+
+/**
+ * Sends a start gyroscope calibration request to the server
+ * @returns {undefined}
+ */
+export function calibrationGStart() {
+  $.ajax({
+    type: 'POST',
+    url: api + 'cali/gyro',
+    headers: tokenObj(),
+    contentType: 'application/json',
+    success: successGenerator('Gyroscope calibration started'),
+    error: errorGenerator('Gyroscope calibration failed to start')
+  });
+}
+
+/**
+ * Sends a start pressure calibration request to the server
+ * @returns {undefined}
+ */
+export function calibrationPStart() {
+  $.ajax({
+    type: 'POST',
+    url: api + 'cali/pressure',
+    headers: tokenObj(),
+    contentType: 'application/json',
+    success: successGenerator('Pressure calibration started'),
+    error: errorGenerator('Pressure calibration failed to start')
+  });
+}
+
+/**
+ * Sends a continue calibration request to the server
+ * @returns {undefined}
+ */
+export function calibrationContinue() {
+  $.ajax({
+    type: 'PUT',
+    headers: tokenObj(),
+    contentType: 'application/json',
+    url: api + 'cali/accel',
+    success: successGenerator(''),
+    error: errorGenerator('')
+  });
+}
+
+/**
+ * Sends a start RC calibration request to the server
+ * @returns {undefined}
+ */
+export function calibrationRCStart() {
+  $.ajax({
+    type: 'POST',
+    url: api + 'cali/rc',
+    headers: tokenObj(),
+    contentType: 'application/json',
+    success: successGenerator('RC calibration started'),
+    error: errorGenerator('RC calibration failed to start')
+  });
+}
+
+/**
+ * Sends a stop RC calibration request to the server
+ * @returns {undefined}
+ */
+export function calibrationRCStop() {
+  $.ajax({
+    type: 'DELETE',
+    url: api + 'cali/rc',
+    headers: tokenObj(),
+    contentType: 'application/json',
+    success: successGenerator('RC calibration finished'),
+    error: errorGenerator('RC calibration failed to finish')
+  });
+}
+
+// Settings
+/**
+ * Sends geofence points to the server
+ * @param {Point[]} points
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+export function sendGeofencePoints(points: Point[], onSuccess: Function = $.noop, onFail: Function = $.noop) {
+  $.ajax({
+    type: 'POST',
+    url: api + 'geofence',
+    headers: tokenObj(),
+    data: JSON.stringify(points),
+    dataType: 'json',
+    contentType: 'application/json',
+    success: successGenerator('Geofence Points Sent', onSuccess),
+    error: errorGenerator('Geofence Points Failed to Send', onFail)
+  });
+}
+
+/**
+ * Sends a start interop request if the interop is off,
+ * Sends a stop interop request if the interop is on
+ * @param {boolean} status
+ * @param {function} [onSuccess]
+ * @param {function} [onFail]
+ * @returns {undefined}
+ */
+export function toggleInterop(status: boolean, onSuccess: Function = $.noop, onFail: Function = $.noop) {
+  const data = JSON.stringify({
+    server_url: getConfigValue(configNames.INTEROP_URL),
+    username: getConfigValue(configNames.INTEROP_USERNAME),
+    password: getConfigValue(configNames.INTEROP_PASSWORD)
+  });
+  const nucUrl = getConfigValue(configNames.NUC_URL);
+  const headers = tokenObj();
+
+  if (status) {
+    alertify.message('Attempting to stop interop');
+    $.ajax({
+      type: 'DELETE',
+      url: nucUrl + '/ground/api/v3/interop',
+      data: data,
+      headers: headers,
+      contentType: 'application/json',
+      success: successGenerator('Interop stopped', onSuccess),
+      error: errorGenerator('Interop failed to stop', onFail)
+    });
+  } else {
+    alertify.message('Attempting to start interop');
+    $.ajax({
+      type: 'POST',
+      url: nucUrl + '/ground/api/v3/interop',
+      contentType: 'application/json',
+      data: data,
+      headers: headers,
+      success: successGenerator('Interop started', onSuccess),
+      error: errorGenerator('Interop failed to start', onFail)
+    });
+  }
+}
+
+const confirmButtonColor = '#DD6B55';
+/**
+ * Toggles armed status
+ * @param {boolean} armed
+ * @returns {undefined}
+ */
+export function toggleArm(armed: boolean) {
+  if (armed) {
+    swal({
+      title: 'This action must be done when on the ground, if the vehicle is in the air, this action could result in a crash',
+      text: 'Are you sure you want to disarm?',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: confirmButtonColor,
+      confirmButtonText: 'Yes, disarm!',
+      cancelButtonText: 'No, don\'t disarm!',
+      closeOnConfirm: false,
+      closeOnCancel: false
+    }, function(isConfirm) {
+      if (isConfirm) {
+        alertify.message('Attempting to disarm');
+        $.ajax({
+          type: 'DELETE',
+          url: api + 'arm',
+          contentType: 'application/json',
+          headers: confirmObj(),
+          success: () => swal('Disarm request sent!', '', 'success'),
+          error: data => { swal('Disarm request failed', '', 'error'); console.log(data); } // eslint-disable-line no-console
+        });
+      } else {
+        swal('Cancelled', 'The plane was not disarmed', 'info');
+      }
+    });
+  } else {
+    swal({
+      title: 'Make sure nobody is near the propeller!',
+      text: 'Are you sure you want to arm?',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: confirmButtonColor,
+      confirmButtonText: 'Yes, arm!',
+      cancelButtonText: 'No, don\'t arm!',
+      closeOnConfirm: false,
+      closeOnCancel: false
+    }, function(isConfirm) {
+      if (isConfirm) {
+        alertify.message('Attempting to arm');
+        $.ajax({
+          type: 'POST',
+          url: api + 'arm',
+          contentType: 'application/json',
+          headers: confirmObj(),
+          success: () => swal('Arm Request Sent!', '', 'success'),
+          error: data => { swal('Arm Request Failed', '', 'error'); console.log(data); } // eslint-disable-line no-console
+        });
+      } else {
+        swal('Cancelled', 'The plane was not armed', 'info');
+      }
+    });
+  }
+}
+
+/**
+ * Causes reboot
+ * @returns {undefined}
+ */
+export function reboot() {
+  swal({
+    title: 'This action must be done when on the ground, if the vehicle is in the air, this action will result in a crash',
+    text: 'Are you sure you want to reboot?',
+    type: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: confirmButtonColor,
+    confirmButtonText: 'Yes, reboot!',
+    cancelButtonText: 'No, don\'t reboot!',
+    closeOnConfirm: false,
+    closeOnCancel: false
+  }, function(isConfirm) {
+    if (isConfirm) {
+      $.ajax({
+        type: 'POST',
+        headers: confirmObj(),
+        url: api + 'reboot',
+        contentType: 'application/json',
+        success: () => swal('Reboot Request Sent!', '', 'success'),
+        error: data => { swal('Reboot Request Failed', '', 'error'); console.log(data); } // eslint-disable-line no-console
+      });
+    } else {
+      swal('Cancelled', 'The plane was not rebooted', 'info');
+    }
+  });
+}
+
+/**
+* Guides user through GUI to add Location and sends to backend.
+* @returns {undefined}
+*/
+export function addLocation() {
+  swal({
+    title: 'Adding Location',
+    text: 'Location Name',
+    type: 'input',
+    showCancelButton: true,
+    closeOnConfirm: false,
+    animation: 'slide-from-top',
+    inputPlaceholder: 'Neno Airfield'
+  }, function(name) {
+    if (name === false) return false;
+    if (name === '') {
+      swal.showInputError('You need to write something!');
+      return false;
+    }
+    swal({
+      title: 'Adding Location',
+      text: 'Coordinates for ' + name + ' (leave blank to update)',
+      type: 'input',
+      showCancelButton: true,
+      closeOnConfirm: false,
+      animation: 'slide-from-top',
+      inputPlaceholder: '42.4473054,-76.612611'
+    }, function(inputValue) {
+      if (inputValue === false) return false;
+      if (inputValue === '') {
+        swal.showInputError('You need to write something!');
+        return false;
+      }
+      inputValue = inputValue.replace(/ /g, '').split(',');
+      const lat = parseFloat(inputValue[0]);
+      const lng = parseFloat(inputValue[1]);
+      swal('Success!', `Adding location ${name} at (${lat},${lng}). Please refresh the page in 10 seconds.`, 'success');
+
+      const locationdata = {
+        'name': name.replace(/ /g, '_'),
+        'lat': lat,
+        'lng': lng,
+        'zoom': 17
+      };
+      $.ajax({
+        url: 'http://localhost:8001/ground/api/v3/cachemaps',
+        type: 'POST',
+        data: JSON.stringify(locationdata),
+        contentType: 'application/json; charset=utf-8',
+        dataType: 'json'
+      });
+    });
+  });
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-actions_CalibrationActionCreator.html">actions/CalibrationActionCreator</a></li><li><a href="module-actions_FenceActionCreator.html">actions/FenceActionCreator</a></li><li><a href="module-actions_InteropActionCreator.html">actions/InteropActionCreator</a></li><li><a href="module-actions_ParametersActionCreator.html">actions/ParametersActionCreator</a></li><li><a href="module-actions_SdaActionCreator.html">actions/SdaActionCreator</a></li><li><a href="module-actions_SettingsActionCreator.html">actions/SettingsActionCreator</a></li><li><a href="module-actions_StatusActionCreator.html">actions/StatusActionCreator</a></li><li><a href="module-actions_TuningActionCreator.html">actions/TuningActionCreator</a></li><li><a href="module-actions_WaypointActionCreator.html">actions/WaypointActionCreator</a></li><li><a href="module-components_Navbar_GoNoGoDropdown.html">components/Navbar/GoNoGoDropdown</a></li><li><a href="module-components_PlaneAction_ModeButton.html">components/PlaneAction/ModeButton</a></li><li><a href="module-components_TuningGuide_TuningUtils.html">components/TuningGuide/TuningUtils</a></li><li><a href="module-constants_ActionTypes.html">constants/ActionTypes</a></li><li><a href="module-constants_ButtonTypes.html">constants/ButtonTypes</a></li><li><a href="module-constants_Frequency.html">constants/Frequency</a></li><li><a href="module-constants_Sites.html">constants/Sites</a></li><li><a href="module-stores_CalibrationStore.html">stores/CalibrationStore</a></li><li><a href="module-stores_FenceStore.html">stores/FenceStore</a></li><li><a href="module-stores_InteropStore.html">stores/InteropStore</a></li><li><a href="module-stores_ParametersStore.html">stores/ParametersStore</a></li><li><a href="module-stores_SdaStore.html">stores/SdaStore</a></li><li><a href="module-stores_SettingsStore.html">stores/SettingsStore</a></li><li><a href="module-stores_StatusStore.html">stores/StatusStore</a></li><li><a href="module-stores_Store.html">stores/Store</a></li><li><a href="module-stores_TuningStore.html">stores/TuningStore</a></li><li><a href="module-stores_WaypointStore.html">stores/WaypointStore</a></li><li><a href="module-utils_ComponentUtils.html">utils/ComponentUtils</a></li><li><a href="module-utils_ConfigData.html">utils/ConfigData</a></li><li><a href="module-utils_DownloadApi.html">utils/DownloadApi</a></li><li><a href="module-utils_LoadApi.html">utils/LoadApi</a></li><li><a href="module-utils_MapUtils.html">utils/MapUtils</a></li><li><a href="module-utils_ReceiveApi.html">utils/ReceiveApi</a></li><li><a href="module-utils_SendApi.html">utils/SendApi</a></li><li><a href="module-utils_TypeValidation.html">utils/TypeValidation</a></li></ul><h3>Classes</h3><ul><li><a href="module-stores_StatusStore.StatusStore.html">StatusStore</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Nov 30 2016 23:25:28 GMT-0500 (EST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

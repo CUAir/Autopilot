@@ -1,68 +1,23 @@
 {
   "type": "Program",
+  "start": 0,
+  "end": 1466,
+  "loc": {
+    "start": {
+      "line": 1,
+      "column": 0
+    },
+    "end": {
+      "line": 64,
+      "column": 1
+    }
+  },
+  "sourceType": "module",
   "body": [
     {
       "type": "ImportDeclaration",
-      "specifiers": [
-        {
-          "type": "ImportDefaultSpecifier",
-          "local": {
-            "type": "Identifier",
-            "name": "GCSDispatcher",
-            "range": [
-              7,
-              20
-            ],
-            "loc": {
-              "start": {
-                "line": 1,
-                "column": 7
-              },
-              "end": {
-                "line": 1,
-                "column": 20
-              }
-            }
-          },
-          "range": [
-            7,
-            20
-          ],
-          "loc": {
-            "start": {
-              "line": 1,
-              "column": 7
-            },
-            "end": {
-              "line": 1,
-              "column": 20
-            }
-          }
-        }
-      ],
-      "source": {
-        "type": "Literal",
-        "value": "../dispatcher/GCSDispatcher",
-        "raw": "'../dispatcher/GCSDispatcher'",
-        "range": [
-          26,
-          55
-        ],
-        "loc": {
-          "start": {
-            "line": 1,
-            "column": 26
-          },
-          "end": {
-            "line": 1,
-            "column": 55
-          }
-        }
-      },
-      "range": [
-        0,
-        56
-      ],
+      "start": 0,
+      "end": 56,
       "loc": {
         "start": {
           "line": 1,
@@ -72,88 +27,64 @@
           "line": 1,
           "column": 56
         }
+      },
+      "specifiers": [
+        {
+          "type": "ImportDefaultSpecifier",
+          "start": 7,
+          "end": 20,
+          "loc": {
+            "start": {
+              "line": 1,
+              "column": 7
+            },
+            "end": {
+              "line": 1,
+              "column": 20
+            }
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 7,
+            "end": 20,
+            "loc": {
+              "start": {
+                "line": 1,
+                "column": 7
+              },
+              "end": {
+                "line": 1,
+                "column": 20
+              }
+            },
+            "name": "GCSDispatcher"
+          }
+        }
+      ],
+      "importKind": "value",
+      "source": {
+        "type": "Literal",
+        "start": 26,
+        "end": 55,
+        "loc": {
+          "start": {
+            "line": 1,
+            "column": 26
+          },
+          "end": {
+            "line": 1,
+            "column": 55
+          }
+        },
+        "value": "../dispatcher/GCSDispatcher",
+        "rawValue": "../dispatcher/GCSDispatcher",
+        "raw": "'../dispatcher/GCSDispatcher'"
       }
     },
     {
       "type": "ImportDeclaration",
-      "specifiers": [
-        {
-          "type": "ImportSpecifier",
-          "local": {
-            "type": "Identifier",
-            "name": "TuningTypes",
-            "range": [
-              66,
-              77
-            ],
-            "loc": {
-              "start": {
-                "line": 2,
-                "column": 9
-              },
-              "end": {
-                "line": 2,
-                "column": 20
-              }
-            }
-          },
-          "imported": {
-            "type": "Identifier",
-            "name": "TuningTypes",
-            "range": [
-              66,
-              77
-            ],
-            "loc": {
-              "start": {
-                "line": 2,
-                "column": 9
-              },
-              "end": {
-                "line": 2,
-                "column": 20
-              }
-            }
-          },
-          "range": [
-            66,
-            77
-          ],
-          "loc": {
-            "start": {
-              "line": 2,
-              "column": 9
-            },
-            "end": {
-              "line": 2,
-              "column": 20
-            }
-          }
-        }
-      ],
-      "source": {
-        "type": "Literal",
-        "value": "../constants/ActionTypes",
-        "raw": "'../constants/ActionTypes'",
-        "range": [
-          85,
-          111
-        ],
-        "loc": {
-          "start": {
-            "line": 2,
-            "column": 28
-          },
-          "end": {
-            "line": 2,
-            "column": 54
-          }
-        }
-      },
-      "range": [
-        57,
-        112
-      ],
+      "start": 57,
+      "end": 112,
       "loc": {
         "start": {
           "line": 2,
@@ -164,2336 +95,2211 @@
           "column": 55
         }
       },
+      "specifiers": [
+        {
+          "type": "ImportSpecifier",
+          "start": 66,
+          "end": 77,
+          "loc": {
+            "start": {
+              "line": 2,
+              "column": 9
+            },
+            "end": {
+              "line": 2,
+              "column": 20
+            }
+          },
+          "imported": {
+            "type": "Identifier",
+            "start": 66,
+            "end": 77,
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 9
+              },
+              "end": {
+                "line": 2,
+                "column": 20
+              }
+            },
+            "name": "TuningTypes"
+          },
+          "local": {
+            "type": "Identifier",
+            "start": 66,
+            "end": 77,
+            "loc": {
+              "start": {
+                "line": 2,
+                "column": 9
+              },
+              "end": {
+                "line": 2,
+                "column": 20
+              }
+            },
+            "name": "TuningTypes"
+          }
+        }
+      ],
+      "importKind": "value",
+      "source": {
+        "type": "Literal",
+        "start": 85,
+        "end": 111,
+        "loc": {
+          "start": {
+            "line": 2,
+            "column": 28
+          },
+          "end": {
+            "line": 2,
+            "column": 54
+          }
+        },
+        "value": "../constants/ActionTypes",
+        "rawValue": "../constants/ActionTypes",
+        "raw": "'../constants/ActionTypes'"
+      },
       "trailingComments": [
         {
           "type": "Block",
-          "value": "*\n * Increases the tuning flight number by 1\n * @returns {undefined}\n ",
-          "range": [
-            114,
-            188
-          ],
+          "value": "*\n * @module actions/TuningActionCreator\n ",
+          "start": 114,
+          "end": 160,
           "loc": {
             "start": {
               "line": 4,
               "column": 0
             },
             "end": {
-              "line": 7,
+              "line": 6,
               "column": 3
             }
-          }
+          },
+          "range": [
+            114,
+            160
+          ]
+        },
+        {
+          "type": "Block",
+          "value": "*\n * Increases the tuning flight number by 1\n * @returns {undefined}\n ",
+          "start": 162,
+          "end": 236,
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 0
+            },
+            "end": {
+              "line": 11,
+              "column": 3
+            }
+          },
+          "range": [
+            162,
+            236
+          ]
         }
       ]
     },
     {
       "type": "ExportNamedDeclaration",
+      "start": 237,
+      "end": 349,
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 0
+        },
+        "end": {
+          "line": 16,
+          "column": 1
+        }
+      },
       "declaration": {
         "type": "FunctionDeclaration",
+        "start": 244,
+        "end": 349,
+        "loc": {
+          "start": {
+            "line": 12,
+            "column": 7
+          },
+          "end": {
+            "line": 16,
+            "column": 1
+          }
+        },
         "id": {
           "type": "Identifier",
-          "name": "nextTuningFlight",
-          "range": [
-            205,
-            221
-          ],
+          "start": 253,
+          "end": 269,
           "loc": {
             "start": {
-              "line": 8,
+              "line": 12,
               "column": 16
             },
             "end": {
-              "line": 8,
+              "line": 12,
               "column": 32
             }
-          }
+          },
+          "name": "nextTuningFlight",
+          "leadingComments": null
         },
+        "generator": false,
+        "expression": false,
+        "async": false,
         "params": [],
         "body": {
           "type": "BlockStatement",
+          "start": 272,
+          "end": 349,
+          "loc": {
+            "start": {
+              "line": 12,
+              "column": 35
+            },
+            "end": {
+              "line": 16,
+              "column": 1
+            }
+          },
           "body": [
             {
               "type": "ExpressionStatement",
+              "start": 276,
+              "end": 347,
+              "loc": {
+                "start": {
+                  "line": 13,
+                  "column": 2
+                },
+                "end": {
+                  "line": 15,
+                  "column": 5
+                }
+              },
               "expression": {
                 "type": "CallExpression",
+                "start": 276,
+                "end": 346,
+                "loc": {
+                  "start": {
+                    "line": 13,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 15,
+                    "column": 4
+                  }
+                },
                 "callee": {
                   "type": "MemberExpression",
-                  "computed": false,
-                  "object": {
-                    "type": "Identifier",
-                    "name": "GCSDispatcher",
-                    "range": [
-                      228,
-                      241
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 9,
-                        "column": 2
-                      },
-                      "end": {
-                        "line": 9,
-                        "column": 15
-                      }
-                    }
-                  },
-                  "property": {
-                    "type": "Identifier",
-                    "name": "dispatch",
-                    "range": [
-                      242,
-                      250
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 9,
-                        "column": 16
-                      },
-                      "end": {
-                        "line": 9,
-                        "column": 24
-                      }
-                    }
-                  },
-                  "range": [
-                    228,
-                    250
-                  ],
+                  "start": 276,
+                  "end": 298,
                   "loc": {
                     "start": {
-                      "line": 9,
+                      "line": 13,
                       "column": 2
                     },
                     "end": {
-                      "line": 9,
+                      "line": 13,
                       "column": 24
                     }
-                  }
+                  },
+                  "object": {
+                    "type": "Identifier",
+                    "start": 276,
+                    "end": 289,
+                    "loc": {
+                      "start": {
+                        "line": 13,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 15
+                      }
+                    },
+                    "name": "GCSDispatcher"
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "start": 290,
+                    "end": 298,
+                    "loc": {
+                      "start": {
+                        "line": 13,
+                        "column": 16
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 24
+                      }
+                    },
+                    "name": "dispatch"
+                  },
+                  "computed": false
                 },
                 "arguments": [
                   {
                     "type": "ObjectExpression",
-                    "properties": [
-                      {
-                        "type": "Property",
-                        "key": {
-                          "type": "Identifier",
-                          "name": "type",
-                          "range": [
-                            257,
-                            261
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 10,
-                              "column": 4
-                            },
-                            "end": {
-                              "line": 10,
-                              "column": 8
-                            }
-                          }
-                        },
-                        "value": {
-                          "type": "MemberExpression",
-                          "computed": false,
-                          "object": {
-                            "type": "Identifier",
-                            "name": "TuningTypes",
-                            "range": [
-                              263,
-                              274
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 10,
-                                "column": 10
-                              },
-                              "end": {
-                                "line": 10,
-                                "column": 21
-                              }
-                            }
-                          },
-                          "property": {
-                            "type": "Identifier",
-                            "name": "NEXT_TUNING_FLIGHT",
-                            "range": [
-                              275,
-                              293
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 10,
-                                "column": 22
-                              },
-                              "end": {
-                                "line": 10,
-                                "column": 40
-                              }
-                            }
-                          },
-                          "range": [
-                            263,
-                            293
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 10,
-                              "column": 10
-                            },
-                            "end": {
-                              "line": 10,
-                              "column": 40
-                            }
-                          }
-                        },
-                        "kind": "init",
-                        "method": false,
-                        "shorthand": false,
-                        "computed": false,
-                        "range": [
-                          257,
-                          293
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 10,
-                            "column": 4
-                          },
-                          "end": {
-                            "line": 10,
-                            "column": 40
-                          }
-                        }
-                      }
-                    ],
-                    "range": [
-                      251,
-                      297
-                    ],
+                    "start": 299,
+                    "end": 345,
                     "loc": {
                       "start": {
-                        "line": 9,
+                        "line": 13,
                         "column": 25
                       },
                       "end": {
-                        "line": 11,
+                        "line": 15,
                         "column": 3
                       }
-                    }
+                    },
+                    "properties": [
+                      {
+                        "type": "Property",
+                        "start": 305,
+                        "end": 341,
+                        "loc": {
+                          "start": {
+                            "line": 14,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 14,
+                            "column": 40
+                          }
+                        },
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "key": {
+                          "type": "Identifier",
+                          "start": 305,
+                          "end": 309,
+                          "loc": {
+                            "start": {
+                              "line": 14,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 14,
+                              "column": 8
+                            }
+                          },
+                          "name": "type"
+                        },
+                        "value": {
+                          "type": "MemberExpression",
+                          "start": 311,
+                          "end": 341,
+                          "loc": {
+                            "start": {
+                              "line": 14,
+                              "column": 10
+                            },
+                            "end": {
+                              "line": 14,
+                              "column": 40
+                            }
+                          },
+                          "object": {
+                            "type": "Identifier",
+                            "start": 311,
+                            "end": 322,
+                            "loc": {
+                              "start": {
+                                "line": 14,
+                                "column": 10
+                              },
+                              "end": {
+                                "line": 14,
+                                "column": 21
+                              }
+                            },
+                            "name": "TuningTypes"
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "start": 323,
+                            "end": 341,
+                            "loc": {
+                              "start": {
+                                "line": 14,
+                                "column": 22
+                              },
+                              "end": {
+                                "line": 14,
+                                "column": 40
+                              }
+                            },
+                            "name": "NEXT_TUNING_FLIGHT"
+                          },
+                          "computed": false
+                        },
+                        "kind": "init"
+                      }
+                    ]
                   }
-                ],
-                "range": [
-                  228,
-                  298
-                ],
-                "loc": {
-                  "start": {
-                    "line": 9,
-                    "column": 2
-                  },
-                  "end": {
-                    "line": 11,
-                    "column": 4
-                  }
-                }
-              },
-              "range": [
-                228,
-                299
-              ],
-              "loc": {
-                "start": {
-                  "line": 9,
-                  "column": 2
-                },
-                "end": {
-                  "line": 11,
-                  "column": 5
-                }
+                ]
               }
             }
           ],
-          "range": [
-            224,
-            301
-          ],
-          "loc": {
-            "start": {
-              "line": 8,
-              "column": 35
-            },
-            "end": {
-              "line": 12,
-              "column": 1
-            }
-          }
-        },
-        "generator": false,
-        "expression": false,
-        "range": [
-          196,
-          301
-        ],
-        "loc": {
-          "start": {
-            "line": 8,
-            "column": 7
-          },
-          "end": {
-            "line": 12,
-            "column": 1
-          }
+          "trailingComments": null
         },
         "leadingComments": [
           {
             "type": "Block",
-            "value": "*\n * Increases the tuning flight number by 1\n * @returns {undefined}\n ",
-            "range": [
-              114,
-              188
-            ],
+            "value": "*\n * @module actions/TuningActionCreator\n ",
+            "start": 114,
+            "end": 160,
             "loc": {
               "start": {
                 "line": 4,
                 "column": 0
               },
               "end": {
-                "line": 7,
+                "line": 6,
                 "column": 3
               }
-            }
+            },
+            "range": [
+              114,
+              160
+            ]
+          },
+          {
+            "type": "Block",
+            "value": "*\n * Increases the tuning flight number by 1\n * @returns {undefined}\n ",
+            "start": 162,
+            "end": 236,
+            "loc": {
+              "start": {
+                "line": 8,
+                "column": 0
+              },
+              "end": {
+                "line": 11,
+                "column": 3
+              }
+            },
+            "range": [
+              162,
+              236
+            ]
           }
         ],
         "trailingComments": [
           {
             "type": "Block",
             "value": "*\n * Decreases the tuning flight number by 1\n * @returns {undefined}\n ",
-            "range": [
-              303,
-              377
-            ],
+            "start": 351,
+            "end": 425,
             "loc": {
               "start": {
-                "line": 14,
+                "line": 18,
                 "column": 0
               },
               "end": {
-                "line": 17,
+                "line": 21,
                 "column": 3
               }
-            }
+            },
+            "range": [
+              351,
+              425
+            ]
           }
         ]
       },
       "specifiers": [],
       "source": null,
-      "range": [
-        189,
-        301
-      ],
-      "loc": {
-        "start": {
-          "line": 8,
-          "column": 0
-        },
-        "end": {
-          "line": 12,
-          "column": 1
-        }
-      },
       "leadingComments": [
         {
           "type": "Block",
-          "value": "*\n * Increases the tuning flight number by 1\n * @returns {undefined}\n ",
-          "range": [
-            114,
-            188
-          ],
+          "value": "*\n * @module actions/TuningActionCreator\n ",
+          "start": 114,
+          "end": 160,
           "loc": {
             "start": {
               "line": 4,
               "column": 0
             },
             "end": {
-              "line": 7,
+              "line": 6,
               "column": 3
             }
-          }
+          },
+          "range": [
+            114,
+            160
+          ]
+        },
+        {
+          "type": "Block",
+          "value": "*\n * Increases the tuning flight number by 1\n * @returns {undefined}\n ",
+          "start": 162,
+          "end": 236,
+          "loc": {
+            "start": {
+              "line": 8,
+              "column": 0
+            },
+            "end": {
+              "line": 11,
+              "column": 3
+            }
+          },
+          "range": [
+            162,
+            236
+          ]
         }
       ],
       "trailingComments": [
         {
           "type": "Block",
           "value": "*\n * Decreases the tuning flight number by 1\n * @returns {undefined}\n ",
-          "range": [
-            303,
-            377
-          ],
+          "start": 351,
+          "end": 425,
           "loc": {
             "start": {
-              "line": 14,
+              "line": 18,
               "column": 0
             },
             "end": {
-              "line": 17,
+              "line": 21,
               "column": 3
             }
-          }
+          },
+          "range": [
+            351,
+            425
+          ]
         }
       ]
     },
     {
       "type": "ExportNamedDeclaration",
+      "start": 426,
+      "end": 538,
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 0
+        },
+        "end": {
+          "line": 26,
+          "column": 1
+        }
+      },
       "declaration": {
         "type": "FunctionDeclaration",
+        "start": 433,
+        "end": 538,
+        "loc": {
+          "start": {
+            "line": 22,
+            "column": 7
+          },
+          "end": {
+            "line": 26,
+            "column": 1
+          }
+        },
         "id": {
           "type": "Identifier",
-          "name": "prevTuningFlight",
-          "range": [
-            394,
-            410
-          ],
+          "start": 442,
+          "end": 458,
           "loc": {
             "start": {
-              "line": 18,
+              "line": 22,
               "column": 16
             },
             "end": {
-              "line": 18,
+              "line": 22,
               "column": 32
             }
-          }
+          },
+          "name": "prevTuningFlight",
+          "leadingComments": null
         },
+        "generator": false,
+        "expression": false,
+        "async": false,
         "params": [],
         "body": {
           "type": "BlockStatement",
+          "start": 461,
+          "end": 538,
+          "loc": {
+            "start": {
+              "line": 22,
+              "column": 35
+            },
+            "end": {
+              "line": 26,
+              "column": 1
+            }
+          },
           "body": [
             {
               "type": "ExpressionStatement",
+              "start": 465,
+              "end": 536,
+              "loc": {
+                "start": {
+                  "line": 23,
+                  "column": 2
+                },
+                "end": {
+                  "line": 25,
+                  "column": 5
+                }
+              },
               "expression": {
                 "type": "CallExpression",
+                "start": 465,
+                "end": 535,
+                "loc": {
+                  "start": {
+                    "line": 23,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 25,
+                    "column": 4
+                  }
+                },
                 "callee": {
                   "type": "MemberExpression",
-                  "computed": false,
-                  "object": {
-                    "type": "Identifier",
-                    "name": "GCSDispatcher",
-                    "range": [
-                      417,
-                      430
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 19,
-                        "column": 2
-                      },
-                      "end": {
-                        "line": 19,
-                        "column": 15
-                      }
-                    }
-                  },
-                  "property": {
-                    "type": "Identifier",
-                    "name": "dispatch",
-                    "range": [
-                      431,
-                      439
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 19,
-                        "column": 16
-                      },
-                      "end": {
-                        "line": 19,
-                        "column": 24
-                      }
-                    }
-                  },
-                  "range": [
-                    417,
-                    439
-                  ],
+                  "start": 465,
+                  "end": 487,
                   "loc": {
                     "start": {
-                      "line": 19,
+                      "line": 23,
                       "column": 2
                     },
                     "end": {
-                      "line": 19,
+                      "line": 23,
                       "column": 24
                     }
-                  }
+                  },
+                  "object": {
+                    "type": "Identifier",
+                    "start": 465,
+                    "end": 478,
+                    "loc": {
+                      "start": {
+                        "line": 23,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 23,
+                        "column": 15
+                      }
+                    },
+                    "name": "GCSDispatcher"
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "start": 479,
+                    "end": 487,
+                    "loc": {
+                      "start": {
+                        "line": 23,
+                        "column": 16
+                      },
+                      "end": {
+                        "line": 23,
+                        "column": 24
+                      }
+                    },
+                    "name": "dispatch"
+                  },
+                  "computed": false
                 },
                 "arguments": [
                   {
                     "type": "ObjectExpression",
-                    "properties": [
-                      {
-                        "type": "Property",
-                        "key": {
-                          "type": "Identifier",
-                          "name": "type",
-                          "range": [
-                            446,
-                            450
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 20,
-                              "column": 4
-                            },
-                            "end": {
-                              "line": 20,
-                              "column": 8
-                            }
-                          }
-                        },
-                        "value": {
-                          "type": "MemberExpression",
-                          "computed": false,
-                          "object": {
-                            "type": "Identifier",
-                            "name": "TuningTypes",
-                            "range": [
-                              452,
-                              463
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 20,
-                                "column": 10
-                              },
-                              "end": {
-                                "line": 20,
-                                "column": 21
-                              }
-                            }
-                          },
-                          "property": {
-                            "type": "Identifier",
-                            "name": "PREV_TUNING_FLIGHT",
-                            "range": [
-                              464,
-                              482
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 20,
-                                "column": 22
-                              },
-                              "end": {
-                                "line": 20,
-                                "column": 40
-                              }
-                            }
-                          },
-                          "range": [
-                            452,
-                            482
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 20,
-                              "column": 10
-                            },
-                            "end": {
-                              "line": 20,
-                              "column": 40
-                            }
-                          }
-                        },
-                        "kind": "init",
-                        "method": false,
-                        "shorthand": false,
-                        "computed": false,
-                        "range": [
-                          446,
-                          482
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 20,
-                            "column": 4
-                          },
-                          "end": {
-                            "line": 20,
-                            "column": 40
-                          }
-                        }
-                      }
-                    ],
-                    "range": [
-                      440,
-                      486
-                    ],
+                    "start": 488,
+                    "end": 534,
                     "loc": {
                       "start": {
-                        "line": 19,
+                        "line": 23,
                         "column": 25
                       },
                       "end": {
-                        "line": 21,
+                        "line": 25,
                         "column": 3
                       }
-                    }
+                    },
+                    "properties": [
+                      {
+                        "type": "Property",
+                        "start": 494,
+                        "end": 530,
+                        "loc": {
+                          "start": {
+                            "line": 24,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 24,
+                            "column": 40
+                          }
+                        },
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "key": {
+                          "type": "Identifier",
+                          "start": 494,
+                          "end": 498,
+                          "loc": {
+                            "start": {
+                              "line": 24,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 24,
+                              "column": 8
+                            }
+                          },
+                          "name": "type"
+                        },
+                        "value": {
+                          "type": "MemberExpression",
+                          "start": 500,
+                          "end": 530,
+                          "loc": {
+                            "start": {
+                              "line": 24,
+                              "column": 10
+                            },
+                            "end": {
+                              "line": 24,
+                              "column": 40
+                            }
+                          },
+                          "object": {
+                            "type": "Identifier",
+                            "start": 500,
+                            "end": 511,
+                            "loc": {
+                              "start": {
+                                "line": 24,
+                                "column": 10
+                              },
+                              "end": {
+                                "line": 24,
+                                "column": 21
+                              }
+                            },
+                            "name": "TuningTypes"
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "start": 512,
+                            "end": 530,
+                            "loc": {
+                              "start": {
+                                "line": 24,
+                                "column": 22
+                              },
+                              "end": {
+                                "line": 24,
+                                "column": 40
+                              }
+                            },
+                            "name": "PREV_TUNING_FLIGHT"
+                          },
+                          "computed": false
+                        },
+                        "kind": "init"
+                      }
+                    ]
                   }
-                ],
-                "range": [
-                  417,
-                  487
-                ],
-                "loc": {
-                  "start": {
-                    "line": 19,
-                    "column": 2
-                  },
-                  "end": {
-                    "line": 21,
-                    "column": 4
-                  }
-                }
-              },
-              "range": [
-                417,
-                488
-              ],
-              "loc": {
-                "start": {
-                  "line": 19,
-                  "column": 2
-                },
-                "end": {
-                  "line": 21,
-                  "column": 5
-                }
+                ]
               }
             }
           ],
-          "range": [
-            413,
-            490
-          ],
-          "loc": {
-            "start": {
-              "line": 18,
-              "column": 35
-            },
-            "end": {
-              "line": 22,
-              "column": 1
-            }
-          }
-        },
-        "generator": false,
-        "expression": false,
-        "range": [
-          385,
-          490
-        ],
-        "loc": {
-          "start": {
-            "line": 18,
-            "column": 7
-          },
-          "end": {
-            "line": 22,
-            "column": 1
-          }
+          "trailingComments": null
         },
         "leadingComments": [
           {
             "type": "Block",
             "value": "*\n * Decreases the tuning flight number by 1\n * @returns {undefined}\n ",
-            "range": [
-              303,
-              377
-            ],
+            "start": 351,
+            "end": 425,
             "loc": {
               "start": {
-                "line": 14,
+                "line": 18,
                 "column": 0
               },
               "end": {
-                "line": 17,
+                "line": 21,
                 "column": 3
               }
-            }
+            },
+            "range": [
+              351,
+              425
+            ]
           }
         ],
         "trailingComments": [
           {
             "type": "Block",
             "value": "*\n * Updates the value for the given checklist element on the given flight number\n * @param {number} flightNumber\n * @param {number} elementNumber\n * @param {number} value\n * @returns {undefined}\n ",
-            "range": [
-              492,
-              693
-            ],
+            "start": 540,
+            "end": 741,
             "loc": {
               "start": {
-                "line": 24,
+                "line": 28,
                 "column": 0
               },
               "end": {
-                "line": 30,
+                "line": 34,
                 "column": 3
               }
-            }
+            },
+            "range": [
+              540,
+              741
+            ]
           }
         ]
       },
       "specifiers": [],
       "source": null,
-      "range": [
-        378,
-        490
-      ],
-      "loc": {
-        "start": {
-          "line": 18,
-          "column": 0
-        },
-        "end": {
-          "line": 22,
-          "column": 1
-        }
-      },
       "leadingComments": [
         {
           "type": "Block",
           "value": "*\n * Decreases the tuning flight number by 1\n * @returns {undefined}\n ",
-          "range": [
-            303,
-            377
-          ],
+          "start": 351,
+          "end": 425,
           "loc": {
             "start": {
-              "line": 14,
+              "line": 18,
               "column": 0
             },
             "end": {
-              "line": 17,
+              "line": 21,
               "column": 3
             }
-          }
+          },
+          "range": [
+            351,
+            425
+          ]
         }
       ],
       "trailingComments": [
         {
           "type": "Block",
           "value": "*\n * Updates the value for the given checklist element on the given flight number\n * @param {number} flightNumber\n * @param {number} elementNumber\n * @param {number} value\n * @returns {undefined}\n ",
-          "range": [
-            492,
-            693
-          ],
+          "start": 540,
+          "end": 741,
           "loc": {
             "start": {
-              "line": 24,
+              "line": 28,
               "column": 0
             },
             "end": {
-              "line": 30,
+              "line": 34,
               "column": 3
             }
-          }
+          },
+          "range": [
+            540,
+            741
+          ]
         }
       ]
     },
     {
       "type": "ExportNamedDeclaration",
+      "start": 742,
+      "end": 924,
+      "loc": {
+        "start": {
+          "line": 35,
+          "column": 0
+        },
+        "end": {
+          "line": 40,
+          "column": 1
+        }
+      },
       "declaration": {
         "type": "FunctionDeclaration",
+        "start": 749,
+        "end": 924,
+        "loc": {
+          "start": {
+            "line": 35,
+            "column": 7
+          },
+          "end": {
+            "line": 40,
+            "column": 1
+          }
+        },
         "id": {
           "type": "Identifier",
-          "name": "updateValue",
-          "range": [
-            710,
-            721
-          ],
+          "start": 758,
+          "end": 769,
           "loc": {
             "start": {
-              "line": 31,
+              "line": 35,
               "column": 16
             },
             "end": {
-              "line": 31,
+              "line": 35,
               "column": 27
             }
-          }
+          },
+          "name": "updateValue",
+          "leadingComments": null
         },
+        "generator": false,
+        "expression": false,
+        "async": false,
         "params": [
           {
             "type": "Identifier",
-            "name": "flightNumber",
-            "range": [
-              722,
-              734
-            ],
+            "start": 770,
+            "end": 782,
             "loc": {
               "start": {
-                "line": 31,
+                "line": 35,
                 "column": 28
               },
               "end": {
-                "line": 31,
+                "line": 35,
                 "column": 40
               }
-            }
+            },
+            "name": "flightNumber"
           },
           {
             "type": "Identifier",
-            "name": "elementNumber",
-            "range": [
-              736,
-              749
-            ],
+            "start": 784,
+            "end": 797,
             "loc": {
               "start": {
-                "line": 31,
+                "line": 35,
                 "column": 42
               },
               "end": {
-                "line": 31,
+                "line": 35,
                 "column": 55
               }
-            }
+            },
+            "name": "elementNumber"
           },
           {
             "type": "Identifier",
-            "name": "value",
-            "range": [
-              751,
-              756
-            ],
+            "start": 799,
+            "end": 804,
             "loc": {
               "start": {
-                "line": 31,
+                "line": 35,
                 "column": 57
               },
               "end": {
-                "line": 31,
+                "line": 35,
                 "column": 62
               }
-            }
+            },
+            "name": "value"
           }
         ],
         "body": {
           "type": "BlockStatement",
+          "start": 806,
+          "end": 924,
+          "loc": {
+            "start": {
+              "line": 35,
+              "column": 64
+            },
+            "end": {
+              "line": 40,
+              "column": 1
+            }
+          },
           "body": [
             {
               "type": "ExpressionStatement",
+              "start": 810,
+              "end": 922,
+              "loc": {
+                "start": {
+                  "line": 36,
+                  "column": 2
+                },
+                "end": {
+                  "line": 39,
+                  "column": 5
+                }
+              },
               "expression": {
                 "type": "CallExpression",
+                "start": 810,
+                "end": 921,
+                "loc": {
+                  "start": {
+                    "line": 36,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 39,
+                    "column": 4
+                  }
+                },
                 "callee": {
                   "type": "MemberExpression",
-                  "computed": false,
-                  "object": {
-                    "type": "Identifier",
-                    "name": "GCSDispatcher",
-                    "range": [
-                      762,
-                      775
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 32,
-                        "column": 2
-                      },
-                      "end": {
-                        "line": 32,
-                        "column": 15
-                      }
-                    }
-                  },
-                  "property": {
-                    "type": "Identifier",
-                    "name": "dispatch",
-                    "range": [
-                      776,
-                      784
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 32,
-                        "column": 16
-                      },
-                      "end": {
-                        "line": 32,
-                        "column": 24
-                      }
-                    }
-                  },
-                  "range": [
-                    762,
-                    784
-                  ],
+                  "start": 810,
+                  "end": 832,
                   "loc": {
                     "start": {
-                      "line": 32,
+                      "line": 36,
                       "column": 2
                     },
                     "end": {
-                      "line": 32,
+                      "line": 36,
                       "column": 24
                     }
-                  }
+                  },
+                  "object": {
+                    "type": "Identifier",
+                    "start": 810,
+                    "end": 823,
+                    "loc": {
+                      "start": {
+                        "line": 36,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 36,
+                        "column": 15
+                      }
+                    },
+                    "name": "GCSDispatcher"
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "start": 824,
+                    "end": 832,
+                    "loc": {
+                      "start": {
+                        "line": 36,
+                        "column": 16
+                      },
+                      "end": {
+                        "line": 36,
+                        "column": 24
+                      }
+                    },
+                    "name": "dispatch"
+                  },
+                  "computed": false
                 },
                 "arguments": [
                   {
                     "type": "ObjectExpression",
-                    "properties": [
-                      {
-                        "type": "Property",
-                        "key": {
-                          "type": "Identifier",
-                          "name": "type",
-                          "range": [
-                            791,
-                            795
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 33,
-                              "column": 4
-                            },
-                            "end": {
-                              "line": 33,
-                              "column": 8
-                            }
-                          }
-                        },
-                        "value": {
-                          "type": "MemberExpression",
-                          "computed": false,
-                          "object": {
-                            "type": "Identifier",
-                            "name": "TuningTypes",
-                            "range": [
-                              797,
-                              808
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 33,
-                                "column": 10
-                              },
-                              "end": {
-                                "line": 33,
-                                "column": 21
-                              }
-                            }
-                          },
-                          "property": {
-                            "type": "Identifier",
-                            "name": "UPDATE_TUNING_VALUE",
-                            "range": [
-                              809,
-                              828
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 33,
-                                "column": 22
-                              },
-                              "end": {
-                                "line": 33,
-                                "column": 41
-                              }
-                            }
-                          },
-                          "range": [
-                            797,
-                            828
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 33,
-                              "column": 10
-                            },
-                            "end": {
-                              "line": 33,
-                              "column": 41
-                            }
-                          }
-                        },
-                        "kind": "init",
-                        "method": false,
-                        "shorthand": false,
-                        "computed": false,
-                        "range": [
-                          791,
-                          828
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 33,
-                            "column": 4
-                          },
-                          "end": {
-                            "line": 33,
-                            "column": 41
-                          }
-                        }
-                      },
-                      {
-                        "type": "Property",
-                        "key": {
-                          "type": "Identifier",
-                          "name": "flightNumber",
-                          "range": [
-                            834,
-                            846
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 34,
-                              "column": 4
-                            },
-                            "end": {
-                              "line": 34,
-                              "column": 16
-                            }
-                          }
-                        },
-                        "value": {
-                          "type": "Identifier",
-                          "name": "flightNumber",
-                          "range": [
-                            834,
-                            846
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 34,
-                              "column": 4
-                            },
-                            "end": {
-                              "line": 34,
-                              "column": 16
-                            }
-                          }
-                        },
-                        "kind": "init",
-                        "method": false,
-                        "shorthand": true,
-                        "computed": false,
-                        "range": [
-                          834,
-                          846
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 34,
-                            "column": 4
-                          },
-                          "end": {
-                            "line": 34,
-                            "column": 16
-                          }
-                        }
-                      },
-                      {
-                        "type": "Property",
-                        "key": {
-                          "type": "Identifier",
-                          "name": "elementNumber",
-                          "range": [
-                            848,
-                            861
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 34,
-                              "column": 18
-                            },
-                            "end": {
-                              "line": 34,
-                              "column": 31
-                            }
-                          }
-                        },
-                        "value": {
-                          "type": "Identifier",
-                          "name": "elementNumber",
-                          "range": [
-                            848,
-                            861
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 34,
-                              "column": 18
-                            },
-                            "end": {
-                              "line": 34,
-                              "column": 31
-                            }
-                          }
-                        },
-                        "kind": "init",
-                        "method": false,
-                        "shorthand": true,
-                        "computed": false,
-                        "range": [
-                          848,
-                          861
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 34,
-                            "column": 18
-                          },
-                          "end": {
-                            "line": 34,
-                            "column": 31
-                          }
-                        }
-                      },
-                      {
-                        "type": "Property",
-                        "key": {
-                          "type": "Identifier",
-                          "name": "value",
-                          "range": [
-                            863,
-                            868
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 34,
-                              "column": 33
-                            },
-                            "end": {
-                              "line": 34,
-                              "column": 38
-                            }
-                          }
-                        },
-                        "value": {
-                          "type": "Identifier",
-                          "name": "value",
-                          "range": [
-                            863,
-                            868
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 34,
-                              "column": 33
-                            },
-                            "end": {
-                              "line": 34,
-                              "column": 38
-                            }
-                          }
-                        },
-                        "kind": "init",
-                        "method": false,
-                        "shorthand": true,
-                        "computed": false,
-                        "range": [
-                          863,
-                          868
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 34,
-                            "column": 33
-                          },
-                          "end": {
-                            "line": 34,
-                            "column": 38
-                          }
-                        }
-                      }
-                    ],
-                    "range": [
-                      785,
-                      872
-                    ],
+                    "start": 833,
+                    "end": 920,
                     "loc": {
                       "start": {
-                        "line": 32,
+                        "line": 36,
                         "column": 25
                       },
                       "end": {
-                        "line": 35,
+                        "line": 39,
                         "column": 3
                       }
-                    }
+                    },
+                    "properties": [
+                      {
+                        "type": "Property",
+                        "start": 839,
+                        "end": 876,
+                        "loc": {
+                          "start": {
+                            "line": 37,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 37,
+                            "column": 41
+                          }
+                        },
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "key": {
+                          "type": "Identifier",
+                          "start": 839,
+                          "end": 843,
+                          "loc": {
+                            "start": {
+                              "line": 37,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 37,
+                              "column": 8
+                            }
+                          },
+                          "name": "type"
+                        },
+                        "value": {
+                          "type": "MemberExpression",
+                          "start": 845,
+                          "end": 876,
+                          "loc": {
+                            "start": {
+                              "line": 37,
+                              "column": 10
+                            },
+                            "end": {
+                              "line": 37,
+                              "column": 41
+                            }
+                          },
+                          "object": {
+                            "type": "Identifier",
+                            "start": 845,
+                            "end": 856,
+                            "loc": {
+                              "start": {
+                                "line": 37,
+                                "column": 10
+                              },
+                              "end": {
+                                "line": 37,
+                                "column": 21
+                              }
+                            },
+                            "name": "TuningTypes"
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "start": 857,
+                            "end": 876,
+                            "loc": {
+                              "start": {
+                                "line": 37,
+                                "column": 22
+                              },
+                              "end": {
+                                "line": 37,
+                                "column": 41
+                              }
+                            },
+                            "name": "UPDATE_TUNING_VALUE"
+                          },
+                          "computed": false
+                        },
+                        "kind": "init"
+                      },
+                      {
+                        "type": "Property",
+                        "start": 882,
+                        "end": 894,
+                        "loc": {
+                          "start": {
+                            "line": 38,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 38,
+                            "column": 16
+                          }
+                        },
+                        "method": false,
+                        "shorthand": true,
+                        "computed": false,
+                        "key": {
+                          "type": "Identifier",
+                          "start": 882,
+                          "end": 894,
+                          "loc": {
+                            "start": {
+                              "line": 38,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 38,
+                              "column": 16
+                            }
+                          },
+                          "name": "flightNumber"
+                        },
+                        "kind": "init",
+                        "value": {
+                          "type": "Identifier",
+                          "start": 882,
+                          "end": 894,
+                          "loc": {
+                            "start": {
+                              "line": 38,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 38,
+                              "column": 16
+                            }
+                          },
+                          "name": "flightNumber"
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "start": 896,
+                        "end": 909,
+                        "loc": {
+                          "start": {
+                            "line": 38,
+                            "column": 18
+                          },
+                          "end": {
+                            "line": 38,
+                            "column": 31
+                          }
+                        },
+                        "method": false,
+                        "shorthand": true,
+                        "computed": false,
+                        "key": {
+                          "type": "Identifier",
+                          "start": 896,
+                          "end": 909,
+                          "loc": {
+                            "start": {
+                              "line": 38,
+                              "column": 18
+                            },
+                            "end": {
+                              "line": 38,
+                              "column": 31
+                            }
+                          },
+                          "name": "elementNumber"
+                        },
+                        "kind": "init",
+                        "value": {
+                          "type": "Identifier",
+                          "start": 896,
+                          "end": 909,
+                          "loc": {
+                            "start": {
+                              "line": 38,
+                              "column": 18
+                            },
+                            "end": {
+                              "line": 38,
+                              "column": 31
+                            }
+                          },
+                          "name": "elementNumber"
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "start": 911,
+                        "end": 916,
+                        "loc": {
+                          "start": {
+                            "line": 38,
+                            "column": 33
+                          },
+                          "end": {
+                            "line": 38,
+                            "column": 38
+                          }
+                        },
+                        "method": false,
+                        "shorthand": true,
+                        "computed": false,
+                        "key": {
+                          "type": "Identifier",
+                          "start": 911,
+                          "end": 916,
+                          "loc": {
+                            "start": {
+                              "line": 38,
+                              "column": 33
+                            },
+                            "end": {
+                              "line": 38,
+                              "column": 38
+                            }
+                          },
+                          "name": "value"
+                        },
+                        "kind": "init",
+                        "value": {
+                          "type": "Identifier",
+                          "start": 911,
+                          "end": 916,
+                          "loc": {
+                            "start": {
+                              "line": 38,
+                              "column": 33
+                            },
+                            "end": {
+                              "line": 38,
+                              "column": 38
+                            }
+                          },
+                          "name": "value"
+                        }
+                      }
+                    ]
                   }
-                ],
-                "range": [
-                  762,
-                  873
-                ],
-                "loc": {
-                  "start": {
-                    "line": 32,
-                    "column": 2
-                  },
-                  "end": {
-                    "line": 35,
-                    "column": 4
-                  }
-                }
-              },
-              "range": [
-                762,
-                874
-              ],
-              "loc": {
-                "start": {
-                  "line": 32,
-                  "column": 2
-                },
-                "end": {
-                  "line": 35,
-                  "column": 5
-                }
+                ]
               }
             }
           ],
-          "range": [
-            758,
-            876
-          ],
-          "loc": {
-            "start": {
-              "line": 31,
-              "column": 64
-            },
-            "end": {
-              "line": 36,
-              "column": 1
-            }
-          }
-        },
-        "generator": false,
-        "expression": false,
-        "range": [
-          701,
-          876
-        ],
-        "loc": {
-          "start": {
-            "line": 31,
-            "column": 7
-          },
-          "end": {
-            "line": 36,
-            "column": 1
-          }
+          "trailingComments": null
         },
         "leadingComments": [
           {
             "type": "Block",
             "value": "*\n * Updates the value for the given checklist element on the given flight number\n * @param {number} flightNumber\n * @param {number} elementNumber\n * @param {number} value\n * @returns {undefined}\n ",
-            "range": [
-              492,
-              693
-            ],
+            "start": 540,
+            "end": 741,
             "loc": {
               "start": {
-                "line": 24,
+                "line": 28,
                 "column": 0
               },
               "end": {
-                "line": 30,
+                "line": 34,
                 "column": 3
               }
-            }
+            },
+            "range": [
+              540,
+              741
+            ]
           }
         ],
         "trailingComments": [
           {
             "type": "Block",
             "value": "*\n * Locks the value for the given checklist element on the given flight number\n * @param {number} flightNumber\n * @param {number} elementNumber\n * @param {number} value\n * @returns {undefined}\n ",
-            "range": [
-              878,
-              1077
-            ],
+            "start": 926,
+            "end": 1125,
             "loc": {
               "start": {
-                "line": 38,
+                "line": 42,
                 "column": 0
               },
               "end": {
-                "line": 44,
+                "line": 48,
                 "column": 3
               }
-            }
+            },
+            "range": [
+              926,
+              1125
+            ]
           }
         ]
       },
       "specifiers": [],
       "source": null,
-      "range": [
-        694,
-        876
-      ],
-      "loc": {
-        "start": {
-          "line": 31,
-          "column": 0
-        },
-        "end": {
-          "line": 36,
-          "column": 1
-        }
-      },
       "leadingComments": [
         {
           "type": "Block",
           "value": "*\n * Updates the value for the given checklist element on the given flight number\n * @param {number} flightNumber\n * @param {number} elementNumber\n * @param {number} value\n * @returns {undefined}\n ",
-          "range": [
-            492,
-            693
-          ],
+          "start": 540,
+          "end": 741,
           "loc": {
             "start": {
-              "line": 24,
+              "line": 28,
               "column": 0
             },
             "end": {
-              "line": 30,
+              "line": 34,
               "column": 3
             }
-          }
+          },
+          "range": [
+            540,
+            741
+          ]
         }
       ],
       "trailingComments": [
         {
           "type": "Block",
           "value": "*\n * Locks the value for the given checklist element on the given flight number\n * @param {number} flightNumber\n * @param {number} elementNumber\n * @param {number} value\n * @returns {undefined}\n ",
-          "range": [
-            878,
-            1077
-          ],
+          "start": 926,
+          "end": 1125,
           "loc": {
             "start": {
-              "line": 38,
+              "line": 42,
               "column": 0
             },
             "end": {
-              "line": 44,
+              "line": 48,
               "column": 3
             }
-          }
+          },
+          "range": [
+            926,
+            1125
+          ]
         }
       ]
     },
     {
       "type": "ExportNamedDeclaration",
+      "start": 1126,
+      "end": 1304,
+      "loc": {
+        "start": {
+          "line": 49,
+          "column": 0
+        },
+        "end": {
+          "line": 54,
+          "column": 1
+        }
+      },
       "declaration": {
         "type": "FunctionDeclaration",
+        "start": 1133,
+        "end": 1304,
+        "loc": {
+          "start": {
+            "line": 49,
+            "column": 7
+          },
+          "end": {
+            "line": 54,
+            "column": 1
+          }
+        },
         "id": {
           "type": "Identifier",
-          "name": "lockValue",
-          "range": [
-            1094,
-            1103
-          ],
+          "start": 1142,
+          "end": 1151,
           "loc": {
             "start": {
-              "line": 45,
+              "line": 49,
               "column": 16
             },
             "end": {
-              "line": 45,
+              "line": 49,
               "column": 25
             }
-          }
+          },
+          "name": "lockValue",
+          "leadingComments": null
         },
+        "generator": false,
+        "expression": false,
+        "async": false,
         "params": [
           {
             "type": "Identifier",
-            "name": "flightNumber",
-            "range": [
-              1104,
-              1116
-            ],
+            "start": 1152,
+            "end": 1164,
             "loc": {
               "start": {
-                "line": 45,
+                "line": 49,
                 "column": 26
               },
               "end": {
-                "line": 45,
+                "line": 49,
                 "column": 38
               }
-            }
+            },
+            "name": "flightNumber"
           },
           {
             "type": "Identifier",
-            "name": "elementNumber",
-            "range": [
-              1118,
-              1131
-            ],
+            "start": 1166,
+            "end": 1179,
             "loc": {
               "start": {
-                "line": 45,
+                "line": 49,
                 "column": 40
               },
               "end": {
-                "line": 45,
+                "line": 49,
                 "column": 53
               }
-            }
+            },
+            "name": "elementNumber"
           },
           {
             "type": "Identifier",
-            "name": "value",
-            "range": [
-              1133,
-              1138
-            ],
+            "start": 1181,
+            "end": 1186,
             "loc": {
               "start": {
-                "line": 45,
+                "line": 49,
                 "column": 55
               },
               "end": {
-                "line": 45,
+                "line": 49,
                 "column": 60
               }
-            }
+            },
+            "name": "value"
           }
         ],
         "body": {
           "type": "BlockStatement",
+          "start": 1188,
+          "end": 1304,
+          "loc": {
+            "start": {
+              "line": 49,
+              "column": 62
+            },
+            "end": {
+              "line": 54,
+              "column": 1
+            }
+          },
           "body": [
             {
               "type": "ExpressionStatement",
+              "start": 1192,
+              "end": 1302,
+              "loc": {
+                "start": {
+                  "line": 50,
+                  "column": 2
+                },
+                "end": {
+                  "line": 53,
+                  "column": 5
+                }
+              },
               "expression": {
                 "type": "CallExpression",
+                "start": 1192,
+                "end": 1301,
+                "loc": {
+                  "start": {
+                    "line": 50,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 53,
+                    "column": 4
+                  }
+                },
                 "callee": {
                   "type": "MemberExpression",
-                  "computed": false,
-                  "object": {
-                    "type": "Identifier",
-                    "name": "GCSDispatcher",
-                    "range": [
-                      1144,
-                      1157
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 46,
-                        "column": 2
-                      },
-                      "end": {
-                        "line": 46,
-                        "column": 15
-                      }
-                    }
-                  },
-                  "property": {
-                    "type": "Identifier",
-                    "name": "dispatch",
-                    "range": [
-                      1158,
-                      1166
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 46,
-                        "column": 16
-                      },
-                      "end": {
-                        "line": 46,
-                        "column": 24
-                      }
-                    }
-                  },
-                  "range": [
-                    1144,
-                    1166
-                  ],
+                  "start": 1192,
+                  "end": 1214,
                   "loc": {
                     "start": {
-                      "line": 46,
+                      "line": 50,
                       "column": 2
                     },
                     "end": {
-                      "line": 46,
+                      "line": 50,
                       "column": 24
                     }
-                  }
+                  },
+                  "object": {
+                    "type": "Identifier",
+                    "start": 1192,
+                    "end": 1205,
+                    "loc": {
+                      "start": {
+                        "line": 50,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 50,
+                        "column": 15
+                      }
+                    },
+                    "name": "GCSDispatcher"
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "start": 1206,
+                    "end": 1214,
+                    "loc": {
+                      "start": {
+                        "line": 50,
+                        "column": 16
+                      },
+                      "end": {
+                        "line": 50,
+                        "column": 24
+                      }
+                    },
+                    "name": "dispatch"
+                  },
+                  "computed": false
                 },
                 "arguments": [
                   {
                     "type": "ObjectExpression",
-                    "properties": [
-                      {
-                        "type": "Property",
-                        "key": {
-                          "type": "Identifier",
-                          "name": "type",
-                          "range": [
-                            1173,
-                            1177
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 47,
-                              "column": 4
-                            },
-                            "end": {
-                              "line": 47,
-                              "column": 8
-                            }
-                          }
-                        },
-                        "value": {
-                          "type": "MemberExpression",
-                          "computed": false,
-                          "object": {
-                            "type": "Identifier",
-                            "name": "TuningTypes",
-                            "range": [
-                              1179,
-                              1190
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 47,
-                                "column": 10
-                              },
-                              "end": {
-                                "line": 47,
-                                "column": 21
-                              }
-                            }
-                          },
-                          "property": {
-                            "type": "Identifier",
-                            "name": "LOCK_TUNING_VALUE",
-                            "range": [
-                              1191,
-                              1208
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 47,
-                                "column": 22
-                              },
-                              "end": {
-                                "line": 47,
-                                "column": 39
-                              }
-                            }
-                          },
-                          "range": [
-                            1179,
-                            1208
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 47,
-                              "column": 10
-                            },
-                            "end": {
-                              "line": 47,
-                              "column": 39
-                            }
-                          }
-                        },
-                        "kind": "init",
-                        "method": false,
-                        "shorthand": false,
-                        "computed": false,
-                        "range": [
-                          1173,
-                          1208
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 47,
-                            "column": 4
-                          },
-                          "end": {
-                            "line": 47,
-                            "column": 39
-                          }
-                        }
-                      },
-                      {
-                        "type": "Property",
-                        "key": {
-                          "type": "Identifier",
-                          "name": "flightNumber",
-                          "range": [
-                            1214,
-                            1226
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 48,
-                              "column": 4
-                            },
-                            "end": {
-                              "line": 48,
-                              "column": 16
-                            }
-                          }
-                        },
-                        "value": {
-                          "type": "Identifier",
-                          "name": "flightNumber",
-                          "range": [
-                            1214,
-                            1226
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 48,
-                              "column": 4
-                            },
-                            "end": {
-                              "line": 48,
-                              "column": 16
-                            }
-                          }
-                        },
-                        "kind": "init",
-                        "method": false,
-                        "shorthand": true,
-                        "computed": false,
-                        "range": [
-                          1214,
-                          1226
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 48,
-                            "column": 4
-                          },
-                          "end": {
-                            "line": 48,
-                            "column": 16
-                          }
-                        }
-                      },
-                      {
-                        "type": "Property",
-                        "key": {
-                          "type": "Identifier",
-                          "name": "elementNumber",
-                          "range": [
-                            1228,
-                            1241
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 48,
-                              "column": 18
-                            },
-                            "end": {
-                              "line": 48,
-                              "column": 31
-                            }
-                          }
-                        },
-                        "value": {
-                          "type": "Identifier",
-                          "name": "elementNumber",
-                          "range": [
-                            1228,
-                            1241
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 48,
-                              "column": 18
-                            },
-                            "end": {
-                              "line": 48,
-                              "column": 31
-                            }
-                          }
-                        },
-                        "kind": "init",
-                        "method": false,
-                        "shorthand": true,
-                        "computed": false,
-                        "range": [
-                          1228,
-                          1241
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 48,
-                            "column": 18
-                          },
-                          "end": {
-                            "line": 48,
-                            "column": 31
-                          }
-                        }
-                      },
-                      {
-                        "type": "Property",
-                        "key": {
-                          "type": "Identifier",
-                          "name": "value",
-                          "range": [
-                            1243,
-                            1248
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 48,
-                              "column": 33
-                            },
-                            "end": {
-                              "line": 48,
-                              "column": 38
-                            }
-                          }
-                        },
-                        "value": {
-                          "type": "Identifier",
-                          "name": "value",
-                          "range": [
-                            1243,
-                            1248
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 48,
-                              "column": 33
-                            },
-                            "end": {
-                              "line": 48,
-                              "column": 38
-                            }
-                          }
-                        },
-                        "kind": "init",
-                        "method": false,
-                        "shorthand": true,
-                        "computed": false,
-                        "range": [
-                          1243,
-                          1248
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 48,
-                            "column": 33
-                          },
-                          "end": {
-                            "line": 48,
-                            "column": 38
-                          }
-                        }
-                      }
-                    ],
-                    "range": [
-                      1167,
-                      1252
-                    ],
+                    "start": 1215,
+                    "end": 1300,
                     "loc": {
                       "start": {
-                        "line": 46,
+                        "line": 50,
                         "column": 25
                       },
                       "end": {
-                        "line": 49,
+                        "line": 53,
                         "column": 3
                       }
-                    }
+                    },
+                    "properties": [
+                      {
+                        "type": "Property",
+                        "start": 1221,
+                        "end": 1256,
+                        "loc": {
+                          "start": {
+                            "line": 51,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 51,
+                            "column": 39
+                          }
+                        },
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "key": {
+                          "type": "Identifier",
+                          "start": 1221,
+                          "end": 1225,
+                          "loc": {
+                            "start": {
+                              "line": 51,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 51,
+                              "column": 8
+                            }
+                          },
+                          "name": "type"
+                        },
+                        "value": {
+                          "type": "MemberExpression",
+                          "start": 1227,
+                          "end": 1256,
+                          "loc": {
+                            "start": {
+                              "line": 51,
+                              "column": 10
+                            },
+                            "end": {
+                              "line": 51,
+                              "column": 39
+                            }
+                          },
+                          "object": {
+                            "type": "Identifier",
+                            "start": 1227,
+                            "end": 1238,
+                            "loc": {
+                              "start": {
+                                "line": 51,
+                                "column": 10
+                              },
+                              "end": {
+                                "line": 51,
+                                "column": 21
+                              }
+                            },
+                            "name": "TuningTypes"
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "start": 1239,
+                            "end": 1256,
+                            "loc": {
+                              "start": {
+                                "line": 51,
+                                "column": 22
+                              },
+                              "end": {
+                                "line": 51,
+                                "column": 39
+                              }
+                            },
+                            "name": "LOCK_TUNING_VALUE"
+                          },
+                          "computed": false
+                        },
+                        "kind": "init"
+                      },
+                      {
+                        "type": "Property",
+                        "start": 1262,
+                        "end": 1274,
+                        "loc": {
+                          "start": {
+                            "line": 52,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 52,
+                            "column": 16
+                          }
+                        },
+                        "method": false,
+                        "shorthand": true,
+                        "computed": false,
+                        "key": {
+                          "type": "Identifier",
+                          "start": 1262,
+                          "end": 1274,
+                          "loc": {
+                            "start": {
+                              "line": 52,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 52,
+                              "column": 16
+                            }
+                          },
+                          "name": "flightNumber"
+                        },
+                        "kind": "init",
+                        "value": {
+                          "type": "Identifier",
+                          "start": 1262,
+                          "end": 1274,
+                          "loc": {
+                            "start": {
+                              "line": 52,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 52,
+                              "column": 16
+                            }
+                          },
+                          "name": "flightNumber"
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "start": 1276,
+                        "end": 1289,
+                        "loc": {
+                          "start": {
+                            "line": 52,
+                            "column": 18
+                          },
+                          "end": {
+                            "line": 52,
+                            "column": 31
+                          }
+                        },
+                        "method": false,
+                        "shorthand": true,
+                        "computed": false,
+                        "key": {
+                          "type": "Identifier",
+                          "start": 1276,
+                          "end": 1289,
+                          "loc": {
+                            "start": {
+                              "line": 52,
+                              "column": 18
+                            },
+                            "end": {
+                              "line": 52,
+                              "column": 31
+                            }
+                          },
+                          "name": "elementNumber"
+                        },
+                        "kind": "init",
+                        "value": {
+                          "type": "Identifier",
+                          "start": 1276,
+                          "end": 1289,
+                          "loc": {
+                            "start": {
+                              "line": 52,
+                              "column": 18
+                            },
+                            "end": {
+                              "line": 52,
+                              "column": 31
+                            }
+                          },
+                          "name": "elementNumber"
+                        }
+                      },
+                      {
+                        "type": "Property",
+                        "start": 1291,
+                        "end": 1296,
+                        "loc": {
+                          "start": {
+                            "line": 52,
+                            "column": 33
+                          },
+                          "end": {
+                            "line": 52,
+                            "column": 38
+                          }
+                        },
+                        "method": false,
+                        "shorthand": true,
+                        "computed": false,
+                        "key": {
+                          "type": "Identifier",
+                          "start": 1291,
+                          "end": 1296,
+                          "loc": {
+                            "start": {
+                              "line": 52,
+                              "column": 33
+                            },
+                            "end": {
+                              "line": 52,
+                              "column": 38
+                            }
+                          },
+                          "name": "value"
+                        },
+                        "kind": "init",
+                        "value": {
+                          "type": "Identifier",
+                          "start": 1291,
+                          "end": 1296,
+                          "loc": {
+                            "start": {
+                              "line": 52,
+                              "column": 33
+                            },
+                            "end": {
+                              "line": 52,
+                              "column": 38
+                            }
+                          },
+                          "name": "value"
+                        }
+                      }
+                    ]
                   }
-                ],
-                "range": [
-                  1144,
-                  1253
-                ],
-                "loc": {
-                  "start": {
-                    "line": 46,
-                    "column": 2
-                  },
-                  "end": {
-                    "line": 49,
-                    "column": 4
-                  }
-                }
-              },
-              "range": [
-                1144,
-                1254
-              ],
-              "loc": {
-                "start": {
-                  "line": 46,
-                  "column": 2
-                },
-                "end": {
-                  "line": 49,
-                  "column": 5
-                }
+                ]
               }
             }
           ],
-          "range": [
-            1140,
-            1256
-          ],
-          "loc": {
-            "start": {
-              "line": 45,
-              "column": 62
-            },
-            "end": {
-              "line": 50,
-              "column": 1
-            }
-          }
-        },
-        "generator": false,
-        "expression": false,
-        "range": [
-          1085,
-          1256
-        ],
-        "loc": {
-          "start": {
-            "line": 45,
-            "column": 7
-          },
-          "end": {
-            "line": 50,
-            "column": 1
-          }
+          "trailingComments": null
         },
         "leadingComments": [
           {
             "type": "Block",
             "value": "*\n * Locks the value for the given checklist element on the given flight number\n * @param {number} flightNumber\n * @param {number} elementNumber\n * @param {number} value\n * @returns {undefined}\n ",
-            "range": [
-              878,
-              1077
-            ],
+            "start": 926,
+            "end": 1125,
             "loc": {
               "start": {
-                "line": 38,
+                "line": 42,
                 "column": 0
               },
               "end": {
-                "line": 44,
+                "line": 48,
                 "column": 3
               }
-            }
+            },
+            "range": [
+              926,
+              1125
+            ]
           }
         ],
         "trailingComments": [
           {
             "type": "Block",
             "value": "*\n * Resets the tuning guide\n * @returns {undefined}\n ",
-            "range": [
-              1258,
-              1316
-            ],
+            "start": 1306,
+            "end": 1364,
             "loc": {
               "start": {
-                "line": 52,
+                "line": 56,
                 "column": 0
               },
               "end": {
-                "line": 55,
+                "line": 59,
                 "column": 3
               }
-            }
+            },
+            "range": [
+              1306,
+              1364
+            ]
           }
         ]
       },
       "specifiers": [],
       "source": null,
-      "range": [
-        1078,
-        1256
-      ],
-      "loc": {
-        "start": {
-          "line": 45,
-          "column": 0
-        },
-        "end": {
-          "line": 50,
-          "column": 1
-        }
-      },
       "leadingComments": [
         {
           "type": "Block",
           "value": "*\n * Locks the value for the given checklist element on the given flight number\n * @param {number} flightNumber\n * @param {number} elementNumber\n * @param {number} value\n * @returns {undefined}\n ",
-          "range": [
-            878,
-            1077
-          ],
+          "start": 926,
+          "end": 1125,
           "loc": {
             "start": {
-              "line": 38,
+              "line": 42,
               "column": 0
             },
             "end": {
-              "line": 44,
+              "line": 48,
               "column": 3
             }
-          }
+          },
+          "range": [
+            926,
+            1125
+          ]
         }
       ],
       "trailingComments": [
         {
           "type": "Block",
           "value": "*\n * Resets the tuning guide\n * @returns {undefined}\n ",
-          "range": [
-            1258,
-            1316
-          ],
+          "start": 1306,
+          "end": 1364,
           "loc": {
             "start": {
-              "line": 52,
+              "line": 56,
               "column": 0
             },
             "end": {
-              "line": 55,
+              "line": 59,
               "column": 3
             }
-          }
+          },
+          "range": [
+            1306,
+            1364
+          ]
         }
       ]
     },
     {
       "type": "ExportNamedDeclaration",
+      "start": 1365,
+      "end": 1466,
+      "loc": {
+        "start": {
+          "line": 60,
+          "column": 0
+        },
+        "end": {
+          "line": 64,
+          "column": 1
+        }
+      },
       "declaration": {
         "type": "FunctionDeclaration",
+        "start": 1372,
+        "end": 1466,
+        "loc": {
+          "start": {
+            "line": 60,
+            "column": 7
+          },
+          "end": {
+            "line": 64,
+            "column": 1
+          }
+        },
         "id": {
           "type": "Identifier",
-          "name": "resetTuning",
-          "range": [
-            1333,
-            1344
-          ],
+          "start": 1381,
+          "end": 1392,
           "loc": {
             "start": {
-              "line": 56,
+              "line": 60,
               "column": 16
             },
             "end": {
-              "line": 56,
+              "line": 60,
               "column": 27
             }
-          }
+          },
+          "name": "resetTuning",
+          "leadingComments": null
         },
+        "generator": false,
+        "expression": false,
+        "async": false,
         "params": [],
         "body": {
           "type": "BlockStatement",
+          "start": 1395,
+          "end": 1466,
+          "loc": {
+            "start": {
+              "line": 60,
+              "column": 30
+            },
+            "end": {
+              "line": 64,
+              "column": 1
+            }
+          },
           "body": [
             {
               "type": "ExpressionStatement",
+              "start": 1399,
+              "end": 1464,
+              "loc": {
+                "start": {
+                  "line": 61,
+                  "column": 2
+                },
+                "end": {
+                  "line": 63,
+                  "column": 5
+                }
+              },
               "expression": {
                 "type": "CallExpression",
+                "start": 1399,
+                "end": 1463,
+                "loc": {
+                  "start": {
+                    "line": 61,
+                    "column": 2
+                  },
+                  "end": {
+                    "line": 63,
+                    "column": 4
+                  }
+                },
                 "callee": {
                   "type": "MemberExpression",
-                  "computed": false,
-                  "object": {
-                    "type": "Identifier",
-                    "name": "GCSDispatcher",
-                    "range": [
-                      1351,
-                      1364
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 57,
-                        "column": 2
-                      },
-                      "end": {
-                        "line": 57,
-                        "column": 15
-                      }
-                    }
-                  },
-                  "property": {
-                    "type": "Identifier",
-                    "name": "dispatch",
-                    "range": [
-                      1365,
-                      1373
-                    ],
-                    "loc": {
-                      "start": {
-                        "line": 57,
-                        "column": 16
-                      },
-                      "end": {
-                        "line": 57,
-                        "column": 24
-                      }
-                    }
-                  },
-                  "range": [
-                    1351,
-                    1373
-                  ],
+                  "start": 1399,
+                  "end": 1421,
                   "loc": {
                     "start": {
-                      "line": 57,
+                      "line": 61,
                       "column": 2
                     },
                     "end": {
-                      "line": 57,
+                      "line": 61,
                       "column": 24
                     }
-                  }
+                  },
+                  "object": {
+                    "type": "Identifier",
+                    "start": 1399,
+                    "end": 1412,
+                    "loc": {
+                      "start": {
+                        "line": 61,
+                        "column": 2
+                      },
+                      "end": {
+                        "line": 61,
+                        "column": 15
+                      }
+                    },
+                    "name": "GCSDispatcher"
+                  },
+                  "property": {
+                    "type": "Identifier",
+                    "start": 1413,
+                    "end": 1421,
+                    "loc": {
+                      "start": {
+                        "line": 61,
+                        "column": 16
+                      },
+                      "end": {
+                        "line": 61,
+                        "column": 24
+                      }
+                    },
+                    "name": "dispatch"
+                  },
+                  "computed": false
                 },
                 "arguments": [
                   {
                     "type": "ObjectExpression",
-                    "properties": [
-                      {
-                        "type": "Property",
-                        "key": {
-                          "type": "Identifier",
-                          "name": "type",
-                          "range": [
-                            1380,
-                            1384
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 58,
-                              "column": 4
-                            },
-                            "end": {
-                              "line": 58,
-                              "column": 8
-                            }
-                          }
-                        },
-                        "value": {
-                          "type": "MemberExpression",
-                          "computed": false,
-                          "object": {
-                            "type": "Identifier",
-                            "name": "TuningTypes",
-                            "range": [
-                              1386,
-                              1397
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 58,
-                                "column": 10
-                              },
-                              "end": {
-                                "line": 58,
-                                "column": 21
-                              }
-                            }
-                          },
-                          "property": {
-                            "type": "Identifier",
-                            "name": "RESET_TUNING",
-                            "range": [
-                              1398,
-                              1410
-                            ],
-                            "loc": {
-                              "start": {
-                                "line": 58,
-                                "column": 22
-                              },
-                              "end": {
-                                "line": 58,
-                                "column": 34
-                              }
-                            }
-                          },
-                          "range": [
-                            1386,
-                            1410
-                          ],
-                          "loc": {
-                            "start": {
-                              "line": 58,
-                              "column": 10
-                            },
-                            "end": {
-                              "line": 58,
-                              "column": 34
-                            }
-                          }
-                        },
-                        "kind": "init",
-                        "method": false,
-                        "shorthand": false,
-                        "computed": false,
-                        "range": [
-                          1380,
-                          1410
-                        ],
-                        "loc": {
-                          "start": {
-                            "line": 58,
-                            "column": 4
-                          },
-                          "end": {
-                            "line": 58,
-                            "column": 34
-                          }
-                        }
-                      }
-                    ],
-                    "range": [
-                      1374,
-                      1414
-                    ],
+                    "start": 1422,
+                    "end": 1462,
                     "loc": {
                       "start": {
-                        "line": 57,
+                        "line": 61,
                         "column": 25
                       },
                       "end": {
-                        "line": 59,
+                        "line": 63,
                         "column": 3
                       }
-                    }
+                    },
+                    "properties": [
+                      {
+                        "type": "Property",
+                        "start": 1428,
+                        "end": 1458,
+                        "loc": {
+                          "start": {
+                            "line": 62,
+                            "column": 4
+                          },
+                          "end": {
+                            "line": 62,
+                            "column": 34
+                          }
+                        },
+                        "method": false,
+                        "shorthand": false,
+                        "computed": false,
+                        "key": {
+                          "type": "Identifier",
+                          "start": 1428,
+                          "end": 1432,
+                          "loc": {
+                            "start": {
+                              "line": 62,
+                              "column": 4
+                            },
+                            "end": {
+                              "line": 62,
+                              "column": 8
+                            }
+                          },
+                          "name": "type"
+                        },
+                        "value": {
+                          "type": "MemberExpression",
+                          "start": 1434,
+                          "end": 1458,
+                          "loc": {
+                            "start": {
+                              "line": 62,
+                              "column": 10
+                            },
+                            "end": {
+                              "line": 62,
+                              "column": 34
+                            }
+                          },
+                          "object": {
+                            "type": "Identifier",
+                            "start": 1434,
+                            "end": 1445,
+                            "loc": {
+                              "start": {
+                                "line": 62,
+                                "column": 10
+                              },
+                              "end": {
+                                "line": 62,
+                                "column": 21
+                              }
+                            },
+                            "name": "TuningTypes"
+                          },
+                          "property": {
+                            "type": "Identifier",
+                            "start": 1446,
+                            "end": 1458,
+                            "loc": {
+                              "start": {
+                                "line": 62,
+                                "column": 22
+                              },
+                              "end": {
+                                "line": 62,
+                                "column": 34
+                              }
+                            },
+                            "name": "RESET_TUNING"
+                          },
+                          "computed": false
+                        },
+                        "kind": "init"
+                      }
+                    ]
                   }
-                ],
-                "range": [
-                  1351,
-                  1415
-                ],
-                "loc": {
-                  "start": {
-                    "line": 57,
-                    "column": 2
-                  },
-                  "end": {
-                    "line": 59,
-                    "column": 4
-                  }
-                }
-              },
-              "range": [
-                1351,
-                1416
-              ],
-              "loc": {
-                "start": {
-                  "line": 57,
-                  "column": 2
-                },
-                "end": {
-                  "line": 59,
-                  "column": 5
-                }
+                ]
               }
             }
-          ],
-          "range": [
-            1347,
-            1418
-          ],
-          "loc": {
-            "start": {
-              "line": 56,
-              "column": 30
-            },
-            "end": {
-              "line": 60,
-              "column": 1
-            }
-          }
-        },
-        "generator": false,
-        "expression": false,
-        "range": [
-          1324,
-          1418
-        ],
-        "loc": {
-          "start": {
-            "line": 56,
-            "column": 7
-          },
-          "end": {
-            "line": 60,
-            "column": 1
-          }
+          ]
         },
         "leadingComments": [
           {
             "type": "Block",
             "value": "*\n * Resets the tuning guide\n * @returns {undefined}\n ",
-            "range": [
-              1258,
-              1316
-            ],
+            "start": 1306,
+            "end": 1364,
             "loc": {
               "start": {
-                "line": 52,
+                "line": 56,
                 "column": 0
               },
               "end": {
-                "line": 55,
+                "line": 59,
                 "column": 3
               }
-            }
+            },
+            "range": [
+              1306,
+              1364
+            ]
           }
         ],
         "trailingComments": []
       },
       "specifiers": [],
       "source": null,
-      "range": [
-        1317,
-        1418
-      ],
-      "loc": {
-        "start": {
-          "line": 56,
-          "column": 0
-        },
-        "end": {
-          "line": 60,
-          "column": 1
-        }
-      },
       "leadingComments": [
         {
           "type": "Block",
           "value": "*\n * Resets the tuning guide\n * @returns {undefined}\n ",
-          "range": [
-            1258,
-            1316
-          ],
+          "start": 1306,
+          "end": 1364,
           "loc": {
             "start": {
-              "line": 52,
+              "line": 56,
               "column": 0
             },
             "end": {
-              "line": 55,
+              "line": 59,
               "column": 3
             }
-          }
+          },
+          "range": [
+            1306,
+            1364
+          ]
         }
       ]
-    }
-  ],
-  "sourceType": "module",
-  "range": [
-    0,
-    1418
-  ],
-  "loc": {
-    "start": {
-      "line": 1,
-      "column": 0
-    },
-    "end": {
-      "line": 60,
-      "column": 1
-    }
-  },
-  "comments": [
-    {
-      "type": "Block",
-      "value": "*\n * Increases the tuning flight number by 1\n * @returns {undefined}\n ",
-      "range": [
-        114,
-        188
-      ],
-      "loc": {
-        "start": {
-          "line": 4,
-          "column": 0
-        },
-        "end": {
-          "line": 7,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": "*\n * Decreases the tuning flight number by 1\n * @returns {undefined}\n ",
-      "range": [
-        303,
-        377
-      ],
-      "loc": {
-        "start": {
-          "line": 14,
-          "column": 0
-        },
-        "end": {
-          "line": 17,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": "*\n * Updates the value for the given checklist element on the given flight number\n * @param {number} flightNumber\n * @param {number} elementNumber\n * @param {number} value\n * @returns {undefined}\n ",
-      "range": [
-        492,
-        693
-      ],
-      "loc": {
-        "start": {
-          "line": 24,
-          "column": 0
-        },
-        "end": {
-          "line": 30,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": "*\n * Locks the value for the given checklist element on the given flight number\n * @param {number} flightNumber\n * @param {number} elementNumber\n * @param {number} value\n * @returns {undefined}\n ",
-      "range": [
-        878,
-        1077
-      ],
-      "loc": {
-        "start": {
-          "line": 38,
-          "column": 0
-        },
-        "end": {
-          "line": 44,
-          "column": 3
-        }
-      }
-    },
-    {
-      "type": "Block",
-      "value": "*\n * Resets the tuning guide\n * @returns {undefined}\n ",
-      "range": [
-        1258,
-        1316
-      ],
-      "loc": {
-        "start": {
-          "line": 52,
-          "column": 0
-        },
-        "end": {
-          "line": 55,
-          "column": 3
-        }
-      }
     }
   ]
 }

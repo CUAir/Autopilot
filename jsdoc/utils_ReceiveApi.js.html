@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: utils/ReceiveApi.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: utils/ReceiveApi.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// @flow
+
+import $ from 'jquery';
+import alertify from 'alertifyjs';
+
+import { api } from 'js/constants/Sites';
+
+import * as StatusActionCreator from 'js/actions/StatusActionCreator';
+import * as InteropActionCreator from 'js/actions/InteropActionCreator';
+import * as WaypointActionCreator from 'js/actions/WaypointActionCreator';
+import * as CalibrationActionCreator from 'js/actions/CalibrationActionCreator';
+import * as FenceActionCreator from 'js/actions/FenceActionCreator';
+import * as SdaActionCreator from 'js/actions/SdaActionCreator';
+import * as ParametersActionCreator from 'js/actions/ParametersActionCreator';
+import * as SettingsActionCreator from 'js/actions/SettingsActionCreator';
+
+import { setConfigValue, configNames } from 'js/utils/ConfigData';
+import { assertJson, airspeedType, climbRateType, attitudeType, batteryType,
+         powerboardType, armedType, safetySwitchType, linkType, gpsType,
+         windType, throttleType, waypointsType, currentWaypointType,
+         modeType, sdaType, fenceType } from 'js/utils/TypeValidation';
+
+
+/**
+ * @module utils/ReceiveApi
+ */
+
+let receiverProcess;
+let interopProcess;
+let _mavproxy_up = true;
+let _last_mav_info = '';
+let _last_mav_warning = '';
+let _last_mav_error = '';
+let _historical = false;
+let _last_invalid_time = 0;
+
+const commandNumberTOword = {
+  '0': 'MANUAL', '1': 'CIRCLE', '2': 'STABILIZE', '3': 'TRAINING', '4': 'ACRO',
+  '5': 'FBWA', '6': 'FBWB', '7': 'CRUISE', '8': 'AUTOTUNE', '10': 'AUTO',
+  '11': 'RTL', '12': 'LOITER', '15': 'GUIDED'
+};
+
+function assertValidResult(name, stringValue, type, time) {
+  if (stringValue === 'null' &amp;&amp; time != undefined &amp;&amp; time !== _last_invalid_time) {
+    _last_invalid_time = time;
+    alertify.error('Invalid time: please select another time');
+  }
+  return assertJson(name, stringValue, type);
+}
+
+function getAlive() {
+  $.get({url: api + 'status'}).done(() => {
+    if (!_mavproxy_up) {
+      alertify.success('Regained connection to MAVProxy backend');
+    }
+    _mavproxy_up = true;
+    StatusActionCreator.reconnect();
+  }).fail(() => {
+    if (_mavproxy_up) {
+      alertify.error('Lost connection to MAVProxy backend');
+    }
+    _mavproxy_up = false;
+    StatusActionCreator.disconnect();
+  });
+}
+
+function getAirspeed(time) {
+  const data = time == undefined ? null : {time: time};
+  $.get({url: api + 'status/airspeed', data: data}).done(data => {
+    if (assertValidResult('Airspeed', data, airspeedType, time)) {
+      StatusActionCreator.receiveAirspeed(JSON.parse(data));
+    }
+  });
+}
+
+function getClimbRate(time) {
+  const data = time == undefined ? null : {time: time};
+  $.get({url: api + 'status/climb', data: data}).done(data => {
+    if (assertValidResult('Climb Rate', data, climbRateType, time)) {
+      StatusActionCreator.receiveClimbRate(JSON.parse(data));
+    }
+  });
+}
+
+function getAttitude(time) {
+  const data = time == undefined ? null : {time: time};
+  $.get({url: api + 'status/attitude', data: data}).done(data => {
+    if (assertValidResult('Attitude', data, attitudeType, time)) {
+      StatusActionCreator.receiveAttitude(JSON.parse(data));
+    }
+  });
+}
+
+function getBattery(time) {
+  const data = time == undefined ? null : {time: time};
+  $.get({url: api + 'status/battery', data: data}).done(data => {
+    if (assertValidResult('Battery', data, batteryType, time)) {
+      StatusActionCreator.receiveBattery(JSON.parse(data));
+    }
+  });
+}
+
+function getPowerboard(time) { // eslint-disable-line no-unused-vars
+  const data = time == undefined ? null : {time: time};
+  $.get({url: api + 'powerboard', data: data}).done(data => {
+    if (assertValidResult('Powerboard', data, powerboardType, time)) {
+      StatusActionCreator.receivePowerboard(JSON.parse(data));
+    }
+  });
+}
+
+function getArmed(time) {
+  const data = time == undefined ? null : {time: time};
+  $.get({url: api + 'status/armed', data: data}).done(data => {
+    if (assertValidResult('Armed', data, armedType, time)) {
+      StatusActionCreator.receiveArmed(JSON.parse(data));
+    }
+  });
+}
+
+function getSafetySwitch(time) {
+  const data = time == undefined ? null : {time: time};
+  $.get({url: api + 'status/safe', data: data}).done(data => {
+    if (assertValidResult('Safety Switch', data, safetySwitchType, time)) {
+      StatusActionCreator.receiveSafetySwitch(JSON.parse(data));
+    }
+  });
+}
+
+function getLink(time) {
+  const data = time == undefined ? null : {time: time};
+  $.get({url: api + 'status/link', data: data}).done(data => {
+    if (assertValidResult('Link', data, linkType, time)) {
+      StatusActionCreator.receiveGPSLink(JSON.parse(data).gps_link);
+      StatusActionCreator.receivePlaneLink(JSON.parse(data).plane_link);
+    }
+  });
+}
+
+function getGPS(time) {
+  const data = time == undefined ? null : {time: time};
+  $.get({url: api + 'status/gps', data: data}).done(data => {
+    if (assertValidResult('GPS', data, gpsType, time)) {
+      StatusActionCreator.receiveGPS(JSON.parse(data));
+    }
+  });
+}
+
+function getWind(time) {
+  const data = time == undefined ? null : {time: time};
+  $.get({url: api + 'status/wind', data: data}).done(data => {
+    if (assertValidResult('Wind', data, windType, time)) {
+      StatusActionCreator.receiveWind(JSON.parse(data));
+    }
+  });
+}
+
+function getThrottle(time) {
+  const data = time == undefined ? null : {time: time};
+  $.get({url: api + 'status/throttle', data: data}).done(data => {
+    if (assertValidResult('Throttle', data, throttleType, time)) {
+      StatusActionCreator.receiveThrottle(JSON.parse(data));
+    }
+  });
+}
+
+function getMAVInfo(time) {
+  const data = time == undefined ? null : {time: time};
+  $.get({url: api + 'status/mav_info', data: data}).done(data => {
+    if (data != _last_mav_info &amp;&amp; data != 'MAVProxy Error') {
+      _last_mav_info = data;
+      alertify.message(data);
+      CalibrationActionCreator.addCalibrationLine(data);
+    }
+  });
+}
+
+function getMAVWarning(time) {
+  const data = time == undefined ? null : {time: time};
+  $.get({url: api + 'status/mav_warning', data: data}).done(data => {
+    if (data != _last_mav_warning &amp;&amp; data != 'MAVProxy Error') {
+      _last_mav_warning = data;
+      alertify.warning(data);
+      CalibrationActionCreator.addCalibrationLine(data);
+    }
+  });
+}
+
+function getMAVError(time) {
+  const data = time == undefined ? null : {time: time};
+  $.get({url: api + 'status/mav_error', data: data}).done(data => {
+    if (data != _last_mav_error &amp;&amp; data != 'MAVProxy Error') {
+      _last_mav_error = data;
+      alertify.error(data);
+      CalibrationActionCreator.addCalibrationLine(data);
+    }
+  });
+}
+
+function getParameters(time) {
+  const data = time == undefined ? null : {time: time};
+  $.get({url: api + 'params', data: data}).done(data => {
+    const modeSwitchParam = JSON.parse(data)['FLTMODE1'];
+    if (data !== 'No data' &amp;&amp; data !== 'null' &amp;&amp; data != undefined) {
+      StatusActionCreator.receiveModeSwitch(commandNumberTOword[modeSwitchParam]);
+    }
+  });
+}
+
+function getWaypoints(time) {
+  const data = time == undefined ? null : {time: time};
+  $.get({url: api + 'wp', data: data}).done(data => {
+    if (assertValidResult('Waypoints', data, waypointsType, time)) {
+      WaypointActionCreator.receiveWaypoints(JSON.parse(data));
+    }
+  });
+}
+
+function getCurrent(time) {
+  const data = time == undefined ? null : {time: time};
+  $.get({url: api + 'status/current_wp', data: data}).done(data => {
+    if (assertValidResult('CurrentWaypoint', data, currentWaypointType, time)) {
+      WaypointActionCreator.receiveCurrent(JSON.parse(data));
+    }
+  });
+}
+
+function getMode(time) {
+  const data = time == undefined ? null : {time: time};
+  $.get({url: api + 'flight_mode', data: data}).done(data => {
+    if (assertValidResult('Mode', data, modeType, time)) {
+      StatusActionCreator.receiveCurrentMode(JSON.parse(data));
+    }
+  });
+}
+
+function getSDA(time) {
+  const data = time == undefined ? null : {time: time};
+  $.get({url: api + 'sda', data: data}).done(data => {
+    if (assertValidResult('SDA', data, sdaType, time)) {
+      SdaActionCreator.receiveSdaEnabled(JSON.parse(data));
+    }
+  });
+}
+
+function getGeofences(time) { // eslint-disable-line no-unused-vars
+  const data = time == undefined ? null : {time: time};
+  $.get({url: api + 'geofence', data: data}).done(data => {
+    if (assertValidResult('Geofence', data, fenceType, time)) {
+      FenceActionCreator.receiveFencePoints(JSON.parse(data));
+    }
+  });
+}
+
+function getInterop(time) {
+  const data = time == undefined ? null : {time: time};
+  const nuc_url = typeof localStorage.nuc_url !== 'string' ? '': localStorage.nuc_url;
+  $.get({url: nuc_url + '/api/v3/interop', data: data}).done(data => {
+    if (data !== 'Error: Server is not active') {
+      const json = JSON.parse(data);
+      InteropActionCreator.receiveObstacles(json.obstacles);
+      InteropActionCreator.receiveInteropAlive(json.server_working);
+      if(json.active_mission) {
+        let off_axis = json.active_mission.off_axis_target_pos;
+        let off_axis_target = {lat : off_axis.latitude, lon : off_axis.longitude};
+        InteropActionCreator.receiveOffAxis(off_axis_target);
+      }
+      InteropActionCreator.receiveInteropActive(true);
+    } else {
+      InteropActionCreator.receiveInteropActive(false);
+    }
+  });
+}
+
+function getPlaneInfo() {
+  if (!_historical) {
+    getAlive();
+    getAirspeed();
+    getClimbRate();
+    getAttitude();
+    getBattery();
+    // getPowerboard(); // not implemented on backend yet
+    getArmed();
+    getSafetySwitch();
+    getLink();
+    getGPS();
+    getWind();
+    getThrottle();
+    getMAVInfo();
+    getMAVWarning();
+    getMAVError();
+    getParameters();
+    getWaypoints();
+    getCurrent();
+    getMode();
+    getSDA();
+    // getGeofences();
+  }
+}
+
+function getInteropInfo() {
+  if (!_historical) {
+    getInterop();
+  }
+}
+
+/**
+ * Gets the historical data for a given time
+ * @param {number} time
+ * @returns {undefined}
+ */
+export function getHistoricalData(time: number) {
+  getAirspeed(time);
+  getClimbRate(time);
+  getAttitude(time);
+  getBattery(time);
+  //getPowerboard(time); // not implemented on backend yet
+  getArmed(time);
+  getSafetySwitch(time);
+  getLink(time);
+  getGPS(time);
+  getWind(time);
+  getThrottle(time);
+  getMAVInfo(time);
+  getMAVWarning(time);
+  getMAVError(time);
+  getParameters(time);
+  getWaypoints(time);
+  getCurrent(time);
+  getMode(time);
+  getSDA(time);
+  // getGeofences(time);
+  getInterop(time);
+}
+
+/**
+ * Refreshes locations
+ * @returns {undefined}
+ */
+export function getLocations() {
+  $.get(api + 'getlocations').done(data => {
+    SettingsActionCreator.receiveLocations(JSON.parse(data));
+  });
+}
+
+/**
+ * Initializes parameters list
+ * @returns {undefined}
+ */
+export function initializeParameters(): void {
+  $.get(api + 'params', data => {
+    const params = JSON.parse(data);
+    if ('FLTMODE1' in params) {
+      StatusActionCreator.receiveModeSwitch(commandNumberTOword[params['FLTMODE1']]);
+    }
+
+    const paramsList = Object.keys(params).map(key => {
+      return {name: key, value:params[key]};
+    });
+
+    ParametersActionCreator.receiveMultipleParameters(paramsList);
+  });
+  $.get(api + 'params/max', count => {
+    ParametersActionCreator.receiveMaxParamCount(count);
+  });
+}
+
+/**
+ * Initializes interop info
+ * @returns {undefined}
+ */
+export function initializeInterop() {
+  $.ajax({
+    url: '/ground/api/v3/interop/setup',
+    type: 'GET',
+    contentType: 'application/json',
+    success: (data) => {
+      setConfigValue(configNames.INTEROP_URL, data.server_url);
+      setConfigValue(configNames.INTEROP_USERNAME, data.username);
+      setConfigValue(configNames.INTEROP_PASSWORD, data.password);
+    }
+  });
+}
+
+/**
+ * Starts plane receive loop
+ * @param {number} timeout
+ * @returns {undefined}
+ */
+export function startPlaneReceive(timeout: number) {
+  initializeParameters();
+  receiverProcess = setInterval(getPlaneInfo, timeout);
+}
+
+/**
+ * Stops plane receive loop
+ * @returns {undefined}
+ */
+export function stopPlaneReceive() {
+  clearTimeout(receiverProcess);
+}
+
+/**
+ * Starts interop receive loop
+ * @param {number} timeout
+ * @returns {undefined}
+ */
+export function startInteropReceive(timeout: number) {
+  interopProcess = setInterval(getInteropInfo, timeout);
+}
+
+/**
+ * Stops interop receive loop
+ * @returns {undefined}
+ */
+export function stopInteropReceive() {
+  clearTimeout(interopProcess);
+}
+
+/**
+ * Halts current receive loop
+ * @returns {undefined}
+ */
+export function haltReceiveLoop() {
+  _historical = true;
+}
+
+/**
+ * Resumes current receive loop
+ * @returns {undefined}
+ */
+export function resumeReceiveLoop() {
+  _historical = false;
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Modules</h3><ul><li><a href="module-actions_CalibrationActionCreator.html">actions/CalibrationActionCreator</a></li><li><a href="module-actions_FenceActionCreator.html">actions/FenceActionCreator</a></li><li><a href="module-actions_InteropActionCreator.html">actions/InteropActionCreator</a></li><li><a href="module-actions_ParametersActionCreator.html">actions/ParametersActionCreator</a></li><li><a href="module-actions_SdaActionCreator.html">actions/SdaActionCreator</a></li><li><a href="module-actions_SettingsActionCreator.html">actions/SettingsActionCreator</a></li><li><a href="module-actions_StatusActionCreator.html">actions/StatusActionCreator</a></li><li><a href="module-actions_TuningActionCreator.html">actions/TuningActionCreator</a></li><li><a href="module-actions_WaypointActionCreator.html">actions/WaypointActionCreator</a></li><li><a href="module-components_Navbar_GoNoGoDropdown.html">components/Navbar/GoNoGoDropdown</a></li><li><a href="module-components_PlaneAction_ModeButton.html">components/PlaneAction/ModeButton</a></li><li><a href="module-components_TuningGuide_TuningUtils.html">components/TuningGuide/TuningUtils</a></li><li><a href="module-constants_ActionTypes.html">constants/ActionTypes</a></li><li><a href="module-constants_ButtonTypes.html">constants/ButtonTypes</a></li><li><a href="module-constants_Frequency.html">constants/Frequency</a></li><li><a href="module-constants_Sites.html">constants/Sites</a></li><li><a href="module-stores_CalibrationStore.html">stores/CalibrationStore</a></li><li><a href="module-stores_FenceStore.html">stores/FenceStore</a></li><li><a href="module-stores_InteropStore.html">stores/InteropStore</a></li><li><a href="module-stores_ParametersStore.html">stores/ParametersStore</a></li><li><a href="module-stores_SdaStore.html">stores/SdaStore</a></li><li><a href="module-stores_SettingsStore.html">stores/SettingsStore</a></li><li><a href="module-stores_StatusStore.html">stores/StatusStore</a></li><li><a href="module-stores_Store.html">stores/Store</a></li><li><a href="module-stores_TuningStore.html">stores/TuningStore</a></li><li><a href="module-stores_WaypointStore.html">stores/WaypointStore</a></li><li><a href="module-utils_ComponentUtils.html">utils/ComponentUtils</a></li><li><a href="module-utils_ConfigData.html">utils/ConfigData</a></li><li><a href="module-utils_DownloadApi.html">utils/DownloadApi</a></li><li><a href="module-utils_LoadApi.html">utils/LoadApi</a></li><li><a href="module-utils_MapUtils.html">utils/MapUtils</a></li><li><a href="module-utils_ReceiveApi.html">utils/ReceiveApi</a></li><li><a href="module-utils_SendApi.html">utils/SendApi</a></li><li><a href="module-utils_TypeValidation.html">utils/TypeValidation</a></li></ul><h3>Classes</h3><ul><li><a href="module-stores_StatusStore.StatusStore.html">StatusStore</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.4.0</a> on Wed Nov 30 2016 23:25:28 GMT-0500 (EST)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
