@@ -448,6 +448,30 @@ SDA can be activated through the ground station. It requires that the interopera
 
 How SDA Works
 ^^^^^^^^^^^^^
+
+SDA Engine 
+************
+
+things and stuff
+
+SDA RRT 
+*********
+
+More things and stuff
+
+SDA Path 
+***********
+
+So many things and stuff
+
+Current Issues
+****************
+
+issues
+
+Future Directions 
+*******************
+
 To complete this task, the team developed a reactive algorithm to anticipate flight path and predict obstacle locations. The algorithm creates a 3D geometric model with flight paths and moving obstacles as point entities on linear trajectories to the next waypoint in the flight plan and stationary obstacles as lines with lengths equal to their height. Our algorithm identified potential obstacle collisions by calculating minimum distance between the linear entities using the linear `closest point of approach <http://geomalgorithms.com/a07-_distance.html>`_ (CPA) for moving obstacles and the `closest point of two 3D line segments <http://math.harvard.edu/~ytzeng/worksheet/distance.pdf>`_ for stationary obstacles. CPA assumes constant velocity vector :math:`\mathbf{u}` for the obstacle and constant velocity vector :math:`\mathbf{v}` for the plane and is defined as :math:`d(t_{CPA}) = |\mathbf{w}_0 + t_{CPA}(\mathbf{u-v})|` where :math`\mathbf{w}_0` is the distance vector between the initial positions of the plane and obstacle. Time of CPA, :math:`t_{CPA}`, is calculated as follows. 
   
 .. math:: t_{CPA} = \frac{-\mathbf{w}_0 \mathbf{\cdot (u-v)}}{|\mathbf{u-v})|^2}
