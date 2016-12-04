@@ -10,6 +10,9 @@ This page documents remaining autopilot configuration procedures that do not rel
 
 Setting up RFD900s
 -------------------
+
+We use `RFD900+ <http://store.rfdesign.com.au/rfd-900p-modem/>`_ radio modems. Please read the `data sheet <http://files.rfdesign.com.au/Files/documents/RFD900%20DataSheet.pdf>`_ before attempting to change the modem settings.
+
 1. Firmware can be installed on RFD900s with windows using the RFD900 configuration tool. This can be found `here <http://files.rfdesign.com.au/docs/>`_.
 
 2. Settings should match below guide. Make sure to use the same netid on both nodes of a piar and use different netids on different pairs. If you have different settings than shown, you may need update your firmware  ::
@@ -47,7 +50,10 @@ For example  ::
 Binding Transmitter and Receiver
 --------------------------------
 
-1. Download ImmersionRC update config tool software
+We use an `EzUHF 4 Channel Receiver <http://www.immersionrc.com/fpv-products/ezuhf-4ch-receiver/>`_ and an `EzUHF Transmitter JR Module <http://www.immersionrc.com/fpv-products/ezuhf-jr-module/>`_ on a Taranis Transmitter. Refer to their respective documentation if there is any confusion about the following binding procedure.
+
+
+1. Download `ImmersionRC update config tool software <http://www.immersionrc.com/?download=4894>`_
 
 2. Connect the transmitter to the computer with the config software.
 

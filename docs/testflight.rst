@@ -44,6 +44,22 @@ Code to run at test flights
 
 - `Interoperability <http://cuairautopilot.readthedocs.io/en/latest/groundstation.html#interoperability>`_ -- Setup can use of the interoperability server can be found here
 
---`Autopilot server <>`_ -- Setup and use of autopliot server for the NUC can be found here.
+--`Autopilot server <>`_ -- Setup and use of autopilot server for the NUC can be found here.
 
 
+Hexacopter Setup
+----------------
+
+Atlas is a portable, lightweight test system to allow subteams to test without needing to do a full test flight. It is able to carry several pounds of payloads that can be mounted as necessary and is significantly easier to fly than a fixed wing aircraft. 
+
+The base onboard electronics include:
+
+- 1x `Pixhawk <https://3dr.com/wp-content/uploads/2014/03/pixhawk-manual-rev7.pdf>`_ autopilot with gps module running `ArduCopter <http://ardupilot.org/copter/>`_
+
+- 6x `30A ESCs <https://hobbyking.com/en_us/turnigy-multistar-30a-slim-v2-esc-with-blheli-opto-2-6s.html>`_
+
+- 1x `RFD900 <http://cuairautopilot.readthedocs.io/en/latest/autopilot_configuration.html#id3>`_ -- setup is identical to the plane radios.
+
+ArduCopter setup is very similar to ArduPlane setup and is completely documented `here <http://ardupilot.org/copter/docs/initial-setup.html>`_. The key difference is `ESC calibration <http://ardupilot.org/copter/docs/esc-calibration.html>`_ which must be re-done after major system changes like receiver replacement or motor replacement. 
+
+Atlas flight instructions can be found `here <https://docs.google.com/a/cornell.edu/document/d/1p07ljg8zF4MjSbM2MOx6P8YeXyO3xy7GhyED3VAolZA/edit?usp=sharing>`_.
