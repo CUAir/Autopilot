@@ -334,6 +334,9 @@ import { valueToColor, colorToButton, valueToColorName } from &apos;js/utils/Com
  * @module components/Navbar/GoNoGoDropdown
  */
 
+/**
+ * Gets state from the interop, parameter, waypoint, and Status stores
+ */
 function getStateFromStore() {
   let goNoGoList = [];
   goNoGoList = goNoGoList.concat(InteropStore.getGoNoGo());
@@ -343,6 +346,11 @@ function getStateFromStore() {
   return {goNoGo: goNoGoList};
 }
 
+/**
+* Builds initial array of length, length, to start all the check-boxes at a false value
+* @param {number} length 
+* @returns {boolean[]}
+*/
 function buildFalseArray(length) {
   let arr = [];
   for (let i = 0; i &lt; length; i++) {
@@ -392,11 +400,18 @@ export default class GoNoGoDropdown extends React.Component {
     ParametersStore.removeChangeListener(this._onChangeStatus);
   }
 
+  /**
+   * Changes the auto-check-boxes when the stores change
+   */
   @autobind
   _onChangeStatus() {
     this.setState(getStateFromStore());
   }
 
+  /**
+  * Changes the non auto check boxes when non auto check box at index i is clicked
+  * @param {number} i
+  */
   @autobind
   _onChangeClick(i: number) {
     let currentstate = this.state.checked;
@@ -405,6 +420,12 @@ export default class GoNoGoDropdown extends React.Component {
     localStorage[&apos;goNoGo&apos;] = JSON.stringify(currentstate);
   }
 
+  /**
+  * Creates an auto-check or non auto-check box for an item with index i based on 
+  * the autocheck property of the item
+  * @param {number} item
+  * @param {number} i
+  */
   @autobind
   createCheckBox(item: Object, i: number) {
     const val = item.autoCheck ? item.value : this.state.checked[i];
@@ -418,6 +439,11 @@ export default class GoNoGoDropdown extends React.Component {
     );
   }
 
+  /**
+   * Method making the nav bar section for goNoGo given the dropdown
+   * @param {Object} dropdown
+   * @returns {Object}
+   */
   @autobind
   goNoGo(dropdown) {
     const v = this.goCheck() ? 100: 0;
@@ -437,6 +463,7 @@ export default class GoNoGoDropdown extends React.Component {
   /**
   * checks if all the boxes are checked
   * returns a boolean representing whether the boxes are all checked
+  * @returns {boolean}
   */
   @autobind
   goCheck() {

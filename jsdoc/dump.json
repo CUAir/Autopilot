@@ -4104,7 +4104,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "// @flow\n\nimport React from 'react';\nimport autobind from 'autobind-decorator';\n\nimport StatusStore from 'js/stores/StatusStore';\nimport WaypointStore from 'js/stores/WaypointStore';\nimport InteropStore from 'js/stores/InteropStore';\nimport ParametersStore from 'js/stores/ParametersStore';\n\nimport FullWidthButton from 'js/components/General/FullWidthButton';\n\nimport { valueToColor, colorToButton, valueToColorName } from 'js/utils/ComponentUtils';\n\n/**\n * @module components/Navbar/GoNoGoDropdown\n */\n\nfunction getStateFromStore() {\n  let goNoGoList = [];\n  goNoGoList = goNoGoList.concat(InteropStore.getGoNoGo());\n  goNoGoList = goNoGoList.concat(ParametersStore.getGoNoGo());\n  goNoGoList = goNoGoList.concat(WaypointStore.getGoNoGo());\n  goNoGoList = goNoGoList.concat(StatusStore.getGoNoGo());\n  return {goNoGo: goNoGoList};\n}\n\nfunction buildFalseArray(length) {\n  let arr = [];\n  for (let i = 0; i < length; i++) {\n    arr.push(false);\n  }\n  return arr;\n}\n\nexport default class GoNoGoDropdown extends React.Component {\n\n  state: {\n    goNoGo: Array<Object>,\n    checked: Array<boolean>\n  };\n\n  constructor(props: Object) {\n    super(props);\n\n    let storedArray = localStorage['goNoGo'];\n    let checkArr = [];\n    const goNoGoLength = getStateFromStore().goNoGo.length;\n    if (storedArray == undefined || JSON.parse(storedArray).length < goNoGoLength) {\n      checkArr = buildFalseArray(goNoGoLength);\n    } else {\n      checkArr = JSON.parse(storedArray);\n    }\n    localStorage['goNoGo'] = JSON.stringify(checkArr);\n\n    this.state = Object.assign(\n      {},\n      getStateFromStore(),\n      {checked: checkArr}\n    );\n  }\n\n  componentDidMount() {\n    StatusStore.addChangeListener(this._onChangeStatus);\n    WaypointStore.addChangeListener(this._onChangeStatus);\n    InteropStore.addChangeListener(this._onChangeStatus);\n    ParametersStore.addChangeListener(this._onChangeStatus);\n  }\n\n  componentWillUnmount() {\n    StatusStore.removeChangeListener(this._onChangeStatus);\n    WaypointStore.removeChangeListener(this._onChangeStatus);\n    InteropStore.removeChangeListener(this._onChangeStatus);\n    ParametersStore.removeChangeListener(this._onChangeStatus);\n  }\n\n  @autobind\n  _onChangeStatus() {\n    this.setState(getStateFromStore());\n  }\n\n  @autobind\n  _onChangeClick(i: number) {\n    let currentstate = this.state.checked;\n    currentstate[i] = !currentstate[i];\n    this.setState({checked: currentstate});\n    localStorage['goNoGo'] = JSON.stringify(currentstate);\n  }\n\n  @autobind\n  createCheckBox(item: Object, i: number) {\n    const val = item.autoCheck ? item.value : this.state.checked[i];\n    return (\n      <tr key={item.key}>\n        <td>\n          <input disabled={item.autoCheck} type={item.type} checked={val} onChange={this._onChangeClick.bind(this, i)} />\n        </td>\n        <td>{item.name}</td>\n      </tr>\n    );\n  }\n\n  @autobind\n  goNoGo(dropdown) {\n    const v = this.goCheck() ? 100: 0;\n    const className = `${valueToColor(v)} ${colorToButton(valueToColor(v))}`;\n    const color = valueToColorName(v);\n    const outerstyle = {height: '50px', marginBottom: '0px'};\n    return (\n      <li key=\"GO_NOGO\" className={className} id=\"GO_NOGO\" style={outerstyle}>\n        <a data-toggle=\"dropdown\" style={{backgroundColor: color, color: 'white'}}>\n          GO_NOGO<span className=\"caret\"></span>\n        </a>\n        {dropdown}\n      </li>\n    );\n  }\n\n  /**\n  * checks if all the boxes are checked\n  * returns a boolean representing whether the boxes are all checked\n  */\n  @autobind\n  goCheck() {\n    const list = this.state.goNoGo;\n    const checklist = this.state.checked;\n    for (let i = 0; i < list.length; i++) {\n      if (list[i].autoCheck) {\n        if (!list[i].value) {\n          return false;\n        }\n      } else {\n        if (!checklist[i]) {\n          return false;\n        }\n      }\n    }\n    return true;\n  }\n\n  @autobind\n  _clearStorage() {\n    const newArr = buildFalseArray(getStateFromStore().goNoGo.length);\n    this.setState({checked: newArr});\n    localStorage['goNoGo'] = JSON.stringify(newArr);\n  }\n\n  render() {\n    return this.goNoGo(\n      <ul className='dropdown-menu' style={{width: '350px', color: 'black'}}>\n        <table className=\"table\"><tbody>\n          {this.state.goNoGo.map(this.createCheckBox)}\n          <FullWidthButton color=\"error\" onClick={this._clearStorage} text=\"Clear Checklist\" />\n        </tbody></table>\n      </ul>\n    );\n  }\n}\n"
+    "content": "// @flow\n\nimport React from 'react';\nimport autobind from 'autobind-decorator';\n\nimport StatusStore from 'js/stores/StatusStore';\nimport WaypointStore from 'js/stores/WaypointStore';\nimport InteropStore from 'js/stores/InteropStore';\nimport ParametersStore from 'js/stores/ParametersStore';\n\nimport FullWidthButton from 'js/components/General/FullWidthButton';\n\nimport { valueToColor, colorToButton, valueToColorName } from 'js/utils/ComponentUtils';\n\n/**\n * @module components/Navbar/GoNoGoDropdown\n */\n\n/**\n * Gets state from the interop, parameter, waypoint, and Status stores\n */\nfunction getStateFromStore() {\n  let goNoGoList = [];\n  goNoGoList = goNoGoList.concat(InteropStore.getGoNoGo());\n  goNoGoList = goNoGoList.concat(ParametersStore.getGoNoGo());\n  goNoGoList = goNoGoList.concat(WaypointStore.getGoNoGo());\n  goNoGoList = goNoGoList.concat(StatusStore.getGoNoGo());\n  return {goNoGo: goNoGoList};\n}\n\n/**\n* Builds initial array of length, length, to start all the check-boxes at a false value\n* @param {number} length \n* @returns {boolean[]}\n*/\nfunction buildFalseArray(length) {\n  let arr = [];\n  for (let i = 0; i < length; i++) {\n    arr.push(false);\n  }\n  return arr;\n}\n\nexport default class GoNoGoDropdown extends React.Component {\n\n  state: {\n    goNoGo: Array<Object>,\n    checked: Array<boolean>\n  };\n\n  constructor(props: Object) {\n    super(props);\n\n    let storedArray = localStorage['goNoGo'];\n    let checkArr = [];\n    const goNoGoLength = getStateFromStore().goNoGo.length;\n    if (storedArray == undefined || JSON.parse(storedArray).length < goNoGoLength) {\n      checkArr = buildFalseArray(goNoGoLength);\n    } else {\n      checkArr = JSON.parse(storedArray);\n    }\n    localStorage['goNoGo'] = JSON.stringify(checkArr);\n\n    this.state = Object.assign(\n      {},\n      getStateFromStore(),\n      {checked: checkArr}\n    );\n  }\n\n  componentDidMount() {\n    StatusStore.addChangeListener(this._onChangeStatus);\n    WaypointStore.addChangeListener(this._onChangeStatus);\n    InteropStore.addChangeListener(this._onChangeStatus);\n    ParametersStore.addChangeListener(this._onChangeStatus);\n  }\n\n  componentWillUnmount() {\n    StatusStore.removeChangeListener(this._onChangeStatus);\n    WaypointStore.removeChangeListener(this._onChangeStatus);\n    InteropStore.removeChangeListener(this._onChangeStatus);\n    ParametersStore.removeChangeListener(this._onChangeStatus);\n  }\n\n  /**\n   * Changes the auto-check-boxes when the stores change\n   */\n  @autobind\n  _onChangeStatus() {\n    this.setState(getStateFromStore());\n  }\n\n  /**\n  * Changes the non auto check boxes when non auto check box at index i is clicked\n  * @param {number} i\n  */\n  @autobind\n  _onChangeClick(i: number) {\n    let currentstate = this.state.checked;\n    currentstate[i] = !currentstate[i];\n    this.setState({checked: currentstate});\n    localStorage['goNoGo'] = JSON.stringify(currentstate);\n  }\n\n  /**\n  * Creates an auto-check or non auto-check box for an item with index i based on \n  * the autocheck property of the item\n  * @param {number} item\n  * @param {number} i\n  */\n  @autobind\n  createCheckBox(item: Object, i: number) {\n    const val = item.autoCheck ? item.value : this.state.checked[i];\n    return (\n      <tr key={item.key}>\n        <td>\n          <input disabled={item.autoCheck} type={item.type} checked={val} onChange={this._onChangeClick.bind(this, i)} />\n        </td>\n        <td>{item.name}</td>\n      </tr>\n    );\n  }\n\n  /**\n   * Method making the nav bar section for goNoGo given the dropdown\n   * @param {Object} dropdown\n   * @returns {Object}\n   */\n  @autobind\n  goNoGo(dropdown) {\n    const v = this.goCheck() ? 100: 0;\n    const className = `${valueToColor(v)} ${colorToButton(valueToColor(v))}`;\n    const color = valueToColorName(v);\n    const outerstyle = {height: '50px', marginBottom: '0px'};\n    return (\n      <li key=\"GO_NOGO\" className={className} id=\"GO_NOGO\" style={outerstyle}>\n        <a data-toggle=\"dropdown\" style={{backgroundColor: color, color: 'white'}}>\n          GO_NOGO<span className=\"caret\"></span>\n        </a>\n        {dropdown}\n      </li>\n    );\n  }\n\n  /**\n  * checks if all the boxes are checked\n  * returns a boolean representing whether the boxes are all checked\n  * @returns {boolean}\n  */\n  @autobind\n  goCheck() {\n    const list = this.state.goNoGo;\n    const checklist = this.state.checked;\n    for (let i = 0; i < list.length; i++) {\n      if (list[i].autoCheck) {\n        if (!list[i].value) {\n          return false;\n        }\n      } else {\n        if (!checklist[i]) {\n          return false;\n        }\n      }\n    }\n    return true;\n  }\n\n  @autobind\n  _clearStorage() {\n    const newArr = buildFalseArray(getStateFromStore().goNoGo.length);\n    this.setState({checked: newArr});\n    localStorage['goNoGo'] = JSON.stringify(newArr);\n  }\n\n  render() {\n    return this.goNoGo(\n      <ul className='dropdown-menu' style={{width: '350px', color: 'black'}}>\n        <table className=\"table\"><tbody>\n          {this.state.goNoGo.map(this.createCheckBox)}\n          <FullWidthButton color=\"error\" onClick={this._clearStorage} text=\"Clear Checklist\" />\n        </tbody></table>\n      </ul>\n    );\n  }\n}\n"
   },
   {
     "__docId__": 152,
@@ -4118,14 +4118,8 @@
     "export": false,
     "importPath": "GCS/js/components/Navbar/GoNoGoDropdown.jsx",
     "importStyle": null,
-    "description": "",
-    "lineNumber": 19,
-    "unknown": [
-      {
-        "tagName": "@module",
-        "tagValue": "components/Navbar/GoNoGoDropdown"
-      }
-    ],
+    "description": "Gets state from the interop, parameter, waypoint, and Status stores",
+    "lineNumber": 22,
     "params": [],
     "return": {
       "types": [
@@ -4146,21 +4140,33 @@
     "export": false,
     "importPath": "GCS/js/components/Navbar/GoNoGoDropdown.jsx",
     "importStyle": null,
-    "description": null,
-    "lineNumber": 28,
-    "undocument": true,
+    "description": "Builds initial array of length, length, to start all the check-boxes at a false value",
+    "lineNumber": 36,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{boolean[]}"
+      }
+    ],
     "params": [
       {
-        "name": "length",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "length",
+        "description": ""
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "boolean[]"
+      ],
+      "spread": false,
+      "description": ""
     },
     "generator": false
   },
@@ -4177,7 +4183,7 @@
     "importPath": "GCS/js/components/Navbar/GoNoGoDropdown.jsx",
     "importStyle": "GoNoGoDropdown",
     "description": null,
-    "lineNumber": 36,
+    "lineNumber": 44,
     "undocument": true,
     "interface": false,
     "extends": [
@@ -4194,7 +4200,7 @@
     "longname": "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#constructor",
     "access": null,
     "description": null,
-    "lineNumber": 43,
+    "lineNumber": 51,
     "undocument": true,
     "params": [
       {
@@ -4216,7 +4222,7 @@
     "longname": "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#state",
     "access": null,
     "description": null,
-    "lineNumber": 56,
+    "lineNumber": 64,
     "undocument": true,
     "type": {
       "types": [
@@ -4234,7 +4240,7 @@
     "longname": "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#componentDidMount",
     "access": null,
     "description": null,
-    "lineNumber": 63,
+    "lineNumber": 71,
     "undocument": true,
     "params": [],
     "generator": false
@@ -4249,7 +4255,7 @@
     "longname": "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#componentWillUnmount",
     "access": null,
     "description": null,
-    "lineNumber": 70,
+    "lineNumber": 78,
     "undocument": true,
     "params": [],
     "generator": false
@@ -4263,9 +4269,8 @@
     "memberof": "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown",
     "longname": "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#_onChangeStatus",
     "access": null,
-    "description": null,
-    "lineNumber": 78,
-    "undocument": true,
+    "description": "Changes the auto-check-boxes when the stores change",
+    "lineNumber": 89,
     "params": [],
     "generator": false
   },
@@ -4278,15 +4283,18 @@
     "memberof": "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown",
     "longname": "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#_onChangeClick",
     "access": null,
-    "description": null,
-    "lineNumber": 83,
-    "undocument": true,
+    "description": "Changes the non auto check boxes when non auto check box at index i is clicked",
+    "lineNumber": 98,
     "params": [
       {
-        "name": "i",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "i",
+        "description": ""
       }
     ],
     "generator": false
@@ -4300,21 +4308,28 @@
     "memberof": "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown",
     "longname": "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#createCheckBox",
     "access": null,
-    "description": null,
-    "lineNumber": 91,
-    "undocument": true,
+    "description": "Creates an auto-check or non auto-check box for an item with index i based on \nthe autocheck property of the item",
+    "lineNumber": 112,
     "params": [
       {
-        "name": "item",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "item",
+        "description": ""
       },
       {
-        "name": "i",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "i",
+        "description": ""
       }
     ],
     "return": {
@@ -4333,21 +4348,33 @@
     "memberof": "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown",
     "longname": "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#goNoGo",
     "access": null,
-    "description": null,
-    "lineNumber": 104,
-    "undocument": true,
+    "description": "Method making the nav bar section for goNoGo given the dropdown",
+    "lineNumber": 130,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{Object}"
+      }
+    ],
     "params": [
       {
-        "name": "dropdown",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "dropdown",
+        "description": ""
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Object"
+      ],
+      "spread": false,
+      "description": ""
     },
     "generator": false
   },
@@ -4361,12 +4388,21 @@
     "longname": "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#goCheck",
     "access": null,
     "description": "checks if all the boxes are checked\nreturns a boolean representing whether the boxes are all checked",
-    "lineNumber": 124,
+    "lineNumber": 151,
+    "unknown": [
+      {
+        "tagName": "@returns",
+        "tagValue": "{boolean}"
+      }
+    ],
     "params": [],
     "return": {
+      "nullable": null,
       "types": [
         "boolean"
-      ]
+      ],
+      "spread": false,
+      "description": ""
     },
     "generator": false
   },
@@ -4380,7 +4416,7 @@
     "longname": "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#_clearStorage",
     "access": null,
     "description": null,
-    "lineNumber": 142,
+    "lineNumber": 169,
     "undocument": true,
     "params": [],
     "generator": false
@@ -4395,7 +4431,7 @@
     "longname": "js/components/Navbar/GoNoGoDropdown.jsx~GoNoGoDropdown#render",
     "access": null,
     "description": null,
-    "lineNumber": 148,
+    "lineNumber": 175,
     "undocument": true,
     "params": [],
     "return": {
@@ -13396,7 +13432,7 @@
     "access": null,
     "description": null,
     "lineNumber": 1,
-    "content": "// @flow\n\nimport GCSDispatcher from 'js/dispatcher/GCSDispatcher';\nimport { StatusTypes } from 'js/constants/ActionTypes';\nimport { BUTTON } from 'js/constants/ButtonTypes';\nimport Store from 'js/stores/Store';\n\nimport * as StatusActionCreator from 'js/actions/StatusActionCreator';\n\nimport { sendModeSwitch, sendChangeMode, toggleArm, sendRTL } from 'js/utils/SendApi';\nimport { enabledToSuccess, decround, pythagorean } from 'js/utils/ComponentUtils';\n\n/**\n * @module stores/StatusStore\n */\n\nlet _airspeed: Airspeed = {airvx: 0, airvy: 0, airvz: 0, speed: 0, climb: 0};\nlet _climb_rate: number = 0;\nlet _attitude: Attitude = {pitch: 0, roll: 0, yaw: 0, pitchspeed: 0, rollspeed: 0, yawspeed: 0};\nlet _gps: GPS = {lat: 0, lon: 0, rel_alt: 0, groundvx: 0, groundvy: 0, groundvz: 0, heading: 0};\nlet _wind: Wind = {windvx: 0, windvy: 0, windvz: 0};\nlet _armed: boolean = false;\nlet _safety_switch: boolean = false;\nlet _gps_link: boolean = false;\nlet _plane_link: boolean = false;\nlet _battery: Battery = {batteryvoltage: 0, batterypct: 0};\nlet _powerboard: Powerboard = {csbatt: 0, nuc: 0, gimbal: 0, comms: 0, '12v reg': 0, '24v reg': 0};\nlet _throttle: number = 0;\nlet _mode: ModeString = 'MANUAL';\nlet _mode_switch: ModeString = 'MANUAL';\nlet _connected: boolean = true;\nlet _throttle100: boolean = false;\n\n/**\n * Reacts to a user clicking on a mode change by dispatching a mode change\n * and posting the mode change to the server\n * @param {string} type - Either mode_switch or current_mode\n * @param {string} mode - The mode being switched into\n * @returns {undefined}\n */\nfunction changeMode(type: ModeType, mode: ModeString): void {\n  if (type === 'Mode Switch') {\n    sendModeSwitch(mode, () => StatusActionCreator.receiveModeSwitch(mode));\n  } else if (type === 'Current Mode') {\n    sendChangeMode(mode, () => StatusActionCreator.receiveCurrentMode(mode));\n  } else {\n    throw 'Invalid Mode';\n  }\n}\n\nfunction toggleArmButton(): void {\n  toggleArm(_armed);\n}\n\nconst _possible_modes: ModeOptionType[] = [\n  {name: 'MANUAL', key: 'MANUAL', onClick: changeMode},\n  {name: 'AUTO', key: 'AUTO', onClick: changeMode},\n  {name: 'AUTOTUNE', key: 'AUTOTUNE', onClick: changeMode},\n  {name: 'STABILIZE', key: 'STABILIZE', onClick: changeMode},\n  {name: 'LOITER', key: 'LOITER', onClick: changeMode},\n  {name: 'RTL', key: 'RTL', onClick: changeMode},\n  {name: 'FBWA', key: 'FBWA', onClick: changeMode},\n  {name: 'FBWB', key: 'FBWB', onClick: changeMode},\n  {name: 'TRAINING', key: 'TRAINING', onClick: changeMode},\n  {name: 'CIRCLE', key: 'CIRCLE', onClick: changeMode}\n];\n\nfunction _updateAirspeed(airspeed: Airspeed): void { _airspeed = airspeed; }\nfunction _updateClimbRate(climb_rate: number): void { _climb_rate = climb_rate; }\nfunction _updateAttitude(attitude: Attitude): void { _attitude = attitude; }\nfunction _updateGPS(gps: GPS): void { _gps = gps; }\nfunction _updateWind(wind: Wind): void { _wind = wind; }\nfunction _updateArmed(armed: boolean): void { _armed = armed; }\nfunction _updateGPSLink(gps_link: boolean): void { _gps_link = gps_link; }\nfunction _updatePlaneLink(plane_link: boolean): void { _plane_link = plane_link; }\nfunction _updateSafetySwitch(safety_switch: boolean): void { _safety_switch = safety_switch; }\nfunction _updateBattery(battery: Battery): void { _battery = battery; }\nfunction _updatePowerboard(powerboard: Powerboard): void { _powerboard = powerboard; }\nfunction _updateThrottle(throttle: number): void {\n  _throttle = throttle;\n  _throttle100 = (throttle === 100 ? true : _throttle100); // if throttle has ever reached 100, set throttle 100 to true\n}\nfunction _updateMode(mode: ModeString): void { _mode = mode; }\nfunction _updateModeSwitch(mode_switch: ModeString): void { _mode_switch = mode_switch; }\nfunction _updateConnected(connected: boolean): void { _connected = connected; }\n\nfunction _lostConnection(): void {\n  _updateAirspeed({airvx: 0, airvy: 0, airvz: 0, speed: 0, climb: 0});\n  _updateClimbRate(0);\n  _updateAttitude({pitch: 0, roll: 0, yaw: 0, pitchspeed: 0, rollspeed: 0, yawspeed: 0});\n  _updateGPS({lat: 0, lon: 0, rel_alt: 0, groundvx: 0, groundvy: 0, groundvz: 0, heading: 0});\n  _updateWind({windvx: 0, windvy: 0, windvz: 0});\n  _updateArmed(false);\n  _updateGPSLink(false);\n  _updatePlaneLink(false);\n  _updateSafetySwitch(false);\n  _updateBattery({batteryvoltage: 0, batterypct: 0});\n  _updatePowerboard({csbatt: 0, nuc: 0, gimbal: 0, comms: 0, '12v reg': 0, '24v reg': 0});\n  _updateThrottle(0);\n  _updateMode('MANUAL');\n  _updateModeSwitch('MANUAL');\n  _updateConnected(false);\n}\n\nfunction _gainedConnection(): void {\n  _updateConnected(true);\n}\n\nclass StatusStore extends Store {\n\n  constructor() {\n    super();\n  }\n\n  /**\n   * Returns the plane mode switches\n   * @returns {PlaneModeType[]}\n   */\n  getPlaneModes(): PlaneModeType[] {\n    return [\n      {name: 'Mode Switch', modes: _possible_modes, value: _mode_switch, key: 'MODE_SWITCH'},\n      {name: 'Current Mode', modes: _possible_modes, value: _mode, key: 'CURRENT_MODE'}\n    ];\n  }\n\n  /**\n   * Returns the plane's gps infor\n   * @returns {GPS}\n   */\n  getGPS(): GPS {\n    return _gps;\n  }\n\n  /**\n   * Returns whether the plane is armed\n   * @returns {boolean}\n   */\n  getArmed(): boolean {\n    return _armed;\n  }\n\n  /**\n   * Returns whether the backend is connected\n   * @returns {boolean}\n   */\n  getConnected(): boolean {\n    return _connected;\n  }\n\n  /**\n   * Returns whether the throttle has been ramped all the way up yet\n   * @returns {boolean}\n   */\n  getThrottle100(): boolean {\n    return _throttle100;\n  }\n\n  /**\n   * Returns the current mode\n   * @returns {string}\n   */\n  getMode(): string {\n    return _mode;\n  }\n\n  /**\n   * Returns the airspeed\n   * @returns {number}\n   */\n  getAirspeed(): number {\n    return decround(_airspeed.speed, 2);\n  }\n\n  /**\n   * Returns the plane info relevant for display\n   * @returns {DisplayInfoType[]}\n   */\n  getPlaneInfo(): DisplayInfoType[] {\n    const speed_digits = 2;\n    const angle_digits = 2;\n    const coords_digits = 6;\n    const other_digits = 2;\n    return [\n      {name: 'Rel. Alt.', value: decround(_gps.rel_alt, other_digits), unit: 'm', key: 'REL_ALT'},\n      {name: 'Ground Speed', value: decround(pythagorean(_gps.groundvx, _gps.groundvy, _gps.groundvz), speed_digits), unit: 'm/s', key: 'GROUND_SPEED'},\n      {name: 'Air Speed', value: decround(_airspeed.speed, speed_digits), unit: 'm/s', key: 'AIR_SPEED'},\n      {name: 'Roll', value: decround(_attitude.roll, angle_digits), unit: '°', key: 'ROLL'},\n      {name: 'Pitch', value: decround(_attitude.pitch, angle_digits), unit: '°', key: 'PITCH'},\n      {name: 'Yaw', value: decround(_attitude.yaw, angle_digits), unit: '°', key: 'YAW'},\n      {name: 'Latitude', value: decround(_gps.lat, coords_digits), unit: '°', key: 'LATITUDE'},\n      {name: 'Longitude', value: decround(_gps.lon, coords_digits), unit: '°', key: 'LONGITUDE'},\n      {name: 'Wind Speed', value: decround(pythagorean(_wind.windvx, _wind.windvy, _wind.windvz), speed_digits), unit: 'm/s', key: 'WIND'},\n      {name: 'Throttle', value: decround(_throttle, other_digits), unit: '%', key: 'THROTTLE'},\n      {name: 'Climb Rate', value: decround(_climb_rate, speed_digits), unit: 'm/s', key: 'CLIMB_RATE'}\n    ];\n  }\n\n  /**\n   * Returns all plane values\n   * @returns {Object}\n   */\n  getPlaneValues(): Object {\n    return {\n      REL_ALT: decround(_gps.rel_alt, 2),\n      GROUND_SPEED: decround(pythagorean(_gps.groundvx, _gps.groundvz, _gps.groundvz), 2),\n      AIR_SPEED: decround(_airspeed.speed, 2),\n      ROLL: decround(_attitude.roll, 2),\n      PITCH: decround(_attitude.pitch, 2),\n      YAW: decround(_attitude.yaw, 2),\n      LATITUDE: decround(_gps.lat, 6),\n      LONGITUDE: decround(_gps.lon, 6),\n      WIND: decround(pythagorean(_wind.windvx, _wind.windvy, _wind.windvz), 4),\n      THROTTLE: decround(_throttle, 4),\n      CLIMB_RATE: decround(_climb_rate, 4)\n    };\n  }\n\n  /**\n   * Returns the Plane's link statuses\n   * @returns {NavbarStatusType[]}\n   */\n  getPlaneStatus(): NavbarStatusType[] {\n    const safetyName = _safety_switch ? 'Live' : 'Safe';\n    const armedName = _armed ? 'Armed' : 'Disarmed';\n    const planeLinkName = _plane_link ? 'Plane Link' : 'No Plane Link';\n    const gpsLinkName = _gps_link ? 'GPS Link' : 'No GPS Link';\n    return [\n      {name: safetyName, status: _safety_switch, key: 'SAFETY_SWITCH'},\n      {name: armedName, status: _armed, key: 'ARMED'},\n      {name: planeLinkName, status: _plane_link, key: 'PLANE_LINK'},\n      {name: gpsLinkName, status: _gps_link, key: 'GPS_LINK'}\n    ];\n  }\n\n  /**\n   * Returns the battery percentage\n   * @returns {number}\n   */\n  getBattery(): number {\n    return _battery.batterypct;\n  }\n\n  /**\n   * Returns the powerboard\n   * @returns {DisplayInfoType[]}\n   */\n  getPowerboard(): DisplayInfoType[] {\n    return [\n      {name: 'csbatt', value: _powerboard.csbatt, key: 'CSBATT', unit: 'mV'},\n      {name: 'nuc', value: _powerboard.nuc, key: 'NUC', unit: 'mA'},\n      {name: 'gimbal', value: _powerboard.gimbal, key: 'GIMBAL', unit: 'mA'},\n      {name: 'comms', value: _powerboard.comms, key: 'COMMS', unit: 'mA'},\n      {name: '12V Reg', value: _powerboard['12v reg'], key: '12VReg', unit: 'mV'},\n      {name: '24V Reg', value: _powerboard['24v reg'], key: '24VReg', unit: 'mV'}\n    ];\n  }\n\n  /**\n   * Returns the status controls\n   * @returns {FullWidthElementType[]}\n   */\n  getControls(): FullWidthElementType[] {\n    const armText = _armed ? 'DISARM' : 'ARM';\n    const armColor = enabledToSuccess(_armed);\n    return [\n      {text: armText, color: armColor, type: BUTTON,  onClick: toggleArmButton, id: 'TOGGLE_ARM', key: 'TOGGLE_ARM'},\n      {text: 'Return Home', color: 'error', type: BUTTON, onClick: sendRTL, id: 'RETURN_HOME', key: 'RETURN_HOME'}\n    ];\n  }\n  /**\n  *Returns all the check items for the go no go list that are related to the status store\n  *@Returns {Object[]}\n  */\n  getGoNoGo() {\n    const connected = _connected;\n    const throttle100 = _throttle100; \n    const modeAuto = _mode === 'AUTO';\n    return [\n      {name: 'batteries recorded in flight log', key: 'Batteries_recorded', type: 'checkbox', autoCheck: false},\n      {name: 'redo airspeed calibration', key: 'airspeed_calibration', type: 'checkbox', autoCheck: false},\n      {name: 'receiving plane vitals', value: connected , key: 'plane_vitals', type: 'checkbox', autoCheck: true},\n      {name: 'throttle has reached 100%', value: throttle100, key: 'throtte_test', type: 'checkbox', autoCheck: true},\n      {name: 'catapult will not clip box', key: 'CATAPULT_CLIP_BOX', type: 'checkbox', autoCheck: false},\n      {name: 'no Slack in catapult line', key: 'CATAPULT_SLACK', type: 'checkbox', autoCheck: false},\n      {name: 'pilot and spotter recored in flight log', key: 'pilot_and_spotter_recorded', type: 'checkbox', autoCheck: false},\n      {name: 'catapult handlers recorded in flight log', key: 'catapult_handelers_recorded', type: 'checkbox', autoCheck: false},\n      {name: 'Timer & video people recorded in flight log', key: 'timer_&_video_recorded', type: 'checkbox', autoCheck: false},\n      {name: 'plane will not lift off catapult prematurely', key: 'no_premature_lift', type: 'checkbox', autoCheck: false},\n      {name: 'transmitter on high', key: 'transmitter_on_high', type: 'checkbox', autoCheck: false},\n      {name: 'catapult pressurized', key: 'catapult_pressurized', type: 'checkbox', autoCheck: false},\n      {name: 'mission brief complete', key: 'mission_brief', type: 'checkbox', autoCheck: false},\n      {name: 'autopilot in auto', value: modeAuto, key: 'autopilot_in_auto', type: 'checkbox', autoCheck: true},\n      {name: 'surface test', key: 'surface_test', type: 'checkbox', autoCheck: false},\n      {name: 'throttle test',  key: 'throttle_test', type: 'checkbox', autoCheck: false},\n      {name: 'safety pin',  key: 'safety_pin', type: 'checkbox', autoCheck: false},\n      {name: 'capturing images',  key: 'image_capture', type: 'checkbox', autoCheck: false},\n      {name: 'gimbal pointed at the ground',  key: 'gimbal_point_ground', type: 'checkbox', autoCheck: false}\n    ];\n  }\n}\n\nconst statusStoreInstance = new StatusStore();\n\nstatusStoreInstance.dispatchToken = GCSDispatcher.register(action => {\n  switch(action.type) {\n  case StatusTypes.RECEIVE_AIRSPEED:\n    _updateAirspeed(action.airspeed);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_CLIMB_RATE:\n    _updateClimbRate(action.climb_rate);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_ATTITUDE:\n    _updateAttitude(action.attitude);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_GPS:\n    _updateGPS(action.gps);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_WIND:\n    _updateWind(action.wind);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_ARMED:\n    _updateArmed(action.armed);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_SAFETY_SWITCH:\n    _updateSafetySwitch(action.safety_switch);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_GPS_LINK:\n    _updateGPSLink(action.gps_link);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_PLANE_LINK:\n    _updatePlaneLink(action.plane_link);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_BATTERY:\n    _updateBattery(action.battery);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_POWERBOARD:\n    _updatePowerboard(action.powerboard);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_THROTTLE:\n    _updateThrottle(action.throttle);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_CURRENT_MODE:\n    _updateMode(action.mode);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_MODE_SWITCH:\n    _updateModeSwitch(action.mode_switch);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.LOST_CONNECTION:\n    _lostConnection();\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.GAINED_CONNECTION:\n    _gainedConnection();\n    statusStoreInstance.emitChange();\n    break;\n  default:\n    // do nothing\n  }\n});\n\nexport default statusStoreInstance;\n"
+    "content": "// @flow\n\nimport GCSDispatcher from 'js/dispatcher/GCSDispatcher';\nimport { StatusTypes } from 'js/constants/ActionTypes';\nimport { BUTTON } from 'js/constants/ButtonTypes';\nimport Store from 'js/stores/Store';\n\nimport * as StatusActionCreator from 'js/actions/StatusActionCreator';\n\nimport { sendModeSwitch, sendChangeMode, toggleArm, sendRTL } from 'js/utils/SendApi';\nimport { enabledToSuccess, decround, pythagorean } from 'js/utils/ComponentUtils';\n\n/**\n * @module stores/StatusStore\n */\n\nlet _airspeed: Airspeed = {airvx: 0, airvy: 0, airvz: 0, speed: 0, climb: 0};\nlet _climb_rate: number = 0;\nlet _attitude: Attitude = {pitch: 0, roll: 0, yaw: 0, pitchspeed: 0, rollspeed: 0, yawspeed: 0};\nlet _gps: GPS = {lat: 0, lon: 0, rel_alt: 0, groundvx: 0, groundvy: 0, groundvz: 0, heading: 0};\nlet _wind: Wind = {windvx: 0, windvy: 0, windvz: 0};\nlet _armed: boolean = false;\nlet _safety_switch: boolean = false;\nlet _gps_link: boolean = false;\nlet _plane_link: boolean = false;\nlet _battery: Battery = {batteryvoltage: 0, batterypct: 0};\nlet _powerboard: Powerboard = {csbatt: 0, nuc: 0, gimbal: 0, comms: 0, '12v reg': 0, '24v reg': 0};\nlet _throttle: number = 0;\nlet _mode: ModeString = 'MANUAL';\nlet _mode_switch: ModeString = 'MANUAL';\nlet _connected: boolean = true;\nlet _throttle100: boolean = false;\n\n/**\n * Reacts to a user clicking on a mode change by dispatching a mode change\n * and posting the mode change to the server\n * @param {string} type - Either mode_switch or current_mode\n * @param {string} mode - The mode being switched into\n * @returns {undefined}\n */\nfunction changeMode(type: ModeType, mode: ModeString): void {\n  if (type === 'Mode Switch') {\n    sendModeSwitch(mode, () => StatusActionCreator.receiveModeSwitch(mode));\n  } else if (type === 'Current Mode') {\n    sendChangeMode(mode, () => StatusActionCreator.receiveCurrentMode(mode));\n  } else {\n    throw 'Invalid Mode';\n  }\n}\n\nfunction toggleArmButton(): void {\n  toggleArm(_armed);\n}\n\nconst _possible_modes: ModeOptionType[] = [\n  {name: 'MANUAL', key: 'MANUAL', onClick: changeMode},\n  {name: 'AUTO', key: 'AUTO', onClick: changeMode},\n  {name: 'AUTOTUNE', key: 'AUTOTUNE', onClick: changeMode},\n  {name: 'STABILIZE', key: 'STABILIZE', onClick: changeMode},\n  {name: 'LOITER', key: 'LOITER', onClick: changeMode},\n  {name: 'RTL', key: 'RTL', onClick: changeMode},\n  {name: 'FBWA', key: 'FBWA', onClick: changeMode},\n  {name: 'FBWB', key: 'FBWB', onClick: changeMode},\n  {name: 'TRAINING', key: 'TRAINING', onClick: changeMode},\n  {name: 'CIRCLE', key: 'CIRCLE', onClick: changeMode}\n];\n\nfunction _updateAirspeed(airspeed: Airspeed): void { _airspeed = airspeed; }\nfunction _updateClimbRate(climb_rate: number): void { _climb_rate = climb_rate; }\nfunction _updateAttitude(attitude: Attitude): void { _attitude = attitude; }\nfunction _updateGPS(gps: GPS): void { _gps = gps; }\nfunction _updateWind(wind: Wind): void { _wind = wind; }\nfunction _updateArmed(armed: boolean): void { _armed = armed; }\nfunction _updateGPSLink(gps_link: boolean): void { _gps_link = gps_link; }\nfunction _updatePlaneLink(plane_link: boolean): void { _plane_link = plane_link; }\nfunction _updateSafetySwitch(safety_switch: boolean): void { _safety_switch = safety_switch; }\nfunction _updateBattery(battery: Battery): void { _battery = battery; }\nfunction _updatePowerboard(powerboard: Powerboard): void { _powerboard = powerboard; }\nfunction _updateThrottle(throttle: number): void {\n  _throttle = throttle;\n  _throttle100 = (throttle >= 90 ? true : _throttle100); // if throttle has ever reached 100, set throttle 100 to true\n}\nfunction _updateMode(mode: ModeString): void { _mode = mode; }\nfunction _updateModeSwitch(mode_switch: ModeString): void { _mode_switch = mode_switch; }\nfunction _updateConnected(connected: boolean): void { _connected = connected; }\n\nfunction _lostConnection(): void {\n  _updateAirspeed({airvx: 0, airvy: 0, airvz: 0, speed: 0, climb: 0});\n  _updateClimbRate(0);\n  _updateAttitude({pitch: 0, roll: 0, yaw: 0, pitchspeed: 0, rollspeed: 0, yawspeed: 0});\n  _updateGPS({lat: 0, lon: 0, rel_alt: 0, groundvx: 0, groundvy: 0, groundvz: 0, heading: 0});\n  _updateWind({windvx: 0, windvy: 0, windvz: 0});\n  _updateArmed(false);\n  _updateGPSLink(false);\n  _updatePlaneLink(false);\n  _updateSafetySwitch(false);\n  _updateBattery({batteryvoltage: 0, batterypct: 0});\n  _updatePowerboard({csbatt: 0, nuc: 0, gimbal: 0, comms: 0, '12v reg': 0, '24v reg': 0});\n  _updateThrottle(0);\n  _updateMode('MANUAL');\n  _updateModeSwitch('MANUAL');\n  _updateConnected(false);\n}\n\nfunction _gainedConnection(): void {\n  _updateConnected(true);\n}\n\nclass StatusStore extends Store {\n\n  constructor() {\n    super();\n  }\n\n  /**\n   * Returns the plane mode switches\n   * @returns {PlaneModeType[]}\n   */\n  getPlaneModes(): PlaneModeType[] {\n    return [\n      {name: 'Mode Switch', modes: _possible_modes, value: _mode_switch, key: 'MODE_SWITCH'},\n      {name: 'Current Mode', modes: _possible_modes, value: _mode, key: 'CURRENT_MODE'}\n    ];\n  }\n\n  /**\n   * Returns the plane's gps infor\n   * @returns {GPS}\n   */\n  getGPS(): GPS {\n    return _gps;\n  }\n\n  /**\n   * Returns whether the plane is armed\n   * @returns {boolean}\n   */\n  getArmed(): boolean {\n    return _armed;\n  }\n\n  /**\n   * Returns whether the backend is connected\n   * @returns {boolean}\n   */\n  getConnected(): boolean {\n    return _connected;\n  }\n\n  /**\n   * Returns whether the throttle has been ramped all the way up yet\n   * @returns {boolean}\n   */\n  getThrottle100(): boolean {\n    return _throttle100;\n  }\n\n  /**\n   * Returns the current mode\n   * @returns {string}\n   */\n  getMode(): string {\n    return _mode;\n  }\n\n  /**\n   * Returns the airspeed\n   * @returns {number}\n   */\n  getAirspeed(): number {\n    return decround(_airspeed.speed, 2);\n  }\n\n  /**\n   * Returns the plane info relevant for display\n   * @returns {DisplayInfoType[]}\n   */\n  getPlaneInfo(): DisplayInfoType[] {\n    const speed_digits = 2;\n    const angle_digits = 2;\n    const coords_digits = 6;\n    const other_digits = 2;\n    return [\n      {name: 'Rel. Alt.', value: decround(_gps.rel_alt, other_digits), unit: 'm', key: 'REL_ALT'},\n      {name: 'Ground Speed', value: decround(pythagorean(_gps.groundvx, _gps.groundvy, _gps.groundvz), speed_digits), unit: 'm/s', key: 'GROUND_SPEED'},\n      {name: 'Air Speed', value: decround(_airspeed.speed, speed_digits), unit: 'm/s', key: 'AIR_SPEED'},\n      {name: 'Roll', value: decround(_attitude.roll, angle_digits), unit: '°', key: 'ROLL'},\n      {name: 'Pitch', value: decround(_attitude.pitch, angle_digits), unit: '°', key: 'PITCH'},\n      {name: 'Yaw', value: decround(_attitude.yaw, angle_digits), unit: '°', key: 'YAW'},\n      {name: 'Latitude', value: decround(_gps.lat, coords_digits), unit: '°', key: 'LATITUDE'},\n      {name: 'Longitude', value: decround(_gps.lon, coords_digits), unit: '°', key: 'LONGITUDE'},\n      {name: 'Wind Speed', value: decround(pythagorean(_wind.windvx, _wind.windvy, _wind.windvz), speed_digits), unit: 'm/s', key: 'WIND'},\n      {name: 'Throttle', value: decround(_throttle, other_digits), unit: '%', key: 'THROTTLE'},\n      {name: 'Climb Rate', value: decround(_climb_rate, speed_digits), unit: 'm/s', key: 'CLIMB_RATE'}\n    ];\n  }\n\n  /**\n   * Returns all plane values\n   * @returns {Object}\n   */\n  getPlaneValues(): Object {\n    return {\n      REL_ALT: decround(_gps.rel_alt, 2),\n      GROUND_SPEED: decround(pythagorean(_gps.groundvx, _gps.groundvz, _gps.groundvz), 2),\n      AIR_SPEED: decround(_airspeed.speed, 2),\n      ROLL: decround(_attitude.roll, 2),\n      PITCH: decround(_attitude.pitch, 2),\n      YAW: decround(_attitude.yaw, 2),\n      LATITUDE: decround(_gps.lat, 6),\n      LONGITUDE: decround(_gps.lon, 6),\n      WIND: decround(pythagorean(_wind.windvx, _wind.windvy, _wind.windvz), 4),\n      THROTTLE: decround(_throttle, 4),\n      CLIMB_RATE: decround(_climb_rate, 4)\n    };\n  }\n\n  /**\n   * Returns the Plane's link statuses\n   * @returns {NavbarStatusType[]}\n   */\n  getPlaneStatus(): NavbarStatusType[] {\n    const safetyName = _safety_switch ? 'Live' : 'Safe';\n    const armedName = _armed ? 'Armed' : 'Disarmed';\n    const planeLinkName = _plane_link ? 'Plane Link' : 'No Plane Link';\n    const gpsLinkName = _gps_link ? 'GPS Link' : 'No GPS Link';\n    return [\n      {name: safetyName, status: _safety_switch, key: 'SAFETY_SWITCH'},\n      {name: armedName, status: _armed, key: 'ARMED'},\n      {name: planeLinkName, status: _plane_link, key: 'PLANE_LINK'},\n      {name: gpsLinkName, status: _gps_link, key: 'GPS_LINK'}\n    ];\n  }\n\n  /**\n   * Returns the battery percentage\n   * @returns {number}\n   */\n  getBattery(): number {\n    return _battery.batterypct;\n  }\n\n  /**\n   * Returns the powerboard\n   * @returns {DisplayInfoType[]}\n   */\n  getPowerboard(): DisplayInfoType[] {\n    return [\n      {name: 'csbatt', value: _powerboard.csbatt, key: 'CSBATT', unit: 'mV'},\n      {name: 'nuc', value: _powerboard.nuc, key: 'NUC', unit: 'mA'},\n      {name: 'gimbal', value: _powerboard.gimbal, key: 'GIMBAL', unit: 'mA'},\n      {name: 'comms', value: _powerboard.comms, key: 'COMMS', unit: 'mA'},\n      {name: '12V Reg', value: _powerboard['12v reg'], key: '12VReg', unit: 'mV'},\n      {name: '24V Reg', value: _powerboard['24v reg'], key: '24VReg', unit: 'mV'}\n    ];\n  }\n\n  /**\n   * Returns the status controls\n   * @returns {FullWidthElementType[]}\n   */\n  getControls(): FullWidthElementType[] {\n    const armText = _armed ? 'DISARM' : 'ARM';\n    const armColor = enabledToSuccess(_armed);\n    return [\n      {text: armText, color: armColor, type: BUTTON,  onClick: toggleArmButton, id: 'TOGGLE_ARM', key: 'TOGGLE_ARM'},\n      {text: 'Return Home', color: 'error', type: BUTTON, onClick: sendRTL, id: 'RETURN_HOME', key: 'RETURN_HOME'}\n    ];\n  }\n  /**\n  *Returns all the check items for the go no go list that are related to the status store\n  *@Returns {Object[]}\n  */\n  getGoNoGo() {\n    const connected = _connected;\n    const throttle100 = _throttle100; \n    const modeAuto = _mode === 'AUTO';\n    return [\n      {name: 'batteries recorded in flight log', key: 'Batteries_recorded', type: 'checkbox', autoCheck: false},\n      {name: 'redo airspeed calibration', key: 'airspeed_calibration', type: 'checkbox', autoCheck: false},\n      {name: 'receiving plane vitals', value: connected , key: 'plane_vitals', type: 'checkbox', autoCheck: true},\n      {name: 'throttle has reached 100%', value: throttle100, key: 'throtte_test', type: 'checkbox', autoCheck: true},\n      {name: 'catapult will not clip box', key: 'CATAPULT_CLIP_BOX', type: 'checkbox', autoCheck: false},\n      {name: 'no Slack in catapult line', key: 'CATAPULT_SLACK', type: 'checkbox', autoCheck: false},\n      {name: 'pilot and spotter recored in flight log', key: 'pilot_and_spotter_recorded', type: 'checkbox', autoCheck: false},\n      {name: 'catapult handlers recorded in flight log', key: 'catapult_handelers_recorded', type: 'checkbox', autoCheck: false},\n      {name: 'Timer & video people recorded in flight log', key: 'timer_&_video_recorded', type: 'checkbox', autoCheck: false},\n      {name: 'plane will not lift off catapult prematurely', key: 'no_premature_lift', type: 'checkbox', autoCheck: false},\n      {name: 'transmitter on high', key: 'transmitter_on_high', type: 'checkbox', autoCheck: false},\n      {name: 'catapult pressurized', key: 'catapult_pressurized', type: 'checkbox', autoCheck: false},\n      {name: 'mission brief complete', key: 'mission_brief', type: 'checkbox', autoCheck: false},\n      {name: 'autopilot in auto', value: modeAuto, key: 'autopilot_in_auto', type: 'checkbox', autoCheck: true},\n      {name: 'surface test', key: 'surface_test', type: 'checkbox', autoCheck: false},\n      {name: 'throttle test',  key: 'throttle_test', type: 'checkbox', autoCheck: false},\n      {name: 'safety pin',  key: 'safety_pin', type: 'checkbox', autoCheck: false},\n      {name: 'capturing images',  key: 'image_capture', type: 'checkbox', autoCheck: false},\n      {name: 'gimbal pointed at the ground',  key: 'gimbal_point_ground', type: 'checkbox', autoCheck: false}\n    ];\n  }\n}\n\nconst statusStoreInstance = new StatusStore();\n\nstatusStoreInstance.dispatchToken = GCSDispatcher.register(action => {\n  switch(action.type) {\n  case StatusTypes.RECEIVE_AIRSPEED:\n    _updateAirspeed(action.airspeed);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_CLIMB_RATE:\n    _updateClimbRate(action.climb_rate);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_ATTITUDE:\n    _updateAttitude(action.attitude);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_GPS:\n    _updateGPS(action.gps);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_WIND:\n    _updateWind(action.wind);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_ARMED:\n    _updateArmed(action.armed);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_SAFETY_SWITCH:\n    _updateSafetySwitch(action.safety_switch);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_GPS_LINK:\n    _updateGPSLink(action.gps_link);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_PLANE_LINK:\n    _updatePlaneLink(action.plane_link);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_BATTERY:\n    _updateBattery(action.battery);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_POWERBOARD:\n    _updatePowerboard(action.powerboard);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_THROTTLE:\n    _updateThrottle(action.throttle);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_CURRENT_MODE:\n    _updateMode(action.mode);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.RECEIVE_MODE_SWITCH:\n    _updateModeSwitch(action.mode_switch);\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.LOST_CONNECTION:\n    _lostConnection();\n    statusStoreInstance.emitChange();\n    break;\n  case StatusTypes.GAINED_CONNECTION:\n    _gainedConnection();\n    statusStoreInstance.emitChange();\n    break;\n  default:\n    // do nothing\n  }\n});\n\nexport default statusStoreInstance;\n"
   },
   {
     "__docId__": 540,

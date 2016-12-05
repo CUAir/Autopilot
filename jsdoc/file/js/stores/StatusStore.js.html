@@ -396,7 +396,7 @@ function _updateBattery(battery: Battery): void { _battery = battery; }
 function _updatePowerboard(powerboard: Powerboard): void { _powerboard = powerboard; }
 function _updateThrottle(throttle: number): void {
   _throttle = throttle;
-  _throttle100 = (throttle === 100 ? true : _throttle100); // if throttle has ever reached 100, set throttle 100 to true
+  _throttle100 = (throttle &gt;= 90 ? true : _throttle100); // if throttle has ever reached 100, set throttle 100 to true
 }
 function _updateMode(mode: ModeString): void { _mode = mode; }
 function _updateModeSwitch(mode_switch: ModeString): void { _mode_switch = mode_switch; }

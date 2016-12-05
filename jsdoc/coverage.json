@@ -1,7 +1,7 @@
 {
-  "coverage": "50.9%",
+  "coverage": "51.8%",
   "expectCount": 444,
-  "actualCount": 226,
+  "actualCount": 230,
   "files": {
     "js/constants/ButtonTypes.js": {
       "expectCount": 10,
@@ -123,19 +123,15 @@
     },
     "js/components/Navbar/GoNoGoDropdown.jsx": {
       "expectCount": 12,
-      "actualCount": 1,
+      "actualCount": 5,
       "undocumentLines": [
-        36,
-        142,
-        83,
+        44,
+        169,
+        71,
         78,
-        63,
-        70,
-        43,
-        91,
-        104,
-        148,
-        56
+        51,
+        175,
+        64
       ]
     },
     "js/constants/Frequency.js": {
