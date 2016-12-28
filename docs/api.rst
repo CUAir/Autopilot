@@ -409,6 +409,177 @@ Use the GET argument "time" (/status/softstatus?time=TIME) to request a status a
              'vz': 0
          }
 
+Calibration [/cali]
+---------------------
+
+Accelerometer Calibration [/cali/accel]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* **POST**
+
+Starts the accelerometer calibration process::
+
+ Response 200 (application/json)
+      "Started accelerometer calibration."
+
+* **PUT**
+
+Continues calibration process (mostly for accelerometer)::
+
+ Response 200 (application/json)
+      "Continuing."
+
+Gyroscope Calibration [/cali/gyro]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* **POST**
+
+Starts the gyroscope calibration process::
+
+ Response 200 (application/json)
+      "True"
+
+RC Calibration [/cali/rc]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* **POST**
+
+Starts the RC calibration process::
+
+ Response 200 (application/json)
+      "True"
+
+* **DELETE**
+
+Stops the RC calibration process::
+
+ Response 200 (application/json)
+      "True"
+
+Extras
+--------
+
+Cache Map [/cachemaps]
+^^^^^^^^^^^^^^^^^^^^^^^
+
+* **POST**
+
+Tells the backend to cache a map location::
+
+   Headers
+      Content-Type: application/json
+
+   Requests
+      name: <string>       [The location name]
+      lat: <float>         [The location's latitude]
+      lon: <float>         [The location's longitude]
+
+   Response 200 (application/json) 
+        {
+            'topLat': 1,
+            'bottomLat': 0,
+            'leftLon': 0,
+            'rightLon': 1,
+            'centerLat': 0.5,
+            'centerLon': 0.5  
+        }
+
+Get Locations [/getlocations]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* **GET**
+
+Retrieves the list of cached map locations::
+
+   Headers
+      Content-Type: application/json
+
+   Response 200 (application/json) 
+      {
+        "Cornell_Campus": {
+          "leftLon": -76.4950662435,
+          "imageURL": "img/satellites/Cornell_Campus_Satellite.png",
+          "bottomLat": 42.4384214463,
+          "topLat": 42.4586880256,
+          "rightLon": -76.4676004232
+        },
+        "Game_Farm": {
+          "leftLon": -76.4650662435,
+          "imageURL": "img/satellites/Game_Farm_Satellite.png",
+          "bottomLat": 42.4333928552,
+          "topLat": 42.4536610611,
+          "rightLon": -76.4376004232
+        }
+      }
+
+Arming [/arm]
+^^^^^^^^^^^^^^
+
+* **POST**
+
+Arms the plane::
+
+   Headers
+      Content-Type: application/json
+      token: <secret token>
+      confirm: confirm
+
+   Response 200 (application/json)
+     "True"
+
+* **DELETE**
+
+Disarms the plane::
+
+   Headers
+      Content-Type: application/json
+      token: <secret token>
+      confirm: confirm
+
+   Response 200 (application/json)
+     "True"
+
+Set Flight Mode [/set_mode]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* **POST**
+
+Sets the plane mode::
+
+  Headers
+      Content-Type: application/json
+      token: <secret token>
+
+  Requests
+      mode: <string>    [The name of the mode to switch into]
+
+  Response 200 (application/json)
+      "Accepted Mode Change."
+
+Get Flight Mode [/flight_mode]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* **GET**
+
+Gets the plane mode::
+
+  Response 200 (application/json)
+      "MANUAL"
+
+Reboot [/reboot]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+* **POST**
+
+Causes the plane to reboot
+
+  Headers
+      Content-Type: application/json
+      token: <secret token>
+      confirm: confirm
+
+  Response 200 (application/json)
+      "True"
 
 Waypoints [/wp]
 -----------------
@@ -417,7 +588,7 @@ Waypoints [/wp]
 
 Returns a list of waypoints, each containing, altitude, longitude, latitude, current waypoint, waypoint type or `MAV_CMD <http://mavlink.org/messages/common>`_ , waypoint index::
 
- Response 200 (application/json)
+   Response 200 (application/json)
         [{
             "alt" : 0.0, [meters]
             "lon" : 0.0, [degrees]
@@ -473,14 +644,14 @@ Parameters: *wpnum*  - the index of the waypoint you wish to recieve::
       token: <secret token>
 
    Requests
-      "lat: <lat>,        [The waypoint's latitude]
-      lon: <lon>,        [The waypoint's longitude]
-      alt: <alt>,        [The waypoint's altitude]
-      index: <index>,    [The waypoints index]
-      commant: <command> [The waypoints type or `MAV_CMD <http://mavlink.org/messages/common>`]
+      lat: <float>         [The waypoint's latitude]
+      lon: <float>         [The waypoint's longitude]
+      alt: <float>         [The waypoint's altitude]
+      index: <int>         [The waypoints index]
+      command: <int>       [The waypoints type or `MAV_CMD <http://mavlink.org/messages/common>`]
 
    Response 200 (application/json)
-        "True"
+      "True"
 
 * **PUT**
 
@@ -492,15 +663,15 @@ Parameters: *wpnum*  - the index of the waypoint you wish to recieve::
       Content-Type: application/json
       token: <secret token>
 
-   Requests:
-    "lat: <lat>,        [The waypoint's latitude]
-     lon: <lon>,        [The waypoint's longitude]
-     alt: <alt>,        [The waypoint's altitude]
-     index: <index>,    [The waypoints index]
-     commant: <command> [The waypoints type or `MAV_CMD <http://mavlink.org/messages/common>`]
+   Requests
+      lat: <float>         [The waypoint's latitude]
+      lon: <float>         [The waypoint's longitude]
+      alt: <float>         [The waypoint's altitude]
+      index: <int>         [The waypoints index]
+      command: <int>       [The waypoints type or `MAV_CMD <http://mavlink.org/messages/common>`]
 
    Response 200 (application/json)
-        "True"
+      "True"
 
 
 Interop [/interop]
