@@ -581,6 +581,65 @@ Causes the plane to reboot
   Response 200 (application/json)
       "True"
 
+SDA [/sda]
+-----------
+
+* **GET**
+Returns whether SDA is enabled::
+
+  Response 200 (application/json)
+    True
+
+* **POST**
+Activates SDA::
+
+  Headers
+      Content-Type: application/json
+      token: <secret token>
+
+  Response 200 (application/json)
+    True
+
+* **DELETE**
+Deactivates SDA::
+
+  Headers
+      Content-Type: application/json
+      token: <secret token>
+
+  Response 200 (application/json)
+    True
+
+
+Geofences [/geofence]
+----------------------
+
+* **GET**
+Returns the geofence points::
+
+  Response 200 (application/json)
+    [{
+      "lat": 0.0 [degrees]
+      "lon": 0.0 [degrees]
+    }, {
+      "lat": 0.0,
+      "lon": 0.0
+    }]
+
+* **POST**
+Sets the geofence points::
+
+  Headers
+      Content-Type: application/json
+      token: <secret token>
+   Requests
+    list of:
+      lat: <float>         [The fence point's latitude]
+      lon: <float>         [The fence point's longitude]
+
+  Response 200
+    "Added Fence"
+
 Waypoints [/wp]
 -----------------
 
@@ -589,6 +648,7 @@ Waypoints [/wp]
 Returns a list of waypoints, each containing, altitude, longitude, latitude, current waypoint, waypoint type or `MAV_CMD <http://mavlink.org/messages/common>`_ , waypoint index::
 
    Response 200 (application/json)
+
         [{
             "alt" : 0.0, [meters]
             "lon" : 0.0, [degrees]
