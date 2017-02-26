@@ -15,7 +15,8 @@ Dumping the Database after the Testflight
 Once the flight is complete from MAVProxy dump the database into a file named mysqldump.txt
 
 ::
-	+ sudo mysqldump --result-file=mydump.sql -paeolus mavproxy
+
+	sudo mysqldump --result-file=mydump.sql -paeolus mavproxy
 
 Loading the Dump File into the Playback Database
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -23,24 +24,28 @@ Loading the Dump File into the Playback Database
 once the file is copied into the playback folder this will reload the data into this database
 
 ::
-	+ sudo mysql -paeolus mavproxy < mydump.sql 
+    
+    sudo mysql -paeolus mavproxy < mydump.sql 
 
 *if you get the can't connect to mySQL server through socket ... erorr try 
 
 ::
-	+ mysqld
+
+	mysqld
 
 *if this is the first time you are running the database on your computer or you get the no database error try
 
 ::
-	+ ./setup_db_osx.sh
+	
+    ./setup_db_osx.sh
 
 Launching the Flask App
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 ::
-	+ export FLASK_APP=playbackStatus.py
-	  python playbackStatus.py
+	
+    export FLASK_APP=playbackStatus.py
+    python playbackStatus.py
 
 
 API endpoints

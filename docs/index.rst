@@ -76,6 +76,7 @@ Contents:
    catapult
    testflight
    autopilot_configuration
+   mavproxy_playback
 
 Indices and tables
 ==================
