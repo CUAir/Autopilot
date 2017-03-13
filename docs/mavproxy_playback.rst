@@ -37,7 +37,7 @@ once the file is copied into the playback folder this will reload the data into 
 
 ::
 	
-    ./setup_db_osx.sh
+    ./setup_db.sh
 
 Launching the Flask App
 ^^^^^^^^^^^^^^^^^^^^^^^^
