@@ -47,6 +47,62 @@ For example  ::
     screen /deb/tty.usbmodem1 115200
 
 
+
+Using 3DR radios on Mac OS
+--------------------------------
+Sorry, this is kind of a pain.
+
+1. Confirm you are not using the Apple FDTI driver ::
+
+    cd /System/Library/Extensions/IOUSBFamily.kext/Contents/PlugIns
+    ls AppleUSBFTDI.kext 
+
+If the kext is in this folder, disable it with the following command ::
+
+    sudo mv AppleUSBFTDI.kext AppleUSBFTDI.disabled
+
+2. Download the latest FTDI driver from http://www.ftdichip.com/Drivers/VCP.htm I used x64 (64-bit) for OSX 10.9+.
+3. Find the name of the device in “System Information” -> USB -> USB Device tree. Mine was named "CP2102 USB to UART Bridge Controller"
+4. Plug in the the radio and Run ``system_profiler -detailLevel full`` and grep for the name found in step 3. You will need to locate the information for "idVendor", "idProduct", "bcdDevice".  My radio had the following info: ::
+    
+    "idProduct" = 0xea60
+    "bcdDevice" = 0x100
+    "idVendor" = 0x10c4
+
+5.  Open /System/Library/Extensions/FTDIUSBSerialDriver.kext/Contents/Info.plist and add a new key/dictionary under IOKitPersonalities and make sure above 3 values(idVendor, idProduct, bcdDevice) are there and correct. You can do this with apple's plist editor or by opening the file and directly editing the XML. All values must be decimals (the values found in step 4 are in hex). I added the following to my XML: ::
+
+    <key>CP2102 USB to UART Bridge Controller</key>
+    <dict>
+    <key>CFBundleIdentifier</key>
+    <string>com.FTDI.driver.FTDIUSBSerialDriver</string>
+    <key>IOClass</key>
+    <string>FTDIUSBSerialDriver</string>
+    <key>IOProviderClass</key>
+    <string>IOUSBInterface</string>
+    <key>bConfigurationValue</key>
+    <integer>1</integer>
+    <key>bInterfaceNumber</key>
+    <integer>0</integer>
+    <key>bcdDevice</key>
+    <integer>256</integer>
+    <key>idProduct</key>
+    <integer>60000</integer>
+    <key>idVendor</key>
+    <integer>4292</integer>
+    </dict>
+
+
+6. Our driver will no longer match the system's signature so we will need disable System Integrity Protection to load the driver. To do so, first restart into recover mode by restarting your the computer and holding CMD+R as soon as you hear the boot noise until the apple logo appears on the screen. Then run the command ``csrutil disable`` in the terminal.
+7. Restart your computer and load the new FTDI driver with the commands ::
+
+    sudo kextunload /System/Library/Extensions/FTDIUSBSerialDriver.kext/
+    sudo kextload /System/Library/Extensions/FTDIUSBSerialDriver.kext/
+
+8. You should now see the FTDI device with ``ls /dev/ |grep usbserial``
+
+**Note: Permenatly disabling csrutil and can leave your computer vulnearble to some nasty hacks. When you are done using the radios, rename csr by restarting into recovery mode and entering the command ``csrutil enable``
+
+
 Binding Transmitter and Receiver
 --------------------------------
 
