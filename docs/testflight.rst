@@ -46,20 +46,23 @@ Code to run at test flights
 
 --`Autopilot server <>`_ -- Setup and use of autopilot server for the NUC can be found here.
 
+Hex Flying Procedure Without GCS
+-------------------------------
+Pre-flight checks: 
+- Make sure all the props are placed in the correct directions! There are little red arrows on each motor for the direction that it should spin. 
+- Check that all the motors do indeed spin in that direction. If they spin the other way, swap the red and black plugs from the ESC.
+- Double and triple check that all props are screwed down tightly. 
 
-Hexacopter Setup
-----------------
+Now you can begin flight procedure:
 
-Atlas is a portable, lightweight test system to allow subteams to test without needing to do a full test flight. It is able to carry several pounds of payloads that can be mounted as necessary and is significantly easier to fly than a fixed wing aircraft. 
+1. Turn on Taranis, make sure you are on the model “hex”
+2. Plug in 6s battery.
+3. Wait until main light is flashing a single color (preferably green - maybe blue - not yellow).
+4. Press and hold safety switch until the ESCs beep and the light on the safety switch becomes solid green. The motors may twitch a bit. Atlas is now live.
+5. MAKE SURE EVERYONE IS FAR AWAY FROM THE HEX. 
+6. Arm Atlas: On the transmitter, hold the left stick down and right until Pixhawk light becomes a solid color and props start spinning slowly. It is now armed.
+7. Fly. Optionally set mode to ‘land’ on ground station for auto landing if GCS is connected.
+8. To disarm the hex: hold left stick down and left until props stop spinning and main pixhawk light starts flashing. 
+9. Press and hold the safety switch until the ESCs beep and the safety switch begins flashing green. 
+10. Unplug the battery.
 
-The base onboard electronics include:
-
-- 1x `Pixhawk <https://3dr.com/wp-content/uploads/2014/03/pixhawk-manual-rev7.pdf>`_ autopilot with gps module running `ArduCopter <http://ardupilot.org/copter/>`_
-
-- 6x `30A ESCs <https://hobbyking.com/en_us/turnigy-multistar-30a-slim-v2-esc-with-blheli-opto-2-6s.html>`_
-
-- 1x `RFD900 <http://cuairautopilot.readthedocs.io/en/latest/autopilot_configuration.html#id3>`_ -- setup is identical to the plane radios.
-
-ArduCopter setup is very similar to ArduPlane setup and is completely documented `here <http://ardupilot.org/copter/docs/initial-setup.html>`_. The key difference is `ESC calibration <http://ardupilot.org/copter/docs/esc-calibration.html>`_ which must be re-done after major system changes like receiver replacement or motor replacement. 
-
-Atlas flight instructions can be found `here <https://docs.google.com/a/cornell.edu/document/d/1p07ljg8zF4MjSbM2MOx6P8YeXyO3xy7GhyED3VAolZA/edit?usp=sharing>`_.
