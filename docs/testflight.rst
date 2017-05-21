@@ -49,8 +49,11 @@ Code to run at test flights
 Hex Flying Procedure Without GCS
 -------------------------------
 Pre-flight checks: 
+
 - Make sure all the props are placed in the correct directions! There are little red arrows on each motor for the direction that it should spin. 
+
 - Check that all the motors do indeed spin in that direction. If they spin the other way, swap the red and black plugs from the ESC.
+
 - Double and triple check that all props are screwed down tightly. 
 
 Now you can begin flight procedure:
