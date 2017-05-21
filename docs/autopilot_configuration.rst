@@ -184,6 +184,7 @@ Atlas flight instructions can be found `here <https://docs.google.com/a/cornell.
 
 Telemetry to autopilot wire pin out 
 -----------------------------------
+`Pictured here <https://docs.google.com/document/d/1nrJgtlMFt2SE-kGHK6LXyUs01eNOvt2AmsUWc_H6BdU/edit>`_
 
 +----------------------------------+--------+--------------------+
 | RFD side (Left when flat side up)|        | Autopilot side left|
