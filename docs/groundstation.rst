@@ -435,8 +435,19 @@ Below are the rules that govern interoperability for the competition. The intero
 
 Sense, Detect, and Avoid (SDA)
 --------------------------------
+Overview and Usage (New Mangual-Assisted SDA)
 
-Overview 
+The new version of SDA hinges around features which enable the user to manually re-route paths on an SDA-ground station. This was chosen as opposed to previous automatic methods due to the necissity for predictability of path rerouting to avoid interference with mission-critical systems such as airdrop and vision. The SDA operator is able to avoid obstacles with the help of both plane-path predicions and obstacle path predictions, which will be discussed in greater detail in the following sections. These preditions come in the form of a slider, which can be enabled from the settings tab. Note: this slider requires the user be in "SDA-operator mode" as well. The user can hit the "reset" button on the main ground station tab to trigger the computation of both obstacle and plane predictions at the same time. These predictions apear as a purple plane, and pink obstacles, with blue splines tracing out the paths the coresponding objects should follow. Once the play-button by the slider is pressed, the obstacles and plane will step-forward along their paths roughly in real time. The user can also manually move the slider to determine where obstacles or the plane will be in the future. Most of the relevant files can be found in MAVProxy/modules/mavproxy_plane_prediction and MAVProxy/modules/mavproxy_obstacle_prediction.
+
+Obstacle Prediction Implementation
+^^^^^^^^^
+To predict obstacle positions interpolating splines are used in conjunction with a period-finding algorithm. In other words, a python library is used to calculate spline curves to interpolate all of the historical obstacle data (or a subset of the data composed of only a certain amount of the most recent points). This spline then will approximate the entire period of an obstacle's motion given enough data points. The period of the obstacle's motion is calculate by comparing the first data point to all other datapoints and determining which point is closest. This method is not flawless, but works well in practice. Once an interpolating spline has been generated, and the period has been calculated it is simply a matter of modding the time that the obstacles position is to be computed at by the period. This method does have some short-term weaknesses before the entire period is in the history, and relies on periodicity of obstacle motion.
+
+Plane Prediction implementation
+^^^^^^^^^
+Plane prediction relies on the use of the Bezier Curves present in project atlas. If project atlas is not being used, plane prediction is simply done with interpolating lines. In either case, splines (or lines) are generated between all pairs of waypoints, and the planes position is calculated by interpolating along these splines (or lines) and assuming constant speed. Due to its use of splines, the method should work better when the plane is flying in spline-controller mode, but seems to provide relatively accurate predictions over a relatively long time period (on the order of minutes) for both controllers. This method does not fully emulate the navigation algorithm, as simulating L1 controll is both challenging and prohibitively computationally expensive.
+
+Overview (Old Automatic Versions) 
 ^^^^^^^^^
 
 SDA is an auxilary task for the competition wherein the interoperabilty server sends data to the groundstation about obstacles that the plane must avoid. Obstacles come in two varieties: moving and stationary. Moving obstacles are spheres that travel along a predetermined path by the judges. This path is not known to the competiting teams and the only information that is given is the GPS coordinates of where it's center currently is, it's radius and it's altitude. All other information must be calcuated by the team. Stationary obstacles are cylinders of a given radius. Similarly the only information sent to the team are it's GPS coordinates, the height of the cylinder (obstacles extend from the ground to this height) and it's radius. 
