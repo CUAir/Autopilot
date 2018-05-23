@@ -5,6 +5,10 @@ Ardupilot
 
 This section documents any CUAir specific uses of or changes to Ardupilot
 
+Project Atlas
+--------------------------
+For documentation, see https://docs.google.com/document/d/1yiXgehSbKX3eEdflroVd67lgQAZRXYEeqocb-Km1RCM/edit?usp=sharing
+
 Tuning
 ----------------
 
