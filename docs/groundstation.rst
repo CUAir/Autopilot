@@ -436,7 +436,7 @@ Below are the rules that govern interoperability for the competition. The intero
 Sense, Detect, and Avoid (SDA)
 --------------------------------
 Overview and Usage (New Mangual-Assisted SDA)
-
+^^^^^^^^^
 The new version of SDA hinges around features which enable the user to manually re-route paths on an SDA-ground station. This was chosen as opposed to previous automatic methods due to the necissity for predictability of path rerouting to avoid interference with mission-critical systems such as airdrop and vision. The SDA operator is able to avoid obstacles with the help of both plane-path predicions and obstacle path predictions, which will be discussed in greater detail in the following sections. These preditions come in the form of a slider, which can be enabled from the settings tab. Note: this slider requires the user be in "SDA-operator mode" as well. The user can hit the "reset" button on the main ground station tab to trigger the computation of both obstacle and plane predictions at the same time. These predictions apear as a purple plane, and pink obstacles, with blue splines tracing out the paths the coresponding objects should follow. Once the play-button by the slider is pressed, the obstacles and plane will step-forward along their paths roughly in real time. The user can also manually move the slider to determine where obstacles or the plane will be in the future. Most of the relevant files can be found in MAVProxy/modules/mavproxy_plane_prediction and MAVProxy/modules/mavproxy_obstacle_prediction.
 
 Obstacle Prediction Implementation
