@@ -8,12 +8,60 @@ This section documents any CUAir specific uses of or changes to Ardupilot
 Tuning
 ----------------
 
-Takeoff
-^^^^^^^^
+Rolling Takeoff
+^^^^^^^^^^^^^^^
+
+Before attempting to set parameters, determine landing gear style and stall speed of the aircraft. For information on specific takeoff and landing parameters, see http://ardupilot.org/plane/docs/flight-features.html For complete parameter list, see http://ardupilot.org/plane/docs/parameters.html
+
+If plane is a taildragger (like Bixler)::
+
+	TKOFF_TDRAG_ELEV, 	100
+	TKOFF_TDRAG_SPD1,	<just below TKOFF_ROTATE_SPD>
+	TKOFF_ROTATE_SPD, 	<110-130% of stall speed>
+	TKOFF_THR_SLEW,		<minimum of 20>
+	TKOFF_FLAP_PCNT,	0
+	TECS_PITCH_MAX,		20
+	GROUND_STEER_ALT,	5
+
+
+If plane has tricylce landing gear::
+
+	TKOFF_TDRAG_ELEV, 	0
+	TKOFF_TDRAG_SPD1,	0
+	TKOFF_ROTATE_SPD, 	<110-130% of stall speed>
+	TKOFF_THR_SLEW,		<minimum of 20>
+	TKOFF_FLAP_PCNT,	50
+	TECS_PITCH_MAX,		22
+	GROUND_STEER_ALT,	5
+	
+
+To tune ground steering, test in mode FBWA. 
 
 Landing
 ^^^^^^^^
 
+If plane is a taildragger (like Bixler)::
+
+	LAND_FLARE_ALT, 	0
+	LAND_FLARE_SEC,		1.2
+	LAND_PITCH_CD, 		<slightly above natural pitch of aircraft - 500 for Bix>
+	TECS_LAND_ARSPD,	<above stall speed - 8 for Bix>
+	TECS_LAND_SPDWGT,	1
+
+
+If plane has tricylce landing gear::
+
+	LAND_FLARE_ALT, 	0
+	LAND_FLARE_SEC,		2
+	LAND_PITCH_CD, 		500
+	TECS_LAND_ARSPD,	<above stall speed>
+	TECS_LAND_SPDWGT,	1
+	
+
+To ensure a smooth descent, LAND_PF_ARSPD (a pre-flare descent parameter) must be set to a higher value than TECS_LAND_ARSPD. 
+Additional note: the parameter settings as they appear here were determined to be appropriate for a general airframe in these two landing gear types. If setting parameters for non-standard airframe, further consideration is required. 
+	
+	
 Failsafe
 ---------
 
