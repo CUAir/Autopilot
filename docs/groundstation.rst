@@ -197,15 +197,24 @@ The home screen has all of the flight information and flight controls used in no
 
 The stack
 ^^^^^^^^^^
-Our stack consists of python (MAVProxy & Flask) on the backend with React, Flux, Sass, gulp and Jade being used on the front-end. Additionally, our backend can technically serve information over a rest API as well as over websockets, however websockets tended to be pretty buggy so we decided to switch back to only using the REST API.
+Our stack consists of python (MAVProxy & Flask) on the backend with React, Immutable, Redux, Sass, gulp and Jade being used on the front-end. Additionally, our backend can technically serve information over a rest API as well as over websockets, however websockets tended to be pretty buggy so we decided to switch back to only using the REST API.
 
 React
 ^^^^^^
 The front-end (gcs2) is built in React, a javascript library from Facebook that makes the front-end faster by diff-ing the current DOM with the new state to reduce the number of DOM operations (which are very expensive) and rendering changes to the front-end in real-time. `See the documentation for the React here <https://facebook.github.io/react/docs/getting-started.html>`_. 
 
-Flux
+
+Immutabe
+^^^^^^^^
+The front-end (gcs2) is built in Immutable, a javascript library from Facebook that has persistent data collections for Javascript which increase efficiency and simplicity. Immutable data encourages pure functions (data-in, data-out) and lends itself to much simpler application development and enabling techniques from functional programming such as lazy evaluation.  `See the documentation for the React here <https://facebook.github.io/immutable-js/docs/#/>`_. 
+
+Redux
 ^^^^^
 To power our react system, we used vanilla `Flux <https://facebook.github.io/flux/docs/overview.html>`_ which is powered through a system called action-store-dispatcher that makes all changes 1-way interactions (rather than Angular's 2-way bindings). We broke the application down into essentially 8 sections: Calibration, Geofences, Interoperability, Parameters, SDA, Settings, Plane Status, and Waypoints. Each section has it's own action creator and store. For an example of how to use React with Flux, `this <https://github.com/facebook/flux/tree/master/examples/flux-chat/>`_ is simple but extremely useful. You should either read it through in its entirety or try to make it/mess with it to get familiar. Once you understand the general code structure, it shouldn't be hard to get the hang over making a simple app. One of the benefits of Flux over other javascript frameworks like Angular is that since everything is 1-way, the stack traces are very clear, which assists in debugging. One of the downsides of Flux is that it requires a bit of boilerplate code/scaffolding. We may switch to redux instead of flux at some point, but we want to get to know that framework better before commiting to doing so.
+
+
+To power our react and Immutable system, we used vanilla _`Redux <https://redux.js.org/>`_ which is powered through a system called actions-store-reducers that makes all changes 1-way interactions (rather than Angular’s 2-way bindings). We broke the application down into essentially 8 sections: Calibration, Geofences, Interoperability, Parameters, SDA, Settings, Plane Status, and Waypoints. Each section has its own action creator and reducer. For an example of how to use immutable with Redux, _`this <https://redux.js.org/basics/example-todo-list>`_ example is simple and extremely useful. You should either read it through in its entirety or try to make it/mess with it to get familiar. Once you understand the general code structure, it shouldn’t be hard to get the hang over making a simple app. One of the benefits of Redux over other javascript frameworks like Angular is that since everything is 1-way, the stack traces are very clear, which assists in debugging.  One of the biggest advantages of using the Redux framework over the Flux architecture like we previously had was that it got rid of the boilerplate code/scaffolding. It cuts down on the action responding time, and preserves all the benefits of Flux without introducing dispatchers and store registrations, which has made redux much more efficient. Redux uses one single store, which in a sense, is like one source of truth that has an immutable state. Redux has a completely different approach to state management -- it embraces the idea that there is a global state and that inevitably if you wanted to make changes, it should just happen there in a very specific way (how you handle what components have access to what state is up to you). Redux really changes how the state tree is managed and give the stores different responsibilities, and changes how state information is mapped down to the components. We may improve upon this by cleaning up some circular calls and with more understanding of Immutable.js . 
+
 
 .. image:: images/flux.png
 
