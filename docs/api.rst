@@ -131,6 +131,56 @@ Returns the current state of the plane's battery, containing:
           "batterycurrent": 0.0
         }
 
+Armed [/status/armed]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Returns whether or not the plane is armed
+
+::
+
+ + Response 200 (text/html)
+        true
+
+Mav Info [/status/mav_info]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Returns the most recent MAV info string
+
+::
+
+ + Response 200 (text/html)
+        "EKF2 IMU1 is using GPS"
+
+Mav Warning [/status/mav_warning]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Returns the most recent MAV warning string
+
+::
+
+ + Response 200 (text/html)
+        ""
+
+Mav Error [/status/mav_error]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Returns the most recent MAV error string
+
+::
+
+ + Response 200 (text/html)
+        "Calibration FAILED"
+
+Safe [/status/safe]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Returns whether or not the plane is safe
+
+::
+
+ + Response 200 (text/html)
+        true
+
         
 Link [/status/link]
 ^^^^^^^^^^^^^^^^^^^
@@ -248,6 +298,16 @@ Returns vectors vx, vy, vz representing the wind velocity vector as floats
           "windvy": 0.0,
           "windvz": 0.0
         }
+
+Climb [/status/climb]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Returns current climb angle
+
+::
+
+ Response 200 (text/html)
+        0.0
   
 
 Signal [/status/signal]
@@ -331,6 +391,27 @@ Returns an integer representing the current waypoint
 
  + Response 200 (text/html)
         0
+
+
+Progress [/status/progress]
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Gives information about the current mission progress
+
+* covered [int] (number of meters flown)
+* percentage [float] (percent of flight path coompleted)
+* remaining [int] (meters left to fly)
+* time_to_landing [int] (approximate seconds left in flight)
+::
+
+ + Response 200 (application/json)
+        {
+          "covered": 0,
+          "percentage": 0.0,
+          "remaining": 0,
+          "time_to_landing": 0
+        }
+
 
 
 Calibration [/cali]
