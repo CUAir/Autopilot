@@ -456,6 +456,7 @@ Plane prediction relies on the use of the Bezier Curves present in project atlas
 Plane and Obstacle Path Prediction Use
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 To overlay plane and obstacle path predictions on the groundstation, complete the following steps:
+
 1. Start a local instance of Project Atlas which can be found at <https://github.com/CUAir/Project-Atlas>
 2. Open the groundstation in a browser
 3. Navigate to the settings tab
@@ -463,7 +464,7 @@ To overlay plane and obstacle path predictions on the groundstation, complete th
 5. Return to the home screen
 6. To load plane and obstacle path predictions from the backend, click the reset button on the slider at the top of the screen. The slider can then be dragged to check plane and obstacle locations at a given time.
 
-Note: predictions are not immediately available after completing these instructions. Plane predictions are available after the plane reaches the first waypoint in the waypoint path. Obstacle predictions should be available immediately but only become accurate after the obstacles complete a few cycles. To reload the predictions at any point, just clikc the reset button on the slider again.
+Note: predictions are not immediately available after completing these instructions. Plane predictions are available after the plane reaches the first waypoint in the waypoint path. Obstacle predictions should be available immediately but only become accurate after the obstacles complete a few cycles. To reload the predictions at any point, just click the reset button on the slider again.
 
 Overview (Old Automatic Versions) 
 ^^^^^^^^^
