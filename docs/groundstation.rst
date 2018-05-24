@@ -450,8 +450,20 @@ Obstacle Prediction Implementation
 To predict obstacle positions interpolating splines are used in conjunction with a period-finding algorithm. In other words, a python library is used to calculate spline curves to interpolate all of the historical obstacle data (or a subset of the data composed of only a certain amount of the most recent points). This spline then will approximate the entire period of an obstacle's motion given enough data points. The period of the obstacle's motion is calculate by comparing the first data point to all other datapoints and determining which point is closest. This method is not flawless, but works well in practice. Once an interpolating spline has been generated, and the period has been calculated it is simply a matter of modding the time that the obstacles position is to be computed at by the period. This method does have some short-term weaknesses before the entire period is in the history, and relies on periodicity of obstacle motion.
 
 Plane Prediction implementation
-^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Plane prediction relies on the use of the Bezier Curves present in project atlas. If project atlas is not being used, plane prediction is simply done with interpolating lines. In either case, splines (or lines) are generated between all pairs of waypoints, and the planes position is calculated by interpolating along these splines (or lines) and assuming constant speed. Due to its use of splines, the method should work better when the plane is flying in spline-controller mode, but seems to provide relatively accurate predictions over a relatively long time period (on the order of minutes) for both controllers. This method does not fully emulate the navigation algorithm, as simulating L1 controll is both challenging and prohibitively computationally expensive.
+
+Plane and Obstacle Path Prediction Use
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+To overlay plane and obstacle path predictions on the groundstation, complete the following steps:
+1. Start a local instance of Project Atlas which can be found at <https://github.com/CUAir/Project-Atlas>
+2. Open the groundstation in a browser
+3. Navigate to the settings tab
+4. Check 'SDA Operator', 'Slider Visible', and 'Interop Enabled'
+5. Return to the home screen
+6. To load plane and obstacle path predictions from the backend, click the reset button on the slider at the top of the screen. The slider can then be dragged to check plane and obstacle locations at a given time.
+
+Note: predictions are not immediately available after completing these instructions. Plane predictions are available after the plane reaches the first waypoint in the waypoint path. Obstacle predictions should be available immediately but only become accurate after the obstacles complete a few cycles. To reload the predictions at any point, just clikc the reset button on the slider again.
 
 Overview (Old Automatic Versions) 
 ^^^^^^^^^
