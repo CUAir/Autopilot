@@ -460,7 +460,7 @@ To overlay plane and obstacle path predictions on the groundstation, complete th
 1. Start a local instance of Project Atlas which can be found at <https://github.com/CUAir/Project-Atlas>
 2. Open the groundstation in a browser
 3. Navigate to the settings tab
-4. Check 'SDA Operator', 'Slider Visible', and 'Interop Enabled'
+4. Check 'SDA Operator', 'SDA Enabled', 'Slider Visible', and 'Interop Enabled'
 5. Return to the home screen
 6. To load plane and obstacle path predictions from the backend, click the reset button on the slider at the top of the screen. The slider can then be dragged to check plane and obstacle locations at a given time.
 
