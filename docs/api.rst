@@ -19,88 +19,73 @@ individual bit of data (below)::
 
   Response 200 (application/json)
         {
-            "attitude" : {
-                "pitch" : 0.0,
-                "yaw" : 0.0,
-                "roll" : 0.0,
-                "pitchspeed" : 0.0,
-                "yawspeed" : 0.0,
-                "rollspeed" : 0.0
-                },
-            "battery" : {
-                "pct" : 0.0,
-                "voltage" : 0.0
-                },
-                
-            "link" : {
-                "gps_link" : "True",
-                "plane_link" : "True"
-                },
-            
-            "time" : 0,
-            
-            "gps" : {
-                "rel_alt" : 0.0,
-                "asl_alt" : 0.0,
-                "lat" : 0.0,
-                "lon" : 0.0,
-                "heading" : 0.0,
-                "vx" : 0.0,
-                "vy" : 0.0,
-                "vz" : 0.0
-            },
-            "mode": "AUTO",
-            "airspeed" : {
-                "vx" : 0.0,
-                "vy" : 0.0,
-                "vz" : 0.0
-            },
-            
-            "wind" : {
-                "vx" : 0.0,
-                "vy" : 0.0,
-                "vz" : 0.0
-            },
-            
-            "signal" : {
-                "time" : 0.0,
-                "signal_strength": 0
-            },
-            
-            "flight_time" : {
-                "time" : 0.0,
-                "time_start" : 0.0,
-                "is_flying" : "False"
-            },
-            
-            "gps_status" : {
-                "time" : 0.0,
-                "satellite_number": 0
-            },
-            
-            "throttle" : 0,
-            
-            "waypoints" : [{
-                "alt" : 0.0,
-                "lon" : 0.0,
-                "lat" : 0.0
-            }],
-            
-            "wp_count" : 0,
-            "current_wp" : 0,
-            "geofences" :  [{
-                "lat" : 0.0,
-                "lon" : 0.0
-            }],
-            "hud" : {
-            "airspeed" : 0.0,
-            "groudspeed": 0.0,
-            "heading": 0,
-            "throttle": 0,
-            "alt": 0.0,
-            "climb": 0.0
-            }
+          "throttle": 0.0,
+          "battery": {
+            "time": 0.0,
+            "batterypct": 0.0,
+            "batteryvoltage": 0.0,
+            "batterycurrent": 0.0
+          },
+          "signal": {
+            "time": 0.0,
+            "signal_strength": 0
+          },
+          "safe": true,
+          "airspeed": {
+            "time": 0.0,
+            "airvx": 0.0,
+            "airvy": 0.0,
+            "airvz": 0.0,
+            "speed": 0.0,
+            "climb": 0.0,
+            "throttle": 0.0
+          },
+          "wp_count": 0,
+          "mav_warning": "",
+          "current_wp": 0,
+          "attitude": {
+            "time": 0.0,
+            "roll": 0.0,
+            "pitch": 0.0,
+            "yaw": 0.0,
+            "rollspeed": 0.0,
+            "pitchspeed": 0.0,
+            "yawspeed": 0.0
+          },
+          "mav_info": "EKF2 IMU1 is using GPS",
+          "link": {
+            "plane_link": true,
+            "links": null,
+            "gps_link": true
+          },
+          "mode": "MANUAL",
+          "mav_error": "",
+          "gps_status": {
+            "time": 0.0,
+            "satellite_number": 0
+          },
+          "armed": true,
+          "wind": {
+            "time": 0.0,
+            "windvx": 0.0,
+            "windvy": 0.0,
+            "windvz": 0.0
+          },
+          "gps": {
+            "time": 0.0,
+            "rel_alt": 0.0,
+            "asl_alt": 0.0,
+            "lat": 0.0,
+            "lon": 0.0,
+            "heading": 0.0,
+            "groundvx": 0.0,
+            "groundvy": 0.0,
+            "groundvz": 0.0
+          }
         }
+
+
+
 
 Attitude [/status/attitude]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -116,30 +101,36 @@ Returns the plane's attitude, containing:
 ::
 
   + Response 200 (application/json)
-  { 
-     "pitch" : 0.0,
-     "yaw" : 0.0,
-     "roll" : 0.0,
-     "pitchspeed" : 0.0,
-     "yawspeed" : 0.0,
-     "rollspeed" : 0.0,
-   }
+        {
+          "time": 0.0,
+          "roll": 0.0,
+          "pitch": 0.0,
+          "yaw": 0.0,
+          "rollspeed": 0.0,
+          "pitchspeed": 0.0,
+          "yawspeed": 0.0
+        }
+
 
 Battery [/status/battery]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns the current state of the plane's battery, containing:
 
-* pct [float]
-* voltage [float]
+* batterypct [float]
+* batteryvoltage [float]
+* batterycurrent [float]
 
 ::
 
  + Response 200 (application/json)
         {
-            "pct" : 0.0,
-            "voltage" : 0.0,
+          "time": 0.0,
+          "batterypct": 0.0,
+          "batteryvoltage": 0.0,
+          "batterycurrent": 0.0
         }
+
         
 Link [/status/link]
 ^^^^^^^^^^^^^^^^^^^
@@ -148,27 +139,27 @@ Returns the status of links, containing:
 
 * gps_link [boolean]
 * plane_link [boolean]
+* links [list]
 
 ::
 
  + Response 200 (application/json)
         {
-            "gps_link" : "True",
-            "plane_link" : "True",
+          "plane_link": true,
+          "links": [
+            {
+              "packet_loss": 0.0,
+              "alive": true,
+              "device_name": "WiFi",
+              "num": 0,
+              "device": "tcp:127.0.0.1:5760",
+              "num_lost": 0,
+              "link_delay": 0.0
+            }
+          ],
+          "gps_link": true
         }
-        
-Time [/status/time]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Returns the current time as an long representing a [unix timestamp](https://en.wikipedia.org/wiki/Unix_time) 
-
-
-::
-
-  + Response 200 (application/json)
-        {
-           0
-        }
         
 GPS [/status/gps]
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -180,106 +171,134 @@ Returns various values from the plane's onboard GPS, containing:
 * lat [float]
 * lon [float]
 * heading [float]
-* vx [float]
-* vy [float]
-* vz [float]
+* groundvx [float]
+* groundvy [float]
+* groundvz [float]
 
 ::
 
   + Response 200 (application/json)
         {
-            "rel_alt" : 0.0,
-            "asl_alt" : 0.0,
-            "lat" : 0.0,
-            "lon" : 0.0,
-            "heading" : 0.0,
-            "vx" : 0.0,
-            "vy" : 0.0,
-            "vz" : 0.0,
+          "time": 0.0,
+          "rel_alt": 0.0,
+          "asl_alt": 0.0,
+          "lat": 0.0,
+          "lon": 0.0,
+          "heading": 0.0,
+          "groundvx": 0.0,
+          "groundvy": 0.0,
+          "groundvz": 0.0
         }
+
         
 Mode [/status/mode]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns the current flying mode of the plane as a string, e.g. "AUTO", "MANUAL", "FLY_BY_WIRE_A"
 
+* str
+
 ::
 
- Response 200 (application/json)
-        {
-           "AUTO"
-        }
+ Response 200 (text/html)
+        "MANUAL"
+
         
 Airspeed [/status/airspeed]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns vectors vx, vy, vz representing the airspeed velocity of the airplane as floats
 
+* speed [float]
+* climb [float]
+* throttle [float]
+* airvx [float]
+* airvy [float]
+* airvz [float]
+
 ::
 
  + Response 200 (application/json)
         {
-            "vx" : 0.0,
-            "vy" : 0.0,
-            "vz" : 0.0
+          "time": 0.0,
+          "airvx": 0.0,
+          "airvy": 0.0,
+          "airvz": 0.0,
+          "speed": 0.0,
+          "climb": 0.0,
+          "throttle": 0.0
         }
+
 
 Wind [/status/wind]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns vectors vx, vy, vz representing the wind velocity vector as floats
 
+* windvx [float]
+* windvy [float]
+* windvz [float]
+
 ::
 
  Response 200 (application/json)
         {
-            "vx" : 0.0,
-            "vy" : 0.0,
-            "vz" : 0.0
-        }    
+          "time": 0.0,
+          "windvx": 0.0,
+          "windvy": 0.0,
+          "windvz": 0.0
+        }
+  
 
 Signal [/status/signal]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Returns the time and the signal strength as an integer of the radio connection
+Returns the time and the signal strength as an integer of the transmitter connection. 0: 0%, 100: 100%, 255: invalid/unknown. See `_RC_CHANNELS* packet <http://mavlink.org/messages/common#RC_CHANNELS_SCALED>`_ rssi field.
+
+* signal_strength
 
 ::
 
  + Response 200 (application/json)
         {
-            "time" : 0.0,
-            "signal_strength": 0
+          "time": 0.0,
+          "signal_strength": 0
         }
+
         
 Flight Time [/status/flight_time]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Returns the information about the flight time conntaing:
 
-* time_start [float]
+* time_start [float]|[null]
 * if_flying [boolean]
 
 ::
 
  + Response 200 (application/json)
         {
-            "time" : 0.0,
-            "time_start" : 0.0,
-            "is_flying" : "False"
+          "time": 0.0,
+          "time_start": null,
+          "is_flying": true
         }
+
         
 GPS Status [/status/gps_status]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Returns the gps connection represented by an integer number of satellites visable
+Returns the gps connection represented by an integer number of satellites visible
+
+* satellite_number [int]
 
 ::
 
  + Response 200 (application/json)
         {
-            "time" : 0.0,
-            "satellite_number": 0
+          "time": 0.0,
+          "satellite_number": 0
         }
+
 
 Throttle [/status/throttle]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -288,24 +307,9 @@ An integer from 0 to 100 representing the current throttle level of the plane
 
 ::
 
- Response 200 (application/json)
-        {
-            0
-        }
-        
-Waypoints [/status/waypoints]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ Response 200 (text/html)
+        0.0
 
-Returns a list of JSON objects representing the current waypoints altitude, latitude, and longitude
-
-::
-
- + Response 200 (application/json)
-        [{
-                "alt" : 0.0,
-                "lon" : 0.0,
-                "lat" : 0.0,
-        }]
         
 Waypoint Count [/status/wp_count]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -314,10 +318,9 @@ Returns an integer representing the current number of waypoints
 
 ::
 
- + Response 200 (application/json)
-        {
-            0
-        }
+ + Response 200 (text/html)
+        0
+
         
 Current Waypoint [/status/current_wp]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -326,88 +329,9 @@ Returns an integer representing the current waypoint
 
 ::
 
- + Response 200 (application/json)
+ + Response 200 (text/html)
+        0
 
-        {
-            0
-        }
-        
-Geofence [/status/geofences]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Returns a list of JSON objects representing the latitude and longitude of the geofences
-
-:: 
-
- Response 200 (application/json)
-        [{
-            "lat" : 0.0,
-            "lon" : 0.0,
-        }]
-
-HUD [/status/hud]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Returns a list of values needed for the HUD, containing,
-
-* airspeed [float]
-* groundspeed [float]
-* heading [integer]
-* throttle [integer]
-* alt [float]
-* climb [float]
-
-:: 
-
- Response 200 (application/json)
-        {
-            "airspeed" : 0.0,
-            "groudspeed": 0.0,
-            "heading": 0,
-            "throttle": 0,
-            "alt": 0.0,
-            "climb": 0.0
-        }
-
-Software Status [/status/softstatus?time=TIME]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-
-Use the GET argument "time" (/status/softstatus?time=TIME) to request a status at a specific time. If an exact value is not available, an interpolated value will be provided.
-
-::
-
- Response 200 (application/json)
-        {      
-        attitude: {
-            'roll': 0,
-            'pitch': 0,
-            'yaw': 0,
-            'rollspeed': 0,
-            'yawspeed': 0,
-            'pitchspeed': 0
-            
-        },
-        gps:{
-             lat: 0,
-             lon: 0,
-             asl_alt: 0,
-             vx: 0,
-             vy: 0,
-             vz: 0,
-             heading: 0,
-             rel_alt: 0
-         },
-         airspeed:{
-             'vx': 0,
-             'vy': 0,
-             'vz': 0
-         },
-         wind: {
-             'vx': 0,
-             'vy': 0,
-             'vz': 0
-         }
 
 Calibration [/cali]
 ---------------------
@@ -419,14 +343,14 @@ Accelerometer Calibration [/cali/accel]
 
 Starts the accelerometer calibration process::
 
- Response 200 (application/json)
+ Response 200 (text/html)
       "Started accelerometer calibration."
 
 * **PUT**
 
 Continues calibration process (mostly for accelerometer)::
 
- Response 200 (application/json)
+ Response 200 (text/html)
       "Continuing."
 
 Gyroscope Calibration [/cali/gyro]
@@ -436,7 +360,7 @@ Gyroscope Calibration [/cali/gyro]
 
 Starts the gyroscope calibration process::
 
- Response 200 (application/json)
+ Response 200 (text/html)
       "True"
 
 RC Calibration [/cali/rc]
@@ -446,14 +370,14 @@ RC Calibration [/cali/rc]
 
 Starts the RC calibration process::
 
- Response 200 (application/json)
+ Response 200 (text/html)
       "True"
 
 * **DELETE**
 
 Stops the RC calibration process::
 
- Response 200 (application/json)
+ Response 200 (text/html)
       "True"
 
 Extras
@@ -524,7 +448,7 @@ Arms the plane::
       token: <secret token>
       confirm: confirm
 
-   Response 200 (application/json)
+   Response 200 (text/html)
      "True"
 
 * **DELETE**
@@ -536,7 +460,7 @@ Disarms the plane::
       token: <secret token>
       confirm: confirm
 
-   Response 200 (application/json)
+   Response 200 (text/html)
      "True"
 
 Set Flight Mode [/set_mode]
@@ -553,7 +477,7 @@ Sets the plane mode::
   Requests
       mode: <string>    [The name of the mode to switch into]
 
-  Response 200 (application/json)
+  Response 200 (text/html)
       "Accepted Mode Change."
 
 Get Flight Mode [/flight_mode]
@@ -563,7 +487,7 @@ Get Flight Mode [/flight_mode]
 
 Gets the plane mode::
 
-  Response 200 (application/json)
+  Response 200 (text/html)
       "MANUAL"
 
 Reboot [/reboot]
@@ -578,7 +502,7 @@ Causes the plane to reboot
       token: <secret token>
       confirm: confirm
 
-  Response 200 (application/json)
+  Response 200 (text/html)
       "True"
 
 SDA [/sda]
@@ -587,8 +511,8 @@ SDA [/sda]
 * **GET**
 Returns whether SDA is enabled::
 
-  Response 200 (application/json)
-    True
+  Response 200 (text/html)
+    true
 
 * **POST**
 Activates SDA::
@@ -598,7 +522,7 @@ Activates SDA::
       token: <secret token>
 
   Response 200 (application/json)
-    True
+    true
 
 * **DELETE**
 Deactivates SDA::
@@ -648,23 +572,22 @@ Waypoints [/wp]
 Returns a list of waypoints, each containing, altitude, longitude, latitude, current waypoint, waypoint type or `MAV_CMD <http://mavlink.org/messages/common>`_ , waypoint index::
 
    Response 200 (application/json)
-
-        [{
-            "alt" : 0.0, [meters]
-            "lon" : 0.0, [degrees]
-            "lat" : 0.0, [degrees]
-            "current": 0, 
-            "type": 12, 
-            "index": 0 
-        }, 
-        {
-            "alt" : 0.0,
-            "lon" : 0.0,
-            "lat" : 0.0,
+        [
+          {
+            "command": 0,
             "current": 0,
-            "type": 16,
-            "index": 0
-        }]
+            "param1": 0.0,
+            "param2": 0.0,
+            "param3": 0.0,
+            "param4": 0.0,
+            "lat": 0.0,
+            "lon": 0.0,
+            "alt": 0.0,
+            "index": 0,
+            "min_dist": 0.0
+          }
+        ]
+
     
 *  **GET with arguments [GET /wp/{?wpnum}]**
 
@@ -674,15 +597,21 @@ The associated waypoint types and numbers are listed under POST.
 Parameters: *wpnum*  - the index of the waypoint you wish to recieve::
 
   Response 200 (application/json)
-
         {
-            "alt" : 0.0,
-            "lon" : 0.0,
-            "lat" : 0.0,
-            "current": 0,
-            "type": 21,
-            "index": 0
+          "command": 0,
+          "current": 0,
+          "param1": 0.0,
+          "param2": 0.0,
+          "param3": 0.0,
+          "param4": 0.0,
+          "lat": 0.0,
+          "lon": 0.0,
+          "alt": 0.0,
+          "index": 0,
+          "min_dist": 0.0
         }
+
+
         
 * **DELETE**
    Delete a specific waypoint.
@@ -691,7 +620,7 @@ Parameters: *wpnum*  - the index of the waypoint you wish to recieve::
 
 ::
 
-   Response 200 (application/json)
+   Response 200 (text/html)
         "True"
 
 * **POST**
@@ -710,7 +639,7 @@ Parameters: *wpnum*  - the index of the waypoint you wish to recieve::
       index: <int>         [The waypoints index]
       command: <int>       [The waypoints type or `MAV_CMD <http://mavlink.org/messages/common>`]
 
-   Response 200 (application/json)
+   Response 200 (text/html)
       "True"
 
 * **PUT**
@@ -730,7 +659,7 @@ Parameters: *wpnum*  - the index of the waypoint you wish to recieve::
       index: <int>         [The waypoints index]
       command: <int>       [The waypoints type or `MAV_CMD <http://mavlink.org/messages/common>`]
 
-   Response 200 (application/json)
+   Response 200 (text/html)
       "True"
 
 
@@ -768,131 +697,102 @@ Server Control [ground/api/v3/interop]
   ::
 
     Response 200 (application/json)
-    {  
-        "hz":2.7496117782366105,
-        "obstacles":{  
-            "moving_obstacles":[  
-                {  
-                    "latitude":38.143752406998416,
-                    "sphere_radius":15.239999976835199,
-                    "altitude_msl":38.77596404856716,
-                    "longitude":-76.4332677324261,
-                    "time":1480738099.504048
-                }
-            ],
-            "stationary_obstacles":[  
-                {  
-                    "latitude":38.14792,
-                    "cylinder_height":60.959999907340794,
-                    "cylinder_radius":45.7199999305056,
-                    "longitude":-76.427995
-                },
-                {  
-                    "latitude":38.145823,
-                    "cylinder_height":91.4399998610112,
-                    "cylinder_radius":15.239999976835199,
-                    "longitude":-76.422396
-                }
-            ]
-        },
-        "wp_distances":[  
-            0.07176477460652146,
-            52572731.79846973,
-            52572653.50093492,
-            52572646.28086038,
-            52572701.55982889
-        ],
-        "active_mission":{  
-            "fly_zones":[  
-                {  
-                    "boundary_pts":[  
-                        {  
-                            "latitude":38.142544,
-                            "order":1,
-                            "longitude":-76.434088
-                        },
-                        {  
-                            "latitude":0.0,
-                            "order":1,
-                            "longitude":0.0
-                        },
-                        {  
-                            "latitude":38.141833,
-                            "order":2,
-                            "longitude":-76.425263
-                        },
-                        {  
-                            "latitude":38.144678,
-                            "order":3,
-                            "longitude":-76.427995
-                        }
-                    ],
-                    "altitude_msl_max":1000.0,
-                    "altitude_msl_min":0.0
-                }
-            ],
-            "off_axis_target_pos":{  
-                "latitude":42.4471955938344,
-                "longitude":-76.6138759083697
+        {
+          "hz": 0.0,
+          "active_mission": {
+            "emergent_last_known_pos": {
+              "latitude": 0.0,
+              "longitude": 0.0
             },
-            "mission_waypoints":[  
-                {  
-                    "latitude":42.4462099439294,
-                    "altitude_msl":2179.69165478027,
-                    "order":4,
-                    "longitude":-76.6105735301971
-                },
-                {  
-                    "latitude":42.4462811962498,
-                    "altitude_msl":2179.69165478027,
-                    "order":5,
-                    "longitude":-76.610374962911
-                },
-                {  
-                    "latitude":-35.3632621765137,
-                    "altitude_msl":1917.22445478027,
-                    "order":1,
-                    "longitude":149.165237426758
-                },
-                {  
-                    "latitude":42.4474133055778,
-                    "altitude_msl":2114.07485478027,
-                    "order":2,
-                    "longitude":-76.610369682312
-                },
-                {  
-                    "latitude":42.4474014304113,
-                    "altitude_msl":2179.69165478027,
-                    "order":3,
-                    "longitude":-76.6106593608856
-                }
+            "fly_zones": [
+              {
+                "boundary_pts": [
+                  {
+                    "latitude": 0.0,
+                    "order": 0,
+                    "longitude": 0.0
+                  },
+                  {
+                    "latitude": 0.0,
+                    "order": 0,
+                    "longitude": 0.0
+                  },
+                  {
+                    "latitude": 0.0,
+                    "order": 0,
+                    "longitude": 0.0
+                  }
+                ],
+                "altitude_msl_max": 0.0,
+                "altitude_msl_min": 0.0
+              }
             ],
-            "search_grid_points":[  
-                {  
-                    "latitude":38.142544,
-                    "altitude_msl":200.0,
-                    "order":1,
-                    "longitude":-76.434088
-                }
+            "mission_waypoints": [
+              {
+                "latitude": 0.0,
+                "altitude_msl": 0.0,
+                "order": 0,
+                "longitude": 0.0
+              },
+
             ],
-            "sric_pos":{  
-                "latitude":38.141833,
-                "longitude":-76.425263
+            "off_axis_odlc_pos": {
+              "latitude": 0.0,
+              "longitude": 0.0
             },
-            "active":true,
-            "id":1,
-            "home_pos":{  
-                "latitude":38.14792,
-                "longitude":-76.427995
+            "search_grid_points": [
+              {
+                "latitude": 0.0,
+                "altitude_msl": 0.0,
+                "order": 0,
+                "longitude": 0.0
+              }
+            ],
+            "active": true,
+            "id": 0,
+            "home_pos": {
+              "latitude": 0.0,
+              "longitude": 0.0
             },
-            "air_drop_pos":{  
-                "latitude":38.141833,
-                "longitude":-76.425263
+            "air_drop_pos": {
+              "latitude": 0.0,
+              "longitude": 0.0
             }
-        },
-        "server_working":true,
-        "active":true
-    }
+          },
+          "obstacles": {
+            "moving_obstacles": [
+              {
+                "latitude": 0.0,
+                "sphere_radius": 0.0,
+                "altitude_msl": 0.0,
+                "longitude": 0.0,
+                "time": 0.0
+              }
+            ],
+            "stationary_obstacles": [
+              {
+                "latitude": 0.0,
+                "cylinder_height": 0.0,
+                "cylinder_radius": 0.0,
+                "longitude": 0.0
+              }
+            ]
+          },
+          "mission_waypoints": [
+            {
+              "latitude": 0.0,
+              "altitude_msl": 0.0,
+              "order": 0,
+              "longitude": 0.0
+            },
+          ],
+          "server_working": true,
+          "mission_wp_dists": [
+            0.0,
+          ],
+          "active": true
+        }
+
     
 
 Obstacles [/ground/api/v3/interop/obstacles]
@@ -901,20 +801,26 @@ Obstacles [/ground/api/v3/interop/obstacles]
 Returns a JSON object string that contains a list of both moving and stationary objects. Checks to see if the server is active, and, if so, retrieves data from the MAVProxy.modules.server.data module, jsonifies it and returns it. ::
 
   Response 200 (application/json)
-          {
-            stationary_obstacles : [{
-                  cylinder_height : 0.0, 
-                  cylinder_radius : 0.0, 
-                  latitude : 0.0, 
-                  longitude : 0.0
-                }],
-            moving_obstacles : [{
-                  altitude_msl : 0.0, 
-                  latitude : 0.0, 
-                  longitude : 0.0, 
-                  sphere_radius : 0.0
-            }],
-          }
+        {
+          "moving_obstacles": [
+            {
+              "latitude": 0.0,
+              "sphere_radius": 0.0,
+              "altitude_msl": 0.0,
+              "longitude": 0.0,
+              "time": 0.0
+            }
+          ],
+          "stationary_obstacles": [
+            {
+              "latitude": 0.0,
+              "cylinder_height": 0.0,
+              "cylinder_radius": 0.0,
+              "longitude": 0.0
+            }
+          ]
+        }
+
 
 Hz [/ground/api/v3/interop/hz]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -922,7 +828,7 @@ Hz [/ground/api/v3/interop/hz]
 Returns a string containing the rolling average of the frequency that the interop server has been posting telemetry data ::
 
   Response 200
-          10.15234
+        0.0
 
 Server Active [/ground/api/v3/interop/active]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -932,18 +838,6 @@ Returns a boolean string telling whether the interop server is currently active 
   Response 200
           true
 
-Waypoints [/ground/api/v3/interop/wp]
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Returns an integer list giving the closest point of approach to each waypoint ::
-
-  Response 200
-          [  
-            0.3071459946680728,
-            854.5473948275072,
-            1768.1771508733752,
-            1394.3356031300505
-          ]
 
 Status [/ground/api/v3/interop/status]
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
