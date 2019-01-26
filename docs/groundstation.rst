@@ -540,5 +540,59 @@ SDA currently has a relatively naive implementation seeing that planes don't fly
 
 While these present significat challenges, this new implementation would make flying with SDA a much safer experience for the plane and will hopefully make it more accurate at avoiding obstacles. 
 
+Ground Coverage
+--------------------------------
 
+Overview and Usage
+^^^^^^^^^
+Coverage is a way to record and visualize areas of the ground that the plane has flown over. Coverage is shown on the front end of the ground station after a flight. This is a useful way for Autopilot to show what areas the plane has and has not flown over, and push this information to Platform and Vision for their use.
+
+Visualizing Coverage
+^^^^^^^^^
+At the moment, we can visualize full coverage data after a flight.
+1. Run the ground station (refer to previous "Setup with plane" or "Setup with SITL" sections)
+2. Run a full flight/mission
+3. After landing, select the "Get Coverage" button on the right side bar menu
+
+Frontend
+^^^^^^^^^
+On the ground station, there are three parts to the frontend of coverage
+1. On/Off Leaflet button - this toggles the current pathway visualization on the map, even during flight
+2. Trail - this is the coverage pathway visualization, which is composed of light gray-filled rectangles that are overlaid on top of each other
+
+Coverage Process
+^^^^^^^^^
+1. Conversions
+First, we must convert latitude and longitude to pixels
+
+2. Pixels to Meters
+Since different maps on the ground station may have different numbers of pixels or that the ground distance compared to the same number of pixels is different, it is crucial to convert pixels to meters.
+
+3. Initiating Coverage
+This creates a new PNG overlay that covers the entirety of the map, on which new coverage data will be added onto.
+
+4. Add Coverage
+After getting data packets from Platform, we get the exact pixel location of the upper left, bottom left, upper right, and bottom right corners of the image taken by the gimbal at a specific timestamp. Coverage is then implemented by adding a gray-filled rectangle PNG onto the existing coverage path.
+
+This step is then repeated until the last data packet from Platform has been received, and the last rectangle has been added onto the path.
+
+Math Implementation
+^^^^^^^^^
+It is important to note that much of the math needed in coverage is already calculated by Platform. For example, there is no need to convert degrees to quaternions in order to be compatible with the gimbal angle.
+
+Testing with Postman
+^^^^^^^^^
+If desired, individual coverage points using specific timestamps may be used to test with Postman.
+
+Coverage Buffering
+^^^^^^^^^
+Ask Emily
+
+Future Directions for Coverage
+^^^^^^^^^
+This section is only being written to help plan for optimizing coverage during the 2018-2019 academic year. No critical information for the current function or implementation of coverage is below.
+
+The current version of coverage is a relatively basic implementation of the system. Currently, the image overlays are being stacked continuously in the backend, but we are still unable to toggle the front end leaflet button on the ground station in real time. Only the final coverage is able to be shown after a flight. In the future, we will implement coverage to be able to update in real-time, without affecting the efficiency of other Autopilot system processes as much.
+
+In addition, coverage currently only shows successfully covered areas. It is possible to implement another feature, where coverage is reversed. In other words, instead of showing the covered areas, coverage could update in real-time areas that the plane has not covered yet. We would take the coverage calculated in the backend and subtract/delete it from the initial map overlay. This may make it easier for the operator/user to see where the plane needs to fly.
 
